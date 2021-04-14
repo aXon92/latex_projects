@@ -1,0 +1,597 @@
+\section{Zeitfrequenzanalysis auf Distributionen}
+
+In diesem Abschnitt untersuchen wir die STFT angewandt auf Distributionen.
+Wir werden sehen, dass die STFT von $ f \in \S^\prime(\R^d) $ eine stetige Funktion und polynomiell beschränkt ist.
+Außerdem werden wir mithilfe der STFT eine nützliche Charakterisierung des Schwartzraums entwickeln.
+Diese wird uns helfen die Inversionsformel \eqref{eq:inversion_formula} auf den Raum der Distributionen zu erweitern.
+
+\begin{lem}
+	Sei $ g \in \S(\R^d) $.
+	Dann gilt
+	\begin{align}\label{eq:deri_prod_time_freq}
+	D^\alpha X^\beta(M_\omega T_x g)
+	=
+	\sum \limits_{\gamma_1 \leq \alpha}
+	\sum \limits_{\gamma_2 \leq \beta}
+	\binom{\alpha}{\gamma_1}
+	\binom{\beta}{\gamma_2}
+	x^{\gamma_2}
+	(2 \pi \i \omega)^{\gamma_1}
+	M_\omega T_x(D^{\alpha- \gamma_1} X^{\beta-\gamma_2} g)
+	\end{align}
+	für alle $ (x,\omega) \in \R^{2d} $ und $ \alpha, \beta \in \N^d_0 $.
+	
+\end{lem}
+
+\begin{proof}
+	Es gilt
+	\begin{align*}
+	X^\beta T_x g(t)
+	=
+	t^\beta g(t-x)
+	=
+	T_x ((x+t)^\beta g(t))
+	=
+	T_x ((x+X)^\beta g)(t).
+	\end{align*}
+	Mit dem binomischen Lehrsatz erhalten wir
+	\begin{align}\label{eq:proof_identity_deri_mult}
+	X^\beta T_x g  
+	=
+	\sum 
+	\limits_{\gamma_2 \leq \beta}
+	\binom{\beta}{\gamma_2}
+	x^{\gamma_2} T_x (X^{\beta - \gamma_2} g).
+	\end{align}
+	Mit dieser Formel folgt
+	\begin{align*}
+	\widehat{(D^\alpha M_w  h)}
+	&=(2\pi \i)^{|\alpha|}
+	X^\alpha T_w \hat{h}
+	=
+	(2\pi \i)^{|\alpha|}
+	\sum \limits_{\gamma_1 \leq \alpha}
+	\binom{\alpha}{\gamma_1} \omega^{\gamma_1}T_\omega (X^{\alpha - \gamma_1} \hat{h})\\
+	&=
+	\sum \limits_{\gamma_1 \leq \alpha}
+	\binom{\alpha}{\gamma_1} (2\pi \i \omega)^{\gamma_1} \widehat{(M_\omega D^{\alpha - \gamma_1} h)} 
+	\end{align*}
+	und somit auch
+	\begin{align}
+	D^\alpha M_\omega h 
+	=
+	\sum \limits_{\gamma_1 \leq \alpha}
+	\binom{\alpha}{\gamma_1}
+	(2 \pi \i \omega)^{\gamma_1} M_\omega D^{\alpha- \gamma_1} h.
+	\end{align}
+	Dies wenden wir nun auf \eqref{eq:proof_identity_deri_mult} an.
+	Dann folgt
+	\begin{align*}
+	D^\alpha M_\omega X^\beta T_x g
+	= 
+	D^\alpha X^\beta(M_\omega T_x g)
+	=
+	\sum \limits_{\gamma_1 \leq \alpha}
+	\sum \limits_{\gamma_2 \leq \beta}
+	\binom{\alpha}{\gamma_1}
+	\binom{\beta}{\gamma_2}
+	x^{\gamma_2}
+	(2 \pi \i \omega)^{\gamma_1}
+	M_\omega D^{\alpha - \gamma_1} T_x X^{\beta - \gamma_2} g.
+	\end{align*}
+	Da $ M_\omega $ und $ X^\beta $ bzw. $ T_x  $ und $ D^\alpha $ kommutieren, gilt die gewünschte Aussage.
+\end{proof}
+
+\begin{lem}
+	Die operatorwertige Abbildung $ (x, \omega) \mapsto M_\omega T_x $
+	ist stark stetig auf $ \S(\R^d) $ und schwach*-stetig auf $ \S^\prime(\R^d) $.
+\end{lem}
+
+\begin{proof}
+	Wir müssen zeigen, dass für ein beliebiges $ \varphi \in \S(\R^d) $ alle Seminormen gegen Null gehen, d.h.
+	\begin{align}\label{eq:strong_contiunity_to_show}
+	\lim \limits_{|x|,|\omega| \to 0}
+	\| D^\alpha X^\beta (M_\omega T_x \varphi - \varphi) \|_\infty = 0
+	\end{align}
+	für alle $ \alpha, \beta \in \N_0^d $. Mit \eqref{eq:deri_prod_time_freq} erhalten wir 
+	\begin{align*}
+	\| D^\alpha X^\beta (\M_w T_x \varphi - \varphi) \|_\infty
+	&=
+	\left\|
+	\sum \limits_{\gamma_1 \leq \alpha}
+	\sum \limits_{\gamma_2 \leq \beta}
+	\binom{\alpha}{\gamma_1}
+	\binom{\beta}{\gamma_2}
+	x^{\gamma_2}
+	(2 \pi \i \omega)^{\gamma_1}
+	M_\omega T_x(D^{\alpha- \gamma_1} X^{\beta-\gamma_2} \varphi)
+	-D^\alpha X^\beta \varphi
+	\right\|_\infty\\
+	&\leq
+	\| M_\omega T_x (D^\alpha X^\beta \varphi) - D^\alpha X^\beta \varphi \|_\infty\\
+	&+
+	\sum \limits_{0 \neq (\gamma_1,\gamma_2 ) \leq (\alpha,\beta)}
+	\binom{\alpha}{\gamma_1}
+	\binom{\beta}{\gamma_2}
+	x^{\gamma_2}
+	(2 \pi \i \omega)^{\gamma_1}
+	\|M_\omega T_x(D^{\alpha- \gamma_1} X^{\beta-\gamma_2} \varphi) \|_\infty.
+	\end{align*}
+	Der hintere Teil geht wegen $ \gamma_1 \neq 0 $ oder $ \gamma_2 \neq 0 $ für $ |x|, |\omega| \to 0 $  gegen Null. 
+	Sei $ g \in C^\infty_0(\R^d) $. Dann gilt:
+	\begin{align*}
+	\| M_\omega T_x g - g \|_\infty
+	\leq
+	\| M_\omega T_x g - \M_\omega g\|_\infty
+	+
+	\| M_\omega g - g \|_\infty 
+	=
+	\|T_x g - g \|_\infty + \| M_\omega g - g\|_\infty
+	\end{align*}
+	Wir wählen $ r > 1  $ mit $ \supp \ g \in B_{r-1}(0) $. 
+	Für den linken Term erhalten wir mithilfe des Mittelwertsatzes
+	\begin{align*}
+	\|T_x g - g \|_\infty
+	= 
+	\sup \limits_{t \in B_r(0)} 
+	| g(t -x ) - g(t) |
+	\leq 
+	\sup \limits_{t , \xi  \in B_r(0)} 
+	\| \nabla g(\xi) \|_2 \| t -x  -t \|_2
+	\leq
+	C \| x \|_2 \overset{|x| \to 0}{\to} 0
+	\end{align*}
+	für alle $ |x| \leq 1 $. Da $ g  $ kompakt getragen ist, gilt für den rechten Term 
+	\begin{align*}
+	\| M_\omega g - g \|_\infty
+	=
+	\sup \limits_{t \in \supp \ g}
+	| g(t) (e^{2\pi \i t \cdot \omega} - 1) |
+	\leq 
+	C \sup \limits_{t \in \supp \ g} | e^{2 \pi \i t \cdot \omega} - 1 |.
+	\end{align*}
+	Wir wählen $ R > 0 $, sodass $ \supp \ g \subseteq [- R, R]^d $ gilt. Dann folgt
+	\begin{align*}
+	2\pi | w \cdot t | 
+	\leq 
+	2 \pi \sum \limits_{j =1 }^d | \omega_j| | t_j | \leq
+	2 \pi R \|\omega \|_1
+	\end{align*}
+	für alle $ t \in \supp \ g $. Für $ \delta < \pi  $  und $ \| \omega \|_1 \leq \nicefrac{\delta}{2 \pi R} $ erhalten wir
+	\begin{align*}
+	| e^ {2 \pi \i \omega \cdot t} - 1 |
+	\leq 
+	|e^{\i \delta} - 1 | \stackrel{\delta \to 0}{\to} 0 
+	\end{align*}
+	unabhängig von $ t $.
+	Sei nun $ (\varphi_n)_{n \in \N}  $ eine Folge in $ C_0^\infty(\R^d) $ mit 
+	$ \varphi_n \to \varphi $.
+	Insgesamt folgt dann \eqref{eq:strong_contiunity_to_show} aus
+	\begin{align*}
+	\| M_\omega T_x D^\alpha X^\beta \varphi - D^\alpha X^\beta \varphi \|
+	\leq
+	2 \|D^\alpha X^\beta (\varphi_n - \varphi) \|_\infty
+	+
+	\| M_\omega T_x  D^\alpha X^\beta \varphi_n - D^\alpha X^\beta \varphi_n \|_\infty
+	\to 0 
+	\end{align*}
+	für $ |x|,|\omega| \to 0 $ und $ n \to \infty $.
+	Sei nun $ f \in \S^\prime(\R^d) $ und $ \varphi \in \S(\R^d) $.
+	Dann gilt
+	\begin{align*}
+	\lim \limits_{|x|, |\omega| \to 0}
+	\langle M_\omega T_x f , \varphi \rangle
+	=
+	\lim \limits_{|x|, |\omega| \to 0}
+	\langle f, T_{-x} M_{-\omega} \varphi \rangle 
+	= 
+	\langle f, \varphi \rangle
+	\end{align*}
+	womit $ M_\omega T_x $ schwach*-stetig ist.
+	\end{proof}
+	
+	\begin{sz}\label{th:STFT_continous}
+		Sei $ g \in \S(\R^d) \setminus \{0\} $ und $ f \in \S^\prime(\R^d) $.
+		Dann ist die STFT $ V_g f $ stetig und es existieren $ C > 0  $, $ N \geq 0 $, sodass
+		\begin{align}
+		|V_g f(x,\omega) |
+		\leq 
+		C (1+|x| + |\omega|)^N
+		\end{align}
+		für alle $ x, \omega \in \R^d $ gilt.		
+	\end{sz}
+	
+\begin{proof}
+	Sei $ (x,\omega) \in \R^{2d} $ beliebig und $ (x_n, \omega_n)  $ eine Folge mit $ (x_n,\omega_n ) \to (x,\omega) $. Dann gilt mit \eqref{eq:cont_distribution}:
+	\begin{align*}
+	&|V_g f (x_n,\omega_n) - V_g f(x,\omega)|
+	=
+	| \langle f, M_{\omega_n} T_{x_n} g - M_\omega T_x g \rangle |
+ 	\leq
+ 	\sum 
+ 	\limits_{
+ 		\substack{| \alpha | \leq M_1 \\
+	 			| \beta | \leq M_2}
+ 		}
+ 		\| D^\alpha X^\beta ( M_{\omega_n} T_{x_n} g - M_\omega T_x g) \|_\infty\\
+ 	&\qquad \leq
+ 	\sum 
+ 	\limits_{
+ 		\substack{| \alpha | \leq M_1 \\
+ 			| \beta | \leq M_2}
+ 	}
+ 	\| D^\alpha X^\beta (M_{\omega_n} T_{x_n} g - M_{\omega_n} T_x g) \|_\infty
+ 	+
+ 	\sum 
+ 	\limits_{
+ 		\substack{| \alpha | \leq M_1 \\
+ 			| \beta | \leq M_2}
+ 	}
+ 	\| D^\alpha X^\beta (M_{\omega_n} T_{x} g - M_{\omega} T_x g) \|_\infty.
+ 	\end{align*}
+	Wir werden beide Summen seperat untersuchen. Mit \eqref{eq:deri_prod_time_freq} und \eqref{eq:strong_contiunity_to_show} folgt
+	\begin{align*}
+	&\| D^\alpha X^\beta (M_{\omega_n} T_{x_n} g - M_{\omega_n} T_x g) \|_\infty
+	=
+	\| D^\alpha X^\beta (M_{\omega_n} T_x (T_{x_n-x} g -  g)) \|_\infty\\
+	&\leq
+	\sum 
+	\limits_{
+		\substack{\gamma_1 \leq \alpha
+		\\
+		\gamma_2 \leq \beta}
+		}
+		\binom{\alpha}{\gamma_1}
+		\binom{\beta}{\gamma_2}
+		|x^{\gamma_2}
+		(2  \pi \i \omega_n)^{\gamma_2}|
+		\| M_{\omega_n} T_x(D^{\alpha-\gamma_1} X^{\beta - \gamma_2}
+		(T_{x_n-x} g - g)) \|_{\infty}
+		\\
+	&\leq 
+	C
+	\sum 
+	\limits_{
+		\substack{\gamma_1 \leq \alpha
+			\\
+			\gamma_2 \leq \beta}
+	}
+	\binom{\alpha}{\gamma_1}
+	\binom{\beta}{\gamma_2}
+	\| (D^{\alpha-\gamma_1} X^{\beta - \gamma_2}
+	(M_0T_{x_n-x} g - g) \|_{\infty}
+	\to 0
+	\end{align*}
+	für $ (x_n,\omega_n ) \to (x,\omega) $.
+	Ähnliches Vorgehen liefert
+	\begin{align*}
+	\| D^\alpha X^\beta (M_{\omega} T_0 ( M_{\omega - \omega_n} T_x g - T_x g)) \|_\infty
+	\leq ... 
+	\leq
+	C 
+	\sum \limits_{\gamma_2 \leq \beta}
+	\binom{\beta}{\gamma_2}
+	\| D^\alpha X^{\beta- \gamma_2}(M_{\omega_n - \omega} T_x g - T_x g) \|_\infty
+	\to 0
+	\end{align*}
+	für den zweiten Summanden.
+	Insgesamt erhalten wir mit
+	\begin{align*}
+	(x_n,\omega_n) \to (x,\omega) \ 
+	\Rightarrow 
+	\
+	V_g f(x_n, \omega_n) \to V_g f (x, \omega)
+	\end{align*}
+	die Stetigkeit von $ V_g f $.
+	Die Stetigkeitsabschätzung \eqref{eq:cont_distribution} liefert uns
+	\begin{align*}
+	| V_g f(x,\omega) |
+	=
+	|\langle f, M_\omega T_x g \rangle |
+	\leq
+	C
+	\sum \limits_{\substack{|\alpha| \leq M_1\\
+		|\beta| \leq M_2}
+		}
+	\| D^\alpha X^\beta (M_\omega T_x g)\|_\infty
+	\end{align*}
+	und mit \eqref{eq:deri_prod_time_freq} und der Dreiecksungleichung erhalten wir:
+	\begin{align*}
+	|V_g f(x,\omega)\| 
+	&\leq 
+	C
+	\sum \limits_{
+		\substack{|\alpha| \leq M_1 \\ |\beta| \leq M_2}
+		}
+	\sum \limits_{
+		\substack{\gamma_1 \leq \alpha\\ \gamma_2 \leq \beta}
+		}
+	\binom{\alpha}{\gamma_1} \binom{\beta}{\gamma_2}
+	|x^{\gamma_2}| |(2\pi \i \omega)^{\gamma_1} | 
+	\| D^{\alpha-\gamma_1} X^{\beta - \gamma_2} g \|_\infty\\
+	&\leq
+	C
+	\max \limits_{
+		\substack{|\alpha| \leq M_1 \\ |\beta| \leq M_2}
+		}
+	\| D^\alpha X^\beta g \|_\infty
+	\sum \limits_{
+		\substack{|\alpha| \leq M_1 \\ |\beta| \leq M_2}
+	}
+	\sum \limits_{
+		\substack{\gamma_1 \leq \alpha\\ \gamma_2 \leq \beta}
+	}
+	\binom{\alpha}{\gamma_1} \binom{\beta}{\gamma_2}
+	|x^{\gamma_2}| |(2\pi \i \omega)^{\gamma_1} |.
+	\end{align*}
+	Die rechte Doppelsumme ist ein Polynom vom Grad $ M_1 $ in den Variablen $ |x_j| $ und ein Polynom vom Grad $ M_2 $ in den Variablen $ |\omega_j| $.
+	Wir setzen $ N := \max\{M_1,M_2\} $. Dann existiert ein $ K > 0 $, sodass
+	die Doppelsumme durch $ K (1+ |x| + |\omega|)^N $ beschränkt ist.\\
+	\qedhere
+\end{proof}
+\vspace{-2.9cm}
+\begin{lem}\label{th:rapid_decay_implies_schwartz}
+Sei $ g \in \S(\R^d) \setminus \{ 0\} $ fixiert und $ F(x, \omega) $ schnell fallend auf $ \R^{2d} $, d.h. für alle $ n \geq 0 $ existiert ein $ C_n > 0 $, sodass 
+\begin{align}\label{eq:rapid_decay}
+| F(x,\omega) |\leq C_n (1 + |x| + |\omega|)^{-n}
+\end{align}
+erfüllt ist. Dann ist durch
+\begin{align}\label{eq:schwartz_func_rapid_decay}
+f(t) = \int \limits_{\R^{2d}} F(x, \omega) M_\omega T_x g(t) \td{(\omega,x)}
+\end{align}
+eine Schwartzfunktion definiert.
+\end{lem}
+
+\begin{proof}
+	Wegen \eqref{eq:rapid_decay} und $ g \in \S(\R^d) $ gilt
+	\begin{align*}
+	\int \limits_{\R^{2d}} |F(x,\omega)| |T_x g(t) | \td{(\omega,x)}
+	&\leq 
+	\int \limits_{\R^{2d}} | F(x,\omega) | \| g \|_\infty \td{(\omega,x)}\\
+	&\leq
+	C_n \|g \|_\infty 
+	\int \limits_{\R^{2d}} \frac{1}{(1+ |x| +|\omega|)^n } \td{(\omega,x)} < \infty
+	\end{align*}
+	für ein hinreichend großes $ n $. Dies gilt auch, wenn wir $ F  $ mit einem beliebigen Polynom multiplizieren. Also konvergiert \eqref{eq:schwartz_func_rapid_decay} absolut und wir können Differentation nach $ t $ in das Integral ziehen.
+	Mit \eqref{eq:deri_prod_time_freq} gilt dann
+	\begin{align*}
+	D^\alpha X^\beta f(t)
+	&=
+	\int \limits_{\R^{2d}} F(x, \omega) D^\alpha X^\beta M_\omega T_x g(t) \td{(\omega,x)}\\
+	&=
+	\sum \limits_{
+		\substack{\gamma_1 \leq \alpha \\ \gamma_2 \leq \beta}
+		}
+	\binom{\alpha}{\gamma_1} \binom{\beta}{\gamma_2}
+	\int \limits_{\R^{2d}} F(x,\omega) x^{\gamma_2} (2 \pi \i \omega)^{\gamma_1}
+	M_\omega T_x D^{\alpha - \gamma_1} X^{\beta - \gamma_2} g(t)\td{(\omega,x)}.
+	\end{align*}
+	Wegen $ g \in \S(\R^d) $ gilt $ C := \max_{\gamma_1 \leq  \alpha, \gamma_2 \leq \beta} \| M_\omega T_x D^\alpha X^\beta  g \|_\infty < \infty  $.
+	Damit erhalten wir
+	\begin{align}\label{eq:estimate_rapid_decay}
+	\| D^\alpha X^\beta f \|_\infty
+	\leq
+	C\int \limits_{\R^{2d}} |F(x, \omega) | P(x,\omega) \td{(\omega,x)} < \infty
+	\end{align}
+	mit
+	\begin{equation}
+	\begin{split}
+	P(x,\omega)
+	&= \sum 
+	\limits_{\gamma_1 \leq \alpha}
+	\sum \limits_{\gamma_2 \leq \beta }
+	\binom{\alpha}{\gamma_1} \binom{\beta}{\gamma_2}
+	|x|^{\gamma_1}|2\pi \i \omega|^{\gamma_2}\\
+	&=
+	\left( \sum 
+	\limits_{\gamma_1 \leq \alpha} \binom{\alpha}{\gamma_1} |x|^{\gamma_1} \right)
+	\left(\sum \limits_{\gamma_2 \leq \beta } \binom{\beta}{\gamma_2} |2\pi \i \omega|^{\gamma_2} \right)
+	=
+	\prod \limits_{j=1}^d (1+ |x_j|)^{\alpha_j} (1+ 2\pi |\omega_j|)^{\beta_j}
+	\end{split}
+	\end{equation}
+	woraus $ f \in \S(\R^d) $ folgt.
+\end{proof}
+
+\begin{sz}\label{th:equivalence_STFT_bounded}
+	Sei $ g \in \S(\R^d) \setminus \{0\} $ fest und $ f \in \S^\prime(\R^d) $.
+	Dann sind äquivalent:
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item $ f \in \S(\R^d) $
+		\item $ V_g f \in \S(\R^{2d}) $
+		\item Für alle $ n \geq 0 $ existiert ein $ C_n > 0 $, sodass
+		für alle $ x, \omega \in \R^d $ gilt:
+		\begin{align}
+		| V_g f(x,\omega) | 
+		\leq 
+		C_n (1 + |x| + | \omega|)^{-n}.
+		\end{align}
+		%für alle $ x, \omega \in \R^d $ gilt.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof}
+	\begin{description}
+		\item[\textit{ \itshape\textrm{(i)}} $ \Rightarrow $ \textbf{\textit{\textrm{(ii)}}}:]
+		Nach \ref{th:iso_tensor_distri} gilt $ V_g f = \mathcal{F}_2 \mathcal{T}_a (f \otimes \overline{g}) \in \S(\R^{2d})  $.
+		\item[\textit{ \itshape\textrm{(ii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(iii)}}}:]
+		Da $ V_g f \in \S(\R^{2d}) $, folgt direkt: Für alle $ n \geq 0 $ existiert ein $ C_n > 0 $, sodass
+		\begin{align*}
+		| V_g f(x,\omega)| = |V_g f (z)| 
+		\leq 
+		C_n(1+ |z|)^{-n}
+		\end{align*}
+		für alle $ z \in \R^{2d} $ gilt. Mit \ref{th:equivalence_poly_weight} folgt dann die Aussage.
+		\item[\textit{ \itshape\textrm{(iii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(i)}}}:]
+		Wegen $ \S(\R^d) \subset \L^2(\R^d) $ gilt $ \|g \|_2 < \infty .$
+		Sei 
+		\begin{align*}
+		\tilde{f} = \frac{1}{\|g \|_2^2}
+		\int \limits_{\R^{2d}}
+		V_g f(x,\omega) M_\omega T_x g \td{(x,\omega)}.
+		\end{align*}
+		Dann sind die Voraussetzungen für \ref{th:rapid_decay_implies_schwartz} erfüllt, womit $ \tilde{f} \in \S(\R^d) $ gilt. Die Inversionsformel der STFT \eqref{eq:inversion_formula} liefert uns $ f = \tilde{f} \in \S(\R^d) $.
+	\end{description}
+\end{proof}
+
+\begin{lem}\label{th:equivalence_seminorms}
+	Sei $ g \in \S(\R^d) \setminus \{ 0\}$. Dann ist die Familie von Seminormen
+	\begin{align}\label{eq:equivalence_seminorms_1}
+	\| V_g f \|_{\L^\infty_{v_s}} 
+	= 
+	\sup \limits_{z \in \R^{2d}} (1 + |z|)^s |V_g f(z) |
+	\end{align}
+	für $ s \geq 0  $ eine äquivalente Familie von Seminormen für $ \S(\R^d) $.
+\end{lem}
+
+\begin{proof}
+	Wir definieren
+	\begin{align*}
+	\tilde{S}(\R^d)
+	:= \left\{
+	f \in \L^2(\R^d) \ | \ \forall_{ s \geq 0} : \sup \limits_{z \in \R^{2d}} (1+ |z|)^s| V_g f(z)|< \infty
+	\right\}.
+	\end{align*}
+	Für $ f \in \tilde{S}(\R^d) $ gilt mit \textbf{\textit{\itshape\textrm{(iii)}}} $ \Rightarrow $ \textbf{\textit{\textrm{(i)}}} aus \ref{th:equivalence_STFT_bounded} direkt $ f \in \S(\R^d) $.
+	Sei nun $ f \in \S(\R^d) $ und $ s \geq 0  $ beliebig. Dann gilt
+	\begin{align*}
+	|V_g f(z) | \leq C_n \frac{1}{(1+ |z|)^n} 
+	\end{align*}
+	für $ n = s$, womit $ f \in \tilde{\S}(\R^d) $ folgt.
+	Also ist $ \S(\R^d) = \tilde{\S}(\R^d) $ und wir müssen zeigen, dass beide dieselbe Topologie besitzen.
+	Wir wenden die Abschätzung \eqref{eq:estimate_rapid_decay} auf die Inversionsformel
+	\begin{align*}
+	f = \frac{1}{\|g\|_2^2} \int \limits_{\R^{2d}}
+	V_g f(x,\omega) M_\omega T_x g \td{(x,\omega)}
+	\end{align*}
+	an. Damit erhalten wir
+	\begin{align*}
+	\| D^\alpha X^\beta f \|_\infty
+	\leq
+	C \int \limits_{\R^{2d}} |V_g f(z)| P(z) \td{z}
+	\leq 
+	C^\prime \int \limits_{\R^{2d}} |V_g f(z)| (1+ |z|)^n \td{z}.
+	\end{align*}
+	für ein hinreichend großes $ n $.
+	Dieses $ n $ hängt nur von $ \alpha $ und $ \beta $ ab.
+	 Weiter gilt
+	\begin{align}\label{eq:equivalence_seminorms_2}
+	\| D^\alpha X^\beta f \|_\infty \leq
+	C^\prime 
+	\sup \limits_{z \in \R^{2d}} | V_g f(z) | (1+ |z|)^{n + 2d + 1}
+	\int \limits_{\R^{2d}} (1+ |z|)^{-2d - 1} \td{z} 
+	= K \| V_g f \|_{\L^\infty_{v_{n+2d+ 1}}} < \infty.
+	\end{align}
+	Wir betrachten nun die Identität $ I :\tilde{\S}(\R^d) \to \S(\R^d) $.
+	Sei nun $ f_m \to f  $ in $ \tilde{\S}(\R^d) $, d.h.
+	\begin{align*}
+	\lim \limits_{m \to \infty} 
+	\| V_g f_m - V_g f \|_{\L^\infty_{v_s}}
+	=
+	\| V_g (f_m - f) \|_{\L^\infty_{v_s}} =0 
+	\end{align*}
+	für alle $ s \geq 0 $. Dann ist $ I $ wegen
+	\begin{align*}
+	\| D^\alpha X^\beta (f_m - f) \|_\infty \leq
+	 K \| V_g (f_m -f) \|_{\L^\infty_{v_{n+2d+ 1}}}
+	\to 0
+	\end{align*}
+	 für $ m \to \infty $ stetig. Mit dem Open-Mapping-Theorem ist $ I $ eine offene Abbildung und somit ein linearer Homöomorphismus. Damit sind beide Topologien gleich.
+\end{proof}
+
+\begin{sz}
+	Seien $ g, \gamma \in \S(\R^d) \setminus \{0\} $.
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Sei $ |F(x,\omega)| \leq C (1+|x| + |\omega|)^N $ für ein $ C,N \geq 0 $.
+		Dann wird durch 
+		\begin{align}
+		f 
+		=
+		\int \limits_{\R^{2d}}
+		F(x,\omega) M_\omega T_x g \td{(x,\omega)}
+		\end{align}
+		eine temperierte Distribution $ f \in \S^\prime(\R^d) $ im Sinne von 
+		\begin{align}
+		\langle f, \varphi \rangle
+		= 
+		\int \limits_{\R^{2d}}
+		F(x,\omega)  \langle M_\omega T_x g , \varphi\rangle \td{(x,\omega)}, \quad \varphi \in \S(\R^d)
+		\end{align}
+		definiert.
+		\item
+		Sei $ f \in \S^\prime(\R^d) $, $ F = V_g f $ und $ \langle \gamma, g \rangle \neq 0 $. Dann gilt
+		\begin{align}\label{eq:inverse_STFT_distribution}
+		f = \frac{1}{\langle \gamma, g \rangle}\int \limits_{\R^{2d}}  V_g f(x,\omega) M_\omega T_x \gamma  \td{(\omega,x)}.
+		\end{align}
+		\end{enumerate}
+	Insbesondere ist die STFT injektiv auf $ \S^\prime(\R^d) $.
+\end{sz}
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Zunächst bemerken wir, dass $ |F(z) | = \mathcal{O}(|z|^N) $ und 
+		$ |V_g \varphi(z)| \in \mathcal{O}(|z|^{-n}) $ für alle $ n \geq 0 $, $ \varphi \in \S(\R^d) $ gilt. Damit konvergiert das Integral
+		\begin{align*}
+		\int \limits_{\R^{2d}}
+		F(x,\omega) \langle M_\omega T_x g , \varphi\rangle \td{(x,\omega)}
+		=
+		\int \limits_{\R^{2d}}
+		F(x,\omega) \overline{V_g  \varphi(x,\omega)} \td{(x,\omega)}
+		\end{align*}
+		absolut. Mit den selben Abschätzungen wie in \eqref{eq:equivalence_seminorms_2} erhalten wir
+		\begin{align*}
+		|\langle f , \varphi \rangle |
+		\leq 
+		C \sup \limits_{  z \in \R^{2d}}
+		|V_g \varphi(z) | (1 + |z|)^{N+2d+1} \int \limits_{\R^{2d}} \frac{1}{(1+ |z|)^{2d + 1}} \td{z}
+		\end{align*}
+		für alle $ \varphi \in \S(\R^d) $.
+		Wegen \ref{th:equivalence_seminorms} gilt $ f \in \S^\prime(\R^d) $.
+		
+		\item
+		Nach \textbf{(i)} wird durch
+		\begin{align*}
+		\langle \tilde{f}, \varphi \rangle 
+		= 
+		\frac{1}{\langle \gamma,g \rangle} 
+		\int \limits_{\R^{2d}}
+		V_g f(x,\omega) \langle M_\omega T_x \gamma ,\varphi \rangle
+		\td{(x,\omega)}
+		\end{align*}
+		eine temperierte Distribution $ \tilde{f} $ definiert. 
+		Weiter gilt 
+		\begin{align*}
+		\varphi
+		=
+		\frac{1}{\langle g, \gamma \rangle}
+		\int \limits_{\R^{2d}}
+		V_\gamma \varphi(x,\omega) M_\omega T_x g \td{(x,\omega)}
+		\end{align*}
+		auf $ \S(\R^d) $. Damit erhalten wir
+		\begin{align*}
+		\langle f , \varphi \rangle
+		&=
+		\left\langle f,  \frac{1}{\langle g, \gamma \rangle}
+		\int \limits_{\R^{2d}}
+		V_\gamma \varphi(x,\omega) M_\omega T_x g \td{(x,\omega)}
+		\right\rangle
+		=
+		\frac{1}{\langle \gamma, g \rangle}
+		\int \limits_{\R^{2d}}
+		\langle f, V_\gamma \varphi(x,\omega) M_\omega T_x g \rangle \td{(x, \omega)}\\
+		&=
+		\frac{1}{\langle \gamma, g \rangle}
+		\int \limits_{\R^{2d}}
+		\langle f,  M_\omega T_x g \rangle \overline{V_\gamma \varphi(x,\omega)}\td{(x, \omega)}
+		=
+		\frac{1}{\langle \gamma, g \rangle}
+		\int \limits_{\R^{2d}}
+		V_g f(x,\omega) \langle M_\omega T_x \gamma, \varphi \rangle \td{(x, \omega)}\\
+		&=
+		\langle \tilde{f}, \varphi \rangle.
+		\end{align*}
+		Also gilt $ \tilde{f} = f $.
+		
+	\end{enumerate}
+\end{proof}

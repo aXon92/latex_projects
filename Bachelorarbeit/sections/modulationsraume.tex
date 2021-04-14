@@ -1,0 +1,576 @@
+\section{Modulationsräume}
+In diesem Abschnitt werden wir elementare Eigenschaften der Modulationsräume und
+bereits einige Tatsachen zur Feichtinger-Algebra $ S_0(\R^d) = \M^1 $ entwickeln.
+Hierbei werden wir auf die Theorie der ersten drei Abschnitte zurückgreifen. 
+
+
+\begin{df}
+	Sei $ g \in \mathcal{S}(\R^d) \setminus \{ 0\}$ eine Fensterfunktion, $ m $ eine $ v $-moderierte Gewichtsfunktion auf $ \R^{2d} $ und $ 1 \leq p,q \leq \infty $.
+	Der Modulationsraum $ \M^{p,q}_m (\R^d) $ besteht aus allen temperierten Distributionen $ f \in \mathcal{S}^\prime(\R^d) $, sodass
+	\begin{align*}
+	\| f \|_{\M^{p,q}_m} := \| V_g f \|_{\L^{p,q}_m} < \infty
+	\end{align*}
+	erfüllt ist.
+	
+\end{df}
+
+Diese Definition hängt von der Wahl des Fensters $ g $ ab. 
+Im weiteren Verlauf werden wir zeigen, dass $ \M^{p,q}_m $ unabhängig von der Wahl der Fensterfunktion ist.
+Bis zu diesem Zeitpunkt werden wir eine fixierte Standardfensterfunktion $ g_0 \in \S(\R^d) \setminus \{ 0\} $ festlegen und die $ \M^{p,q}_m $-Norm bezüglich $ g_0 $ betrachten.
+
+\begin{kor}
+	Sei $ g \in \S(\R^d) \setminus \{ 0\}  $ und $ v_s(z) = (1+ |z|)^s$. Dann gilt
+	\begin{align}
+	\S(\R^d) =
+	\bigcap \limits_{s \geq 0} M^\infty_{v_s} \ \text{und} \
+	\S^\prime(\R^d) = \bigcup \limits_{s \geq 0} M^\infty_{\nicefrac{1}{v_s}}.
+	\end{align}
+\end{kor}
+
+\begin{proof}
+	Die Äquivalenz zwischen \textbf{(i)} und \textbf{(iii)} in \ref{th:equivalence_STFT_bounded} liefert direkt
+	\begin{align*}
+	\S(\R^d) =
+	\bigcap \limits_{s \geq 0} M^\infty_{v_s}.
+	\end{align*}
+	Nach \ref{th:STFT_continous} gilt für $ f \in \S^\prime(\R^d) $ auch $ f \in \bigcup_{s \geq 0} M^\infty_{\nicefrac{1}{v_s}} $ und somit 
+	\begin{align*}
+	\S^\prime(\R^d) = \bigcup \limits_{s \geq 0} M^\infty_{\nicefrac{1}{v_s}}.
+	\end{align*}
+\end{proof}
+Um die Eigenschaften der Modulationsräume zu zeigen, benötigen wir zuerst eine Inversionsformel, um auf die Eigenschaften der $ \L^{p,q}_m $-Räume zurückzugreifen. Hierfür definieren wir den adjungierten Operator zu $ V_g $ formal.
+
+\begin{df}
+	Sei $ \gamma \in \S(\R^d) \setminus \{ 0\} $ eine Fensterfunktion und $ F : \L^{p,q}_m$ .
+	Dann definieren wir
+	\begin{align*}
+	V_\gamma^\prime F 
+	:=
+	\int \limits_{\R^{2d}}F(x,\omega)  M_\omega T_x \gamma \td{(x,\omega)}.
+	\end{align*}
+\end{df}
+Dieses Integral wird schwach interpretiert, d.h.
+\begin{align*}
+\langle V^\prime_\gamma F ,f \rangle
+=
+\int \limits_{\R^{2d}} F(x,\omega) \langle M_\omega T_x \gamma, f \rangle \td{(x,\omega)}
+=
+\int \limits_{\R^{2d}} F(x,\omega) \overline{V_\gamma f(x,\omega)} \td{(x,\omega)}
+=
+\langle F , V_\gamma f \rangle.
+\end{align*}
+
+
+\begin{sz}\label{th:inversions_formula_modulation}
+	Sei $ m $ eine $ v $-moderierte Gewichtsfunktion und $ \gamma \in \S(\R^d) \setminus \{0\} $.
+	Dann gilt:
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Es gilt $ \Bild \ V_\gamma^\prime \subseteq \M_m^{p,q} $ und 
+		%$ V_\gamma^\prime  $ bildet $ \L^{p,q}_m(\R^{2d}) $ auf $ \M^{p,q}_m $ ab und erfüllt
+		\begin{align}\label{eq:inverse_estimate_modulation}
+		\| V^\prime_\gamma F \|_{\M^{p,q}_m}
+		\leq
+		C \| V_{g_0} \gamma \|_{\L^1_v} \| F \|_{\L^{p,q}_m}. 
+		\end{align}
+		ist erfüllt.
+		\item
+		Für $ F = V_g f $ und $ \langle \gamma, g \rangle \neq 0 $ gilt die Inversionsformel
+		\begin{align}\label{eq:inversion_formula_modulation}
+		f = \frac{1}{\langle \gamma, g \rangle}
+		\int \limits_{\R^{2d}}V_g f(x,\omega) M_\omega T_x \gamma \td{(\omega,x)}
+		\end{align}
+		auf $ \M^{p,q}_m $. Wir können hierfür auch
+		\begin{align}
+		I_{\M^{p,q}_m} 
+		= \frac{1}{\langle \gamma, g \rangle } V^\prime_\gamma V_g
+		\end{align}
+		schreiben.
+		Insbesondere ist $ V^\prime_\gamma $ surjektiv.
+	\end{enumerate}
+\end{sz}
+
+Schränken wir nun den Definitionsbereich auf $ \{ F \in \L^{p,q}_m \ | \ \exists f \in  \M_m^{p,q} : F = V_g f\}  $ ein ist 
+$ V_\gamma^\prime  $ eine bijektive Abbildung mit der STFT als Inverse.
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item Zunächst zeigen wir, dass $ V_\gamma^\prime F  $ in $ \S^\prime(\R^d) $ liegt.
+		Sei $ \varphi \in \S(\R^d) $ beliebig. Dann erhalten wir mit der Hölder-Ungleichung \eqref{eq:hoelder_mixed_norm} und $ \S(\R^{2d}) \subseteq \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}} $
+		\begin{align*}
+		| \langle V^\prime_\gamma F, \varphi \rangle |
+		&=
+		| \langle F, V_\gamma \varphi \rangle |\\
+		&\leq 
+		\| F \|_{\L^{p,q}_m} \| V_\gamma \varphi \|_{\L^{p^\prime, q^\prime}_{\nicefrac{1}{m}}}\\
+		&\leq 
+		\| F \|_{\L^{p,q}_m} \| (1+ | \cdot |)^n V_\gamma \varphi \|_\infty
+		\| (1+|\cdot|)^{-n} \|_{\L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}} < \infty
+		\end{align*}
+		für hinreichend große $ n $. Mit der Äquivalenz der Seminormen \ref{th:equivalence_seminorms} ist der Ausdruck
+		\begin{align*}
+		V_\gamma^\prime F
+		=
+		\int \limits_{\R^{2d}}
+		F(x,\omega) M_\omega T_x \gamma \td{(x,\omega)}
+		\end{align*}
+		eine wohldefinierte temperierte Distribution. Nach \ref{th:STFT_continous} ist die STFT von $ V_\gamma^\prime  F$ stetig. Zunächst betrachten wir
+		\begin{align*}
+		V_\gamma (M_\eta T_u g)(x,\omega)
+		&=
+		\langle M_\eta T_u g , M_\omega T_x \gamma \rangle 
+		= 
+		\langle M_{\eta-\omega} T_u g ,T_x \gamma \rangle
+		=
+		\langle T_{-x} M_{\eta-\omega} T_u g , \gamma \rangle\\
+		&=
+		\langle e^{2\pi \i x(\eta - \omega)} M_{\eta - \omega} T_{u-x} g, \gamma \rangle
+		=
+		e^{2 \pi \i x \cdot (\eta  - \omega)} 
+		\overline{V_g \gamma (u-x , \eta - \omega)}
+		\end{align*}
+		und erhalten damit
+		\begin{align*}
+		V_g V_\gamma^\prime F(u,\eta)
+		&=
+		\langle V_\gamma^\prime F, M_\eta T_u g \rangle
+		=
+		\langle  F,V_\gamma (M_\eta T_u g) \rangle\\
+		&=
+		\int \limits_{\R^{2d}} F(x,\omega)
+		\overline{V_\gamma(M_\eta T_u g)(x,\omega)} \td{(x,\omega)}\\
+		&=
+		\int \limits_{\R^{2d}} F(x,\omega) 
+		V_g \gamma (u - x, \eta - \omega) e^{2\pi \i x(\eta - \omega)} \td{(x,\omega)}.
+		\end{align*}
+		Durch punktweises Abschätzen folgt dann
+		\begin{align}\label{eq:invert_on_mod_space_1}
+		|V_g V^\prime_\gamma F(u , \eta)|
+		\leq 
+		(| F | \ast |V_g \gamma |)(u,\eta)
+		\end{align}
+		und mit \ref{th:convolution_mixed_norm} gilt 
+		\begin{align}\label{eq:invert_on_mod_space_2}
+		\| V_g( V^\prime_\gamma F) \|_{\L^{p,q}_m}
+		\leq 
+		C \| F\|_{\L^{p,q}_m} \| V_g \gamma\|_{\L^1_v} < \infty.
+		\end{align}
+		Wegen $ g, \gamma \in \S(\R^d) $ ist $ V_g \gamma $ nach \ref{th:equivalence_STFT_bounded} schnell fallend und somit gilt $ V_g \gamma \in \L^1_v $.  
+		Mit dem Standardfenster $ g_0  $ erhalten wir dann
+		\begin{align*}
+		\| V_\gamma^\prime F\|_{\M^{p,q}_m}
+		\leq 
+		\|V_{g_0}(V_\gamma^\prime F) \|_{\L_m^{p,q}}
+		\leq
+		C \| F \|_{\L_m^{p,q}} \| V_{g_0} \gamma \|_{\L^1_v}.
+		\end{align*}
+		Also gilt $ V_\gamma^\prime F \in \M_m^{p,q} $.
+		
+		\item
+		Für $ V_g f \in \L_m^{p,q} $ gilt 
+		\begin{align*}
+		\tilde{f} = \frac{1}{\langle \gamma, g \rangle} V_\gamma^\prime V_g f  \in \M_m^{p,q}
+		\end{align*}
+		und mit der Inversionsformel \eqref{eq:inverse_STFT_distribution} folgt $ \tilde{f} = f $.
+	\end{enumerate}
+\end{proof}
+
+\begin{sz}\label{th:independence_of_window_norm}
+	Die Definition von $ \M_m^{p,q} $ ist  unabhängig von der Wahl des Fensters $ g \in \S(\R^d)  \setminus \{ 0\}$. Verschiedene Fensterfunktionen liefern äquivalente Normen.
+\end{sz}
+
+\begin{proof}
+	Wir verwenden \eqref{eq:invert_on_mod_space_2} mit $ g = \gamma,  $ und $ \| g \|_2 = 1 $. Damit erhalten wir
+	\begin{align*}
+	\| f \|_{\M_m^{p,q}}
+	=
+	\| V_{g_0} f \|_{\L_m^{p,q}}
+	=
+	\| V_{g_0} (V_g^\prime V_g f) \|_{\L_m^{p,q}}
+	\leq 
+	C 
+	\| V_{g_0} g \|_{\L^1_v}
+	\| V_g f \|_{\L_m^{p,q}}
+	=
+	C^\prime \| V_g f \|_{\L_m^{p,q} }.
+	\end{align*}
+	Durch Vertauschen von $ g_0 $ und $ g $ folgt
+	\begin{align*}
+	\| V_g f \|_{\L_m^{p,q}}
+	\leq 
+	C \| V_g g_0 \|_{\L^1_v}
+	\| V_{g_0 } f \|_{\L_m^{p,q}} =
+	C^\prime \| f \|_{\M_m^{p,q}}. 
+	\end{align*}
+	Insgesamt erhalten wir 
+	\begin{align*}
+	c \| V_{g_0} f \|_{\L_m^{p,q}}
+	\leq
+	\| V_g f \|_{\L_m^{p,q}}
+	\leq
+	C \| V_{g_0} f \|_{\L_m^{p,q}}
+	\end{align*}
+	für ein $ c,C > 0 $. Es gilt $ f \in \M^{p,q}_m $ genau dann, wenn $ V_g f \in \L_m^{p,q} $ für beliebige $ g \in \S(\R^d) \setminus \{0\} $.
+	Also gilt die Normäquivalenz.
+\end{proof}
+
+\begin{lem}\label{th:estimate_convolution_pointswise_modulation}
+	Seien $ g_0, g , \gamma \in \S(\R^d) \setminus \{ 0\} $ mit $ \langle \gamma , g \rangle \neq 0 $ und $ f \in \S^\prime(\R^d) $. Dann gilt
+	\begin{align}\label{eq:estimate_convolution_pointswise_modulation}
+	| V_{g_0 } f(x,\omega)|
+	\leq
+	\frac{1}{|\langle \gamma , g \rangle |}
+	(|V_g f| \ast |V_{g_0} \gamma |)(x,\omega)
+	\end{align}
+	für alle $ (x,\omega) \in \R^{2d} $.
+\end{lem}
+
+\begin{proof}
+	Mit der Inversionsformel
+	\begin{align*}
+	f = \frac{1}{\langle \gamma , g  \rangle}
+	\int \limits_{\R^{2d}} V_g f(x,\omega ) M_\omega T_x  \gamma \td{(\omega,x)}
+	\end{align*}
+	erhalten wir $V_{g_0 } f = \langle \gamma , g \rangle^{-1}V_{g_0} V^\prime_\gamma(V_g f) $.
+	Mit \eqref{eq:invert_on_mod_space_1} folgt dann direkt die Aussage.
+\end{proof}
+
+\begin{sz}\label{th:density_schwartzspace}
+	Sei $ m(z) \leq C (1+ |z|)^N $ und $ 1 \leq p,q < \infty $.
+	Dann ist der Schwartzraum $ \S(\R^d)  $ ein dichter Teilraum von $ \M_m^{p,q} $.
+\end{sz}
+
+\begin{proof}
+	Sei $ f \in \S(\R^d) $ beliebig.	
+	% und o.B.d.A $ | \langle \gamma, g \rangle |= 1 $.
+	Dann gilt wegen $ V_{g_0} f \in \S(\R^d) $ 
+	\begin{align*}
+	\| f \|_{\M_m^{p,q}}
+	&=
+	\| V_{g_0} f \|_{\L_m^{p,q}}
+	\leq
+	%\| V_g f \ast V_{g_0} \gamma \|_{\L^{p,q}_m}
+	\int \limits_{\R^{2d}} | V_{g_0} f(z) | (1+ |z|)^N  \td{z}\\
+	&\leq 
+	\| V_{g_0} f v_{N+2d+1} \|_\infty 
+	\int \limits_{\R^{2d}}
+	\frac{1}{(1+|z|)^{2d+1}} \td{z}
+	< \infty.
+	\end{align*}
+	Also gilt $ \S(\R^d) \subseteq \M^{p,q}_m $. Es bleibt die Dichtheit zu zeigen.
+	Sei nun $ f \in \M_m^{p,q} $ beliebig, $ K_n := \{z \in \R^{2d} \ | \ |z| \leq n \} $ und $ g\in \S(\R^d) \setminus \{0\} $ mit $ \| g \|_2 = 1 $.
+	Wir definieren $ F_n = V_g f \cdot \chi_{K_n} $.
+	Wegen 
+	\begin{align*}
+	F_n(z) (1 + |z|)^k 
+	\leq
+	\sup \limits_{z \in K_n} V_g f(z) (1+|z|)^k < \infty 
+	\end{align*}
+	für alle $ k \in \N_0 $, sind die Voraussetzungen von \ref{th:rapid_decay_implies_schwartz} erfüllt und
+	\begin{align*}
+	f_n 
+	=
+	V_g^\prime F_n 
+	=
+	\int \limits_{K_n} V_g f (x,\omega) M_\omega T_x g  \td{(x,\omega)}
+	\end{align*}
+	ist eine Schwartzfunktion. Mit der Inversionsformel \eqref{eq:inversion_formula_modulation} erhalten wir
+	\begin{align*}
+	\| f - f_n \|_{\M_m^{p,q}} 
+	=
+	\| V_g^\prime (V_g f - F_n) \|_{\M_m^{p,q}}
+	\leq C \| V_g g \|_{\L^1_v} \| V_g f - F_n \|_{\L^{p,q}_m}.
+	\end{align*}
+	Damit gilt $ \| f - f_n \|_{\M_m^{p,q}} \to 0  $ für $ p,q < \infty  $.
+	Also ist $ \S(\R^d) $ dicht in $ \M_m^{p,q} $.
+\end{proof}
+
+\begin{sz}\label{th:mod_space_banach}
+	$ \M^{p,q}_m(\R^d) $ ist ein Banachraum für $ 1 \leq p,q \leq \infty $.
+\end{sz}
+
+\begin{proof}
+	Wir betrachten $ V = \{ F \in \L_m^{p,q} \ | \ \exists f \in \S^\prime(\R^d) : F = V_{g_0} f \} $. Dann ist $ V $ ein Unterraum von $ \L_m^{p,q} $ und ist isometrisch isomorph zu $ \M_m^{p,q} $. Damit erhält $ \M_m^{p,q} $ seine Vektorraumstruktur von $ \L_m^{p,q} $.
+	Es bleibt zu zeigen, dass $ V $ ein abgeschlossener Unterraum von $ \L^{p,q}_m $ ist. Dann ist $ \M_m^{p,q} $ vollständig.\\
+	Sei $ (f_n)_{n \in \N} $ ein Cauchyfolge in $ \M_m^{p,q} $. Nach Definition ist dann $ (V_{g_0}  f_n)_{n \in \N} $ eine Cauchyfolge in $ \L_m^{p,q} $. Damit existiert ein $ F \in \L_m^{p,q}$, sodass
+	\begin{align*}
+	\lim \limits_{n \to \infty}
+	\| V_{g_0} f_n - F \|_{\L_m^{p,q}} = 0
+	\end{align*}
+	gilt. Nach \ref{th:inversions_formula_modulation} ist
+	\begin{align*}
+	f = \frac{1}{\| g_0 \|^2_2} V_{g_0}^\prime F 
+	= 
+	\frac{1}{\| g_0 \|^2_2}
+	\int \limits_{\R^{2d}} F(x,\omega) M_\omega T_x g_0 \td{(x, \omega)}
+	\end{align*}
+	in $ \M_m^{p,q} $ und es gilt 
+	\begin{align*}
+	f_n = \frac{1}{\| g_0 \|_2^2} V_{g_0}^\prime V_{g_0} f_n.
+	\end{align*}
+	Mit \eqref{eq:inverse_estimate_modulation} erhalten wir
+	\begin{align*}
+	\| f - f_n \|_{\M_m^{p,q}}
+	=
+	\frac{1}{\| g_0\|_2^2}
+	\| V_{g_0}^\prime (F - V_{g_0} f_n) \|_{\M_m^{p,q}}
+	\leq
+	C \| F - V_{g_0} f_n \|_{\L_m^{p,q}}  
+	\end{align*}
+	und somit auch die Vollständigkeit von $ \M_{m}^{p,q} $.
+\end{proof}
+
+
+\begin{lem}\label{th:mod_space_tf_invariance}
+	$ \M^{p,q}_m $ ist invariant unter Zeit-Frequenz-Verschiebungen und es gilt
+	\begin{equation}\label{eq:mod_space_tf_invariance}
+	\| T_x M_\omega f \|_{\M^{p,q}_m} \leq C v(x,\omega )  \|  f \|_{\M^{p,q}_m} .
+	\end{equation}
+\end{lem}
+
+\begin{proof}
+	Zunächst gilt
+	\begin{align*}
+	| V_g (M_\omega T_x f)(u , \eta) |
+	=
+	| \langle T_x M_\omega f , M_\eta T_u g \rangle |
+	=
+	| \langle f , M_{\eta - \omega} T_{u - x } g \rangle  |
+	=
+	| T_{(x,\omega) }V_g f(u,\eta) |.
+ 	\end{align*}
+ 	Damit erhalten wir durch \eqref{eq:invariance_translation_mixed_norm}
+ 	\begin{align*}
+ 	\| T_x M_\omega f\|_{\M_m^{p,q}}
+ 	=
+ 	\| T_{(x,\omega) } V_{g_0} f \|_{\L_m^{p,q}} 
+ 	\leq 
+ 	C v(x,\omega)  \| V_{g_0} f \|_{\L_m^{p,q}}
+ 	=
+ 	C v(x,\omega)  \|  f \|_{\M_m^{p,q}}.
+ 	\end{align*}
+\end{proof}
+
+\begin{lem}\label{th:mod_space_FT_invariance}
+	Sei $ p = q $ und $ m(\omega,-x) \leq C m(x,\omega) $.
+	Dann ist $ \M_m^p $ invariant unter der Fouriertransformation.
+\end{lem}
+
+\begin{proof}
+	Mit \eqref{eq:identity_STFT_5}, der Normäquivalenz aus \ref{th:independence_of_window_norm} und $ m(\omega,-x) \leq C m(x,\omega) $ erhalten wir
+	\begin{align*}
+	\| \hat{f} \|_{\M_m^p}^p
+	&=
+	\| V_{g_0} \hat{f} \|_{\L^p_m}^p
+	\leq 
+	C_1
+	\| V_{\hat{g_0}} \hat{f} \|_{\L_m^p}^p\\
+	&=
+	C_1
+	\int \limits_{\R^{2d}} |V_{\hat{g_0}} \hat{f}(x,\omega) |^p  m(x,\omega)^p \td{(x,\omega)}\\
+	&=
+	C_1
+	\int \limits_{\R^{2d}} |V_{g_0} f(-\omega,x) |^p  m(x,\omega)^p 
+ 	\td{(x,\omega)} \\
+ 	&=
+ 	C_1
+ 	\int \limits_{\R^{2d}} |V_{g_0} f(x,\omega) |^p  m(\omega,-x)^p
+ 	\td{(x,\omega)}\\
+ 	&\leq
+ 	\tilde{C} \| f \|_{\M_m^p}^p. 	\qedhere
+ 	\end{align*}
+ 	%mit $ m(\omega,-x) \leq C m(x,\omega) $.
+\end{proof}
+
+
+\begin{sz}
+	Sei $ 1 \leq p,q < \infty $.
+	Dann gilt $ (\M_m^{p,q})^\prime = \M^{p^\prime,q^\prime}_{\nicefrac{1}{m}} $ mit dem Dualitätsprodukt
+	\begin{align}
+		\langle f, h \rangle
+		=
+		\int \limits_{\R^{2d}} V_{g_0} f(z) \overline{V_{g_0} h(z)} \td{z}
+	\end{align}
+	für $ f \in \M^{p,q}_m $ und $ h \in \M^{p^\prime,h^\prime}_{\nicefrac{1}{m}} $.
+\end{sz}
+
+\begin{proof}
+	Sei $ h \in \M^{p^\prime,q^\prime}_{\nicefrac{1}{m}} $. Wir definieren
+	\begin{align*}
+	\ell_h(f) :=
+	\int
+	\limits_{\R^{2d}} V_{g_0} f(z) \overline{V_{g_0} h(z)} \td{z}.
+	\end{align*}
+	Dies ist wegen der Hölderungleichung \eqref{eq:hoelder_mixed_norm} mit
+	\begin{align*}
+	| \ell_h(f) |
+	\leq
+	\| V_{g_0} f \|_{\L_m^{p,q}}
+	\| V_{g_0} h \|_{\L_{\nicefrac{1}{m}}^{p^\prime,q^\prime}}
+	=
+	\|f \|_{\M_m^{p,q}} \| h \|_{\M_{\nicefrac{1}{m}}^{p^\prime,q^\prime}}
+	\end{align*}
+	ein beschränktes lineares Funktional.
+	Sei $ \ell \in (\M_m^{p,q})^\prime $.
+	Der Modulationsraum $ \M_m^{p,q} $ ist isometrisch isomorph zu dem abgeschlossenen Unterraum $ V = \{ F \in \L_m^{p,q} \ | \ \exists f \in \S(\R^d) :  F = V_{g_0} f\} $ von $ \L_m^{p,q} $. 
+	Damit induziert $ \ell $ ein lineares Funktional $ \tilde{\ell} $ auf $ V $
+	mit $ \ell(f) = \tilde{\ell}(V_{g_0} f) $.
+	Mit dem Satz von Hahn-Banach  lässt $ \tilde{\ell}  $ sich zu einem linearen Funktional auf $ \L_m^{p,q} $ fortsetzen.
+	Nach \ref{th:dualtiy_mixed_norm} existiert ein $ H \in \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}} $, sodass
+	\begin{align*}
+	\tilde{\ell}(V_{g_0} f)
+	=
+	\int \limits_{\R^{2d}}
+	V_{g_0} f(z) \overline{H(z)} \td{z}
+	\end{align*}
+	gilt. 
+	Wir setzen 
+	\begin{align*}
+	h = V_{g_0}^\prime H= 
+	\int 
+	\limits_{\R^{2d}} H(x,\omega) M_\omega T_x g_0 \td{(x, \omega)}
+	\end{align*}
+	und erhalten $ h \in \M^{p^\prime,q^\prime}_{\nicefrac{1}{m}} $ mit \ref{th:inversions_formula_modulation}.
+	Insgesamt folgt dann
+	\begin{align*}
+	\langle f, h \rangle
+	=
+	\int 
+	\limits_{\R^{2d}}
+	V_{g_0} f(z) \overline{V_{g_0 } h(z)} \td{z}
+	=
+	\int 
+	\limits_{\R^{2d}}
+	V_{g_0} f(z) \overline{H(z)} \td{z}
+	=
+	\ell(f)
+	\end{align*}
+	und es gilt $ (\M_m^{p,q} )^\prime = \M^{p^\prime,q^\prime}_{\nicefrac{1}{m}}  $.
+\end{proof}
+\newpage
+\begin{sz}\label{th:mod_space_window_extention}
+	Sei $ m $ eine $ v $-moderierte Gewichtsfunktion und $ g, \gamma \in \M_v^1 $.
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		$ V^\prime_\gamma : \L_m^{p,q} \to \M_m^{p,q} $ ist beschränkt und die Abschätzung \eqref{eq:inverse_estimate_modulation} ist erfüllt.
+		
+		\item 
+		Die Inversionsformel \eqref{eq:inversion_formula_modulation} gilt für $ f \in \M_m^{p,q} $.
+		
+		\item
+		$ \| V_g  f\|_{\L_m^{p,q}} $ ist eine äquivalente Norm auf $ \M_m^{p,q} $.
+	\end{enumerate}
+
+\end{sz}
+
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Sei $ F \in \L_m^{p,q} $.
+		Wir betrachten die Abbildung 
+		\begin{align*}
+		T : \S(\R^d) \to \M_m^{p,q}, \ \gamma \mapsto V_\gamma^\prime F.
+		\end{align*}
+		Nach \eqref{eq:inverse_estimate_modulation} gilt
+		\begin{align*}
+		\| T \gamma \|_{\M_m^{p,q}} =
+		\| V_\gamma^\prime F \|_{\M_m^{p,q}}
+		\leq 
+		C \| F\|_{\L_m^{p,q}} \| V_{g_0} \gamma \|_{\L_v^1}
+		=
+		C \| F\|_{\L_m^{p,q}} \|  \gamma \|_{\M_v^1}.
+		\end{align*}
+		Wegen \eqref{th:density_schwartzspace} ist $ \S(\R^d) $ dicht in $ \M^1_v $.
+		Mit \eqref{th:densitiy_priniciple} wird $ T $ zu einem beschränkten Operator von $ \M^1_v $ nach $ \M_{m}^{p,q} $ fortgesetzt.
+		
+		\item
+		Sei zunächst $ g \in \S(\R^d) $.
+		Mit $ \gamma = g_0 $ erhalten wir nach \eqref{eq:estimate_convolution_pointswise_modulation} 
+		\begin{align*}
+		| V_g f (x,\omega)|
+		\leq
+		\frac{1}{\|g_0\|_2^2}
+		(|V_{g_0} f  |\ast | V_g g_0 | )(x,\omega)
+		\end{align*}
+		für $ (x,\omega) \in \R^{2d} $. Des weiteren gilt
+		\begin{align*}
+		|V_{g}  g_0(x,\omega)|
+		=
+		| \langle g_0 , M_\omega T_x g \rangle | 
+		=
+		| \langle T_{-x} M_{-\omega} g_0, g \rangle |
+		=
+		| \langle g , M_{- \omega} T_{-x} g_0 \rangle |
+		=
+		| V_{g_0} g(-x, -\omega) |
+		\end{align*}
+		und mit der Symmetrie von $ v $ folgt 
+		$ \| V_{g_0} g \|_{\L_v^1} = \| V_g g_0\|_{\L^1_v} $.
+		Insgesamt erhalten wir
+		\begin{align}\label{eq:proof_extension_window_to_M1v}
+		\| V_g f \|_{\L_m^{p,q}}
+		\leq 
+		\frac{C}{\| g_0 \|_2^2}
+		\| V_{g_0 } f \|_{\L_m^{p,q}}
+		\| V_g g_0 \|_{\L_v^1}
+		=
+		\frac{C}{\| g_0 \|_2^2}
+		\| f \|_{\M_m^{p,q}}
+		\| g \|_{\M_v^1}.
+		\end{align}
+		Der Schwartzraum $ \S(R^d) $ ist dicht in $ \M_v^1 $. Sei $ f \in \M_{m}^{p,q} $ fixiert.
+		Wegen \eqref{eq:proof_extension_window_to_M1v} ist 
+		\begin{align*}
+		T : \M^1_v \to \L_m^{p,q},\
+		 g \mapsto V_g f
+		\end{align*} 
+		mit \ref{th:densitiy_priniciple} ein beschränkter linearer Operator.
+		Sei nun $ g, \gamma \in \M_v^1 $ und $ g_n, \gamma_n \in \S(\R^d) $, sodass
+		$ \| g_n - g \|_{\M_v^1} \to 0  $ und $ \| \gamma_n - \gamma \|_{\M_v^1} \to 0 $ gilt. Mit \eqref{eq:proof_extension_window_to_M1v} erhalten wir
+		$\| V_{g_n } f - V_g f \|_{\L_m^{p,q}} \to 0$
+		und durch \textbf{(i)} $ \| V^\prime_{\gamma_n} F - V_{\gamma}^\prime F \|_{\M_m^{p,q}} \to 0$.
+		Für $ \tilde{f}\in \M_v^1 $ gilt mit der Plancherelgleichung der STFT \ref{th:orthogonality_relation_kor_1}:
+		\begin{align*}
+		\| \tilde{f} \|_2^2
+		&=
+		\frac{1}{\| g_0 \|_2^2}
+		\int \limits_{\R^{2d}}
+		| V_{g_0} \tilde{f}(x,\omega)|^2 \td{(x,\omega)} \\
+		&\leq
+		\frac{1}{\| g_0 \|_2^2}
+		\| V_{g_0} \tilde{f} \|_\infty
+		\int \limits_{\R^{2d}}
+		| V_{g_0} \tilde{f}(x,\omega)| v(x,\omega) \td{(x,\omega)},
+		\end{align*}
+		Hier ist zu beachten,dass $ v $ von der Einsfunktion moderiert wird.
+		%Wir wissen jedoch noch
+		Mit der Hölder-Ungleichung erhalten wir:
+		\begin{align*}
+		\| V_{g_0}  f\|_\infty
+		\leq
+		\sup \limits_{(x,\omega) \in \R^{2d}}
+		\int \limits_{\R^d}
+		| f(t) | \ | g(t - x )| \td{t}
+		\leq
+		\|f \|_2 \|g_0 \|_2.
+		\end{align*}
+		Insgesamt folgt dann
+		\begin{align*}
+		\|f \|^2_2 
+		\leq \frac{1}{\| g_0 \|_2} \| f \|_2 \| f \|_{\M_v^1}
+		\end{align*}
+		und damit ist $ \M_v^1  $ in $ \L^2 $ eingebettet. Somit gilt
+		$ \langle \gamma_n,g_n \rangle \to \langle \gamma , g \rangle  $ für $ n \to \infty $.
+		Also erhalten wir mit \eqref{eq:inversion_formula_modulation}
+		\begin{align*}
+		f=
+		\lim \limits_{n \to \infty}
+		\frac{1}{\langle \gamma_n,g_n \rangle} V_{\gamma_n}^\prime V_{g_n} f = 
+		\frac{1}{\langle \gamma , g \rangle} V_\gamma^\prime V_g f.
+		\end{align*}
+		\item 
+		Die Schritte sind analog zu \ref{th:independence_of_window_norm}.
+		
+	\end{enumerate}
+\end{proof}

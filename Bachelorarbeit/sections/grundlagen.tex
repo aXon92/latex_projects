@@ -1,0 +1,292 @@
+\section{Grundlagen}
+\vspace{-0.5cm}
+In diesem Abschnitt werden wir grundlegende Bezeichnungen, Definitionen und Sätze einführen.
+Unter 
+\begin{align}
+\int \limits_{\R^d} f(x) \td{x}
+=
+\int \limits_{-\infty}^\infty \cdots \int \limits_{-\infty}^\infty f(x_1,...,x_d) \td{(x_1,...,x_d)} 
+\end{align}
+mit $ \td{(x_1,...,x_d)} = \td{x_1}...\td{x_d} $ verstehen wir das Lebesgueintegral auf $ \R^d $.
+Sei $ f  $ eine messbare Funktion auf $ \R^d $.
+Dann gilt $ f \in \L^p(\R^d) $, falls die $ \L^p $-Norm
+\begin{align}
+\| f \|_p = \left(  \ \int \limits_{\R^d} | f(x) |^p \td{x} \right)^{\frac{1}{p}}
+\end{align}
+für $ 1 \leq p < \infty $ endlich ist.
+$ \L^\infty(\R^d) $ besteht aus den essentiell beschränkten messbaren Funktionen, d.h. es gilt
+\begin{align*}
+\|f \|_\infty 
+= 
+\esssupp \limits_{x \in \R^d} | f(x) | < \infty.
+\end{align*}
+Wir werden $ \sup $ auch für das essentielle Supremum verwenden, falls dies sinnvoll ist.
+Die $ \L^p $-Räume sind für $ 1 \leq p \leq \infty $ allesamt Banachräume. 
+$ \L^2(\R^d) $ ist mit dem Skalarprodukt
+\begin{align}
+\langle f, g \rangle
+=
+\int \limits_{\R^d} f(x) \overline{g(x)} \td{x}
+\end{align}
+ein Hilbertraum. Wenn der Kontext klar ist, werden wir $ \L^p $ statt $ \L^p(\R^d) $ schreiben.
+In wenigen Fällen ist $ \| \cdot \|_2 $ die euklidische Norm auf $ \R^d $.
+Mit $ x \cdot \omega = \sum_{k=1}^d x_i \omega_i$ beschreiben wir das Skalarprodukt auf $ \R^d $.
+\begin{df}
+	Sei $ f \in \L^1(\R^d) $. Dann definieren wir durch
+	\begin{align}\label{eq:fourier_transformation}
+	\hat{f}(\omega) =
+	\int \limits_{\R^d} f(x) e^{-2 \pi \i x \cdot \omega} \td{x}
+	\end{align}
+	die \textit{Fouriertransformation} von $ f $.	
+\end{df}
+Für \eqref{eq:fourier_transformation} erhalten wir:
+\begin{align}\label{eq:estimate_fouriertransformation}
+\| \hat{f} \|_{\infty}
+\leq
+\sup \limits_{\omega \in \R^d} \int \limits_{\R^d} |f(x) e^{-2 \pi \i x \cdot \omega}| \td{x} = \| f \|_1
+\end{align}
+Falls wir die Fouriertransformation als linearen Operator auf einem Funktionenraum betrachten, schreiben wir statt $ \hat{f} $ auch $ \F f $.
+\begin{genericthm}{Lemma von Riemann-Lebesgue}
+	Sei $ f \in \L^1(\R^d) $.
+	Dann ist $ \hat{f} $ gleichmäßig stetig und es gilt
+	$ \lim_{|\omega| \to \infty} | \hat{f}(\omega) | = 0 $.
+\end{genericthm}
+Mit diesem Lemma können wir die Fouriertransformation durch
+\begin{align*}
+\F : \L^1(\R^d) \to C_0(\R^d)
+\end{align*}
+beschreiben. Hierbei ist $ C_0(\R^d) :=  \{ f \in C(\R^d) |   \lim_{|\omega| \to \infty} | \hat{f}(\omega) | = 0\} $. 
+
+\begin{genericthm}{Dichtheitsprinzip}\label{th:densitiy_priniciple}
+	Gegeben seien die Banachräume  $ B_1 $ und $ B_2 $, ein dichter Unterraum $ X $ von $ B_1 $ und ein linearer Operator $ A : X \to B_2 $ mit
+	\begin{align}\label{eq:density_principle}
+	\| A f \|_{B_2} \leq C \| f \|_{B_1}
+	\end{align}
+	für  alle $  f \in X $.
+	Dann gilt \eqref{eq:density_principle} für alle $ f \in B_1 $ und $ A $ wird zu einem beschränkten linearen Operator von $ B_1  $ nach $ B_2 $ fortgesetzt.
+\end{genericthm}
+\begin{sz}
+	Sei $ f \in \L^1(\R^d) \cap \L^2(\R^d) $. Dann gilt die \textit{Plancherelgleichung}
+	\begin{align}\label{eq:plancherel}
+	\|f \|_2 = \| \hat{f} \|_2.
+	\end{align}
+	.
+\end{sz}
+Damit lässt sich $ \F $ zu einem unitären Operator auf $ \L^2(\R^d) $ erweitern, womit auch die \textit{Parsevalgleichung}
+\begin{align}\label{eq:parseval}
+\langle f, g \rangle = \langle \hat{f} , \hat{g} \rangle
+\end{align}
+für alle $ f,g \in \L^2(\R^d) $ erfüllt ist.
+Für $ f \in \L^2(\R^d)  $ können wir $ \hat{f} $ jedoch nicht mehr wie in \eqref{eq:fourier_transformation} punktweise definieren. 
+Hier ist uns das Dichtheitsprinzip \ref{th:densitiy_priniciple} behilflich.
+Sei $ X = \L^1 \cap \L^2 $ und $ f \in \L^2  $ beliebig. Dann ist $ X $ dicht in $ \L^2 $ und es existiert ein $f_n  \in X$ mit $ \| f - f_n \|_2 \to 0 $.
+Wegen $ f_n \in \L^1 $ ist $ \hat{f}_n $ wohldefiniert und es gilt mit \eqref{eq:plancherel} $ \| f_n - f_m \|_2 = \| \hat{f}_n - \hat{f}_m \|_2 $.Damit ist $ \hat{f}_n $ eine Cauchyfolge in $ \L^2 $ und wegen der Vollständigkeit existiert ein eindeutiger Grenzwert in $ \L^2 $.
+Dementsprechend definieren wir $ \hat{f} := \lim_{n \to \infty} \hat{f}_n $.
+
+\newpage
+\begin{df}
+	Seien $ f, g \in \L^1(\R^d) $. Dann definieren wir durch
+	\begin{equation}\label{eq:convolution}
+	(f \ast g)(x) = \int \limits_{\mathbb{R}^d}
+	f(y) g(x-y) \td{y}
+	\end{equation}
+	die \textit{Faltung} von $ f $ und $ g $.
+\end{df}
+Wegen
+\begin{align}\label{eq:convolution_prop_1}
+\| f \ast g \|_1 &\leq \| f\|_1 \|g \|_1
+\end{align}
+ist  $ \L^1 $ eine Banachalgebra bezüglich der Faltung. Außerdem ist
+\begin{align}\label{eq:convolution_prop_2}
+\widehat{(f \ast  g)} &= \hat{f} \cdot \hat{g}
+\end{align}
+erfüllt.
+
+\begin{genericdf}{Translation und Modulation}
+	Seien $ x, \omega \in \R^d $ und $ f : \R^d \to \C$ eine beliebige Funktion.
+	Dann ist
+	\begin{align}\label{eq:translation}
+	T_x f(t)=  f(t-x) 
+	\end{align}
+	die \textit{Translation} um $ x $ und
+	\begin{align}\label{eq:modulation}
+	M_\omega f(t) = e^{2 \pi \mathrm{i} t \cdot \omega} f(t)
+	\end{align}
+	die \textit{Modulation} um $ \omega $. 
+	Wir nennen Operatoren der Form $M_\omega T_x$ oder $T_x M_\omega$ \textit{Zeit-Frequenz-Verschiebungen}. 
+ \end{genericdf}
+
+Die elementaren Eigenschaften dieser Operatoren werden uns im Laufe dieser Arbeit häufig begegnen, weswegen wir diese direkt beweisen werden.
+
+\begin{lem}\label{th:properties_TF}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item Es gilt
+		\begin{align}\label{eq:trans_mod_commutation_relation_1}
+		T_x M_\omega = e^{-2 \pi \mathrm{i} x \cdot \omega} M_\omega T_x
+		\end{align}
+		Damit kommutieren $T_x$ und $M_\omega$ genau dann, wenn $x \cdot \omega \in \mathbb{Z}$.
+		\item
+		Zeit-Frequenz-Verschiebungen sind Isometrien auf $L^p$ für $1 \leq p \leq \infty$.
+		\item
+		Es gelten
+		\begin{equation}\label{eq:trans_mod_fourier_1}
+		\widehat{(T_x f)}= M_{-x} \hat{f} \ \text{und} \ \widehat{(M_\omega f)} = T_\omega \hat{f},
+		\end{equation}
+		woraus
+		\begin{equation}\label{eq:trans_mod_fourier_2}
+		\widehat{(T_x M_\omega f)} = M_{-x}T_\omega \hat{f} = e^{-2\pi \mathrm{i} x \cdot \omega} T_\omega M_{-x} \hat{f}
+		\end{equation}
+		folgt.
+	\end{enumerate}
+\end{lem}
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}] 
+		\item
+		Durch
+		\begin{align*}
+		T_x M_\omega f(t) 
+		&= M_\omega f(t-x)
+		= e^{2\pi \mathrm{i} (t-x) \cdot \omega} f(t-x)\\
+		&= e^{-2\pi \mathrm{i} x \cdot \omega} e^{2\pi \mathrm{i} t \cdot \omega} T_x f(t)
+		= e^{-2\pi \mathrm{i} x \cdot \omega} M_\omega T_x f(t)
+		\end{align*}
+		erhalten wir die Aussage.
+		
+		\item
+		Sei $1\leq p < \infty$.
+		Es gilt
+		\begin{align*}
+		\| M_\omega T_x f\|_p^p
+		=
+		\int \limits_{\mathbb{R}^d} | M_\omega T_x f(t) |^p \td{t}
+		=
+		\int \limits_{\mathbb{R}^d} | T_x f(t) |^p \td{t}
+		=
+		\int \limits_{\mathbb{R}^d} | f(t) |^p \td{t}
+		=
+		\|  f\|_p^p
+		\end{align*}
+		für $1\leq p < \infty$.
+		Der Beweis für $p = \infty$ funktioniert analog.
+		
+		\item
+		Durch
+		\begin{align*}
+		\widehat{(T_x f)} (\omega) 
+		=
+		\int \limits_{\R^d} f(t-x) e^{-2 \pi \mathrm{i } t \cdot \omega} \td{t}
+		=
+		e^{-2 \i x\cdot \omega}
+		\int \limits_{\R^d} f(u) e^{-2 \pi \mathrm{i} u \cdot \omega} \td{u}
+		= M_{-x} \hat{f}(\omega)
+		\end{align*}
+		erhalten wir die erste Aussage.
+		Die Zweite folgt analog.
+		Durch Anwenden der beiden Aussagen
+		erhalten wir die Folgerung.
+	\end{enumerate}
+\end{proof}
+
+
+\begin{df}
+Wir bezeichnen mit
+\begin{align}\label{eq:involution}
+f^\ast(x) = \overline{f(-x)}
+\end{align}
+die \textit{Involution}.	
+\end{df}
+Für die Involution ist 
+\begin{align}\label{eq:involution_fouriertrans}
+\widehat{f^\ast} = \hat{\overline{f}}
+\end{align}
+erfüllt. Die Faltung lässt sich nun auch durch
+\begin{align}\label{eq:convolution_with_translation}
+(f \ast g)(x) = \langle f, T_x g^\ast \rangle
+\end{align}
+beschreiben, falls beide Seiten definiert sind.
+Der Differentiations -und Multiplikationsoperator ist durch
+\begin{align*}
+D^\alpha f
+&=
+\prod \limits_{j=1}^d \left(\frac{\partial^{\alpha_j} }{\partial x_j^{\alpha_j}}\right) f\\
+(X^\beta f)(t)
+&= t^\beta f(t) 
+=
+\left(\prod \limits_{j = 1}^d t_j^{\beta_j}\right) f(t)
+\end{align*}
+für $ \alpha,\beta \in \N_0^d $ definiert.
+Für $ \alpha ,\beta\in \N_0^d $ verwenden wir außerdem:
+\begin{align*}
+|\alpha | &:= \sum \limits_{j =1}^d \alpha_j\\
+x^\alpha &:= \sum \limits_{j=1}^d x_j^{\alpha_j}\\
+\alpha \leq \beta &:\Leftrightarrow
+\forall j \in \{1,...,d\} : \alpha_j \leq \beta_j.
+\end{align*}
+Für die Fouriertransformation gelten
+\begin{align}\label{eq:fourier_derivate_1}
+\widehat{(D^\alpha f)}(\omega)
+=(2 \pi  \i \omega)^\alpha \hat{f}(\omega)
+\end{align}
+und 
+\begin{align}\label{eq:fourier_derivate_2}
+\widehat{((- 2 \pi \i x)^\alpha f)}(\omega)
+=
+D^\alpha \hat{f}(\omega).
+\end{align}
+
+Der \textit{Schwartzraum} $ \S(\R^d) $ ist über die Endlichkeit der Seminormen $ \| D^\alpha X^\beta f \|_\infty $ für $ f \in C^\infty(\R^d) $ definiert, d.h. es gilt
+\begin{align*}
+\| D^\alpha X^\beta f \|_\infty
+=
+\sup \limits_{x \in \R^d} | D^\alpha X^\beta f(x) |
+ < \infty
+\end{align*}
+für alle $ \alpha,\beta \in \N_0^d $.
+Eine Folge $ f_n \in \S(\R^d) $ konvergiert gegen $ f \in \S(\R^d) $, falls
+\begin{align}
+\| D^\alpha X^\beta (f_n - f ) \|_\infty \to 0
+\end{align}
+für alle $ \alpha,\beta \in \N_0^d $ gilt.
+
+\newpage 
+\begin{sz}
+	Die Fouriertransformation $ \F : \S(\R^d) \to \S(\R^d)  $ ist ein Isomorphismus, d.h. stetig und bijektiv mit stetiger Inversen.
+	Die inverse Abbildung ist durch
+	\begin{align}\label{eq:fouriertransformation_inverse}
+	(\F^{-1} \hat{f} )(x) = f(x) 
+	=
+	\int \limits_{\R^d} \hat{f}(\omega)e^{2\pi \i x \cdot \omega} \td{\omega}
+	\end{align}
+	gegeben.
+\end{sz}
+Der Dualraum $ \S^\prime(\R^d) $ ist der Raum der temperierten Distributionen und für $ f \in \S^\prime(\R^d) $ gilt folgende Stetigkeitsabschätzung:\\
+Es existieren $ C >0  $ und $ N,M > 0  $, sodass
+\begin{align}\label{eq:cont_distribution}
+\langle f, \varphi \rangle 
+\leq
+C 
+\sum \limits_{|\alpha| \leq M}
+\sum \limits_{|\beta| \leq N}
+\| D^\alpha X^\beta \varphi \|_\infty
+\end{align}
+für alle $ \varphi \in \S(\R^d) $ gilt. Sei $ f \in \S^\prime(\R^d) $.\\ Die Fouriertransformation von $ f $  ist durch
+\begin{align}
+\hat{f} (\varphi ) := \langle \hat{f}, \varphi \rangle := \langle f , \hat{\varphi} \rangle
+\end{align}
+für alle $ \varphi \in \S(\R^d) $ definiert. 
+
+\begin{genericthm}{Open-Mapping-Theorem}\label{th:open_mapping}
+	Gegeben seien die Banach -oder Frecheträume  $ B_1 $ und $ B_2 $ und der surjektive beschränkte Operator $ A : B_1  \to B_2 $.
+	Dann ist $ A $ eine offene Abbildung.
+	Insbesondere können wir diesen auf Operatoren von $ \S(\R^d)  $ nach $ \S(\R^d) $ anwenden.
+\end{genericthm}
+
+\begin{genericthm}{Closed-Range-Theorem}\label{th:closed_range}
+	Gegeben seien die Banachräume $ B_1 $ und $ B_2 $
+	und ein beschränkter linearer Operator $ A : B_1 \to B_2 $.
+	Der Operator $ A $ hat ein abgeschlossenes Bild genau dann, wenn der 
+	adjungierte Operator $ A^\prime : B_2^\prime \to B_1^\prime $
+	ein abgeschlossenes Bild besitzt.
+	Insbesondere ist $ A $ genau dann surjektiv, wenn $ A^\prime $ injektiv ist und ein abgeschlossenes Bild hat.
+\end{genericthm}

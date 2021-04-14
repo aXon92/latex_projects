@@ -1,0 +1,623 @@
+\section{Eigenschaften und Minimalität der Feichtingeralgebra}
+
+Unser Ziel in diesem Abschnitt ist es, die Eigenschaften der Feichtingeralgebra zu diskutieren.
+Zuerst beschäftigen wir uns mit den algebraischen Eigenschaften von $ \M^1_v $.
+Hieraus folgern wir, dass $ S_0 := \M^1 $ eine Banachalgebra  bezüglich Faltung und punktweiser Multiplikation ist.
+Danach zeigen wir die Minimalität der Feichtingeralgebra und zum Abschluss einige Folgerungen daraus.
+
+
+\begin{genericthm}{Algebraische Eigenschaften}\label{th:algebraic_properties}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item Sei $ v(x,\omega) = u_1(x)$. Dann gilt $ \L^1_u \ast \M_u^1 \subseteq \M^1_u $ mit
+		\begin{align*}
+		\| k \ast f \|_{\M^1_{u_1}} \leq \| k \|_{\L^1_{u_1}} \| f \|_{\M^1_{u_1}}.
+		\end{align*}
+		%Außerdem ist $ \M^1_{u_1} $ eine Banachalgebra bezüglich der Faltung.
+		\item 
+		Sei $ v(x,\omega) = u_2(\omega) $. Dann gilt die punktweise Multiplikation $ \mathcal{F} \L^1_{u_2} \cdot \M_{u_2}^1 \subseteq M_{u_2}^1 $.
+	\end{enumerate}
+\end{genericthm}
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item Nach \eqref{eq:identity_STFT_7} können wir die STFT durch
+		$ V_g f(x,\omega) = e^{-2\pi \i x \cdot \omega} (f \ast M_\omega g^\ast)(x) $ beschreiben.
+		Damit gilt
+		\begin{align*}
+		\| f \|_{\M^1_{u_1}} = 
+		\int \limits_{\R^{2d}} |V_g f(x,\omega) | u_1(x) \td{(x,\omega)}
+		=
+		\int \limits_{\R^d} \| f \ast M_\omega^\ast\|_{\L^1_{u_1}} \td{\omega}
+		\end{align*}
+		für $ f \in \M^1_{u_1} $. Mit \ref{th:convolution_mixed_norm} erhalten wir durch
+		\begin{align*}
+		\| k \ast f \|_{\M^1_{u_1}} 
+		=
+		\int \limits_{\R^d}
+		\| (k \ast f) \ast M_\omega g^\ast \|_{\L^1_{u_1}} \td{\omega}
+		\leq
+		\int \limits_{\R^d}\| k \|_{\L^1_{u_1}}
+		\| f \ast M_\omega g^\ast \|_{\L^1_{u_1}} \td{\omega}
+		\end{align*}
+		für $ k \in \L^1_{u_1} $ die passende Abschätzung.
+		
+		\item
+		%Folgt aus der ersten Aussage.
+		Wegen \eqref{eq:identity_STFT_5} gilt
+		\begin{align*}
+		\| f \|_{\M_{u_2}^1}
+		&=
+		\| f \|_{\M_v^1}
+		=
+		\int \limits_{\R^{2d}}
+		| V_g f (x,\omega) | v(x,\omega ) \td{(x,\omega)}
+		=
+		\int \limits_{\R^{2d}}
+		| V_g \hat{ f} (- \omega,x) | v(x,\omega ) \td{(x,\omega)}\\
+		&=
+		\int \limits_{\R^{2d}}
+		| V_g \hat{f } (x,\omega) | v(- \omega,x ) \td{(x,\omega)}
+		=
+		\| \hat{f } \|_{\M^1_{\tilde{ v}}}
+		\end{align*}
+		mit $ \tilde{ v}(x,\omega) := v(-\omega,x) = u_2(x) $.
+		Also erhalten wir $ f \in \M^1_v $ genau dann, wenn $ \hat{ f} \in \M_{\tilde{ v}}^1 $ erfüllt ist.
+		Mit der ersten Aussage folgt dann 
+		\begin{align*}
+		\| kf \|_{\M^1_{u_2}} = 
+		\| \hat{k} \ast \hat{f} \|_{\M^1_{\tilde{v}}}
+		\leq 
+		\| \hat{k} \|_{\L^1_{\tilde{v}}}
+		\| \hat{f} \|_{\M^1_{\tilde{v}}}
+		\leq 
+		C \| k \|_{\mathcal{F}\L^1_{u_2}} \| f \|_{\M^1_{u_2}}
+		\end{align*}
+		für $ k \in \mathcal{F} \L^1_{u_2} $ und $ f \in \M^1_{u_2} $.
+	\end{enumerate}
+\end{proof}
+
+\begin{df}
+	Sei $ f $ eine messbare Funktion und $ u $ ein submultiplikatives Gewicht auf $ \R^d $. 
+	Der \textit{Amalgamraum} $ \W(\L^1(\R^d)) $ ist über die Norm
+	\begin{equation}
+	\| f \|_{\W(\L^1_u)}
+	:=
+	\sum \limits_{k \in \Z^d}
+	\esssupp \limits_{x \in [0,1]^d} |f(x+k)| u(k)
+	\end{equation}
+	definiert.
+\end{df}
+
+\begin{sz}\label{th:embedding_amalagm_L1}
+	Sei $ u $ ein submultiplikatives Gewicht.
+	Dann ist die Einbettung $ \W(\L^1_u(\R^d)) \hookrightarrow \L^1_u(\R^d) $ stetig.
+\end{sz}
+
+\begin{proof}
+	Sei $ f \in  \W(\L^1_u(\R^d))$.
+	Dann gilt mit der Submultiplikativität
+	\begin{align*}
+	\| f \|_{\L^1_u}
+	&= 
+	\sum \limits_{k \in \Z^d}  \int \limits_{[0,1]^d} | f(x+k) | u(x+ k) \td{x}
+	\leq 
+	\sum \limits_{k \in \Z^d} \esssupp_{x \in [0,1]^d} |f(x+k)| u(k) 
+	\int \limits_{[0,1]^d} u(x) \td{x}\\
+	&= C \| f \|_{\W(\L^1_u)}.
+	\end{align*}
+\end{proof}
+
+\begin{df}
+	Sei $ v $ ein submultiplikatives Gewicht auf $ \R^{2d} $.
+	Wir führen die submultiplikativen Gewichte
+	\begin{align*}
+	u_1(x) = \inf \limits_{\omega \in \R^d} v(x,\omega),
+	\quad 
+	u_2(\omega) = \inf \limits_{x \in \R^d} v(x,\omega)
+	\end{align*}
+	auf $ \R^d $ ein.
+\end{df}
+%\textcolor{red}{\textbf{Beweisen?}}
+
+\begin{lem}\label{th:am_space}
+	Sei $ f \in \M^1_v $.
+	Dann gelten $ f \in \W(\L^1_{u_1}) $ und $ \hat{f} \in W(\L^1_{u_2}) $.
+\end{lem}
+
+\begin{proof}
+	Zuerst zeigen wir $ f \in \W(\L^1_{u_1}) $.
+	Sei $ g \in C^\infty_0(\R^d) $ mit $ 0 \leq g(x) \leq 1 $ auf $ \R^d $ und $ g(x) = 1  $ auf $ [-1,1]^d $. Dann gilt 
+	\begin{align*}
+	\chi_Q(t) \leq T_x g(t)
+	\end{align*}
+	für $ t \in \R^d $ und $ x \in Q = [0,1]^d $. 
+	Hieraus erhalten wir
+	\begin{align*}
+	\| f \cdot T_k \chi_Q \|_\infty
+	=
+	\esssupp_{t \in \R^d} | f(t) \chi_Q(t - k) |
+	\leq 
+	\esssupp_{t \in \R^d} | f(t) T_{k+x} \overline{g}(t) |
+	=
+	\| f \cdot T_{k+x} \overline{g} \|_\infty.
+	\end{align*}
+	Wegen $ \| h \|_\infty \leq \| \hat{h} \|_1 $ folgt dann mit \eqref{eq:identity_STFT_1}
+	\begin{align*}
+	\| f \cdot T_{k+x} \overline{g} \|_\infty
+	\leq
+	\left\|(f \cdot T_{k+x} \overline{g})^{\hat{}} \right\|_1
+	=
+	\int \limits_{\R^d}
+	| V_g f(k+x, \omega) | \td{\omega}.
+	\end{align*}
+	Mit \eqref{eq:v_mod_prop_2} gilt $ u_1(k) \leq C u_1(k+x) $ für $ x \in Q $ und mit $ u_1(x) \leq v(x,\omega) $ folgt 
+	\begin{align*}
+	\| f \|_{\W(\L^1_{u_1})} 
+	&= 
+	\sum \limits_{k \in \Z^d}
+	\| f \cdot T_k\chi_Q \|_\infty u_1(k)
+	\leq 
+	C
+	\sum \limits_{k \in \Z^d} 
+	\int \limits_Q 
+	\int \limits_{\R^d}
+	| V_g f(x+ k, \omega) |  \td{\omega}  \ u_1(k + x) \td{x}\\
+	&=
+	C\int \limits_{\R^{2d}} |V_g f(x, \omega) | u_1(x) \td{(x,\omega)} 
+	\leq C \| V_g f \|_{\L^1_v(\R^{2d})}
+	= C \| f \|_{\M^1_v}.
+	\end{align*}
+	Es bleibt also noch $ \hat{f} \in \W(\L^1_{u_2}) $ zu zeigen.
+	Wir wählen $ \hat{g} \in C^\infty_0(\R^d) $, sodass $ 0 \leq \hat{g}(\omega) \leq 1 $
+	auf $ \R^d $ und $ g(\omega) = 1 $ auf $ [-1,1]^d $ gilt. 
+	Dann erhalten wir mit denselben Argumenten
+	\begin{align*}
+	\| \hat{f} \|_{\W(\L^1_{u_2})}
+	\leq 
+	C 
+	\int \limits_{\R^{2d}}
+	| V_{\hat{g}} \hat{f}(x,\omega) | u_2(x) \td{(x,\omega)}.
+	\end{align*}
+	Durch \eqref{eq:identity_STFT_5} gilt $ | V_{\hat{g}} \hat{f}(x,\omega) |
+	= | V_g f (-\omega,x)|  $ und mit $ u_2(x) \leq v(-\omega,x) $ folgt dann
+	\begin{align*}
+	\| \hat{f} \|_{\W(\L^1_{u_2})}
+	\leq 
+	C \int \limits_{\R^{2d}}
+	| V_g f(-\omega,x) | v(-\omega,x) \td{(x,\omega)}
+	=
+	C \int \limits_{\R^{2d}}
+	| V_g f(x,\omega) | v(x,\omega) \td{(x,\omega)}
+	= \| f \|_{\M^1_v}.
+	\end{align*}
+	\end{proof}
+	
+Für $ f \in \M^1_v $ folgt
+wegen \ref{th:embedding_amalagm_L1} dann $ f \in \L^1_{u_1} $ und $ \hat{f } \in \L^1_{u_2} $.
+Damit gilt auch $ f \in \F \L_{u_2}^1 $ und $ f $ ist stetig, da das Fourierbild einer $ \L^1 $-Funktion eine stetige Funktion liefert.
+Wir erhalten $ \M^1_{u_1} \subseteq \L^1_{u_1} $ und $ \M^1_{u_2} \subseteq \L^1_{u_2} $.
+Insbesondere ist der ungewichtete Raum $ \M^1 $ nach \ref{th:algebraic_properties} eine Banachalgebra bezüglich Faltung und punktweiser Multiplikation.
+
+
+\begin{df}
+	Wir bezeichnen den Modulationsraum $ \M^1 $ als \textit{Feichtingeralgebra} und
+	setzen $S_0 := S_0(\R^d) := \M^1 $, 
+	$ S_0^\prime := S_0^\prime(\R^d) := \M^\infty $.
+\end{df}
+
+
+
+
+\begin{df}
+	Sei $ g \in \M_v^1\setminus \{0\} $ und
+	\begin{align}\label{eq:gabor_expansion_modspace}
+	f = \sum \limits_{n=1}^\infty c_n T_{x_n} M_{\omega_n} g
+	\end{align}
+	für eine beliebige Menge $ \lbrace (x_n, \omega_n)\in \R^{2d} \ | \ n \in \N \rbrace $ gegeben. 
+	Wir nennen $ f $ eine \textit{nicht-uniforme Gaborentwicklung}, falls
+	\begin{align*}
+	\sum \limits_{n=1}^\infty |c_n | v(x_n,\omega_n) < \infty 
+	\end{align*}
+	erfüllt ist. Wir schreiben für den Raum dieser Entwicklungen $ \mathcal{M}_v $.
+	Die Norm ist durch
+	\begin{align*}
+	\| f \|_{\mathcal{M}_v} = \inf \sum \limits_{n = 1}^\infty |c_n| v(x_n,\omega_n)
+	\end{align*}
+	gegeben. Hierbei wird das Infimum über alle zulässigen Entwicklungen von $ f  $ gebildet.
+\end{df}
+Wir werden zeigen, dass $ \M_v^1 = \mathcal{M}_v $ gilt. 
+$ \mathcal{M}_v $ ist ein Banachraum, was direkt aus der \\Normäquivalenz von $ \| \cdot \|_{\M^1_v} $ und $ \| \cdot \|_{\mathcal{M}_v} $ folgt.
+
+\begin{lem}\label{th:gabor_rep_m_1_v}
+	Es gilt $ \M_v^1 = \mathcal{M}_v $.
+	Dementsprechend besitzen alle $ f \in \M^1_v $ eine Gaborentwicklung
+	\begin{align*}
+	f = \sum \limits_{n=1}^\infty c_n T_{x_n} M_{\omega_n} g
+	\end{align*}
+	und $ \| \cdot \|_{\mathcal{M}_v} $ ist äquivalent zu $ \| \cdot\|_{\M_v^1} $.
+\end{lem}
+
+\begin{proof}
+	Wir betrachten $ \ell^1_v(\R^{2d}) $ mit der Norm 
+	\begin{align*}
+	\| c \|_{\ell^1_v} 
+	=
+	\sum \limits_{(x,\omega) \in \R^{2d}} |c(x,\omega)| v(x,\omega) < \infty.
+	\end{align*}
+	Die Elemente in $ \ell^1_v(\R^{2d}) $ bilden nach $ \C $ ab und die Norm kann nur endlich sein, falls $ c(x,\omega) \neq 0 $ nur für abzählbare $ (x,\omega) $ gilt. Wir definieren
+	\begin{align*}
+	\mathcal{D}_g \ : \ \ell^1_v(\R^{2d}) \to \M^1_v , \
+	c \mapsto \sum \limits_{(x, \omega) \in \R^{2d} } c(x,\omega) T_x M_\omega g.
+  	\end{align*}
+  	Dies entspricht aufgrund des Abzählbarkeitsarguments gerade \eqref{eq:gabor_expansion_modspace}. Mit \eqref{eq:mod_space_tf_invariance} erhalten wir durch
+  	\begin{align*}
+  	\| \mathcal{D}_g c \|_{\M^1_v} 
+  	\leq 
+  	\sum \limits_{c(x,\omega) \neq 0}
+  	|c(x,\omega) | \| T_x M_\omega g \|_{\M^1_v} 
+  	\leq
+  	\sum \limits_{c(x,\omega) \neq 0}
+  	|c(x,\omega) | C v(x,\omega) \|  g \|_{\M^1_v}
+  	=
+  	C \|  g \|_{\M^1_v} \| c\|_{\ell^1_v} 
+  	\end{align*}
+  	die Stetigkeit von $ \mathcal{D}_g $.
+  	Nach Konstruktion gilt also $ \Bild \ \mathcal{D}_g = \mathcal{M}_v  \subseteq \M^1_v$.
+  	Für die Surjektivität bestimmen wir den adjungierten Operator
+	$ \mathcal{D}_g^\prime  : \M^\infty_{\nicefrac{1}{v}} \to \ell^1_{\nicefrac{1}{v}}$.
+	Es gilt
+	\begin{align*}
+	\langle \mathcal{D}_g^\prime f , c \rangle 
+	=
+	\langle f, \mathcal{D}_g c \rangle
+	=
+	\sum \limits_{c(x,\omega) \neq 0} 
+	\langle f, T_x M_\omega g \rangle \overline{c(x,\omega)}.
+	\end{align*}
+	
+	Mit
+	\begin{align*}
+	\mathcal{D}_g^\prime f(x,\omega) 
+	= 
+	\langle f, T_x M_\omega g \rangle
+	=
+	e^{2\pi \i x \cdot \omega} V_g f(x,\omega)
+	\end{align*}
+	erhalten wir durch
+	\begin{align*}
+	\| \mathcal{D}_g^\prime f \|_{\ell^\infty_{\nicefrac{1}{v}}}
+	= \| V_g f \|_{\L^\infty_{\nicefrac{1}{v}}} 
+	=  \| f \|_{\M_{\nicefrac{1}{v}}^\infty}, 
+	\end{align*}
+	dass $ \mathcal{D}_g^\prime $ eine Isometrie ist.
+	Damit ist $ \mathcal{D}_g^\prime $ injektiv und besitzt ein abgeschlossenes Bild.
+	Hieraus folgt mit dem Satz vom abgeschlossenen Bild die Surjektivität von $ \mathcal{D}_g $. Also gilt $ \M_v^1 = \mathcal{M}_v $.
+	Nun wenden wir uns der Normäquivalenz von $ \| \cdot \|_{\M_v^1} $ und $ \| \cdot
+	 \|_{\mathcal{M}_v} $ zu.
+	Sei $ N = \Kern \ \mathcal{D}_g $. Dann induziert $ \mathcal{D}_g $ einen Isomorphismus $ \tilde{\mathcal{D}}_g $:
+	\begin{center}
+		\begin{tikzcd}
+		\ell^1_v \arrow{d}[swap]{\pi}  \arrow{r}{\mathcal{D}_g} & \M_v^1  \\
+		
+		 \ell^1_v / N \arrow{ur}[swap]{\tilde{\mathcal{D}}_g} &  \\
+		\end{tikzcd}
+	\end{center}
+	Für diesen gilt $ \tilde{\mathcal{D}}_g(c + N)  = \mathcal{D}_g(c) $.
+	Mit dem Inverse-Mapping-Theorem erhalten wir die Normäquivalenz von 
+	$ \| c + N \|_{\ell_v^1 / N} := \inf_{n \in N} \| c + n \|_{\ell^1_v}  $ 
+	und $ \|\tilde{\mathcal{D}}_g(c + N)\|_{\M_v^1} = \| \mathcal{D}_g( c ) \|_{\M^1_v}   $.
+	Gilt nun $ f = \mathcal{D}_g c  $, erhalten wir nach Konstruktion
+	$ \| f \|_{\mathcal{M}_v } = \| c + N \|_{\ell_v^1 / N} $ und wir haben die Normäquivalenz gezeigt.
+\end{proof}
+
+
+
+\begin{genericthm}{Minimalitätseigenschaft}\label{th:minimality_feichtinger}
+	Sei $ B \subset \mathcal{S}^\prime(\R^d) $ ein Banachraum mit:
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		$ B $ ist invariant unter Zeit-Frequenz-Verschiebungen und es gilt
+		\begin{align*}
+		\| T_x M_\omega f\|_B \leq C  v(x, \omega) \| f \|_B
+		\end{align*}
+		für alle $ f \in B $.
+		Hierbei ist $ v $ ein submultiplikatives Gewicht.
+		\item
+		$ \M_v^1 \cap B \neq \{ 0\} $
+	\end{enumerate}
+	Dann existiert eine stetige Einbettung von $ \M_v^1 $ in $ B $.
+\end{genericthm}
+
+\begin{proof}
+	Sei $ g \in \M^1_v \cap B  \setminus \{ 0\}$ .
+	Nach \ref{th:gabor_rep_m_1_v} besteht $ \M_v^1 $ aus allen nicht-uniformen Gaborentwicklungen 
+	\begin{align*}
+	f = \sum \limits_{n = 1}^\infty c_n T_{x_n} M_{\omega_n} g
+	\end{align*}
+	mit $ \sum_{n = 1}^\infty |c_n| v(x_n,\omega_n) < \infty$. Mit der Invarianz unter Zeit-Frequenz-Verschiebungen erhalten wir
+	\begin{align*}
+	\| f \|_B \leq
+	\sum \limits_{n=1}^\infty |c_n| \| T_{x_n} M_{\omega_n} g \|_B
+	\leq 
+	C \sum \limits_{n=1}^\infty |c_n| v(x_n, \omega_n) \| g \|_B 
+	\end{align*}
+	für alle $ f \in \M_v^1 $. Damit gilt $ \M^1_v \subseteq B $.
+	Das Infimum über alle zulässigen Entwicklungen und die Normäquivalenz liefern dann mit
+	\begin{align*}
+	\| f \|_B \leq \|f \|_{\mathcal{M}_v} \|g \|_B \leq C \| f \|_{\M_v^1}
+	\end{align*}
+	die Stetigkeit der Einbettung $ \M_v^1 \hookrightarrow B$.
+\end{proof}
+
+
+
+
+\begin{kor}
+	Sei $ m $ von $ v $ moderiert.
+	Dann gilt 
+	\begin{align}
+	\M^1_v 
+	\subseteq
+	\M_m^{p,q}
+	\subseteq
+	\M^\infty_{\nicefrac{1}{v}}
+	\end{align}
+	für $ 1 \leq p,q \leq \infty $.
+\end{kor}
+
+\begin{proof}
+	Mit \eqref{eq:mod_space_tf_invariance} folgt
+	\begin{align*}
+	\| T_x M_\omega f \|_{\M_m^{p,q}}
+	\leq 
+	C v(x,\omega) \| f \|_{\M_m^{p,q}}
+	\end{align*}
+	und es gilt $ \S(\R^d) \subset \M^1_v \cap \M_m^{p,q} $.
+	Damit sind die Voraussetzungen von \ref{th:minimality_feichtinger} erfüllt und wir erhalten $ \M_v^1 \subseteq \M_m^{p,q} $.
+	Für $ p,q < \infty $ gilt wegen $ \M_v^1 \subseteq \M_{\nicefrac{1}{m}}^{p^\prime, q^\prime} $ auch
+	\begin{align*}
+	\M_{m}^{p,q} 
+	= 
+	\left(
+	\M_{\nicefrac{1}{m}}^{p^\prime,q^\prime} \right)^\prime
+	\subseteq 
+	(\M_v^1)^\prime 
+	=
+	\M_{\nicefrac{1}{v}}^\infty.
+	\end{align*}
+	Für $ p  = \infty $ und $ q < \infty $ gilt
+	\begin{align*}
+	\M^1_v \subseteq \M^{1,q^\prime}_{\nicefrac{1}{m}}
+	\
+	\Rightarrow
+	\
+	\M^{\infty,q}_m \subseteq \M^\infty_{\nicefrac{1}{v}}
+	,
+	\end{align*}
+	da $ \nicefrac{1}{m} $ nach \eqref{eq:v_mod_prop_1} von $ v $ moderiert wird. Der umgekehrte Fall folgt analog.
+	Für $ p,q = \infty $ erhalten wir mit \eqref{eq:v_mod_prop_3}
+	\begin{align*}
+	\| f \|_{\M_{\nicefrac{1}{v}}^\infty}
+	=
+	\| V_g f \|_{\L^\infty_{\nicefrac{1}{v}}}
+	=
+	\sup \limits_{z \in \R^{2d}}
+	\left| V_g f(z) \frac{1}{v(z)} \right|
+	\leq 
+	\tilde{C} \| f \|_{\M_m^\infty}.
+	\end{align*}
+\end{proof}
+
+Insbesondere ist mit \ref{th:minimality_feichtinger} auch die Feichtingeralgebra $ S_0(\R^d)  $ minimal.
+Zum Abschluss wollen wir noch einige Folgerungen aus der Minimalität von $ S_0(\R^d) $ betrachten.
+In \eqref{th:mod_space_tf_invariance} wurde bereits gezeigt, dass $ S_0 $ und $ S_0^\prime  $ invariant unter Zeit-Frequenzverschiebungen sind.
+Durch das Fehlen einer Gewichtsfunktion in der Norm von $ S_0 $ folgt die Invarianz sofort und die von $ S_0^\prime $ erhalten wir unmittelbar daraus.
+
+
+\begin{lem}
+	Die Räume $ S_0 $ und $ S_0^\prime  $ sind invariant unter Zeit-Frequenzverschiebungen und es gilt
+	\begin{align}
+	\| T_x M_\omega f \|_{S_0} = \| f \|_{S_0}.
+	\end{align}
+\end{lem}
+
+\begin{proof}
+	Die Invarianz von $ S_0  $ folgt direkt aus der Normdefinition, \ref{th:properties_TF} und \ref{th:STFT_modulation_TF_argument}.
+	Desweiteren gilt damit $ \| T_x M_\omega f \|_{S_0}  = \| f \|_{S_0} $.
+	Damit erhalten wir 
+	\begin{align*}
+	\|T_x M_\omega f \|_{S_0^\prime}
+	=
+	\sup \limits_{\| \varphi \|_{S_0} = 1} | (T_x M_\omega f)(\varphi) |  
+	=
+	\sup \limits_{\| \varphi \|_{S_0} = 1} | f(\underbrace{M_{-\omega} T_{-x} \varphi}_{\in S_0}) |
+	\leq 
+	\sup \limits_{\| \varphi \|_{S_0} = 1} | f( \varphi) |
+	= \| f \|_{S_0^\prime}.
+	\end{align*}
+\end{proof}
+
+\begin{sz}
+	Sei $ \alpha : \R^d \to \R^d $ eine lineare und bijektive Abbildung.
+	Dann definiert
+	\begin{align}
+	T_\alpha : S_0(\R^d) \to S_0(\R^d), \ f \mapsto  f \circ \alpha
+	\end{align}
+	eine lineare Bijektion. 
+\end{sz}
+
+\begin{proof}
+	Die Linearität dieser Abbildung ist klar.
+	Die Injektivität folgt durch
+	\begin{align*}
+	f \circ \alpha = 
+	g \circ \alpha 
+	\ \Leftrightarrow \ f = g.
+	\end{align*}
+	Sei $ f\in S_0 $ beliebig.
+	Dann gilt $ T_\alpha (f \circ \alpha^{-1}) = f $.
+	Insgesamt ist $ T_\alpha $ bijektiv.
+\end{proof}
+
+\begin{df}
+	Sei $ B $ eine Banachraum, der dicht in einem Hilbertraum $ H $ eingebettet ist.
+	Dann bezeichnen wir $ (B,H,B^\prime) $ als \textit{Gelfandtripel}.
+\end{df}
+
+Sei $ i : B \to H  $ die Einbettungsabbildung. Mit $ H = H^\prime $ erhalten wir $ i^\prime : H \to B^\prime $.
+Damit können wir die Dualität auf $ B^\prime $ mit dem Skalarprodukt auf $ H $ identifizieren. Das heißt
+\begin{align}
+\langle h, b \rangle_{B^\prime \times B}
+=
+\langle b, h \rangle_H
+\end{align}
+für $ h \in H \subseteq B^\prime $ und $ b \in B \subset H $.
+
+\begin{sz}
+	$ S_0 $ liegt dicht in $ \L^2 $ und es gilt $ S_0 \subseteq \L^2 \subseteq S_0^\prime $.
+	Insbesondere ist $ (S_0,\L^2, S_0^\prime) $ ein Gelfandtripel.
+\end{sz}
+ 
+\begin{proof}
+	Wegen $ \| T_x M_\omega f\|_{\L^2} = \| f \|_{\L^2} $ und $ \S(\R^d) \subset \L^2(\R^d) $ sind die Voraussetzungen von \ref{th:minimality_feichtinger} erfüllt.
+	Damit wird $ S_0(\R^d)$ stetig in $\L^2(\R^d) $ eingebettet.Weiter ist $ \S(\R^d)  $ dicht in $ S_0(\R^d) $ und in $ L^2(\R^d) $.
+	Also ist $ S_0 $ dicht in $ \L^2 $ und es 
+	folgt $ S_0 \subseteq \L^2 = (\L^2)^\prime \subseteq S_0^\prime $.
+\end{proof}
+
+
+
+
+\begin{df}
+	Seien $ (B_1, H_1,B_1^\prime) $ und $ (B_2, H_2,B_2^\prime) $ Gelfandtripel.
+	Ein linearer Operator $ T $ heißt unitärer Gelfandtripel-Isomorphismus, falls gilt:
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		$ T : B_1 \to B_2 $ ist ein Isomorphismus.
+		\item
+		$ T : H_1 \to H_2 $ ist unitär.
+		\item 
+		$ T : B_1^\prime \to B_2^\prime $ ist ein schwach*-stetiger Isomorphismus.
+		Ebenso ist dieser normstetig.
+	\end{enumerate}
+\end{df}
+
+
+\begin{sz}\label{th:fourier_feichtinger}
+	Die Fouriertransformation $ \F : S_0(\R^d) \to S_0(\R^d) $ ist eine bijektive Isometrie.
+\end{sz}
+
+\begin{proof}
+		
+		Nach \ref{th:independence_of_window_norm} können wir $ g(x) = e^{-\pi x^2} $ setzen, womit $ g = \hat{g} $ gilt.
+		Wegen 
+		\begin{align*}
+		\| f \|_{S_0} 
+		=
+		\| V_g f \|_{\L^1} 
+		=
+		\|V_{\hat{g}} \hat{f} \|_{\L^1}
+		=
+		\| V_{g} \hat{f} \|_{\L^1}
+		=
+		\| \hat{f} \|_{S_0}
+		\end{align*}
+		ist $ \F $ eine Isometrie auf $ S_0 $. Da $ S_0 $ vollständig ist folgt auch die Vollständigkeit von $ \Bild \ \F $.
+%		Sei $ \alpha_n $ eine Cauchyfolge in $ \Bild \ \F $. Dann existiert für alle $ \alpha_n $ ein eindeutiges
+%		$ f_n $, sodass $ \F f_n = \alpha_n $ gilt.
+%		Da $ \F $ eine Isometrie ist, ist $ f_n  $ auch eine Cauchyfolge in $ S_0 $.
+%		Damit existiert ein $ f \in S_0 $ mit $ \| f_n - f\|_{S_0} \to 0 $ und es folgt
+%		\begin{align*}
+%		\| f_n -f \|_{S_0} 
+%		=
+%		\|\alpha_n - \F f \|_{S_0} \to 0.
+%		\end{align*}
+%		Also ist das $ \Bild \ \F $ ein Banachraum. 
+%		Wegen 
+		\begin{align*}
+		\| T_x M_\omega \hat{f} \|_{S_0}
+		=
+		\|  M_x T_{- \omega} f \|_{S_0}
+		= 
+		\| f \|_{S_0} =  \| \hat{f } \|_{S_0}
+		\end{align*}
+		ist das Bild von $ \F $ invariant unter Zeit-Frequenzverschiebungen.
+		Dann gilt nach \ref{th:minimality_feichtinger} $ S_0 \subseteq \Bild \ \F $.
+		Also ist  $ \F $ bijektiv.
+\end{proof}
+
+Analog zu der Fouriertransformation auf $ \S^\prime(\R^d)  $ definieren wir die Fouriertransformation auf $ S_0^\prime(\R^d) $.
+Sei $ f \in S_0^\prime $ und $ \varphi \in S_0 $ beliebig. Dann definieren wir $ \hat{f} $ durch $  \hat{f} (\varphi) = \langle  \hat{f}, \varphi \rangle := \langle f , \hat{\varphi} \rangle $.
+
+
+\begin{sz}\label{th:fourier_feicht_dual}
+	Die Fouriertransformation
+	\begin{align}
+	\F : S_0^\prime \to S_0^\prime, \  f \mapsto \hat{f}
+	\end{align}
+	ist eine bijektive Isometrie.
+	Desweiteren ist $ \F $  schwach*-stetig.
+\end{sz}
+
+\begin{proof}
+	Da die Fouriertransformation auf $ S_0 $ eine bijektive Isometrie ist, erhalten wir
+	\begin{align*}
+	\|f \|_{S_0^\prime}
+	= 
+	\sup \limits_{\| \varphi \|_{S_0} = 1} |\hat{f}(\varphi) |
+	=
+	\sup \limits_{\| \hat{\varphi} \|_{S_0} = 1} |f(\hat{\varphi}) |
+	= 
+	\| f \|_{S_0^\prime}
+	\end{align*}
+	und $ \F $ ist surjektiv.
+	Sei $ f \in S_0 $ und $ f_n \in S_0^\prime $ eine Folge mit
+	\begin{align*}
+	\langle f_n ,\varphi \rangle \to \langle f,\varphi \rangle
+	\end{align*}
+	für alle $ \varphi \in S_0 $.
+	Dann folgt mit
+	\begin{align*}
+	\F f_n(\varphi)
+	= \langle f_n , \hat{\varphi} \rangle
+	\to 
+	\langle f , \hat{\varphi} \rangle
+	= \F f (\varphi)
+	\end{align*}
+	die Schwach*-Stetigkeit.
+\end{proof}
+
+Mit den Sätzen \ref{th:fourier_feichtinger} und \ref{th:fourier_feicht_dual} ist die Fouriertransformation $ \F $ ein Gelfandtripel-Automorphismus auf $ (S_0, H, S_0^\prime) $.
+Insbesondere ist damit die Parsevalgleichung 
+\begin{align}
+\langle \hat{f},\hat{g} \rangle
+=
+\langle f, g \rangle
+\end{align}
+für  $ (f,g) \in S_0^\prime(\R^d) \times S_0(\R^d)  $ und $ (f,g) \in \L^2(\R^d) \times \L^2(\R^d) $ oder andere sinnvolle Paarungen des Gelfandtripels definiert.
+
+
+
+
+
+
+\begin{genericthm}{Kernsatz}
+	Sei $ K : S_0(\R^d) \to S_0^\prime(\R^d) $ ein beschränkter Operator.
+	Dann existiert ein eindeutiger Kern $ k \in S_0^\prime(\R^{2d}) $, sodass 
+	\begin{align}
+	\langle K f, g \rangle 
+	=
+	\langle k , f \otimes g \rangle
+	\end{align}
+	mit $ f,g \in S_0(\R^d) $ gilt. Das Funktional $ Kf \in S_0^\prime(\R^d) $ lässt sich also durch
+	\begin{align}
+	Kf(g)
+	= 
+	\int \limits_{\R^{2d}} k(x,\omega)  g(x) f(\omega) \td{(x,\omega)}
+	\end{align}
+	beschreiben.
+\end{genericthm}
+
+\begin{proof}
+	\cite[Abschnitt~14.4]{noauthor2009Foundationsof}
+\end{proof}

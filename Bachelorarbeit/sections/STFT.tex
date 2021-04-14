@@ -1,0 +1,516 @@
+\section{Kurzzeit-Fouriertransformation(STFT)}
+
+%Wir werden unsere Theorie vollständig auf der STFT aufbauen.
+In diesem Abschnitt definieren wir die Kurzzeit-Fouriertransformation und beweisen 
+ihre elementaren Eigenschaften.
+Zunächst werden wir einige fundamentale Identitäten zeigen, welche uns helfen, die STFT so allgemein wie möglich zu definieren. 
+Im Anschluss beweisen wir die Parseval-und Plancherelgleichung für die STFT, welche wir für die Inversionsformel verwenden werden.
+Wir benötigen die STFT, um später die Modulationsräume zu definieren.
+
+
+\begin{df}
+	Sei $g \neq 0$ eine glatte Abschneidefunktion.
+	Diese bezeichnen wir als \textit{Fensterfunktion}.\index{Fensterfunktion}
+	Dann ist die \textit{Kurzzeit-Fouriertransformation} einer Funktion $f$ abhängig von $g$ durch
+	\begin{align*}
+	V_g f(x, \omega) 
+	:=
+	\int \limits_{\mathbb{R}^d}
+	f(t) \overline{g (t-x) }  e^{-2\pi \mathrm{i} t\cdot \omega }\td{t}
+	\end{align*}
+	für $x, \omega \in \mathbb{R}^d$ definiert.
+\end{df}\noindent
+Die Kurzzeit-Fouriertransformation ist mit 
+\begin{align*}
+(f,g) \mapsto V_g f
+\end{align*}
+eine Sesquilinearform. Meist lassen wir die Fensterfunktion $g$ jedoch fixiert.
+Wir betrachten nun die asymmetrische Koordinatentransformation
+\begin{align*}
+\mathcal{T}_a F(x,t) = F(t,t-x)
+\end{align*}
+und die partielle Fouriertransformation
+\begin{align*}
+\mathcal{F}_2 F(x, \omega)
+= 
+\int \limits_{\R^d} F(x,t) e^{- 2 \pi \i t \cdot \omega} \td{t}
+\end{align*}
+von $F$ auf $\R^{2d}$.
+Mit dem Tensorprodukt $(f \otimes g) (x,t) = f(x) g(t)$ erhalten wir somit
+\begin{align*}
+V_g f = \mathcal{F}_2 \mathcal{T}_a(f \otimes \overline{g})
+\end{align*}
+für $f, g \in \mathrm{L}^2(\R^d)$.
+\newpage
+\begin{sz}\label{fundamental_identities_STFT}
+	Seien $f,g \in \mathrm{L}^2(\mathbb{R}^{d})$.
+	Dann gelten die Identitäten
+	\begin{align}
+	V_g f(x,\omega)
+	&=
+	\widehat{(f \cdot T_x \overline{g})} (\omega)\label{eq:identity_STFT_1}\\
+	&=
+	\langle f, M_\omega T_x g \rangle\label{eq:identity_STFT_2}\\
+	&=
+	\langle \hat{f} , T_w M_{-x} \hat g \rangle\label{eq:identity_STFT_3}\\
+	&=
+	e^{-2 \pi \mathrm{i} x \cdot \omega} \widehat{(\hat{f} \cdot T_\omega \overline{ \hat{g} })} (-x)\label{eq:identity_STFT_4}\\
+	&=
+	e^{-2\pi \mathrm{i} x \cdot \omega} V_{\hat{g}} \hat{f}(\omega,-x)\label{eq:identity_STFT_5}\\
+	&=
+	e^{-2\pi \mathrm{i} x \cdot \omega}  (f \ast M_\omega g^\ast)(x) \label{eq:identity_STFT_7}\\
+	&=
+	(\hat{f} \ast M_{-x} \hat{g}^\ast)(\omega)\label{eq:identity_STFT_8}\\
+	&=
+	e^{-\pi \mathrm{i} x \cdot w } \int \limits_{\mathbb{R}^d} f\left( t + \frac{x}{2} \right) \overline{g\left( t - \frac{x}{2} \right)} e^{-2 \pi \mathrm{i} t \cdot \omega} \td{t}\label{eq:identity_STFT_9}
+	\end{align}
+	und $V_g f$ ist gleichmäßig stetig auf $\mathbb{R}^{2d}$.
+\end{sz}
+
+\begin{proof}
+	Zuerst werden wir die Identitäten zeigen.
+	Wegen
+	\begin{align*}
+	V_g f(x,\omega)
+	=
+	\int \limits_{\R^d} f(t) \overline{g(t-x)} 
+	e^{-2\pi \i t  \cdot \omega} \td{t}
+	=
+	\widehat{(f \cdot T_x \overline{g})} (\omega)
+	=
+	\langle f, M_\omega T_x g \rangle
+	\end{align*}
+	sind \eqref{eq:identity_STFT_1} und \eqref{eq:identity_STFT_2} klar.
+	Mit der Parsevalgleichung \eqref{eq:parseval} und \eqref{eq:trans_mod_fourier_2} folgen durch
+	\begin{align*}
+	\langle f, M_\omega T_x g \rangle
+	&=
+	\left\langle \hat{f}, \widehat{(M_\omega T_x g)} \right\rangle
+	=
+	\underbrace{ \langle \hat{f},e^{2\pi \i x \cdot \omega} M_{-x} T_\omega \hat{g} \rangle}_{
+		= e^{-2\pi \i x \cdot \omega} V_{\hat{g}} \hat{f}(\omega,-x)
+		}
+	= 
+	\langle \hat{f}, T_\omega M_{-x} \hat{g} \rangle
+	\end{align*}
+	die Identitäten \eqref{eq:identity_STFT_3} und \eqref{eq:identity_STFT_5}.
+	Durch Anwenden von \eqref{eq:identity_STFT_1} erhalten wir \eqref{eq:identity_STFT_4}.
+	Die Identität \eqref{eq:identity_STFT_8} folgt durch
+	\begin{align*}
+	\widehat{(f \cdot T_x \overline{g})} (\omega)
+	=
+	(\hat{f} \ast M_{-x}  \hat{\overline{g}} )(\omega)
+	=
+	(\hat{f} \ast M_{-x}  \hat{g^\ast} )(\omega)
+	\end{align*}
+	unter Verwendung von \eqref{eq:convolution_prop_2} und \eqref{eq:involution_fouriertrans}.
+	Analog liefert dies mit
+	\begin{align*}
+	e^{-2 \pi \mathrm{i} x \cdot \omega} \widehat{(\hat{f} \cdot T_\omega \overline{ \hat{g} })} (-x)
+	=
+	e^{-2\pi \mathrm{i} x \cdot \omega}  (f \ast M_\omega g^\ast)(x)
+	\end{align*}
+	die Identität \eqref{eq:identity_STFT_7}.
+	Die letzte Identität 
+	\begin{align*} 
+	V_g f(x,\omega)
+	=
+	e^{-\pi \mathrm{i} x \cdot w } \int \limits_{\mathbb{R}^d} f\left( t + \frac{x}{2} \right) \overline{g\left( t - \frac{x}{2} \right)} e^{-2 \pi \mathrm{i} t \cdot \omega} \td{t}
+	\end{align*}
+	folgt durch $u = t  - \frac{x}{2}$.\\
+	Im zweiten Teil des Beweises werden wir die gleichmäßige Stetigkeit auf $\R^{2d}$ von $V_g f$ zeigen.
+	Zunächst gilt 
+	\begin{align*}
+	\lim \limits_{x \to 0 } \| T_x f - f \|_2 = 0, 
+	\end{align*}
+	womit durch $(M_\omega f)^{\hat{ }} = T_\omega \hat{f}$
+	auch die Aussage
+	\begin{align*}
+	\lim \limits_{\omega \to 0} \| M_\omega f - f \|_2
+	= 
+	\lim \limits_{\omega \to 0} \| T_\omega \hat{f} - \hat{f } \|_2
+	= 0
+	\end{align*}
+	folgt. 
+	Unser Ziel ist nun 
+	\begin{align*}
+	\forall_{\varepsilon > 0 } \exists_{\delta > 0}
+	\forall_{(x,\omega) , (x^\prime,\omega^\prime)\in \R^{2d}}: \ | (x,\omega) - (x^\prime,\omega^\prime) | < \delta \ \Rightarrow \ | V_g f(x,\omega) -V_g f(x^\prime,\omega^\prime) | < \varepsilon
+	\end{align*}
+	zu zeigen.
+	Zunächst gilt
+	\begin{align*}
+	|V_g f(x,\omega) - V_g f(x^\prime, \omega^\prime) |
+	&= | \langle f, M_\omega T_x g \rangle - \langle f, M_{\omega^\prime} T_{x^\prime} g \rangle |\\
+	&\leq
+	\int \limits_{\R^d} |f(t)| \ |M_\omega T_x g(t) - M_{\omega^\prime} T_{x^\prime} g(t) | \td{t}\\
+	&\leq 
+	\| f \|_2 \cdot \| M_\omega T_x g - M_{\omega^\prime} T_{x^\prime} g \|_2
+	\end{align*}
+	mit Hilfe der Hölder-Ungleichung.
+	Es folgt
+	\begin{align*}
+	\| M_\omega T_x g - M_{\omega^\prime} T_{x^\prime} g \|_2
+	&= 
+	\| M_\omega T_x g - M_{\omega^\prime} T_x g + M_{\omega^\prime} T_x g - M_{\omega^\prime} T_{x^\prime} g \|_2\\
+	&\leq
+	\| M_\omega T_x g - M_{\omega^\prime} T_x g \|_2 
+	+ \| M_{\omega^\prime} T_x g - M_{\omega^\prime} T_{x^\prime} g\|_2\\
+	&=
+	\| (M_\omega - M_{\omega^\prime})T_x g\|_2
+	+ \|M_{\omega^\prime} ( T_x - T_{x^\prime})g \|_2
+	\end{align*}
+	Wir werden die zwei Summanden seperat untersuchen.
+	Für den Zweiten erhalten wir
+	\begin{align*}
+	\| M_{\omega^\prime}(T_x - T_{x^\prime}) g \|_2
+	= \|(T_x - T_{x^\prime}) g \|_2
+	= \|(T_{x^\prime}( T_{x-x^\prime} - \id)g \|_2
+	= \| ( T_{x-x^\prime} - \id)g \|_2 < \frac{\varepsilon}{2 \| f \|_2}
+	\end{align*}
+	für $| x - x^\prime| <\delta_1$.
+	Das Argument für den ersten Summanden ist ähnlich.
+	Mit \eqref{eq:trans_mod_fourier_1} gilt
+	\begin{align*}
+	\F((M_\omega - M_{\omega^\prime}) T_x g)
+	= 
+	(T_\omega - T_{\omega}) M_{-x} g,
+	\end{align*}
+	wodurch mit der Parsevalgleichung 
+	\begin{align*}
+	\| (M_\omega - M_{\omega^\prime}) T_x g \|_2
+	=
+	\| (T_\omega - T_{\omega^\prime}) M_{-x} \hat{g} \|_2
+	=
+	\| (T_{\omega - \omega^\prime} - \id) g \|_2.
+	\end{align*}
+    folgt.Sei $ \tilde{g}  \in C_0^\infty(\R^d)$.
+	Dann gilt
+	\begin{align*}
+	\| (T_{\omega - \omega^\prime} - \id) g \|_2 \leq 
+	\| T_{\omega - \omega^\prime} g \|_2 + \| g \|_2 
+	= 2 \| g \|_2,
+	\end{align*}
+	womit wir den Satz der majorisierten Konvergenz anwenden können.
+	Da $ C_0^\infty $ dicht in $ \L^2 $ ist, finden wir ein $ \tilde{g}  \in C_0^\infty(\R^d)$ mit
+	\begin{align*}
+	\| \hat{g} - \tilde{g} \|_2 \leq \frac{\varepsilon}{6 \| f\|}.
+	\end{align*}
+	Damit existiert ein $ \delta_2 > 0 $ , sodass
+	\begin{align*}
+	\| T_\omega M_{-x} \tilde{g} - T_{\omega^\prime} M_{-x} \tilde{g} \|_2
+	< 
+	\frac{\varepsilon}{6 \| f \|_2}
+	\end{align*} 
+	für $ | \omega - \omega^\prime| < \delta_2 $ erfüllt ist.
+	Insbesondere erhalten wir
+	\begin{align*}
+	\| (T_\omega - T_{\omega^\prime}) M_{-x} \hat{g} \|_2
+	&\leq 
+	\| T_\omega M_{-x} \hat{g} - T_\omega M_{-x} \tilde{g} \|_2
+	+
+	\| T_\omega M_{-x} \tilde{g} - T_{\omega^\prime} M_{-x} \tilde{g} \|_2
+	+
+	\| T_{\omega^\prime} M_{-x} \tilde{g} - T_{\omega^\prime} M_{-x} \hat{g} \|_2\\
+	&= 2 \| \hat{g} - \tilde{g} \|_2
+	+ 
+	\| T_\omega M_{-x} \tilde{g} - T_{\omega^\prime} M_{-x} \tilde{g} \|_2
+	< 
+	\frac{\varepsilon}{2 \| f\|_2}
+ 	\end{align*}
+	für $ | \omega - \omega^\prime| < \delta_2 $.
+	Insgesamt folgt durch
+	\begin{align*}
+	| (x,\omega) - (x^\prime, \omega^\prime) | \leq
+	| (x,0) -(x^\prime,0) | + | (0,\omega) - (0, \omega^\prime) | < \delta :=\min\lbrace \delta_1 , \delta_2 \rbrace
+	\end{align*}
+	die gewünschte Aussage.
+\end{proof}
+
+Der letzte Satz liefert uns nun die Möglichkeit, den Definitionsbereich der STFT zu diskutieren.
+Sei $ f \in \L^p(\R^d) $ und $ g \in \L^{p^\prime}(\R^d) $ mit $ \nicefrac{1}{p} + \nicefrac{1}{p^\prime} = 1 $.
+Dann liefert uns die Hölderungleichung $ f \cdot T_x \overline{g} \in \L^1(\R^d) $ und die STFT ist punktweise über
+\begin{align*}
+V_g f(x,\omega ) = \widehat{(f \cdot T_x \overline{g})} (\omega)
+\end{align*}
+definiert. Die Identität
+\begin{align*}
+V_g f(x,\omega) = \langle f, M_\omega T_x g \rangle
+\end{align*}
+hilft uns, falls das Integral nicht definiert ist.
+Damit ist die STFT auch für $ f \in \mathcal{S}^\prime(\R^d)  $ und $ g \in \mathcal{S}(\R^d) $ im Dualitätssinne definiert.\\
+In folgendem Lemma verstehen wir unter einem Isomorphismus einen linearen Homöomorphismus.
+\newpage
+\begin{lem}\label{th:iso_tensor_distri}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Die Operatoren $ \mathcal{T}_a $ und $ \mathcal{F}_2 $ sind Isomorphismen auf $ \S^\prime(\R^{2d}) $.
+		\item
+		Seien $ f,g \in \S^\prime(\R^d) $.
+		Dann gilt $ f \otimes g \in \S^\prime(\R^{2d}) $.
+	\end{enumerate}
+\end{lem}
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Wir betrachten zunächst $ (\tilde{\mathcal{T}}_a) \varphi(x,t)
+		:= \varphi(x-t,x)  $.
+		Dann gilt
+		\begin{align*}
+		(\tilde{\mathcal{T}}_a \circ \mathcal{T}_a) \varphi(x,t) = 
+		\varphi (x,t)
+		=
+		(\mathcal{T}_a \circ \tilde{\mathcal{T}}_a) \varphi(x,t)
+		\end{align*}
+		und somit $ \mathcal{T}_a^{-1}  = \tilde{\mathcal{T}}_a$. Insbesondere ist 
+		\begin{align*}
+		\mathcal{T}_a : \S(\R^{2d}) \to \S(\R^{2d}), \
+		\varphi \mapsto \mathcal{T}_a \varphi
+		\end{align*}
+		ein Homöomorphismus. 
+		Sei $ f \in \S(\R^{2d}) $ und 
+		\begin{align*}
+		u_f(\varphi) 
+		= \int \limits_{\R^{2d}} f(x,t) \overline{\varphi(x,t)} \td{(x,t)}
+		\end{align*}
+		die durch $ f  $ induzierte temperierte Distribution.
+		Hierfür gilt
+		\begin{align*}
+		u_{\mathcal{T}_a f}(\varphi) 
+		&=
+		\int \limits_{\R^{2d}}
+		f(t,t-x) \overline{\varphi(x,t)} \td{(x,t)}
+		=
+		\int \limits_{\R^{2d}}
+		f(x,t) \overline{\varphi(x-t,x)} \td{(x,t)}\\
+		&=
+		\int \limits_{\R^{2d}}
+		f(x,t) \overline{(\mathcal{T}_a^{-1})\varphi(x,t)} \td{(x,t)}.
+		\end{align*}
+		Damit können wir $ \mathcal{T}_a $ sinnvoll durch
+		\begin{align*}
+		\mathcal{T}_a F( \varphi)
+		&:=
+		F(\mathcal{T}_a^{-1} \varphi)\\
+		\mathcal{T}_a^{-1} F( \varphi)
+		&:=
+		F(\mathcal{T}_a \varphi)
+		\end{align*}
+		auf $ \S^\prime(\R^{2d}) $ definieren und $ \mathcal{T}_a $ ist auf $ \S^\prime(\R^{2d}) $ bijektiv. 
+		Sei $ F_n \to F $ in $ \S^\prime(\R^{2d}) $, d.h. $ F_n(\varphi) \to F(\varphi) $
+		für alle $ \varphi \in \S(\R^{2d}) $.
+		Dann gilt
+		\begin{align*}
+		\mathcal{T}_a F_n(\varphi )
+		=
+		F_n(\mathcal{T}_a^{-1} \varphi) 
+		\to 
+		F(\mathcal{T}_a^{-1}\varphi) = \mathcal{T}_a F(\varphi)
+		\end{align*}
+		und $ \mathcal{T}_a $ ist ein Homöomorphismus auf $ \S^\prime(\R^{2d}) $.
+		Die partielle Fouriertransformation $ \mathcal{F}_2 : \S^\prime(\R^{2d}) \to \S^\prime(\R^{2d}) $
+		ist nach \cite[Seite~129]{mit} ein Isomorphismus.
+		
+		\item
+		Diese Aussage wird in \cite[Theorem~4.13]{mit} bewiesen .
+	\end{enumerate}
+\end{proof}
+
+Durch das letzte Lemma lässt sich die STFT auch durch
+\begin{align}\label{eq:STFT_tensorprod}
+V_g f = \mathcal{F}_2 \mathcal{T}_a (f \otimes \overline{g})
+\end{align}
+für $ f,g \in \S^\prime(\R^{d}) $ definieren.
+
+Ähnlich zur Fouriertransformation gibt es eine Art Parseval -und Plancherelgleichung für die  STFT.
+
+
+\begin{lem}\label{th:STFT_modulation_TF_argument}
+	Ist $ V_g $ definiert, so gilt
+	\begin{align}
+	V_g  (T_u M_\eta f) ( x, \omega)
+	= 
+	e^{-2 \pi \i u \cdot \omega}
+	V_g f (x - u , \omega - \eta)
+	=
+	e^{-2 \pi \i u \cdot \omega}
+	T_{(u,\eta)} V_g f(x,\omega)
+	\end{align}
+	für alle $ x, u, \omega , \eta \in \R^d $.
+\end{lem}
+
+\begin{proof}
+	Durch Anwenden von \eqref{eq:trans_mod_commutation_relation_1} erhalten wir
+	\begin{align*}
+	M_{- \eta} T_{-u} M_\omega T_x
+	=
+	e^{2\pi \i u \cdot \omega} M_{\omega - \eta} T_{x - u }.
+	\end{align*}
+	Damit folgt durch \eqref{eq:identity_STFT_2}:
+	\begin{align*}
+	V_g (T_u M_\eta f)(x, \omega)
+	= 
+	\langle T_u M_\eta f , M_\omega T_x g \rangle
+	=
+	\langle f , M_{-\eta } T_{-u} M_\omega T_x g \rangle
+	=
+	e^{-2 \pi \i u \cdot \omega}
+	V_g f (x - u , \omega - \eta).
+	\end{align*}
+\end{proof}
+
+\begin{genericthm}{STFT-Parseval}
+	Seien $ f_1,f_2, g_1,g_2 \in \L^2(\R^d) $.
+	Dann gilt 
+	\begin{align}\label{orthogonality_relation}
+	\langle V_{g_1} f_1, V_{g_2} f_2 \rangle =
+	\langle f_1,f_2 \rangle  \overline{ \langle g_1, g_2 \rangle}.
+	\end{align}
+	Insbesondere gilt dann auch $ V_{g_1} f_1, V_{g_2} f_2 \in \L^2(\R^{2d}) $.
+\end{genericthm}
+
+\begin{proof}
+	Wir bemerken zunächst, dass die Operatoren $ \T_a  $ und $ \F_2 $ unitär auf $ \L^2(\R^{2d}) $ sind. 
+	Dass $ \T_a  $ unitär ist sehen wir direkt durch Substitution. $ \F_2 $ ist unitär, da die Fouriertransformation auf $ \L^2 $ unitär ist. 
+	%\textcolor{red}{\textbf{Warum? Nachweisen!}}
+	Damit gilt durch 
+	\begin{align*}
+	\langle V_{g_1} f_1 , V_{g_2} f_2 \rangle_{\L^2(\R^{2d})}
+	= 
+	\langle \F_2 \T_a (f_1 \otimes \overline{g_1}),
+	\F_2 \T_a (f_2 \otimes \overline{g_2})
+	\rangle
+	=
+	\langle
+	f_1 \otimes \overline{g_1}, f_2 \otimes \overline{g_2}
+	\rangle
+	=
+	\langle f_1,f_2 \rangle \overline{ \langle g_1, g_2 \rangle}
+	\end{align*}
+	die gewünschte Aussage.
+\end{proof}
+
+\begin{genericthm}{STFT-Plancherel}\label{th:orthogonality_relation_kor_1}
+	Für $ f,g \in \L^2(\R^d) $ gilt
+	\begin{align}
+	\| V_g f \|_2 = \| f \|_2 \| g \|_2.
+	\end{align}
+\end{genericthm}
+
+\begin{proof}
+	Seien $ f,g \in \L^2(\R^d) $. Dann folgt direkt
+	\begin{align*}
+	\| V_g f \|_2 = \langle V_g f , V_g f \rangle = 
+	\langle f, f \rangle 
+	\overline{\langle g, g \rangle}
+	=
+	\| f \|_2 \| g \|_2
+	\end{align*}
+	mithilfe des letzten Satzes.
+\end{proof}
+
+Also ist die STFT für $ \| g \|_2 = 1 $  wegen 
+\begin{align*}
+\| V_g f \|_2 = \| f \|_2
+\end{align*}
+eine Isometrie zwischen $ \L^2(\R^d) $ und $ \L^2(\R^{2d}) $.
+Damit ist $ V_g $ insbesondere injektiv und wir können $ f $ eindeutig durch $ V_g f $ bestimmen. Aus der Injektivität erhalten wir außerdem, dass
+\begin{align*}
+V_g f (x,\omega) = \langle f, M_\omega T_x g \rangle = 0 \
+\Rightarrow
+\
+f = 0
+\end{align*}
+gilt. Damit gilt für ein fixiertes $ g \in \L^2(\R^d) $:
+\begin{align*}
+\lbrace
+M_\omega T_x g \ | \ x, \omega \in \R^d \rbrace^\perp = \lbrace 0 \rbrace
+\end{align*}
+Also ist die lineare Hülle von $ \lbrace M_\omega T_x g \ | \ x, \omega \in \R^d \rbrace $ ein dichter Teilraum des $ \L^2(\R^d) $.
+
+
+\begin{genericthm}{Inversionsformel}\label{th:inversion_formula}
+	Seien $ g,\gamma \in \L^2(\R^d) $ mit $ \langle g,\gamma \rangle \neq 0$.
+	Dann gilt
+	\begin{align}\label{eq:inversion_formula}
+	f = 
+	\frac{1}{\langle g, \gamma \rangle}
+	\int \limits_{\R^{2d}} V_g f(x,\omega) M_\omega T_x \gamma \td{(\omega,x)} 
+	\end{align}
+	für alle $ f \in \L^2(\R^d) $.
+\end{genericthm}
+
+Bevor wir in der Lage sind, diesen Satz zu beweisen, müssen wir schwach interpretierte Integrale diskutieren. Sei $ B $ ein beliebiger Banachraum und eine Abbildung $ g \ : \ \R^d \to B $ gegeben.
+Dann wird 
+\begin{align*}
+f  = \int \limits_{\R^d} g(x) \td{x}
+\end{align*}
+als
+\begin{align*}
+l(h) := \langle f,h \rangle 
+= 
+\int \limits_{\R^d} \langle g(x) , h \rangle \td{x}
+\end{align*}
+für  alle $ h \in B^\prime $ interpretiert. Ist nun $ l $ ein beschränktes (konjugiert-)lineares Funktional, so ist das Integral als eindeutiges Element in $ B^{\prime \prime} $ geben.
+Im Folgenden betrachten wir nur reflexive Räume, d.h. es gilt $ B = B^{\prime \prime} $. Für den Satz betrachten wir Integrale der Form 
+\begin{align}\label{eq:unique_inverse_function}
+f = \int \limits_{\R^{2d}} F(x,\omega) M_\omega T_x g \td{(\omega,x)}.
+\end{align}
+Dann ist durch
+\begin{align*}
+l(h) := \int \limits_{\R^{2d}} F(x,\omega) \overline{\langle h , M_\omega T_x g \rangle} \td{(\omega,x)}
+\end{align*}
+ein beschränktes konjugiert-lineares Funktional auf $ \L^2(\R^d) $ für $ F \in \L^2(\R^{2d}) $ gegeben.
+Die Linearität ist klar und die Beschränktheit folgt durch Anwendung der Cauchy-Schwarz-Ungleichung und \ref{th:orthogonality_relation_kor_1}:
+\begin{align}\label{eq:unique_inverse_bounded}
+| l(h) |
+\leq 
+\| F \|_2 \| V_g h \|_2 = \| F \|_2 \| h \|_2 \| g \|_2 < \infty. 
+\end{align}
+Insgesamt liefert \eqref{eq:unique_inverse_function} also eine eindeutige Funktion in $ \L^2(\R^d) $ mit der Norm $ \| f \|_2 \leq \| F\|_2 \| g \|_2 $.
+Nun können wir dazu übergehen, den Satz zu beweisen.
+
+\begin{proof}
+	Wegen \ref{th:orthogonality_relation_kor_1} gilt $ V_g f \in \L^2(\R^{2d}) $.
+	Mit unseren vorherigen Überlegungen ist 
+	\begin{align*}
+	\tilde{f} = \frac{1}{\langle \gamma , g \rangle}\int \limits_{\R^{2d}} V_g f(x,\omega) M_\omega T_x \gamma \td{(\omega,x)}
+	\end{align*}
+	eine eindeutige, wohldefinierte Funktion in $ \L^2(\R^d) $. Unter Verwendung von \eqref{orthogonality_relation} erhalten wir dann
+	\begin{align*}
+	\langle \tilde{f}, h \rangle 
+	&= 
+	\frac{1}{\langle \gamma, g \rangle}
+	\int \limits_{\R^{2d}} V_g f(x,\omega) \overline{\langle h , M_\omega T_x \gamma \rangle} \td{(\omega,x)}
+	=
+	\frac{1}{\langle \gamma, g \rangle}
+	\langle V_g f , V_\gamma h \rangle\\
+	&=
+	\frac{1}{\langle \gamma, g \rangle} 
+	\langle f, h \rangle  \langle \gamma , g \rangle = \langle f, h \rangle.
+	\end{align*}
+	Also gilt $ f = \tilde{ f} $.
+\end{proof}
+
+Wir definieren uns nun den Operator
+\begin{align*}
+A_g \ : \ \L^2(\R^{2d}) \to \L^2(\R^d), \quad
+F \mapsto  \int \limits_{\R^{2d}} F(x,\omega) M_\omega T_x g \td{(\omega,x)}.
+\end{align*}
+Wegen 
+\begin{align*}
+\langle A_g F , h \rangle 
+=
+\int \limits_{\R^{2d}} F(x,\omega) \langle M_\omega T_x  g , h \rangle \td{(\omega,x)}
+= 
+\langle F , V_g h \rangle = 
+\langle V_g^\prime F , h \rangle 
+\end{align*}
+ist dieser adjungiert zu der STFT $ V_g  :  \L^2(\R^d) \to \L^2(\R^{2d}) $.
+Mit \eqref{eq:unique_inverse_bounded} ist die Beschränktheit auch klar.
+Dies liefert uns die Möglichkeit, die Inversionsformel \eqref{eq:inversion_formula} auch durch
+\begin{align}\label{eq:inversion_formula_operator}
+\frac{1}{\langle \gamma,g \rangle } V^\prime_\gamma V_g = I
+\end{align}
+zu beschreiben.

@@ -1,0 +1,450 @@
+\section{Frametheorie}
+
+\begin{df}
+	Wir bezeichnen eine Folge $ (e_j)_{j \in J} $ in einem Hilbertraum $ \H $ als \textit{Frame}, wenn
+	$ A,B > 0  $ mit
+	\begin{align}\label{eq:frame_definition}
+	A \| f \|^2 \leq \sum \limits_{j \in J} | \langle f, e_j \rangle |^2 \leq B \|f \|^2
+	\end{align}
+	für alle $ f \in \H $ gilt. Hierbei sind $ A,B $ die \textit{Frameschranken}.
+	Wir nennen einen Frame \textit{dicht}, falls $ A = B  $ gilt.
+\end{df}
+
+\begin{df}
+	Für jede Teilmenge $ \lbrace e_j \ : \ j \in J \rbrace \subseteq \H $ bezeichnen wir mit
+	\begin{equation}\label{coefficients_operator}
+	Cf = \lbrace \langle f, e_j\rangle \ : \ j \in J \rbrace
+	\end{equation}
+	den \textit{Koeffizientenoperator}. Der \textit{Rekonstruktionsoperator} $ D $ ist durch
+	\begin{equation}\label{reconstruction_operator}
+	D c = \sum \limits_{j \in J} c_j e_j \in \H
+	\end{equation}
+	für endliche Folgen $ (c_j)_{j \in J} $ definiert. Mit
+	\begin{equation}
+	S f = \sum\limits_{j \in J} \langle f, e_j \rangle e_j
+	\end{equation}
+	definieren wir den \textit{Frameoperator} auf $ \H $.
+\end{df}
+
+\begin{sz}\label{skript:2.3}
+	Sei $ (e_j)_{j \in J} $ ein Frame von $ \H $.
+	Dann gelten:
+	\begin{enumerate}
+		\item 
+		$ C : \H \to \ell^2(J) $ ist ein beschränkter Operator mit abgeschlossenem Bild.
+		\item 
+		Die Operatoren $ C $ und $ D $ sind zueinander adjungiert, d.h. $ C^\ast = D $.
+		Damit wird $ D $ zu einem stetigen Operator von $ \ell^2(J) $ nach $ \H $ mit
+		\begin{equation}\label{eq:reconstruction_operator_cont_bound}
+		\left\| 
+		\sum \limits_{j \in J }c_j e_j
+		\right\|
+		\leq
+		\sqrt{B}\|c\|_2
+		\end{equation}
+		erweitert.
+		\item
+		Der Frameoperator $ S = C^\ast C = D D^\ast : \H\to \H$ ist positiv und invertierbar mit 
+		\begin{equation}\label{eq:frame_operator_inequal}
+		A I_\H \leq S \leq B I_\H \ \text{und} \ B^{-1} I_\H \leq S^{-1} \leq A^{-1} I_\H.		
+		\end{equation}
+		Insbesondere ist $ (e_j)_{j \in J} $ genau dann ein dichter Frame, wenn $ S = A I_\H $ gilt.
+		\item
+		Die optimalen Frameschranken sind durch
+		$ B_{\mathrm{opt}} = \| S \| $ und $ A_{\mathrm{opt}} = \| S^{-1} \|^{-1} $ gegeben.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Die Beschränktheit folgt direkt mit \eqref{eq:frame_definition} durch
+		\begin{equation*}
+		\left(
+		\sum \limits_{j \in J} | \langle f, e_j \rangle |^2
+		\right)^{\frac{1}{2}}
+		\leq
+		\sqrt{B} \|  f \|.
+		\end{equation*}
+		Aus \eqref{eq:frame_definition} folgt auch sofort die Injektivität von $ C $. Sei nun $ C f_n $ eine konvergente Folge in $ \Bild \ C $. Dann gilt mit \eqref{eq:frame_definition}
+		\begin{align*}
+		\sqrt{A} \| f_n - f_m \|_\H \leq \| C f_n - C f_m \|_{\ell^2(J)} < \varepsilon
+		\end{align*}
+		für $ n,m > N_\varepsilon $ und aus der Vollständigkeit von $ \H $ erhalten wir 
+		\begin{align*}
+		\sqrt{A} \| f_n - f \|_\H < \varepsilon.
+		\end{align*}
+		Insbesondere gilt dann aber auch
+		\begin{align*}
+		\| C f_n - C f \|_{\ell^2(J)} \leq \sqrt{B} \| f_n - f \|_\H < \sqrt{\frac{B}{A}} \varepsilon.
+		\end{align*}
+		Damit ist das Bild von $ C $ abgeschlossen.
+		\item 
+		Sei $ (c_j)_{j \in J} $ eine endliche Folge.
+		Dann gilt 
+		\begin{align*}
+		\langle C^\prime c , f \rangle
+		=
+		\langle c , C f \rangle
+		=
+		\sum \limits_{j \in J} c_j \overline{\langle f , e_j \rangle}
+		=
+		\left\langle 
+		\sum \limits_{j \in J} c_j e_j , f \right\rangle
+		=
+		\langle D c , f \rangle.
+		\end{align*}
+		Nun ist $ C $ beschränkt auf $ \H $ mit $ \| C \| \leq \sqrt{B} $.
+		Da endliche Folgen dicht in $ \ell^2(J) $ liegen ist auch durch $ C^\prime = D : \ell^2(J) \to H $ ein beschränkter Operator mit derselben Norm gegeben.
+		
+		\item
+		Es gilt $ S = C^\prime C = D D^\prime $, womit $ S : \H \to \H$ selbstadjungiert ist.
+		Wegen 
+		\begin{align*}
+		\langle Sf , f \rangle
+		=
+		\sum \limits_{j \in J } |\langle f, e_j \rangle|^2
+		\end{align*}
+		ist $ S $ ein positiver Operator. 
+		Es gilt
+		\begin{align*}
+		\H  = \overline{\Bild \ S} \ \oplus \ (\Bild \ S )^\bot
+		\end{align*}
+		und wir nehmen an, dass ein $ f \in (\Bild \ S )^\bot \setminus \{ 0\} $ existiert. Dann folgt 
+		\begin{align*}
+		0 = 
+		\langle S f, f \rangle 
+		=
+		\sum \limits_{j \in J} | \langle f, e_j \rangle |^2,
+		\end{align*}
+		wodurch wir einen Widerspruch zu $ A > 0  $ erhalten und $ \Bild \ S $ somit dicht in $ \H $ liegt.
+		Für $ f \in \Kern \ S $ erhalten wir mit 
+		\begin{align*}
+		A \| f \|^2 \leq \langle Sf ,f \rangle = \langle 0 , f \rangle = 0
+		\end{align*}
+		die Injektivität von $ S $. Also können wir die Abbildung
+		\begin{align*}
+		T : \Bild  \ S \to  \H, Sf \mapsto f
+		\end{align*}
+		definieren. Diese ist wegen
+		\begin{align*}
+		\| T S f \|^2 = \| f \|^2 \leq A^{-1} \langle Sf, f \rangle \leq  A^{-1} \|S f \| \| T S f \| 
+		\ \Leftrightarrow \
+		\|T S f \| \leq  A^{-1} \| S f \|
+		\end{align*}
+		stetig. Da $ T $ stetig und $ \Bild \ S $ dicht ist, ist $ T $ zu einem stetigen Operator 
+		$ \tilde{T} : \H \to \H $ fortsetzbar. Mit dieser Konstruktion erhalten wir
+		$ S \tilde{T} = S T = I_\H $ auf $ \H $ und $ \tilde{T} S = T S = I_\H  $ auf $ \Bild \ S $.
+		Da $ S T  $ stetig und das Bild dicht ist, folgt auch $ S\tilde{T} = I_\H $ auf ganz $ \H $.
+		Also ist $ S $ bijektiv.
+		Die Ungleichung $ A I_\H \leq S \leq B I_\H $ ist \eqref{eq:frame_definition} nur umgeschrieben. Daraus folgt direkt
+		\begin{align*}
+		A S^{-1} \leq I_\H \leq B S^{-1},
+		\end{align*}
+		da die Operatorungleichung unter Multiplikation mit positiven invertierbaren Operatoren erhalten bleibt.
+		\item 
+		Wegen 
+		\begin{align*}
+		\langle Sf , f \rangle \leq B \| f \|^2 
+		\ 
+		\Leftrightarrow 
+		\ 
+		\frac{\langle Sf , f \rangle}{\| f \|^2} \leq B
+		= \sup_{\| f \| \neq 0 } \frac{\langle Sf , f \rangle}{\| f \|^2} 
+		\end{align*}
+		erhalten wir $ B_\mathrm{opt} = \| S \|  $.
+		Aus $ S^{-1} \leq A^{-1} I_\H $ erhalten mit demselben Argument die Schranke $ A_\mathrm{opt} $.
+ 	\end{enumerate}
+\end{proof}
+
+\begin{lem}
+	Sei $ (e_j)_{j \in J} $ ein Frame von $ \H $.
+	Angenommen es existiert ein $ c \in \ell^2(J) $ mit $ f = \sum_{j \in J} c_j e_j $.
+	Dann existiert zu jedem $ \varepsilon > 0  $ eine endliche Menge $ F_\varepsilon $, sodass 
+	\begin{align*}
+	\left\| f - \sum \limits_{j \in F} c_j e_j \right\| < \varepsilon
+	\end{align*}
+	für alle endlichen Teilmengen $  F_\varepsilon \subseteq F $ gilt.
+	Wir sagen, dass die Reihe $ \sum_{j \in J} c_j e_j $ \textit{unbedingt} gegen $ f \in \H $ konvergiert.	
+\end{lem}
+
+\begin{proof}
+	Sei $  \varepsilon > 0  $ beliebig aber fest. Wegen $ c \in \ell^2(J) $ existiert ein $ F_\varepsilon $, sodass 
+	\begin{align*}
+	\sum \limits_{j \in J} |c_j|^2 - \sum \limits_{j \in F} |c_j|^2 
+	=
+	\sum \limits_{j \notin F} |c_j|^2 < \frac{\varepsilon}{\sqrt{B}}
+	\end{align*}
+	für alle endlichen $ F \supseteq F_\varepsilon $ gilt. Wir fixieren ein solches $ F $ und definieren $ c_F = c \cdot \chi_F \in \ell^2(J) $, wodurch
+	\begin{align*}
+	c_{F,j} =
+	\begin{cases}
+	1 , &\quad j \in F\\
+	0 , &\quad j \notin F
+	\end{cases}
+	\end{align*}
+	gilt. Dann folgt $ D c_F = \sum \limits_{j \in F} c_j e_j $ und
+	\begin{align*}
+	\left\| f - \sum \limits_{j \in F} c_j e_j \right\|
+	=
+	\| D ( c- c_F) \|
+	\leq 
+	 \sqrt{B} \| c - c_F \|_2 < \varepsilon
+	\end{align*}
+	die Aussage.
+\end{proof}
+
+\begin{lem}
+	Sei $ (e_j)_{j \in J} $ ein Frame mit dem Schranken $ A,B $. Dann ist der duale Frame mit den Schranken $ B^{-1}, A^{-1} $ durch $ (S^{-1} e_j)_{j \in J} $ gegeben.
+	Jedes $ f \in \H $ besitzt die nicht-orthogonalen Entwicklungen
+	\begin{align}\label{eq:frames_non_orthogonal_expansion}
+	f = 
+	\sum \limits_{j \in J} \langle f , S^{-1} e_j \rangle e_j
+	=
+	\sum \limits_{j \in J} \langle f , e_j \rangle   S^{-1} e_j,
+	\end{align}
+	wobei beide Summen unbedingt in $ \H $ konvergieren.
+\end{lem}
+
+\begin{proof}
+		Zunächst erhalten wir 
+		\begin{align*}
+		\sum \limits_{j \in J}
+		| \langle f, S^{-1} e_j \rangle |^2
+		=
+		\sum \limits_{j \in J}
+		| \langle S^{-1} f,  e_j \rangle |^2
+		= \langle S ( S^{-1} f ), S^{-1} f \rangle 
+		= \langle  S^{-1} f ,  f \rangle
+		\end{align*}
+		mithilfe der Selbstadjungiertheit und Invertierbarkeit von $ S $.
+		Aus \eqref{eq:frame_operator_inequal} erhalten wir
+		\begin{align*}
+		B^{-1} \| f \|^2 \leq \langle S^{-1} f ,f \rangle 
+		\leq A^{-1} \| f \|^2
+ 		\end{align*}
+ 		für alle $ f \in \H $. 
+		Damit ist $ (S^{-1 } e_j)_{j \in J} $ ein Frame mit den Schranken $ B^{-1} $ und $ A^{-1} $.
+		Unter der Verwendung von $ I_\H = S^{-1 } S =
+		S S^{-1} $ erhalten wir die Entwicklungen
+		\begin{align*}
+		f &= S (S^{-1} f) =
+		\sum \limits_{j \in J}
+		\langle S^{-1} f, e_j \rangle e_j
+		=
+		\sum \limits_{j \in J}
+		\langle  f,  S^{-1}e_j \rangle e_j \\
+		f &=
+		S^{-1}(S f )=
+		S^{-1}\left( \sum \limits_{j \in J} \langle f, e_j \rangle e_j \right)
+		=
+		\sum \limits_{j \in J} \langle f, e_j \rangle S^{-1} e_j.
+		\end{align*}
+		Da die Folgen $ ( \langle f, e_j \rangle )_{j \in J} $ und $ ( \langle f, S^{-1} e_j \rangle )_{j \in J} $ in $ \ell^2(J) $ liegen, folgt mit dem letzten Lemma die unbedingte Konvergenz beider Entwicklungen in $  \H $.
+\end{proof}
+
+\begin{lem}
+	Sei $ (e_j)_{j \in J} $ ein Frame von $ \H $ mit
+	$ f = \sum_{j \in J} c_j e_j $ für ein $ c \in \ell^2(J) $.
+	Dann gilt $ \| c \|_2 \geq \| a \|_2^2 $ für $ a = (\langle f, S^{-1} e_j \rangle)_{j \in J} $ und die Gleichheit ist genau dann erfüllt, wenn  $ c = a  $ gilt.
+\end{lem}
+
+\begin{proof}
+	Mit \eqref{eq:frames_non_orthogonal_expansion} und $ f = \sum_{j \in J} c_j e_j $ erhalten wir 
+	\begin{align*}
+	\langle f, S^{-1} f \rangle
+	=
+	\sum \limits_{j \in J} \langle f, S^{-1} e_j \rangle \overline{
+		\langle f, S^{-1} e_j \rangle
+		}
+	=\| a \|^2_2 = \langle c, a \rangle.
+	\end{align*}
+	Durch direktes Nachrechnen folgt dann
+	\begin{align*}
+	\| c \|^2_2
+	=
+	\| c -a + a \|_2^2 
+	=
+	\| c-a\|_2^2 + \|a \|_2^2
+	\geq 
+	\|a \|_2^2
+	\end{align*}
+	die gewünschte Aussage.
+\end{proof}
+
+\begin{sz}
+	Sei $ (e_j)_{j \in J} $ ein Frame von $ \H $.
+	Dann sind folgende Aussagen äquivalent:
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item Die Koeffizienten $ c \in \ell^2(J) $ in der Reihenentwicklung
+		\begin{align*}
+		f = \sum \limits_{j \in J} \langle f, S^{-1} e_j \rangle e_j
+		\end{align*}
+		für $ f \in \H $ sind eindeutig.
+		
+		\item
+		Der Koeffizientenoperator $ C : \H \to \ell^2(J) $ ist bijektiv.
+		
+		\item
+		Es existieren $ A^\prime , B^\prime > 0 $, sodass
+		\begin{equation}\label{eq:frame_equivalence_1}
+		A^\prime \| c \|_2
+		\leq
+		\left\| \sum \limits_{j \in J} c_j e_j \right\|
+		\leq 
+		B^\prime \|c\|_2
+		\end{equation}
+		für alle endlichen Folgen $ c $ erfüllt ist.
+		
+		\item
+		Die Folge $ (e_j)_{j \in J} $ ist das Bild eines Orthonormalsystems $ (f_j)_{j \in J} $
+		unter einem beschränkten invertierbaren Operator $ T$.
+		
+		\item
+		Die Grammatrix $ G $, welche durch
+		$ G_{jm} = \langle e_m , e_j  \rangle$ für $ j,m \in J $
+		gegeben ist,
+		definiert einen invertierbaren positiven Operator auf $ \ell^2(J) $.		
+		\end{enumerate}
+\end{sz}
+
+\begin{proof}
+	Zunächst bemerken wir, dass der Operator $ C $
+	nach \ref{skript:2.3} beschränkt und injektiv mit abgeschlossenem Bild ist.
+	Desweiteren ist $ D $ nach \eqref{eq:frames_non_orthogonal_expansion}	
+	surjektiv ist.
+	Für jeden beschränkten linearen Operator $ A $
+	gilt
+	\begin{align*}
+	\Bild(A)^\perp = \Kern(A^\prime).
+	\end{align*}
+	Damit ist $ A^\prime $ genau dann injektiv, wenn $ \Bild(A) $ dicht ist.
+	\begin{description}
+		\item[\textbf{\textit{ \itshape\textrm{(i)}}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(ii)}}}:]
+		Die Eindeutigkeit der Koeffizienten ist äquivalent zur Injektivität des Operators
+		\begin{align*}
+		D : \ell^2(J) \to \H , c \mapsto
+		\sum \limits_{j \in J} c_j e_j.
+		\end{align*}
+		Wegen $ C^\prime = D $ ist dies äquivalent zu 
+		\begin{align*}
+		\Bild(C)^\perp = \Kern(D) = \{0\},
+		\end{align*}
+		womit $ C  $ aufgrund der Abgeschlossenheit des Bildes surjektiv ist.
+		
+		\item[\textbf{\textit{ \itshape\textrm{(i)}}} $ \Rightarrow $ \textbf{\textit{\textrm{(iii)}}}:]
+		Die Stetigkeit von $ D $ liefert mit
+		\eqref{eq:reconstruction_operator_cont_bound}
+		die Konstante $ B^\prime $.
+		Wegen der Eindeutigkeit der Koeffizienten ist $ D $ bijektiv.
+		Nach dem Inverse Mapping-Theorem ist dann auch $ D^{-1} : \H \to \ell^2(J) $ stetig.
+		Sei nun $ f = \sum_{j \in J} c_j e_j $. Dann erhalten wir mit
+		\begin{align*}
+		\frac{1}{\| D^{-1} \|} \|c \|_2 \leq \| f \|
+		\end{align*}
+		die Abschätzung nach unten.
+		
+		\item[
+		\textbf{\textit{ \itshape\textrm{(iii)}}} 
+		$ \Rightarrow $ \textbf{\textit{\textrm{(iv)}}}:]
+		Sei $ (f_j)_{j \in J} $ ein Orthonormalsystem von $ \H $. Dann gilt
+		\begin{align*}
+			f = \sum \limits_{j \in J} c_j f_j
+		\end{align*}
+		mit $ \| f \| = \| c \|_2 $ und wir definieren
+		\begin{align*}
+		T f := \sum \limits_{j \in J} c_j e_j.
+		\end{align*}
+		Da jede $ \ell^2 $- Folge durch endliche Folgen approximiert werden kann, folgt mit der Stetigkeit von $ D $ und der Normen, dass \eqref{eq:frame_equivalence_1} auch für beliebige $ c \in \ell^2 $ erfüllt ist. Damit gilt 
+		\begin{align*}
+		A \|c\|_2 \leq \| T f \| \leq B \| c \|_2,
+		\end{align*}
+		für $ A,B > 0 $. Also ist $ T $ stetig, invertierbar und es gilt $ T f_j = e_j $.
+		
+		\item[
+		\textbf{\textit{ \itshape\textrm{(iv)}}} 
+		$ \Rightarrow $ \textbf{\textit{\textrm{(i)}}}:]
+		Sei $ T : \H \to \H $ ein invertierbarer stetiger Operator mit $ T f_j = e_j $ für ein Orthonormalsystem $ (f_j)_{j \in J} $.
+		Dann gilt 
+		\begin{align*}
+		D c = 
+		T \left( \sum \limits_{j \in J} c_j f_j\right) T(f) = 0
+		\end{align*}
+		genau dann, wenn $ c_j = 0 $ für alle $ j \in J $ gilt.
+		Damit ist $ D $ injektiv, womit die Koeffizienten eindeutig sind.
+		
+		\item[
+		\textbf{\textit{ \itshape\textrm{(iii)}}} 
+		$ \Leftrightarrow $ \textbf{\textit{\textrm{(v)}}}:]
+		Zunächst gilt
+		\begin{align*}
+		\langle Gc ,c \rangle
+		=
+		\sum \limits_{j,m \in J} \langle e_m, e_j \rangle c_m \overline{c_j}
+		=
+		\left\| \sum \limits_{m \in J} c_m e_m \right\|^2 
+		\end{align*}
+		für $ c \in \ell^2(J) $.
+		Mit 
+		\begin{align*}
+		((Gc)_j)_{j \in J}
+		= \left( \left\langle \sum \limits_{m \in J } c_m e_m , e_j \right\rangle\right)_{j \in J}
+		=C \circ D (c) 
+		\end{align*}
+		ist $ G = C \circ D $ stetig. Da endliche Folgen dicht in $ \ell^2(J) $ liegen, erhalten wir 
+		\begin{align*}
+		A \|  c \|^2_2 \leq \langle Gc,c \rangle \leq B \| c \|_2^2,\quad   A,B > 0 
+		\end{align*}
+		für alle $ c \in \ell^2(J) $. Damit ist $ G $ ein positiver invertierbarer Operator.
+		Die Argumentation ist analog zu \ref{skript:2.3}.
+		Die Rückrichtung folgt unmittelbar aus der Stetigkeit.
+	\end{description}
+\end{proof}
+
+
+\begin{lem}
+	\begin{enumerate}
+		\item
+		Sei $ (e_j)_{j \in J} $ ein dichter Frame mit $ A = B = 1 $ und $ \|e_j \| = 1 $ für alle $ j \in J $.
+		Dann ist $ (e_j)_{j \in J} $ ein Orthonormalsystem.
+		
+		\item
+		Sei $ (e_j)_{j \in J} $ ein Frame.
+		Dann ist $ (S^{-\frac{1}{2} e_j})_{j \in J} $ ein dichter Frame mit den Schranken $ A = B = 1 $.
+		
+		\item 
+		Sei $ (e_j)_{j \in J} $ ein Frame.
+		Dann ist der \textit{inverse Frameoperator} $ S^{-1} $ durch
+		\begin{equation}
+		S^{-1} f
+		=
+		\sum \limits_{j \in J} \langle f, S^{-1} e_j \rangle S^{-1} e_j
+ 		\end{equation}
+ 		gegeben. Damit ist $ S^{-1} $ der Frameoperator zu dem dualen Frame $ (S^{-1} e_j)_{j \in J} $. 	 
+	\end{enumerate}
+	
+	
+\end{lem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Mit \eqref{eq:frame_definition} erhalten wir
+		\begin{align*}
+		1 = \| e_m \|^2 = \sum \limits_{j \in J} | \langle e_m,e_j \rangle|^2 
+		= 1 + \sum \limits_{j \neq m} | \langle e_m,e_j \rangle|^2.
+		\end{align*}
+		Damit gilt $ \delta_{mj} = \langle e_m,e_j \rangle $ und $ (e_j)_{j \in J} $ ist ein Orthonormalsystem.
+		
+		
+		\item
+		\textcolor{red}{\textbf{Fehlt.}} 
+		
+		\item 
+		Folgt direkt durch:
+		\begin{align*}
+		S^{-1} f = S^{-1} S (S^{-1} f) = 
+		\sum \limits_{j \in J}
+		\langle f, S^{-1} e_j \rangle S^{-1} e_j
+		\end{align*}
+		
+	\end{enumerate}
+\end{proof}

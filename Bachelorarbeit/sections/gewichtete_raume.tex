@@ -1,0 +1,644 @@
+\section{$ L^{p,q}_m $-Räume}
+
+In diesem Abschnitt werden wir gewichtete $ \L^p $-Räume mit gemischten Normen betrachten und  übertragen die bekannten Eigenschaften der $ \L^p $-Räume auf diese Räume. 
+%Die Definition der Modulationsräume $ \M_m^{p,q} $ hat die Form
+Die Modulationsräume werden über die Norm 
+\begin{align*}
+\| f \|_{\M_m^{p,q}} := \| V_g f \|_{\L_m^{p,q}}
+\end{align*}
+definiert. 
+Also ist es naheliegend, dass wir uns zunächst mit den Eigenschaften von $ \L_m^{p,q} $ beschäftigen.
+
+
+
+\begin{df}\label{weight_function}
+	Eine Funktion $ v $ auf $ \R^{2d} $ heißt \textit{Gewichtsfunktion}, falls $ v \in \L^1_\mathrm{loc}(\R^{2d}) $ und $ v \geq 0 $ gilt.
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Eine Gewichtsfunktion $ v $ heißt \textit{submultiplikativ}, falls
+		\begin{equation}\label{submultiplicative_weight}
+		v(z_1 + z_2) \leq v(z_1) \cdot v(z_1)
+		\end{equation}
+		für $ z_1, z_2 \in \R^{2d} $ gilt.
+	
+		\item
+		Eine Gewichtsfunktion $ m $ heißt $ v $-\textit{moderiert}, falls ein $ C > 0 $ existiert, sodass
+		\begin{equation}\label{eq:v_moderate}
+		m(z_1 + z_2)\leq C v(z_1) m(z_2)
+		\end{equation}
+		für $ z_1, z_2 \in \R^{2d} $ gilt.
+		
+		\item
+		Die Gewichtsfunktionen $ m_1, m_2 $ heißen \textit{äquivalent}, falls
+		ein $ C > 0 $ existiert, sodass
+		\begin{equation}\label{equivalence_weights}
+		C^{-1} m_1(z) \leq m_2(z) \leq C m_1(z)
+		\end{equation}
+		für $ z \in \R^{2d} $ gilt. 
+		Wir schreiben hierfür $ m_1 \asymp m_2 $.
+	\end{enumerate}
+\end{df}
+
+
+Angenommen, es existiert ein $ z_1  \in \R^{2d}$ mit $ m(z_1) = 0 $.
+Dann gilt
+\begin{align*}
+m(z_1 + z_2) \leq C v(z_2) m(z_1) = 0
+\end{align*}
+für ein beliebiges $ z_2 \in \R^{2d} $ und damit auch $ m= 0 $.
+Da eine submultiplikative Gewichtsfunktion $ v $ sich selbst moderiert, werden wir $ v,m > 0 $ voraussetzen.
+Wegen $ v(0) \leq (v(0))^2 $ gilt $ v(0) \geq 1 $. 
+Insbesondere folgt damit wegen $ v(z - z) \leq (v(z))^2 $
+auch $ v(z) \geq 1 $.  
+
+\newpage
+\begin{lem}\label{th:submult_cont_symm}
+	Sei $ v $ eine submultiplikative Gewichtsfunktion und $ \psi \geq 0  $ eine beliebige kompakt getragene stetige Funktion ungleich der Nullfunktion.
+	Dann gelten:
+	\vspace{-0.1cm}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item $ v \ast \psi $ ist stetig und es gilt $ v \ast \psi \asymp v $.
+		\item $ \tilde{v}(x,\omega) := \max\lbrace v(x,\omega),v(-x,\omega), v(x,-\omega), v(-x,-\omega) \rbrace$ ist symmetrisch. Das heißt
+		\begin{align}
+		\tilde{v}(x, \omega)
+		= 
+		\tilde{v}(-x,\omega)
+		=
+		\tilde{v}(x,-\omega)
+		=
+		\tilde{v}(-x,-\omega)
+		\end{align} 
+		ist für alle $ x,\omega \in \R^d $ erfüllt.
+	\end{enumerate} 
+\end{lem}
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Die Stetigkeit folgt direkt aus
+		\begin{align*}
+		(v \ast \psi)(z_n) 
+		= \int \limits_{\R^{2d}} v(y) \psi(z_n-y) \td{y}
+		\ \rightarrow \
+		(v \ast \psi)(z_0)
+		\end{align*}
+		für $ z_n \to z_0 $.
+		Wir müssen nun zeigen, dass
+		\begin{align*}
+		\frac{1}{C} v  \leq  \psi \ast v \leq C v  
+		\end{align*}
+		gilt.
+		Der rechte Teil der Ungleichung folgt durch
+		\begin{align*}
+		(\psi \ast v)(z) = 
+		\int \limits_{\R^{2d}} \psi(y) v(z - y) \td{y}
+		\leq
+		\underbrace{\max \limits_{y \in \supp  \ \psi}  \psi(y)
+			\int \limits_{ \supp  \ \psi} v(-y) \td{y}
+			}_{=: C_2} \cdot v(z)
+		\end{align*}
+		unter Verwendung der Submultiplikativität und der Stetigkeit über dem kompakten Träger.
+		Wegen 
+		\begin{align*}
+		v( 0 ) = v(z- z) \leq v(z) v(-z)
+		\ \Leftrightarrow \
+		\frac{1}{v(z)} \leq \frac{v(-z)}{v(0)}
+		\end{align*}
+		erhalten wir $ \nicefrac{1}{v} \in \L^1_\mathrm{loc}(\R^{2d}) $.
+		Des Weiteren benötigen wir 
+		\begin{align*}
+			v(z-y) v(y) \geq v(z-y+y) = v(z)
+		\end{align*}
+		für die linke Abschätzung. 
+		Wir wählen ein $ y_0  $ mit $ \psi(y_0 ) > 0 $.
+		Dann existiert ein $ \delta > 0  $ mit $ \psi(y) \geq \frac{1}{2} \psi(y_0) $
+ 		für alle $ y \in B_\delta(y_0) $.
+		Nun folgt:
+		\begin{align*}
+		(\psi \ast v)(z) 
+		\geq 
+		\int \limits_{\overline{B_\delta(y_0)}} \psi(y) \frac{v(z)}{v(y)} \td{y}
+		\geq 
+		\underbrace{\min \limits_{y \in B_\delta(y_0)} \psi(y) 
+		\int \limits_{\overline{B_\delta(y_0)}} \frac{1}{v(y)} \td{y}}_{=: C_1}
+		 \cdot v(z).
+		\end{align*}
+		Mit der Wahl $ C := \max \lbrace C_1^{-1}, C_2 \rbrace $ folgt dann die gewünschte Aussage.
+		\item Diese Aussage ist klar.
+		
+	\end{enumerate}
+\end{proof}
+Nun können wir submultiplikative Gewichtsfunktionen allgemein als stetig und symmetrisch voraussetzen. Wir werden von nun an mit $ v $ eine submultiplikative und mit $ m $ eine $ v $-moderate Gewichtsfunktion bezeichnen.
+In dieser Arbeit betrachten wir polynomielle Gewichte, d.h.
+\begin{align}\label{eq:poly_weight}
+v_s(z) = (1+|z|)^s
+=
+\left( 1 + \left( \sum \limits_{j=1}^{2d} z_j^2 \right)^{\frac{1}{2}} \right)^s
+= (1 +  (|x|^2 + |\omega|^2)^\frac{1}{2})^s
+\end{align}
+für $ z= (x,w) \in \R^{2d} $ und $ s > 0 $.
+
+\begin{lem}\label{th:equivalence_poly_weight}
+	Die Gewichte $ (1 + |x| + |\omega|)^s $ und $ (1 + |z|^2)^{\frac{s}{2}} $
+	sind äquivalent zu $ v_s $.
+\end{lem}
+
+\begin{proof}
+	Wir erhalten die Äquivalenz von $ (1 + |z|^2)^{\frac{s}{2}}  $ und $ (1+|x|+|\omega|)^s $ durch das asymptotische Verhalten von
+	\begin{align*}
+	\frac{1+ |z|^2}{(1 + |x| + |\omega|)^2}
+	=
+	\frac{1+ |x|^2 + |\omega|^2}{(1 + |x| + |\omega|)^2}.
+	\end{align*}
+	Die zweite Äquivalenz folgt analog aus dem Verhalten von 
+	\begin{align*}
+	\frac{1+ |z|^2}{(1+|z|)^2}. 
+	\end{align*}
+	Damit sind alle drei Gewichte zueinander äquivalent.
+\end{proof}
+
+
+
+
+\begin{lem}\label{korrolary_1_weightfunctions}
+	
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item
+		Sei $ m $ eine $ v-$ moderierte Gewichtsfunktion. Dann ist
+		\begin{align}\label{eq:v_mod_prop_1}
+		\frac{1}{C} \frac{m(z)}{v(t)} \leq m(z- t) \leq Cv(t) m(z)
+		\end{align}
+		erfüllt. Damit folgt
+		\begin{align}\label{eq:v_mod_prop_3}
+		\frac{1}{\tilde{C} v(z) } \leq m(z) \leq \tilde{C}   v(z)
+		\end{align}
+		für $ z \in \R^{2d} $ und es gilt
+		\begin{align}\label{eq:v_mod_prop_2}
+		\frac{1}{C^\prime} m(l)\leq m(z) \leq C^\prime m(l)
+		\end{align}
+		für alle $ z \in l + [0,1]^{2d} $ mit $ l \in \Z^{2d} $.
+		
+		\item 
+		Die polynomiellen Gewichte $ v_s $ sind submultiplikativ.
+		Desweiteren sind $ v_t $ und $ (v_t)^{-1} $ für $ 0 \leq t \leq s $ von $ v_s $ moderiert.
+		
+%		\item
+%		Sei $ s > 2d $. Dann gilt
+%		\begin{equation}\label{eq:poly_weight_1}
+%		\left( \frac{1}{v_s} \ast \frac{1}{v_s}\right)(z) \leq  C_s \frac{1}{v_s}(z).
+%		\end{equation}
+%		 
+	\end{enumerate}
+	
+\end{lem}
+
+\begin{proof}
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item
+		Seien $ z,t \in \R^{2d} $ beliebig.
+		Dann gelten nach Definition
+		$ m(z-t) \leq C m(z) v(t) $ und
+		\begin{align*}
+		m(z -t + t) \leq C m(z-t) v(t) 
+		\ \Leftrightarrow \
+		\frac{1}{C v(t)} m(z) \leq m(z-t). 
+		\end{align*}
+		Wir erhalten \eqref{eq:v_mod_prop_3} durch $ z = 0 $ und $ t = - w $.
+		Sei nun $ z = w + l  $, wobei $ w \in [0,1]^{2d} $ und $ l \in \Z^{2d} $.
+		Dann gilt $ m(z) \leq C m(l) v(w) $ und
+		\begin{align*}
+		m(l - w + w) \leq C m(z) v(w)
+		\ \Leftrightarrow \
+		\frac{1}{C v(w)} m(l) \leq m(z). 
+		\end{align*}
+		Mit $ C^\prime := C \max_{w \in [0,1]^{2d}} v(w) $ erhalten wir \eqref{eq:v_mod_prop_2}.
+		
+		\item
+		Sei $ 0 \leq t \leq s $. Dann gilt wegen $ 1 + |z_1 + z_2|\leq (1+|z_1|)(1+|z_2|) $ auch
+		\begin{align*}
+		v_t(z_1 + z_2)
+		\leq
+		v_t(z_1) v_t(z_2)
+		\leq 
+		v_t(z_1) v_s(z_2). 
+		\end{align*}
+		Damit ist $ v_s $ submultiplikativ und $ v_t $ wird von $ v_s $ moderiert.
+		Durch eine Äquivalenzumformung erhalten wir
+		\begin{align*}
+		(v_t(z_1))^{-1} \leq (v_t(z_1 + z_2))^{-1} v_s(z_2)
+		\end{align*}
+		mit $ z_1 = w_1 + w_2 $ und $ z_2 = -w_2 $, dass $ (v_t)^{-1} $ von $ v_s $ moderiert wird.
+		
+%		\item 
+%		\textcolor{red}{\textbf{noch ausführen falls nötig.}}
+	\end{enumerate}
+\end{proof}
+
+\begin{df}\label{df:mixed_norm}
+	Sei $ m $ eine Gewichtsfunktion auf $ \R^{2d} $. 
+	\begin{enumerate}[label =\textbf{(\roman*)}]
+		\item 
+		Wir sagen eine messbare Funktion $ F : \R^{2d} \to \C $ liegt
+		in dem gewichteten Mischnormraum $ \L^{p,q}_m(\R^{2d}) $, falls
+		\begin{align*}
+		\| F \|_{\L^{p,q}_m} :=
+		\left(		
+		\ \int \limits_{\R^{2d}} 
+		\left(
+		\ \int \limits_{\R^{2d}}
+		|F(x,\omega)|^p m(x,\omega)^p \td{x} 
+		\right)^{\frac{q}{p}}
+		\td{\omega}
+		\right)^{\frac{1}{q}} < \infty
+		\end{align*}
+		erfüllt ist.
+		Wenn $ p = q $ gilt, erhalten wir den gewichteten $ \L^p $-Raum auf $ \R^{2d} $ und wir schreiben
+		$ \L^p_m(\R^{2d}) := \L^{p,p}_m(\R^{2d}) $.
+	\end{enumerate}
+	
+	\begin{enumerate}
+		\item[\textbf{(ii)}]
+		Falls $ p = \infty $ oder $ q = \infty $ ersetzen wir die entsprechende Norm durch die $ \infty $-Norm, d.h.
+		\begin{align*}
+		\| F \|_{\L^{ \infty,q}_m} &:=
+		\left(  \
+		\int 
+		\limits_{\R^{d}}
+		\left(
+		\esssupp \limits_{x \in \R^d} |F(x,\omega)| m(x,\omega) 
+		\right)^{q}
+		\td{\omega}
+		\right)^{\frac{1}{q}}\\
+		\| F \|_{\L^{ p, \infty}_m} &:=
+		\esssupp \limits_{\omega \in \R^d}
+		\left( \ 
+		\int \limits_{\R^{d}}
+		|F(x,\omega)|^p m(x,\omega)^p \td{x} 
+		\right)^{\frac{1}{p}}.
+		\end{align*}
+		Für $ p  = q = \infty  $ definieren wir $ L^\infty_m(\R^{2d})  $ über die Norm
+		\begin{align*}
+		\| F \|_{\L^{ \infty}_m} &:=
+		\esssupp \limits_{z \in \R^{2d}}
+		|F(z)| m(z).
+		\end{align*}
+		Auch hier liegt $ F $ in den entsprechenden Räumen, falls die Norm endlich ist.
+	\end{enumerate}
+\end{df}
+
+Wenn der Zusammenhang klar ist, werden wir im weiteren Verlauf $ \L^{p,q}_m $ anstatt $ \L^{p,q}_m(\R^{2d}) $ schreiben. Analog werden wir mit den anderen Räumen vorgehen.
+
+\begin{sz}\label{hoelder_mixed_norm}
+	Seien $ 1 \leq p,q \leq \infty  $, $ F \in \L^{p,q}_m $ und $ H  \in \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}$
+	mit $ \nicefrac{1}{p} + \nicefrac{1}{p^\prime}=1=
+	\nicefrac{1}{q} + \nicefrac{1}{q^\prime} $.
+	Dann gilt die \textit{Hölder-Ungleichung}
+	\begin{align}\label{eq:hoelder_mixed_norm}
+	\left|
+	\
+	\int \limits_{\R^{2d}} 
+	F(z) \overline{H(z)} 
+	\td{z}
+	\right|
+	\leq 
+	\| F \cdot H \|_{\L^1}
+	\leq 
+	\| F \|_{\L^{p,q}_m} 
+	\| H \|_{\L^{p^\prime, q^\prime}_{\nicefrac{1}{m}}}
+	\end{align}
+	und $ F \cdot H \in \L^1 $.
+\end{sz}
+
+\begin{proof}
+	Unser Ziel ist es, die Hölder-Ungleichung direkt zu übertragen. Es gelten\\
+	$ F(\cdot, \omega) m(\cdot \omega) \in \L^p(\R^d) $ und $ H(\cdot , \omega) \nicefrac{1}{m(\cdot, \omega)} \in \L^{p^\prime}(\R^d) $ für fast alle $ \omega \in \R^d $.
+	Damit erhalten wir durch zweimaliges Anwenden der üblichen Hölder-Ungleichung mit
+	\begin{align*}
+	\| F \cdot H \|_{\L^1}
+	&=
+	\int 
+	\limits_{\R^d} 
+	\int 
+	\limits_{\R^d} |F(\cdot, \omega)| m(\cdot,\omega) |H(\cdot,\omega)| \frac{1}{m(\cdot, \omega)} \td{(x,\omega)} \\
+	&\leq 
+	\int \limits_{\R^d}
+	\| F(\cdot , \omega) m(\cdot, \omega) \|_{p}
+	\left\| H(\cdot,\omega) \frac{1}{m(\cdot , \omega)} \right\|_{p^\prime} \td{\omega}
+	\leq 
+%	\| \| F(\cdot , \omega) m(\cdot,\omega) \|_p \|_q
+%	\left\| \left\| H(\cdot,\omega) \frac{1}{m(\cdot , \omega)}\right\|_{p^\prime} \right\|_{q^\prime}
+	 \| F \|_{\L^{p,q}_m} \| H \|_{\L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}}
+	< \infty
+	\end{align*}
+	die gewünschte Aussage.
+\end{proof}
+
+\newpage
+
+\begin{sz}\label{minkowski_mixed_norm}
+	Sei $ 1 \leq p,q \leq \infty  $ und $ F,G \in \L^{p,q}_m $.
+	Dann gilt mit
+	\begin{align*}
+	\| F + G \|_{\L^{p,q}_m} \leq \| F \|_{\L^{p,q}_m} + \| G \|_{\L^{p,q}_m} 
+	\end{align*}
+	die \textit{Minkowski-Ungleichung}.
+\end{sz}
+
+\begin{proof}
+	Diese Ungleichung folgt wieder durch Anwenden der üblichen Minkowski-Ungleichung. Wir erhalten mit
+	\begin{align*}
+	\| F + G \|_{\L^{p,q}_m}^q
+	&=
+	\int 
+	\limits_{\R^d}
+	\| (F+G)(\cdot, \omega) m(\cdot, \omega) \|_p^q \td{\omega} 
+	\leq 
+	\int 
+	\limits_{\R^d}
+	(\| F(\cdot, \omega) m(\cdot, \omega) \|_{p} + \| G(\cdot, \omega) m(\cdot, \omega) \|_{p})^q \td{\omega}\\
+	&\leq
+	(\| F \|_{\L^{p,q}_m} + \| G\|_{\L^{p,q}_m})^q
+	\end{align*}
+	die gewünschte Aussage.
+\end{proof}
+
+
+\begin{sz}
+	Sei $ 1 \leq p,q \leq \infty  $. Dann ist $ \L^{p,q}_m $ ein Banachraum.
+\end{sz}
+
+\begin{proof}
+	Sei $ (F_k)_{k \in \N} $ ein Folge in $ \L_m^{p,q} $ und $ \sum_{k=1}^\infty F_k $ absolut konvergent. Wir setzen $ \| \cdot \| := \| \cdot \|_{\L^{p,q}_m} $. 
+	Wir betrachten nun 
+	\begin{align*}
+	(x,\omega) \mapsto \sum \limits_{k=1}^\infty | F_k(x,\omega) | = G(x,\omega)
+	\end{align*}
+	und setzen $ G_n(x, \omega) = \sum_{k=1}^n | F_k(x,\omega) | $.
+	Dann ist $ G_n \in \L^{p,q}_m $ und die Minkowski-Ungleichung liefert
+	\begin{align*}
+	\| G_n \| \leq \sum \limits_{k=1}^n \| F_k \| 
+	\leq \sum \limits_{k=1}^\infty \| F_k \| = a 
+	\end{align*}
+	mithilfe der absoluten Konvergenz. Unser nächstes Ziel, ist es den Satz der monotonen Konvergenz anzuwenden. Durch zweimaliges Anwenden erhalten wir 
+	\begin{align*}
+	\int \limits_{\R^d} \left( \ \int \limits_{\R^d}
+	|G(x,\omega)|^p m(x,\omega)^p \td{x}
+	\right)^{\frac{q}{p}} \td{\omega}
+	&=
+	\int \limits_{\R^d} 
+	\lim \limits_{n \to \infty}
+	\left( \ 
+	\int \limits_{\R^d}
+	|G_n(x,\omega)|^p m(x,\omega)^p \td{x} \right)^{\frac{q}{p}} \td{\omega}\\
+	&= \lim \limits_{n \to \infty} \| G_n \|^q \leq a^q,
+	\end{align*}
+	womit $ G $ bis auf eine Nullmenge $ N $ endlich sein muss. Damit ist auch
+	\begin{align*}
+	F(x,\omega) :=
+	\begin{cases}
+	\sum_{k=1}^\infty F_k(x,\omega), &\quad (x,\omega) \in \R^{2d} \setminus N\\
+	\quad \quad  0, \quad &\quad (x, \omega) \in N
+	\end{cases}
+	\end{align*}
+	aufgrund der Vollständigkeit von $ \R $ bzw. $ \C $ eine messbare Funktion.
+	Wegen 
+	\begin{align*}
+	\| F \| \leq \| G  \| < \infty
+	\end{align*}
+	folgt $ F \in \L^{p,q}_m $. Gilt nun noch $ \sum_{k=1}^\infty F_k = F $ bezüglich $ \| \cdot \| $, sind wir fertig.
+	Für
+	\begin{align*}
+	H_n(\cdot, \omega) 
+	:= 
+	\left| \sum \limits_{k=n}^\infty F_k(\cdot, \omega) \right|^p
+	\end{align*}
+	gilt $ | H_n(\cdot,\omega) | \leq G(\cdot, \omega)  $, $ G(\cdot, \omega) \in \L^p $ und $ H_n(x, \omega) \to 0 $ für alle $x, \omega \in \R^d $.
+	Mit majorisierter Konvergenz erhalten wir dann
+	\begin{align*}
+	\| H_n(\cdot, \omega) m(\cdot, \omega) \|_p \to 0
+	\end{align*}
+	für alle $ \omega \in \R^d $. 
+	Außerdem gilt $ \| H_n(\cdot, \omega) m(\cdot, \omega)\|_p 
+	\leq \| G(\cdot, \omega) \|_p$ und $ \| G(\cdot , \omega ) \|_p\in \L^q $.
+	Mit majorisierter Konvergenz folgt dann
+	\begin{align*}
+	\lim \limits_{n \to \infty}
+	\| H_n \|
+	=
+	\lim \limits_{n \to \infty} 
+	\| \| H_n(\cdot , \omega) m(\cdot, \omega) \|_p \|_q
+	=0
+	\end{align*}
+	und somit die gewünschte Aussage.
+\end{proof}
+
+\begin{sz}\label{th:dualtiy_mixed_norm}
+	Seien $1 \leq  p,q < \infty $ und $ \nicefrac{1}{p} + \nicefrac{1}{p^\prime}=1=
+	\nicefrac{1}{q} + \nicefrac{1}{q^\prime} $.
+	Dann gilt $ (\L^{p,q}_m)^\prime = \L^{p^\prime,q^\prime}_m $ und die Dualität ist durch
+	\begin{align}\label{eq:dualtiy_mixed_norm}
+	\langle H,F \rangle
+	=
+	\int 
+	\limits_{\R^{2d}} F(z) \overline{H(z)} \td{z} 
+	\end{align} 
+	für $ F \in \L^{p,q}_m $ und $ H \in \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}  $ gegeben.
+	
+\end{sz}
+
+\begin{proof}
+	Wird bewiesen in \cite{benedek1961}.
+\end{proof}
+
+\newpage
+
+\begin{sz}
+	Seien $ 1 \leq p,q \leq \infty  $ und $ m $ von $ v $ moderiert. Dann ist $  \L^{p,q}_m  $ invariant unter den Translationen $ T_z $ für $ z \in \R^{2d} $ und es gilt
+	\begin{align}\label{eq:invariance_translation_mixed_norm}
+	\| T_z F \|_{ \L^{p,q}_m }
+	\leq C v(z)
+	\| F \|_{\L^{p,q}_m}.
+	\end{align}
+\end{sz}
+
+\begin{proof}
+	Sei $ F \in \L^{p,q}_m $.
+	Mit $ z = (u, \eta) $ erhalten wir direkt
+	\begin{align*}
+	\| T_z F \|_{\L^{p,q}_m}
+	&= 
+	\left(		
+	\ \int \limits_{\R^{2d}} 
+	\left(
+	\ \int \limits_{\R^{2d}}
+	|F(x - u ,\omega - \eta )|^p m(x,\omega)^p \td{x} 
+	\right)^{\frac{q}{p}}
+	\td{\omega}
+	\right)^{\frac{1}{q}}\\
+	&=
+	\left(		
+	\ \int \limits_{\R^{2d}} 
+	\left(
+	\ \int \limits_{\R^{2d}}
+	|F(x,\omega)|^p m(x + u,\omega + \eta )^p \td{x} 
+	\right)^{\frac{q}{p}}
+	\td{\omega}
+	\right)^{\frac{1}{q}}\\
+	&\leq
+	C \left(		
+	\ \int \limits_{\R^{2d}} 
+	\left(
+	\ \int \limits_{\R^{2d}}
+	|F(x,\omega)|^p m(x,\omega)^p v(u, \eta)^p \td{x} 
+	\right)^{\frac{q}{p}}
+	\td{\omega}
+	\right)^{\frac{1}{q}}\\
+	&=
+	C v(z) \|  F \|_{\L^{p,q}_m} < \infty
+	\end{align*}
+	unter Ausnutzung, dass $ m $ von $ v $ moderiert wird.
+\end{proof}
+
+%\begin{sz}\label{attributes_weighted_spaces}
+%	Sei $ m $ eine $ v $-moderierte Gewichtsfunktion und $ 1 \leq p,q \leq \infty  $.
+%	Dann gelten:
+%	\begin{enumerate}
+%		\item $ \L^{p,q}_m $ ist ein Banachraum.
+%		\item $  \L^{p,q}_m  $ ist invariant unter den Translationen $ T_z $ für $ z \in \R^{2d} $ und es gilt
+%		\begin{align*}
+%		\| T_z F \|_{ \L^{p,q}_m }
+%		\leq C v(z)
+%		\| F \|_{\L^{p,q}_m}.
+%		\end{align*}
+%		\item
+%		Sei $ F \in \L^{p,q}_m $ und $ H  \in \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}$
+%		mit $ \nicefrac{1}{p} + \nicefrac{1}{p^\prime}=1=
+%		\nicefrac{1}{q} + \nicefrac{1}{q^\prime} $.
+%		Dann gilt die Hölderungleichung
+%		\begin{align*}
+%		\left|
+%		\
+%		\int \limits_{\R^{2d}} 
+%		F(z) \overline{H(z)} 
+%		\td{z}
+%		\right|
+%		\leq 
+%		\| F \|_{\L^{p,q}_m} 
+%		\| H \|_{\L^{p^\prime, q^\prime}_{\nicefrac{1}{m}}}
+%		\end{align*}
+%		und $ F \cdot H \in \L^1 $.
+%		
+%		\item
+%		Sei $ p,q < \infty $.
+%		Dann gilt $ (\L^{p,q}_m)^\star = \L^{p^\prime,q^\prime}_m $ und die Dualität ist durch
+%		\begin{align*}
+%		H(F) 
+%		= 
+%		\langle F,H \rangle
+%		=
+%		\int 
+%		\limits_{\R^{2d}} F(z) \overline{H(z)} \td{z} 
+%		\end{align*} 
+%		für $ F \in \L^{p,q}_m $ und $ H \in \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}  $ gegeben.
+%	\end{enumerate}
+%\end{sz}
+%
+%\begin{proof}
+%	\begin{enumerate} 
+%	\item 
+%	\textcolor{red}{\textbf{TODO.}}
+%	\item
+%	Sei $ F \in \L^{p,q}_m $.
+%	Mit $ z = (u, \eta) $ erhalten wir direkt
+%	\begin{align*}
+%	\| T_z F \|_{\L^{p,q}_m}
+%	&= 
+%	\left(		
+%	\ \int \limits_{\R^{2d}} 
+%	\left(
+%	\ \int \limits_{\R^{2d}}
+%	|F(x - u ,\omega - \eta )|^p m(x,\omega)^p \td{x} 
+%	\right)^{\frac{q}{p}}
+%	\td{\omega}
+%	\right)^{\frac{1}{q}}\\
+%	&=
+%	\left(		
+%	\ \int \limits_{\R^{2d}} 
+%	\left(
+%	\ \int \limits_{\R^{2d}}
+%	|F(x,\omega)|^p m(x + u,\omega + \eta )^p \td{x} 
+%	\right)^{\frac{q}{p}}
+%	\td{\omega}
+%	\right)^{\frac{1}{q}}\\
+%	&<
+%	C \left(		
+%	\ \int \limits_{\R^{2d}} 
+%	\left(
+%	\ \int \limits_{\R^{2d}}
+%	|F(x,\omega)|^p m(x,\omega)^p v(u, \eta) \td{x} 
+%	\right)^{\frac{q}{p}}
+%	\td{\omega}
+%	\right)^{\frac{1}{q}}\\
+%	&=
+%	C v(z) \| T_z F \|_{\L^{p,q}_m} < \infty
+%	\end{align*}
+%	unter Ausnutzung, dass $ m $ von $ v $ moderiert wird.
+%	\item 
+%	\textcolor{red}{\textbf{TODO.}}
+%	\item
+%	\textcolor{red}{\textbf{TODO.}}
+%\end{enumerate}
+%\end{proof}
+
+\begin{sz}\label{th:convolution_mixed_norm}
+	Sei $ m $ von $ v $ moderiert, $ F \in \L^1_v $ und $ G \in \L^{p,q}_m $.
+	Dann gilt
+	\begin{align*}
+	\| F \ast G \|_{\L^{p,q}_m}
+	\leq 
+	\| F \|_{\L^1_v} \|G\|_{\L^{p,q}_m},
+	\end{align*}
+	wodurch wir insbesondere
+	$ \L^1_v \ast \L^{p,q}_m \subseteq \L^{p,q}_m $ erhalten.
+\end{sz}
+
+\begin{proof}
+	Sei $ H \in \L^{p^\prime,q^\prime}_{\nicefrac{1}{m}} $. Dann gilt mit Fubini und der Hölder-Ungleichung
+	\begin{align*}
+	| \langle F \ast G , H \rangle |
+	&\leq 
+	\int \limits_{\R^{2d}}
+	\int \limits_{\R^{2d}}
+	| F(w)| |G(z-w)| | H(z)| \td{w} \td{z}
+	=
+	\int \limits_{\R^{2d}}
+	|F(w)|
+	\int \limits_{\R^{2d}}
+	|T_w G(z)| |H(z) |\td{z} \td{w}\\
+	&\leq
+	\int \limits_{\R^{2d}}
+	|F(w)|  
+	\|T_\omega G \|_{\L^{p,q}_m} \| H \|_{\L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}}
+	\td{w}
+	\leq 
+	C \int \limits_{\R^{2d}}
+	|F(w)| v(w)\td{w} \ 
+	\| G \|_{\L^{p,q}_m} \| H \|_{\L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}}\\
+	&=
+	C \| F \|_{\L^1_v}\| G \|_{\L^{p,q}_m} \| H \|_{\L^{p^\prime,q^\prime}_{\nicefrac{1}{m}}}.
+	\end{align*}
+	Wir beachten hier, dass die Einsfunktion von jedem submultiplikativem Gewicht moderiert wird. Insgesamt erhalten wir die Aussage mit 
+	\begin{align*}
+	\qquad \qquad \qquad \qquad \qquad 
+	\| F \ast G \|_{\L^{p,q}_m}
+	= \sup \limits_{\| H \| = 1}
+	|	\langle F\ast G , H \rangle|
+	\leq 
+	C \| F \|_{\L^1_v} \|G\|_{\L^{p,q}_m}.
+	 \qquad
+	\qquad \qquad \qquad \ \ \ \qedhere
+	\end{align*}
+\end{proof}
+
+
+
