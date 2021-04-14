@@ -1,0 +1,83 @@
+\section{Kreisteilungspolynome}
+
+\begin{df}\label{skript:11.1}
+	Sei $K$ ein Körper, $n \geq 1$ und $f(x) = x^n -1 \in K[x]$.
+	Wir nennen
+	\begin{align*}
+	E_n(K) := \lbrace \alpha \in K\ | \ f(\alpha) = 0 \rbrace 
+	\end{align*}
+	die Menge der \bi{$n$-ten Einheitswurzeln}.\index{n-te Einheitswurzel}
+	Mit Multiplikation in $K$ bildet $E_n(K)$ eine endliche,zyklische Untergruppe von $K^\ast$.
+	Die Endlichkeit folgt aus \ref{skript:8.9} und mit \ref{skript:8.10} ist $E_n(K)$ zyklisch.
+	Wir definieren
+	\begin{align*}
+	E_n^\ast := \lbrace \alpha \in E_n \ | \ E_n = \langle \alpha \rangle \rbrace
+	\end{align*}
+	und nennen $\alpha \in E_n^\ast$ \bi{primitve} $n$-te Einheitswurzel.\index{n-te Einheitswurzel!primitiv}
+	Nun definieren wir mit
+	\begin{align*}
+	\Phi_n(K) := \prod_{\alpha \in E_n^\ast} (x - \alpha) \in K[x]
+	\end{align*}
+	das \bi{$n$-te Kreisteilungspolynom} über $K$.\index{n-te Kreisteilungspolynom}		 
+\end{df}
+
+\begin{genericdf}{Beispiele}\label{skript:11.2}
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $K = \Q$, dann gilt $E_n(\Q) = \lbrace \pm 1 \rbrace$ für alle geraden $n$.
+		
+		\item[\textbf{(2)}]
+		Sei $K = \Z / p \Z$, dann gilt $E_p(K) = 1$.
+		Dies folgt aus den kleinen Satz von Fermat gilt
+		\begin{align*}
+		a^p \equiv a \mod p 
+		\end{align*}
+		für alle $a \in \Z$. 
+		
+		\item[\textbf{(3)}]
+		Sei $K = \C$, dann gilt
+		\begin{align*}
+		E_n(\C) = \left\lbrace \left( e^{\frac{2 \pi i}{n}} \right)^k \ | \ 1 \leq k \leq n \right\rbrace
+		\end{align*}
+		und $\zeta = e^{2 \pi i k}$ ist eine primitive $n$-te Einheitswurzel.
+		Nun gilt
+		\begin{align*}
+		\zeta^k \ \text{primitiv} 
+		\Leftrightarrow
+		\ggT(k,n) = 1 
+		\Leftrightarrow
+		\Grad \Phi_n(\C) = \Phi(n),
+		\end{align*}
+		wobei $\Phi$ die Eulerfunktion ist.
+		Für die Kreisteilungspolynome gilt:
+		\begin{align*}
+		\Phi_1 &= x -1 \\
+		\Phi_2 &= x+1  \\
+		\Phi_3 &= 1 + x + x^2 \\
+		\Phi_4 &= x^2 + 1 \\
+		\Phi_5 &= 1 + x + x^2 + x^3 +x^4 + x^5\\
+		\Phi_6 &= x^2 - x +1
+		\end{align*}
+	\end{enumerate}
+\end{genericdf}
+
+\begin{sz}\label{skript:11.3}
+	Sei $K = \C$ und $n \geq 1$.
+	Dann gilt
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		$n = \sum \limits_{d | n} \Phi(d)$.
+		\item[\textbf{(2)}]
+		$\Phi_n \in \Z[x]$ und $x^n - 1 = \prod_{d | n } \Phi_d$.
+	\end{enumerate}
+	Der Beweis ist eine Übungsaufgabe.
+\end{sz}
+
+\begin{sz}\label{skript:11.4}
+	Sei $K = \C$.
+	Dann ist $\Phi_n \in \Z[x]$ irreduzibel für alle $n \geq 1$.
+\end{sz}
+
+\begin{proof}
+	Für den Beweis einfach in das Buch von Geck schauen.
+\end{proof}

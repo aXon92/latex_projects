@@ -1,0 +1,250 @@
+\documentclass[11pt,a4paper]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{makeidx}
+\makeindex
+\usepackage{paralist}
+\usepackage{enumitem} 
+
+%\usepackage {picins}
+\usepackage{color}
+\usepackage{float}
+
+% -- Mathe
+%\usepackage{gensymb}
+%fancyhdr, lastpage, booktabs, xy
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{marginnote}
+\usepackage{MnSymbol}
+\usepackage[left=2cm,top=1.5cm,bottom=3cm,includeheadfoot]{geometry} 
+
+% -- Malen
+\usepackage{tikz}
+
+\usetikzlibrary{patterns, decorations.pathreplacing, decorations.pathmorphing, arrows}
+
+\usepackage{units}
+
+\author{Philipp Beck, Paul Schwahn, Daniel Winkle}
+
+\subtitle{Sommersemester 2016}
+\title{Algebra}
+
+\makeatletter
+\renewcommand*{\thesection}{\arabic{section}}
+\renewcommand*{\p@section}{\thechapter.}
+
+%Befehle für bestimmte mathematische Symbole
+\newcommand{\Gl}{\operatorname{GL}}
+\newcommand{\Sl}{\operatorname{SL}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\ord}{\operatorname{o}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\nt}{\unlhd}
+\newcommand{\td}[1]{\text{\rmfamily d} #1}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Bild}{\operatorname{Im}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\ggT}{\operatorname{ggT}}
+\newcommand{\Syl}{\operatorname{Syl}}
+\newcommand{\Grad}{\operatorname{Grad}}
+\newcommand{\Char}{\operatorname{char}}
+\newcommand{\Quot}{\operatorname{Quot}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+%Mengensymbole
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zn}[1]{\mathbb{Z}/#1\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\i}{\textrm{i}}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+%Big and italic
+\newcommand{\bi}[1]{\textbf{\textit{#1}}}
+
+\newtheoremstyle{exercise}% name
+{15pt}% Space above
+{5pt}% Space below
+{}% Body font
+{}% Indent amount: Indent amount: empty = no indent, \parindent = normal paragraph indent
+{\bfseries}% Theorem head font
+{:}% Punctuation after theorem head
+{0.5em}% Space after theorem head: Space after theorem head: { } = normal interword space; \newline = linebreak
+{}% Theorem head spec (can be left empty, meaning `normal')
+
+
+
+
+
+\newcommand{\thistheoremname}{}
+
+%Satz
+\newtheorem{sz}{Satz}[section]
+
+%Lemma
+\newtheorem{lemma}[sz]{Lemma}
+\newtheorem{gsz}[sz]{\thistheoremname}
+\newtheorem*{gthm_no_num}{\thistheoremname}
+
+
+\theoremstyle{definition}
+\newtheorem{df}[sz]{Definition}
+\newtheorem{gd}[sz]{\thistheoremname}
+
+\newtheorem*{gdf_no_num}{\thistheoremname}
+
+
+\theoremstyle{exercise}
+\newtheorem{exe}{Aufgabe}[section]
+\newtheorem{loes}{Lösung}[section]
+
+%Für Beispiele , Bemerkungen
+%Also alles was wie eine Definition aussehen soll, aber keine ist.
+%\begin{genericdf}{(Hier den Text einfügen)}
+%	Inhalt...
+%\end{genericdf}
+\newenvironment{genericdf}[1]{\renewcommand{\thistheoremname}{#1}\begin{gd}}{\end{gd}}
+%Dasselbe ohne Nummerierung
+\newenvironment{generic_no_num}[1]{\renewcommand{\thistheoremname}{#1}\begin{gdf_no_num}}{\end{gdf_no_num}}
+
+%Hier für Sätze
+\newenvironment{genericthm}[1]{\renewcommand{\thistheoremname}{#1}\begin{gsz}}{\end{gsz}}
+%Analog zu Definitionen
+\newenvironment{genericthm_no_num}[1]{\renewcommand{\thistheoremname}{#1}\begin{gthm_no_num}}{\end{gthm_no_num}}
+\parindent0pt
+%\parskip1ex
+
+
+%----Dokument----
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+
+
+\chapter{Gruppentheorie}
+\input{01_gruppentheorie/01_grundbegriffe.tex}
+\input{aufgaben/01_aufgaben}
+
+\newpage
+\section*{TODO}
+In \ref{skript:2.17} $\Stab_G(gU) = g U g^{-1}$ nachprüfen oder nachfragen.\\
+In \ref{skript:2.17} Notation von $U^g$ nachfragen.
+\input{01_gruppentheorie/02_operationen.tex}
+\input{aufgaben/02_aufgaben}
+
+\newpage
+\section*{TODO}
+Zusammenhang zwischen \ref{skript:2.17} und Bemerkung zwischen \ref{skript:3.9} und \ref{skript:3.10} klären.
+\input{01_gruppentheorie/03_normalteiler_faktorgruppe_homomorph.tex}
+\input{aufgaben/03_aufgaben}
+
+\newpage
+\input{01_gruppentheorie/04_auf_und_einf_gruppen.tex}
+\input{aufgaben/04_aufgaben}
+
+\newpage
+\section*{TODO}
+Beweis zu \ref{skript:5.7} fehlt.
+Beweis zu \ref{skript:5.9} fehlt.
+\input{01_gruppentheorie/05_homomorphiesaetze}
+\input{aufgaben/05_aufgaben}
+\newpage
+\section*{TODO}
+In \ref{skript:6.6} \textbf{(1)} müsste das doch ein entweder oder sein?
+\input{01_gruppentheorie/06_sylowuntergruppen}
+\input{aufgaben/06_aufgaben}
+\section*{TODO}
+Zusammenfassung erstes Kapitel
+
+
+\chapter{Ringtheorie}
+
+\setcounter{section}{6}
+\section*{TODO}
+Das mit den Primzahlen in \ref{skript:7.5} ist noch zu ergänzen.
+\input{02_ringtheorie/07_grundbegriffe}
+\input{aufgaben/07_aufgaben}
+\newpage
+\section*{TODO}
+Im Beweis zu \ref{skript:8.5} befinden sich indirekte Übungsaufgaben -> ergänzen
+\input{02_ringtheorie/08_ideale_und_homomorph}
+\input{aufgaben/08_aufgaben}
+
+\newpage
+\section*{TODO}
+Die letzten zwei Punkte überarbeiten.
+\input{02_ringtheorie/09_fak_ringe}
+\input{aufgaben/09_aufgaben}
+
+\newpage
+\input{02_ringtheorie/10_irr_polynome}
+\input{aufgaben/10_aufgaben}
+
+\newpage
+\input{02_ringtheorie/11_kreisteilungspolynome}
+\input{aufgaben/11_aufgaben}
+
+\newpage
+\input{02_ringtheorie/12_ganze_alge_zahlen}
+
+\chapter{Körpertheorie}
+\setcounter{section}{12}
+\input{03_koerpertheorie/13_koerperw_alg_tran_elem}
+\input{aufgaben/13_aufgaben}
+
+\newpage
+\input{03_koerpertheorie/14_koerperaut}
+
+\newpage
+\input{03_koerpertheorie/15_galoiserweiterungen}
+
+\chapter{Lösungen}
+\input{loesungen/01_loesungen}
+\newpage
+\input{loesungen/02_loesungen}
+\newpage
+\input{loesungen/03_loesungen}
+\newpage
+\input{loesungen/04_loesungen}
+\newpage
+\input{loesungen/05_loesungen}
+\newpage
+\input{loesungen/06_loesungen}
+\newpage
+\input{loesungen/07_loesungen}
+\newpage
+\input{loesungen/08_loesungen}
+\newpage
+\input{loesungen/09_loesungen}
+\newpage
+\input{loesungen/10_loesungen}
+\newpage
+\input{loesungen/11_loesungen}
+\newpage
+\input{loesungen/12_loesungen}
+\newpage
+\input{loesungen/13_loesungen}
+\printindex
+\end{document}

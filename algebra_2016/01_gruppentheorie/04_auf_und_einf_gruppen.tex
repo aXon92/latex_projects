@@ -1,0 +1,234 @@
+\section{Auflösbare und einfache Gruppen}
+
+\begin{df}\label{skript:4.1} \index{Kommutator} \index{Erzeugnis!Kommutator}
+	Sei $ G $ eine Gruppe. Dann nennen wir 
+	\begin{align*}
+	[g,h] := g^{-1}h^{-1}gh \in G
+	\end{align*}
+	den \textbf{\textit{Kommutator}} von $ g $ und $ h $. Mit 
+	\begin{align*}
+	G^\prime := < [g,h] \ | \ g,h \in G >
+	\end{align*}
+	bezeichnen wir das \textbf{\textit{Erzeugnis aller Kommutatoren}}, dieses ist per Definition eine Untergruppe von $ G $.
+	
+\end{df}
+
+\begin{generic_no_num}{Bemerkung} \index{Kommutator!Gruppe} \index{Gruppe!abgeleitet}
+	Wegen
+	\begin{align*}
+	G^\prime = 1 &\Leftrightarrow \forall g,h \in G : \ [g,h]= 1 
+	\Leftrightarrow \forall g,h \in G : \ g^{-1}h^{-1}gh = 1_G
+	\Leftrightarrow \forall g,h \in G : \ gh = hg \\
+	&\Leftrightarrow G \text{ ist abelsch}
+	\end{align*}
+	können wir die Größe von $ G^\prime $ als eine Art \glqq Maß\grqq \ betrachten, wie sehr nicht abelsch $ G $ ist.
+	Wir nennen $ G^\prime $ die \textbf{\textit{Kommutatorgruppe}} von $ G $ oder auch \bi{abgeleitete Gruppe}.
+\end{generic_no_num}
+
+\begin{sz}\label{skript:4.2} \
+	\begin{enumerate}
+		\item[\textbf{(1)}] $ G^\prime \nt G $ und $ G / G^\prime $ ist abelsch.
+		\item[\textbf{(2)}] Ist $ N \nt G $ und $ G / N $ abelsch, so folgt $ G^\prime  \subseteq N $.
+		\item[\textbf{(3)}] Ist $ \varphi : G \to H $ ein surjektiver Gruppenhomomorphismus, dann gilt $ \varphi(G^\prime)  = H^\prime$.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof} \
+	\begin{enumerate}
+		\item[\textbf{(3)}]
+		Sei $ g,k \in G $ beliebig. Dann folgt mit 
+		\begin{align*}
+		\varphi( g^{-1} k^{-1} gk) = \varphi(g)^{-1} \cdot \varphi(k)^{-1} \cdot \varphi(g) \cdot \varphi(k) \in H^\prime,
+		\end{align*}
+		dass $ \varphi(G^\prime) \subseteq H^\prime $.
+		Seien nun $ h_1,h_2 \in H $ beliebig. Da $ \varphi $ surjektiv ist, existieren $ g_1, g_2 \in G $, sodass 
+		$ \varphi(g_1) = h_1 $ und $ \varphi(g_2) = h_2 $ gilt. Damit gilt
+		\begin{align*}
+		\varphi([g_1,g_2]) = \varphi(g_1)^{-1} \cdot \varphi(g_2)^{-1} \cdot \varphi(g_1) \cdot \varphi(g_2) = [h_1,h_2],
+		\end{align*}
+		weshalb jeder Kommutator von $ H $ im Bild von $ G^\prime $ liegt. Somit gilt auch $ H^\prime \subseteq \varphi(G^\prime) $.
+		\item[\textbf{(1)}]
+		Sei $ g \in G $ beliebig. Der innere Automorphismus
+		\begin{align*}
+		\gamma_g : G \to G, \ x \mapsto g^{-1}x g
+		\end{align*}
+		ist surjektiv. Mit \textbf{(3)} gilt $ G^\prime = \gamma_g(G^\prime) = g^{-1} G g $ für alle $ g \in G $.
+		Somit ist $ G^\prime $ invariant unter allen inneren Automorphismen und wir erhalten $ G^\prime \nt G $.
+		Nun ist $ \pi : G \to G / G^\prime $ auch ein surjektiver Homomorphismus.
+		Zunächst gilt 
+		\begin{align*}
+		\pi([g,h]) = [g,h] G^\prime = G^\prime = 1_{G/G^\prime}
+		\end{align*}
+		für alle $ g,h \in G $. Damit folgt $ \pi( G^\prime) = (G / G^\prime )^\prime = 1 $, womit aus unserer Bemerkung folgt, dass $ G /G^\prime  $ abelsch ist.
+		\item[\textbf{(2)}] 
+		Wir betrachten die Faktorabbildung $ \pi : G \to G/N $. Diese ist wiederum surjektiv, womit
+		\begin{align*}
+		\pi ( G^\prime) = (G/N)^\prime = 1
+		\end{align*}
+		folgt, da $ G/N $ abelsch ist. Damit folgt $ G^\prime \subseteq \Ker \pi = N $ und wir sind fertig.
+	\end{enumerate}
+\end{proof}
+
+\begin{df} \label{skript:4.3} \index{Gruppe!auflösbar} \index{Kommutator!Gruppe!i-te}
+	Wir definieren durch
+	\begin{align*}
+	G^{(0)} := G, \ G^{(1)} := G^\prime, \ ... \,G^{(i)} := (G^{(i-1)})^\prime
+	\end{align*}
+	rekursiv Untergruppen von $ G $. Es gilt also $ G^{(i)}  \leq G$ für alle $ i \in \N $.
+	Wir nennen $ G^{i} $ die \bi{$ i $-te Kommutatorgruppe} und $ G $ heißt \bi{auflösbar}, falls ein $ d \in N $ existiert mit $ G^{(d)} = 1 $.
+\end{df}
+
+\begin{generic_no_num}{Bemerkungen} \index{Gruppe!perfekt} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Falls $ G $ abelsch ist, so gilt $ G^{(1)} = G^\prime = 1 $. Also ist $ G $ auflösbar.
+		\item[\textbf{(2)}] 
+		Wir nennen $ G $ \bi{perfekt}, falls $ G = G^\prime $ gilt.
+	\end{enumerate}
+\end{generic_no_num}
+
+\begin{lemma} \label{skript:4.4}
+	Sei $ G $ auflösbar. Dann ist jede Untergruppe von $ G $ auflösbar.
+	Außerdem ist jede Faktorgruppe auflösbar.
+	%Möglicherweise das mit dem Bild ergänzen
+\end{lemma}
+
+\begin{proof}
+	Sei $ U \leq G $, dann ist jeder Kommutator in $ U $ auch ein Kommutator in $ G $. Also gilt $ U^\prime \leq G^\prime $ und durch Iteration erhalten wir $ U^{(i)} \leq G^{(i)} $.
+	Da $ G $ auflösbar ist, existiert ein $ d \in \N $ mit $ G^{(d)} =1 $. Also folgt $ U^{(d)} = 1 $, womit $ U $ auflösbar ist.
+	Den zweiten Teil erhalten wir durch analoges Vorgehen, indem wir \ref{skript:4.2} \textbf{(3)} anwenden. Durch Iteration sehen wir $ G^{(d)} = 1 $, woraus $ (G/N)^{(d)} =1  $ folgt.
+\end{proof}
+
+\begin{lemma} \label{skript:4.5}
+	Eine Gruppe $ G $ ist \textbf{genau dann} auflösbar, \textbf{wenn} eine Folge von Untergruppen der Form
+	\begin{align*}
+	1 = U_0 \leq U_1 \leq ... \leq U_{r-1} \leq U_r = G, \ r \in \N
+	\end{align*}
+	existiert, wobei $ U_{i-1} \nt U_i$ und $ U_i / U_{i-1} $ ist abelsch für alle $ i \in N $ gelten muss.
+\end{lemma}
+
+\begin{proof}
+	Für die Hinrichtung sei $ G $ auflösbar. Wir setzen
+	\begin{align*}
+	1 = U_0 = G^{(d)},...,U_{d-1}= G^\prime = G^{(1)},U_d = G
+	\end{align*}
+	und mit \ref{skript:4.2} folgt iterativ $ U_{i-1} \nt U_{i} $ und $ U_{i} / U_{i-1} $ ist abelsch.
+	Für die Rückrichtung setzen wir die Folge
+	\begin{align*}
+	1 = U_0 \leq U_1\leq ... \leq U_r = G
+	\end{align*}
+	mit den geforderten Eigenschaften voraus. Es gilt $ U_{r-1} \nt G $ und $ G/ U_{r-1} $ ist abelsch. Also folgt mit \ref{skript:4.2} $ G^\prime \subseteq U_{r-1} $. Analog folgt mit $ U_{r-2} \nt U_{r-1} $ und $ U_{r-1} /U_{r-2} $ abelsch, dass $ U_{r-1}^\prime \subseteq U_{r-2} $ gilt. Nun gilt auch 
+	\begin{align*}
+	G^{(2)} = (G^\prime)^\prime \subseteq U_{r-1}^\prime \subseteq U_{r-2}.
+	\end{align*}
+	Setzen wir dieses Verfahren nun fort, erhalten wir $ G^{i} \subseteq U_{r-i} $ für $ 1 \leq i \leq r $. 
+	Zu Schluss gilt dann auch $ G^{r} \subseteq U_0  = 1 $, womit $ G $ auflösbar ist.
+\end{proof}
+
+\begin{genericdf}{Beispiele} \label{skript:4.6} \ \index{kleinsche Vierergruppe}
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $ G=S_3 $, dann gilt $ <(123)> = A_3 \nt S_3$ und $ S_3  / A_3$ ist abelsch.
+	    Aus \ref{skript:4.2} \textbf{(2)} folgt dann $ S_3^\prime  \subseteq A_3 $.
+	    Nun nehmen wir an, dass $ S_3^\prime $ eine echte Teilmenge von $ A_3 $ ist.
+	    Dann müsste aber $ S_3^\prime = 1 $ gelten, womit $ S_3 $ abelsch wäre. Dies ist ein Widerspruch.
+	    Nur wie kommen wir auf diesen Widerspruch? Mit unserer Annahme gilt $ S_3^\prime \subset A_3 $.
+	    Da $ S_3^\prime \leq S_3 $ folgt $ S_3^\prime < A_3 $. Nach dem Satz von Lagrange muss nun $ |S_3^\prime|  $ die Ordnung von $ A_3 $ teilen, es bleibt also nur noch die $ 1 $ als Möglichkeit übrig.
+	    \item[\textbf{(2)}] 
+	    Sei $ G= A_4 $, dann ist
+		\begin{align*}
+		U = \lbrace \id, (12)(34), (13)(24), (14)(23) \rbrace \nt A_4,
+		\end{align*}
+		den alle anderen $ 8 $ Elemente der $ A_4 $ sind $ 3 $-Zykel.
+		Weiter gilt $ |A_4/U| = 3 $, womit $ A_4/U \cong C_3 $ gilt. Da $ A_4/U $ damit abelsch ist folgt mit \ref{skript:4.2} \textbf{(2)}, dass $ A_4^\prime \subseteq  U$ gilt.
+		Es kann nicht $ A_4^\prime = 1 $ gelten, ansonsten wäre $ A_4 $ abelsch. 
+		Nun wissen wir, dass $ A_4^\prime \nt A_4 $ gelten muss. Dafür untersuchen wir nun die Untergruppen von $ U $.
+		Wegen $ (123)(12)(34)(132) \notin A_4 $ ist $ <(12)(34)>  $ kein Normalteiler von $ A_4 $. Wir gehen analog für die anderen Untergruppen der Ordnung $ 2 $ vor und erhalten damit $ A_4^\prime = U $.
+		Übrigens ist $ U $ isomorph zur \bi{kleinschen-Vierergruppe}. 
+		\item[\textbf{(3)}] 
+		Wir sehen in \textbf{(1)} und \textbf{(2)}, dass $ S_3^\prime $ und $ A_4^\prime $ abelsch sind, denn es gilt
+		$ |S_3^\prime |= 3 $ und $ |A_4^\prime | = 2^2 $. Außerdem gilt in beiden Fällen $ S_3^{(2)} = 1 $ und $ A_4^{(2)} =1  $, womit die Kommutatorreihen die Länge $ 2 $ haben. Also sind die beiden Gruppen auflösbar.
+  	\end{enumerate}
+\end{genericdf}
+
+\begin{df} \label{skript:4.7} \index{Gruppe!einfach} 
+	Wir nennen eine Gruppe \bi{einfach}, wenn $ G \neq 1 $ und $ 1 $ und $ G $ die einzigen Normalteiler von $ G $ sind.
+\end{df}
+
+\begin{genericdf}{Bemerkung und Definition} \label{skript:4.8} \index{Kompositions!-reihe} \index{Kompositions!-faktoren} \index{Normalteiler!maximal} \index{Satz!Jordan-Hölder}
+	Sei $ \kappa : G \to H \neq 1 $ ein surjektiver Gruppenhomomorphismus.
+	Wir nehmen an, dass $ H $ nicht einfach ist. Dann existiert $ N \nt H $ mit $ 1 \neq N \neq H $ und es folgt
+	$ \kappa(N)^{-1} \nt G $. Aufgrund der Surjektivität gilt außerdem $ \Ker \kappa \subsetneq \kappa(N)^{-1} \subsetneq G $. 
+	Ein Normalteiler $ M $ heißt \bi{maximal}, falls für $ K \nt G $ und $ M \subseteq K \subseteq G $ gilt,
+	dass $ M=N   $ oder $ N=G $ und $ M \neq G $ ist.
+	Sei nun $ M $ ein maximaler Normalteiler von $ G $, wobei $ G \neq 1 $ ist. Dann ist $ G/M $ einfach.
+	Falls $ G $ eine endliche Gruppe ist, können wir diesen Prozess wiederholen. Wir erhalten
+	\begin{align*}
+	M_0 = G \trianglerighteq M_1 \trianglerighteq M_2 \trianglerighteq ...\trianglerighteq M_k = 1, \ k \in \N ,
+	\end{align*} 
+	wobei $ M_i $ ein maximaler Normalteiler von $ M_{i-1} $ für alle $ i \in \N $ ist.
+	Nach obiger Bemerkung gilt dann $ M_{i-1} / M_i $ ist einfach. Eine Folge wie in oben angegeben nennen wir 
+	\bi{Kompositionsreihe} von $ G $ und die Gruppen $ M_{i-1} / M_i $ \bi{Kompositionsfaktoren}
+	(Satz von \bi{Jordan-Hölder}).
+\end{genericdf}
+
+\begin{genericdf}{Lemma} \label{skript:4.9}
+	Sei $ G $ einfach und auflösbar. Dann ist $ G $ isomorph zu einer zyklischen Gruppe von Primzahlordnung ($ G \cong C_p $ ).
+\end{genericdf}
+
+\begin{proof}
+	Da $ G $ auflösbar ist folgt, dass $ G \neq G^\prime $ und $ G^\prime \nt G $ ist.
+	Nun ist $ G $ einfach, es gilt also $ G^\prime = 1 $. Damit ist $ G $ abelsch.
+	Wir wählen  $ g\in G $ mit $ g \neq 1 $. 
+	Sei nun $ p  $ eine Primzahl mit $ p | \ord(g) $, dass heißt $ \ord(g) = p \cdot a , \ a \geq 1$.
+	Nun hat $ g^a $ die Ordnung $ p $, womit folgt $ U := <g^a> \leq G $. Da aber auch $ U \nt G $ gilt, folgt $ G=U $.
+\end{proof}
+
+\begin{sz}\label{skript:4.10} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Für $ n \geq 5 $ ist $ A_n $ nicht auflösbar.
+		\item[\textbf{(2)}]
+		$ A_5 $ ist einfach.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof}\
+	\begin{enumerate}
+		\item[(1)] 
+		Sei $ n \geq 5 $ beliebig. Wir werden nun eine andere Variante als in der Vorlesung fahren und 
+		verwenden, dass sich $ \sigma \in A_n$ für $ n \geq 5 $ als Produkt von Dreierzykeln darstellen lässt.
+		Es gilt bereits $ A_5^\prime \subseteq A_5 $. Es bleibt also die andere Teilmengenbeziehung zu zeigen.
+		Sei nun $ i,j,k,l,m \in \lbrace 1,...,n \rbrace $ beliebig aber paarweise verschieden. 
+		Dann erhalten wir mit 
+		\begin{align*}
+		(ijk) = (mjk)(ljk)(ikm)(ijl),
+		\end{align*}
+		dass jeder Dreierzykel ein Produkt aus Dreierzykeln ist. Damit ist jedes $ \sigma \in A_n $ ein Produkt aus Kommutatoren. Also gilt $ A_n \subseteq A_n^\prime $.		
+		\item[(2)] 
+		Diese Aussage werden wir im nächsten Kapitel beweisen.
+	\end{enumerate}
+\end{proof}
+
+\begin{generic_no_num}{Bemerkung}
+	Es gilt sogar $ A_n$ ist einfach für $ n \geq 5 $.
+\end{generic_no_num}
+
+\begin{genericthm}{Verschärfung} \label{skript:4.11}
+	Sei $ G $ eine Gruppe und $ N \nt G $. Dann gilt
+	\begin{align*}
+	G \ \text{auflösbar} \Leftrightarrow N \text{ und } G/N \text{ auflösbar}.
+	\end{align*}
+\end{genericthm}
+
+\begin{proof}
+	Die Hinrichtung ist gerade \ref{skript:4.4}. Wir müssen also nur noch die Rückrichtung beweisen.
+	Da $ G/N $ auflösbar ist, existiert ein $ k \in \N $ mit $ (G/N)^{(k)} = 1 $. Mit der Faktorabbildung
+	$ \kappa : G \to G/N $ folgt dann
+	\begin{align*}
+	\kappa(G^{(k)}) = G/N^{(k)} = 1,
+	\end{align*}
+	womit $ G^{k} $ im Kern von $ \kappa  $ liegt. Wir erinnern uns, dass $ \ker \kappa = N $ gilt.
+	Da nun $ N $ auflösbar ist, existiert ein $ l \in \N $ mit $ N^{(l)} = 1$.
+	Mit der selben Argumentation wie in \ref{skript:4.4} folgt die Auflösbarkeit von $ G $.
+\end{proof}

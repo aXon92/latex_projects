@@ -1,0 +1,140 @@
+\section{Lösungen zum Abschnitt 5}
+
+\begin{loes}\hypertarget{loes:5.1}\
+	Es gilt 
+	\begin{align*}
+	|G| = 1 + 8 + 18 = 27,
+	\end{align*}
+	womit $ G $ eine abelsche $ p $-Gruppe ist.
+	Damit können wir \ref{skript:5.8} und \ref{skript:5.10}
+	anwenden.
+	Somit wir erhalten als Möglichkeiten
+	\begin{align*}
+	G &\cong C_{27} \\
+	G &\cong C_3 \times C_3 \times C_3\\
+	G &\cong C_9 \times C_3.	
+	\end{align*}
+	Die ersten beiden können nicht erfüllt sein.
+	Die erste enthält Elemente der Ordnung $ 27 $ und
+	die zweite nur Elemente der Ordnung $ 3 $.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:5.2}\
+	Sei $ \overline{a} \in G $ beliebig.
+	Dann ist
+	\begin{align*}
+	\langle \overline{a} \rangle
+	= \langle a + p^m \Z \rangle 
+	\end{align*}	
+	die kleinste Untergruppe, die $ \overline{a} $ enthält.
+	Für $ 0 \leq i \leq m $ gilt
+	\begin{align*}
+	\ggT(a,p^m) = p^i,
+	\end{align*}
+	falls $ a = k \cdot p^i $, $ p \nmid k $ und $ k \in \Z $.
+	Mit dem Lemma von Bezout existieren $ z_1 , z_2 \in \Z  $, sodass 
+	\begin{align*}
+	z_1 \cdot a + z_2 \cdot p^m  = \ggT(a,p^m) = p^i
+	\end{align*} 
+	gilt.
+	Damit folgt $ p^i \in \langle a + p^m \Z \rangle$ und wegen $ a = k \cdot p^i $
+	auch $ \overline{a} \in \langle p^i + p^m \Z  \rangle$.
+	Insgesamt erhalten wir also
+	\begin{align*}
+	\langle a + p^m \Z \rangle = \langle p^i + p^m \Z \rangle.
+	\end{align*}
+	Wir wissen, dass
+	\begin{align*}
+	G = U_0 \unrhd U_1 \unrhd \dots \unrhd U_m = 1
+	\end{align*}
+	mit $ U_{i-1} / U_i \cong C_p $ einfach und $ U_i \nt U_{i-1} $ maximal
+	eine Kompositionsreihe ist.
+	Nun werden wir zeigen, dass es keine andere gibt.
+	Sei $ j > i $, dann folgt mit $ U_i \cong \Z / p^{m-i} \Z $
+	\begin{align*}
+	U_i / U_j 
+	\cong
+	(\Z / p^{m-i} \Z) / (\Z / p^{m - j } \Z )
+	\cong \Z / p^{j-i} \Z
+	\cong U_{m-j+i} \ \text{einfach}. 
+	\end{align*}
+	Damit hat $ U_{m-j+i} $ nur sich selbst und die $ 1 $ als Normalteiler.
+	Es folgt
+	\begin{align*}
+	m - j + i = m - 1 
+	\Leftrightarrow
+	j = i +1 ,
+	\end{align*}
+	womit es keine weitere Kompositionsreihe gibt.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:5.2}\
+	Es gilt
+	\begin{align*}
+	[G:N] = \frac{72}{8}  = 9,
+	\end{align*}
+	womit $ G/N $ eine $ p^2 $ Gruppe ist.
+	Nach \ref{aufgabe:2.8} ist diese abelsch.
+	Es existiert eine Untergruppe $ K \leq G/N $ mit Ordnung $ 3 $.
+	Da $ G/N $ abelsch ist, ist diese auch ein Normalteiler.
+	Nun betrachten wir den surjektiven Gruppenhomomorphismus
+	\begin{align*}
+	\varphi : G \to G/N , \ g \mapsto gN
+	\end{align*}
+	und wenden den Korresponedzsatz \ref{skript:5.4} an.
+	Wir setzen
+	\begin{align*}
+	U := \varphi^{-1}(K) \leq G
+	\end{align*}
+	und durch eine kurze Überlegung erhält man auch $ \Ker \varphi \leq U $.
+	Da nun $ \varphi(U) = K $ gilt, folgt $ U \nt G $ und
+	\begin{align*}
+	G/U \cong (G/N) / K 
+	\Rightarrow 
+	[G : U ] = 3
+	\Rightarrow 
+	|  U | = 24.
+	\end{align*}
+	Damit existiert eine solche Gruppe und diese ist normal.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:5.3}\
+	Sei $ G $ eine abelsche Gruppe der Ordnung $ 200 = 2^3 \cdot 5^2$.
+	Da $ G $ abelsch ist, gibt es für $ 2 $ und $ 3 $ jeweils nur ein Sylowuntergruppe.
+	Mit \ref{skript:6.9} erhalten wir dann
+	\begin{align*}
+	G \cong P \times Q
+	\end{align*}
+	für $ P \in \Syl_5(G)  $ und $ Q \in \Syl_2(G) $.
+	Nun gibt es nach \ref{skript:5.8}
+	\begin{align*}
+	P \cong
+	\begin{cases}
+	C_5 \times C_5 \\
+	C_{5^2} 
+	\end{cases}
+	\end{align*}
+	zwei Isomorphietypen für $ P $.
+	Analog erhalten wir mit
+	\begin{align*}
+	Q \cong
+	\begin{cases}
+	C_2 \times C_2 \times C_2 \\
+	C_{2^2} \times C_2\\
+	C_{2^3} 
+	\end{cases}
+	\end{align*}
+	drei Isomorphietypen für $ Q $.
+	Daraus erhalten wir mit 
+	\begin{align*}
+	C_5 \ &\times C_5 \times C_2 \times C_2 \times C_2 \\
+	C_5 \  &\times C_5 \times C_{2^2} \times C_2 \\
+	C_5 \ &\times C_5 \times C_{2^3}\\
+	C_{5^2} &\times C_2 \times C_2 \times C_2 \\
+	C_{5^2} &\times C_{2^2} \times C_2 \\
+	C_{5^2} &\times C_{2^3}
+	\end{align*}
+	sechs mögliche Isomorphietypen für $ G $.
+	Wenn wir lustig sind, können wir daraus auch die Elementarteilerzerlegungen konstruieren. 
+\end{loes}
+

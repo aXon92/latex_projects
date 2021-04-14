@@ -1,0 +1,87 @@
+\section{Lösungen zum Abschnitt 7}
+
+\begin{loes}\hypertarget{loes:7.1}\
+	Sei $ R $ ein endlicher Integritätsring.
+	Also ist $ R $ ein endlicher, kommutativer und nullteilerfreier Ring mit $ 1 $.
+	Wir wählen $ a \in R \setminus \lbrace 0 \rbrace $ beliebig aber fest und wollen zeigen, dass ein multiplikatives Inverses existiert.
+	Dafür betrachten wir die Abbildung
+	\begin{align*}
+	\varphi : R \to R , \ x \mapsto a \cdot x.
+	\end{align*} 
+	Wegen
+	\begin{align*}
+	\varphi(x) = \varphi(y)
+	\Leftrightarrow 
+	a \cdot x = a \cdot y
+	\Leftrightarrow
+	a \cdot (x - y ) = 0
+	\Rightarrow x = y
+	\end{align*}
+	ist $ \varphi $ injektiv und aufgrund der Endlichkeit von $ R $
+	auch surjektiv.
+	Also existiert ein $ b \neq 0 $ mit
+	\begin{align*}
+	\varphi(b) = a \cdot b = 1
+	\end{align*}
+	und wir sind fertig.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:7.2}\
+	Zunächst ist $ \Z[\i] $ ein Teilring von $ \C $, womit
+	$ \Z[\i] $ ein Integritätsring ist.
+	Wir wählen 
+	\begin{align*}
+	N(n + \i \cdot m) = n^2 + m^2
+	\end{align*}
+	als Normfunktion.
+	Diese ist multiplikativ, das heißt es gilt
+	\begin{align*}
+	N(a \cdot b) = N(a) \cdot N(b)
+	\end{align*}
+	für alle $ a , b \in \Z[\i] $.
+	Wer Lust und Laune hat kann dies gerne nachrechnen.
+	Nun wählen wir $ a := x + \i \cdot y \in \Z[i] $
+	und $ 0 \neq b := s + i \cdot t \in \Z[\i] $.
+	Damit erhalten wir 
+	\begin{align*}
+	\frac{a}{b}
+	= \dots 
+	= \underbrace{\frac{xs +yt}{s^2 + t^2}}_{u:=} 
+	+ \i \cdot \underbrace{\frac{ys - xt}{s^2 + t^2}}_{v:=}
+	\end{align*}
+	mit $ u,v \in \Q $, woraus $ a = b \cdot(u + \i v ) $ folgt.
+	Jetzt wählen wir $ m,n \in \Z $
+	mit $ | u - m | \leq \nicefrac{1}{2} $ bzw.
+	$ |v -n | \leq \nicefrac{1}{2} $.
+	Nun setzen wir $ q := m + \i \cdot n $, $ \alpha := u-m $
+	und $ \beta := v - n  $.
+	Damit folgt dann
+	\begin{align*}
+	r = a - q \cdot b = (u+\i \cdot v) \cdot b - (m+ \i \cdot n) \cdot b
+	= \dots
+	=(\alpha +  \i \cdot  \beta) \cdot b.
+	\end{align*}
+	Falls $ r = 0  $ ist, folgt aufgrund der Nullteilerfreiheit, dass $ \alpha = \beta = 0 $ ist. Also ist auch $ u = m  $ und $ v = n $.
+	Für den Fall $ r \neq 0 $ folgt
+	\begin{align*}
+	N(r) = N((\alpha + \i \cdot\beta) \cdot b )
+	= N(\alpha + \i \cdot\beta) \cdot N(b)
+	= (\alpha^2 + \beta^2) \cdot N(b)
+	\leq \frac{1}{2} \cdot N(b) < N(b).
+	\end{align*}
+	Insgesamt gilt $ a = q \cdot b + r  $ mit $ r =0  $ oder $ r \neq 0 $ und $ N(r) < N(b) $.
+	Es bleiben also noch die Einheiten übrig.
+	Für alle $ a \in \Z[\i]^\ast $ gilt
+	\begin{align*}
+	|a|^2 = N(a) \geq 1 
+	\Rightarrow
+	|a^{-1} |^2 = |a|^{-2} \leq 1
+	\Rightarrow |a| = 1
+	\end{align*}
+	und durch kurze Überlegungen erhalten wir schnell, dass
+	\begin{align*}
+	\Z[\i]^\ast = \lbrace \pm 1, \pm \i \rbrace
+	\end{align*}
+	gilt.
+\end{loes}
+

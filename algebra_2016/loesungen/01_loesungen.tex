@@ -1,0 +1,245 @@
+\section{Lösungen zum Abschnitt 1}
+
+\begin{loes}\hypertarget{loes:1.1}
+Seien $U_1$ und $U_2$ zwei echte Untergruppen von $G$.
+Nun nehmen wir an, dass 
+\begin{align*}
+G = U_1 \cup U_2
+\end{align*}
+gilt.
+Zwischen $U_1$ und $U_2 $ kann es keine Teilmengenbeziehung geben, ansonsten wäre $U_1$ oder $U_2$ keine echte Untergruppe.
+Nun wählen wir $g \in U_1 \setminus U_2$ und $h \in U_2 \setminus U_1$.
+Es gilt $g \ast h \in G$ und mit unserer Annahme muss $g \ast h \in U_1 \cup U_2$ erfüllt sein.
+Mit 
+\begin{align*}
+g \ast h \in U_1 \Rightarrow h \in U_1 \quad \text{und} \quad g \ast h \in U_2 \Rightarrow g \in U_2 
+\end{align*}
+erhalten wir einen Widerspruch zu unserer Wahl der Elemente. Damit war unsere Annahme falsch und das Gegenteil ist richtig.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:1.2}
+Die Aussage ist äquivalent zu
+\begin{align*}
+|G| = \infty \quad \Rightarrow \quad \text{es gibt unendlich viele Untergruppen von } G.
+\end{align*}
+Für den Beweis müssen wir zwei Fälle unterscheiden.
+Der \textit{erste Fall} ist, dass alle Gruppenelemente endliche Ordnung besitzen.
+Das heißt für alle $g \in G$ gilt $\ord(g) < \infty$.
+Aus der Identität 
+\begin{align*}
+G = \bigcup\limits_{g \in G} \langle g \rangle
+\end{align*}
+folgt das es unendlich viele Untergruppen geben muss, ansonsten wäre $G$ endlich.
+Der \textit{zweite Fall} ist, dass mindestens ein Gruppenelement mit unendlicher Ordnung existiert.
+Sei $g \in G$ dieses Gruppenelement. Nun gilt
+\begin{align*}
+\langle g \rangle &\cong \Z \\
+\langle g^2 \rangle &\cong 2\Z\\
+&\vdots
+\end{align*}
+und somit haben wir auch in diesem Fall unendlich viele Untergruppen.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:1.3}
+Zunächst zeigen wir, dass $U$ eine Untergruppe von $G$ ist. 
+Es gilt $E \in U$, wobei $E$ die Einheitsmatrix bezeichnet.
+Mit
+\begin{align*}
+\begin{pmatrix}
+1 & a & b \\
+0 & 1 & c \\
+0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & d & e \\
+0 & 1 & f \\
+0 & 0 & 1
+\end{pmatrix}
+= 
+\begin{pmatrix}
+1 & a+d & b +af + e \\
+0 & 1 & c+f \\
+0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+für $a,b,c,d,e,f \in \Z / 3\Z$ liegt auch das Produkt in $U$.
+Wenden wir nun auf den ersten Faktor im obigen Produkt den Gauß-Algorithmus an, so erhalten wir 
+\begin{align*}
+\begin{pmatrix}
+1 & -a & ac-b \\
+0 & 1 & -c \\
+0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+als Inverse. Damit ist auch die letzte Untergruppenbedingung erfüllt.
+Für die Anzahl betrachten wir 
+\begin{align*}
+\begin{pmatrix}
+1 & \ast & \ast \\
+0 & 1 & \ast \\
+0 & 0 & 1
+\end{pmatrix}
+\end{align*} 
+und mit $| \lbrace 0,1,2 \rbrace^3 | = 27$ erhalten wir $|U| = 27$. 
+Da die Ordnung eines Elements die Gruppenordnung teilt, haben wir die möglichen Ordnungen $1,3 ,9$ und $27$.
+Es gilt offensichtlich $\ord(E) = 1$. Sei nun $A \in U \setminus \lbrace E \rbrace$.
+Dann gilt
+\begin{align*}
+A &=
+\begin{pmatrix}
+1 & a & b \\
+0 & 1 & c \\
+0 & 0 & 1
+\end{pmatrix}\\
+A^2 &=
+\begin{pmatrix}
+1 & 2a & 2b+ac \\
+0 & 1 & 2c \\
+0 & 0 & 1
+\end{pmatrix}\\
+A^2 &=
+\begin{pmatrix}
+1 & 3a & 3b+3ac \\
+0 & 1 & 3c \\
+0 & 0 & 1
+\end{pmatrix} 
+= E
+\end{align*}
+für passende $a,b$ und $c$.
+Damit gilt $\ord(A) = 3$ für alle $A \in U \setminus \lbrace E \rbrace$.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:1.4} \
+\begin{enumerate}
+\item[a)]
+Wir bemerken das $ g^2 = 1_G$ für alle $g \in G$ gilt.
+Sei nun $g,h \in G$ beliebig. Dann folgt mit
+\begin{align*}
+(gh)^2 = 1_G
+\Leftrightarrow
+ghgh = 1 
+\Leftrightarrow
+gh = (gh)^{-1} = h^{-1} g^{-1} = h g
+\end{align*}
+die Kommutativität der Gruppe.
+\item[b)]
+Wegen $[G:U] = 2 $ wählen wir $g \in G \setminus U $ beliebig. Da $G$ eine disjunkte Vereinigung von Nebenklassen ist gilt
+\begin{align*}
+G = U   \overset{.}{\cup} g U = U  \overset{.}{\cup} U g
+\end{align*}
+und somit auch 
+\begin{align*}
+g U = U g \Leftrightarrow g^{-1} U g = U
+\end{align*}
+für alle $g \in G \setminus U$. Für alle anderen Gruppenelemente ist diese Identität so oder so erfüllt.
+Insgesamt folgt $U \nt G$.
+\item[c)]
+Hierfür können wir ein Gegenbeispiel angeben.
+Wir betrachten $S_3 $ mit $U = \langle (12) \rangle$. 
+Mit Lagrange gilt
+\begin{align*}
+[S_3 : U ] = \frac{|S_3|}{|U|} = 3.
+\end{align*}
+Nun wählen wir $(23) \in S_3$ und erhalten mit
+\begin{align*}
+(23) \id &= \id (23)  \\
+(231) = (23)(12) &= (12)(23) = (13)
+\end{align*}
+das Gegenbeispiel.
+\item[d)]
+Wir verwenden die Aufgabe 1.3 als Gegenbeispiel.
+Es gilt
+\begin{align*}
+\begin{pmatrix}
+1 & a & b \\
+0 & 1 & c \\
+0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & d & e \\
+0 & 1 & f \\
+0 & 0 & 1
+\end{pmatrix}
+&= 
+\begin{pmatrix}
+1 & a+d & b +af + e \\
+0 & 1 & c+f \\
+0 & 0 & 1
+\end{pmatrix}\\
+\begin{pmatrix}
+1 & d & e \\
+0 & 1 & f \\
+0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & a & b \\
+0 & 1 & c \\
+0 & 0 & 1
+\end{pmatrix}
+&=
+\begin{pmatrix}
+1 & a+d & b +d c + e \\
+0 & 1 & c+f \\
+0 & 0 & 1
+\end{pmatrix}
+\end{align*}
+und mit der Wahl $a = f = 1$ und $0$ sonst erhalten wir das Gegenbeispiel.
+\end{enumerate}
+
+
+\end{loes}
+
+\begin{loes}\hypertarget{loes:1.5} \
+\begin{enumerate}
+\item[a)]
+Sei $g \in G$ mit $\ord(g) = n \in \N$. Mit der Homomorphismuseigenschaft erhalten wir
+\begin{align*}
+\varphi(g)^n = \varphi(g^n) = \varphi(1_G) = 1_H.
+\end{align*}
+Damit muss $\ord(\varphi(g)) \leq n$ sein. Sei $m $ diese Ordnung.
+Mit $n =  k \cdot m + r$ für $k \in \N$ mit $0 \leq r < m$ erhalten wir
+\begin{align*}
+1_H = \varphi(g)^n = \varphi(g)^{k \cdot m + r} = 1_H \cdot \varphi(g)^r =  \varphi(g)^r,
+\end{align*}
+womit $r = 0 $ sein muss. Dies folgt sofort, da $r < m $ ist. 
+Also ist $m$ Teiler von $n$.
+\item[b)]
+Zunächst müssen wir die Untergruppeneigenschaft für $ \varphi^{-1}(M) $ zeigen.
+Wegen $ \varphi(1_G)  = 1_H$ ist $ 1_G \in \varphi^{-1}(M) $.
+Sei nun $ a,b \in \varphi^{-1}(M)   $. Dann folgt aus $ M \leq H $ durch
+\begin{align*}
+\varphi(a \ast b) = \varphi(a) \cdot \varphi(b) \in M \quad
+\Rightarrow \quad
+a \ast b \in \varphi^{-1}(M) 
+\end{align*}
+die Abgeschlossenheit unter der Verknüpfung aus $ G $. Durch eine ähnliche Argumentation
+folgt auch
+\begin{align*}
+a \in \varphi^{-1}(M) \quad \Rightarrow \quad a^{-1} \in \varphi^{-1}(M) .
+\end{align*}
+Für die Normalteilereigenschaft wählen wir $ g \in \varphi^{-1}(M)  $ und $ x \in G $ beliebig.
+Aufgrund $ M \nt H $ folgt mit
+\begin{align*}
+\varphi(x^{-1} g x) = \varphi(x)^{-1} \cdot \varphi(g) \cdot \varphi(x) \in M,
+\end{align*}
+dass $ x^{-1} g x \in \varphi^{-1}(M)  $ gilt.
+Durch die beliebige Wahl gilt $ \varphi^{-1}(M)  \nt G $.
+\item[c)] 
+Hierfür haben wir ein Gegenbeispiel.
+Sei $ G = S_2 $, $ H = S_3 $ und $ \varphi : G \to H $ die Einbettung von $ S_2$ in $ S_3 $.
+Es gilt also $ \varphi(S_2) \cong S_2 $. 
+Nun gilt $ S_2 \nt S_2 $, jedoch folgt mit Aufgabe 4 c), dass $ S_2 \ntrianglelefteq S_3 $ gilt.
+\item[d)] 
+Es gilt $ \varphi(U) \leq H $. Nun ist $ \varphi(U)  $ invariant unter allen Automorphismen von $ H $.
+Damit gilt insbesondere auch
+\begin{align*}
+\gamma_x(\varphi(U)) = x^{-1} \varphi(U) x = \varphi(U)
+\end{align*}
+für alle $ x \in H $. Daraus folgt $ \varphi(U) \nt H $.
+\end{enumerate}
+
+
+\end{loes}

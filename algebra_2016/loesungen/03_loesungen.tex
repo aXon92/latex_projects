@@ -1,0 +1,177 @@
+\section{Lösungen zum Abschnitt 3}
+
+\begin{loes}\hypertarget{loes:3.1}\
+	\begin{enumerate}
+		\item[a)]
+		 Angenommen $ h $ ist ein Isomorphismus.
+		 Dann ist $ h $ bijektiv mit Umkehrabbildung $ h^{-1} $.
+		 Wir müssen also nur noch zeigen, dass $ h^{-1} $
+		 ein Gruppenhomomorphismus ist.
+		 Sei $ a,b \in H $ beliebig.
+		 Da $ h $ bijektiv ist, finden wir eindeutige $ x,y \in G $, sodass 
+		 $ h(x) = a  $ und $ h(y) = b $ gilt.
+		 Damit erhalten wir mit
+		 \begin{align*}
+		 h^{-1}(a \cdot b)
+		 = h^{-1}(h(x) \cdot h(y))
+		 =h^{-1}(h(x \cdot y))
+		 = x \cdot y
+		 = h^{-1}(a) \cdot h^{-1}(b)
+		 \end{align*}
+		 die Homomorphismuseigenschaft.
+		 
+		 Nun nehmen wir an, dass ein $ h^\prime $ mit den geforderten Eigenschaften existiert und müssen die Bijektivität von $ h $ zeigen.
+		 \begin{itemize}
+		 	\item $ h $ ist injektiv:
+		 	Sei $ h(x)  = h(y)$.
+		 	Mit $ h^\prime \circ h = \id_G $ folgt durch
+		 	\begin{align*}
+		 	h^\prime \circ h(x) = h^\prime \circ h(y)
+		 	\Rightarrow 
+		 	x = y
+		 	\end{align*}
+		 	die Injektivität.
+		 	
+		 	\item $ h $ ist surjektiv:
+		 	Sei $ y \in H  $ beliebig.
+		 	Wir müssen zeigen, dass ein $ x \in G $ mit $ h(x) = y $ existiert.
+		 	Dies erhalten wir sofort durch
+		 	\begin{align*}
+		 	\id_H(y) = h (\underbrace{h^\prime(y)}_{x:=}) = h(x) = y
+		 	\end{align*}
+		 	und sind fertig.
+		 \end{itemize}
+		 Also ist $ h $ bijektiv und somit ein Isomorphismus.
+		 
+		 \item[b)] 
+		 Wir werden hier zwei Gegenbeispiele angeben.
+		 Zuerst betrachten wir 
+		 \begin{align*}
+		 G &= A_4\\
+		 H &= \lbrace \id , (12)(34),(13)(24),(14)(23) \rbrace
+		 K &= \lbrace \id , (12)(34) \rbrace
+		 \end{align*}
+		 und mit \ref{skript:4.6} gilt $ H \nt G $.
+		 Wegen $ [K:H] = 2 $ folgt auch $ K \nt H $ und mit
+		 \begin{align*}
+		 (123)(12)(34)(132) = (13) (24) \notin K
+		 \end{align*}
+		 folgt $ K \ntrianglelefteq G $.
+		 Nun betrachten wir 
+		 \begin{align*}
+		 G  = D_4 &= \langle r,s \rangle\\
+		 H   &= \langle r^2,s \rangle\\
+		 K &= \langle s \rangle
+		 \end{align*}
+		 und es gelten
+		 $ [G : K] = 2 $ bzw. $ [K:H] = 2 $.
+		 Also folgt $ G \nt K $ und $ K \nt H $.
+		 Jedoch gilt
+		 \begin{align*}
+		 r K &= \lbrace r, rs \rbrace\\
+		 K r &= \lbrace r , sr \rbrace,
+		 \end{align*}
+		 womit $ K \ntrianglelefteq G  $ folgt.
+		 
+	\end{enumerate}
+
+\end{loes}
+
+\begin{loes}\hypertarget{loes:3.2}\
+	\begin{enumerate}
+		\item[a)]
+		Wir wählen $ g \in G $ beliebig.
+		Dann gilt
+		\begin{align*}
+		g = s_1 \cdots s_r
+		\end{align*}
+		für $ r \geq 1 $, $ 1 \leq i \leq r $ und $ s_i \in S \cup S^{-1} $.
+		Mit unseren Voraussetzungen folgt direkt
+		\begin{align*}
+		\phi(g)
+		= \phi(s_1) \cdots \phi(s_r)
+		= \psi(s_1) \cdots \psi(s_r)
+		= \psi(g)
+		\end{align*}
+		und wir sind fertig.
+		Wir sollten nur kurz aufpassen falls $ r \in S^{-1} $ ist.
+		Dann existiert ein $ s \in S $ mit $ s^{-1} = r $ und wir beheben mit 
+		\begin{align*}
+		\phi(r) = \phi(s^{-1}) = \phi(s)^{-1} = \psi(s)^{-1} = \psi(r)
+		\end{align*}
+		das Problem.
+		
+		\item[b)]
+		Es gibt hier zwei Möglichkeiten, einmal den trivialen Homomorphismus und
+		\begin{align*}
+		\varphi : S_3 \to C_2 = \lbrace e , g \rbrace, \
+		\sigma \mapsto
+		\begin{cases}
+		e &  \text{, falls} \ \ord(\sigma) \neq 2\\
+		g &  \text{, falls} \ \ord(\sigma) = 2
+		\end{cases}.
+		\end{align*}
+		Sei $ \alpha \in S_3 $ mit $ \ord(\alpha) = 3 $ und $ \psi $ ein beliebiger Homomorphismus von $ S_3 $ nach $ C_2 $.
+		Die Elemente der Ordnung $ 3 $ müssen immer auf $ e $ abgebildet werden, ansonsten würde man mit 
+		\begin{align*}
+		\psi(\sigma^2) = g\\
+		\psi(\sigma) \cdot \varphi(\sigma) = e
+		\end{align*}
+		einen Widerspruch erhalten.
+		Die Elemente der Ordnung $ 2 $ müssen entweder alle auf $ e  $ oder alle auf $ g $ abgebildet werden, denn das Produkt von $ 2 $-Zykeln ist entweder ein $ 3 $-Zykel oder die Identität.
+	\end{enumerate}
+\end{loes}
+
+\begin{loes}\hypertarget{loes:3.3}\
+	\begin{enumerate}
+		\item[a)]
+		Zuerst betrachten wir den natürlichen Homomorphismus
+		\begin{align*}
+		\varphi : G \to G/N , \  g \mapsto gN 
+		\end{align*}
+		und erhalten mit \ref{skript:3.5}, dass $ \varphi^{-1}(L) \nt G  $ gilt.
+		Wegen $ \Ker \varphi = N \subseteq \varphi^{-1}(L) $ setzen wir
+		\begin{align*}
+		K := \varphi^{-1}(L)
+		\end{align*}
+		und müssen noch zeigen, dass $ L = K/N = \lbrace kN \ | \ k \in K \rbrace $.
+		Aufgrund 
+		\begin{align*}
+		gN \in L 
+		\Leftrightarrow 
+		g \in \varphi^{-1}(L) = K 
+		\Leftrightarrow
+		gN \in K/N
+		\end{align*}
+		folgt dies jedoch sofort.
+		
+		\item[b)]
+		Nun müssen wir zeigen, dass
+		\begin{align*}
+		\Phi : G/N \to G/K, \ gN \mapsto gK
+		\end{align*}
+		wohldefiniert ist.
+		Sei $ g_1 N  = g_2 N $, dann existiert ein $ n \in N  $
+		mit $ g_1 = g_2 \cdot n $ und 
+		\begin{align*}
+		\Phi(g_1N) = g_1 K = (g_2 n ) K = g_2 K = \Phi(g_2N)
+		\end{align*}
+		folgt durch $ N \subseteq K $ die Wohldefiniertheit.
+		Wir behaupten nun, dass 
+		\begin{align*}
+		\Ker \Phi = L 
+		\end{align*}
+		gilt. Die Beziehung $ L \subseteq \Ker \Phi $ steht direkt da.
+		Mit 
+		\begin{align*}
+		gN \in \Ker \Phi 
+		\Rightarrow
+		\Phi(gN) = gK = K
+		\Rightarrow 
+		g \in K 
+		\Rightarrow
+		gN \in L
+		\end{align*}
+		folgt die andere Richtung.
+	\end{enumerate}
+\end{loes}

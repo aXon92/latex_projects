@@ -1,0 +1,247 @@
+\section{Sylowuntergruppen}
+In diesem Abschnitt betrachten wir $ G $ durchweg als endliche Gruppe.
+
+\begin{df}\label{skript:6.1} \index{Sylowuntergruppe} 
+	Sei $ p $ eine Primzahl und $ a \geq 0 $. 
+	Weiter sei $ G $ eine Gruppe mit $ |G| = p^a \cdot m $ und $ \ggT(p,m) = 1 $.
+	Dann nennen wir $ P \leq G $ \bi{$ p $-Sylowuntergruppe} von $ G $, falls $ |P| = p^a $ gilt.
+	Mit $ \Syl_p(G) $ bezeichnen wir die \bi{Menge aller $ p $- Sylowuntergruppen } von $ G $.
+\end{df}
+
+\begin{genericdf}{Beispiele}\label{skript:6.2} \ 
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $ G = S_4 $. Dann gilt $ |G| = 24 = 2^3 \cdot 3 $.
+		Damit ist $ C_3 \cong \langle (123) \rangle \in \Syl_3(G)$.
+		Die Symmetriegruppe des Quadrats hat Ordnung $ 8 $, 
+		womit $ \langle(1234),(13) \rangle \in \Syl_2(G)$ gilt.
+		
+		\item[\textbf{(2)}]
+		Sei $ G  = \Gl_n(\Z/ 3\Z)$. Wir haben in der Vortragsübung gezeigt, dass
+		\begin{align*}
+		|G| = p^{\frac{n(n-1)}{2}} \cdot (p^{n-1} -1 ) \cdot (p^{n-1} -1 ) \quad \cdots  \quad p = p \cdot m
+		\end{align*}
+		für das entsprechende $ m $ gilt. Des weiteren finden wir den Beweis auch unter Seite 7 Beispiel 2.6 in dem Buch von Herrn Geck.
+		Sei nun $ U_n(\Z / p \Z) $ die Menge der oberen Dreiecksmatrizen mit $ 1 $ auf den Diagonaleinträgen.
+		Dann gilt
+		\begin{align*}
+		| U_n(\Z / p \Z) |  = p^{n-1} \cdot p^{n-2} \quad \cdots  \quad p = p^{\sum_{i=1}^n i} = p^{\frac{n(n-1)}{2}}, 
+		\end{align*}
+		womit $ U_n(\Z / p \Z)  \in \Syl_p(\Gl_n(\Z / p\Z))$ folgt.
+	\end{enumerate}
+\end{genericdf}
+
+\begin{genericthm}{Lemma} \label{skript:6.3}
+	Sei $U \leq G$. Dann gilt
+	\begin{align*}
+	\Syl_p(G)  \neq  \emptyset \quad \Rightarrow \quad \Syl_p(U) \neq \emptyset.
+	\end{align*}
+	Außerdem existiert für $P \in \Syl_p(G)$ ein $g \in G$ mit $g P g^{-1} \cap U \in \Syl_p(U)$.
+\end{genericthm}
+
+\begin{proof}
+	Sei $P \in \Syl_P(G)$. Dann operiert $U$ auf $G/P$ durch Linksmultiplikation und es gilt
+	\begin{align*}
+	| G/P| = |O_1| + ... + |O_k|, \quad k \in \N
+	\end{align*}
+	nach dem Bahnensatz.
+	Da $P \in \Syl_p(G)$ ist, kann $|G/P|$ nach Lagrange nicht durch $p$ teilbar.
+	Demnach muss mindestens eine Bahn $O_i$ mit $p \nmid | O_i |$ existieren. 
+	Damit gilt nach dem Bahnensatz
+	\begin{align*}
+	|O_i| = \frac{|U|}{|\Stab_{U}(gP)|}
+	\end{align*}
+	für $gP \in O_i$, wobei $g \in G$ ist. 
+	Somit erhalten wir $\Stab_U(gP) \in \Syl_p(U)$
+	Sei nun $h \in \Stab_U(gP)$ beliebig.
+	Mit 
+	\begin{align*}
+	hgP = g P
+	\Leftrightarrow g^{-1}hg P = P
+	\Leftrightarrow g^{-1}hg \in P
+	\Leftrightarrow h \in g P g^{-1}
+	\end{align*}
+	folgt $\Stab_U(gP) = U \cap g P g^{-1}$ und wir sind fertig.
+\end{proof}
+
+\begin{genericthm}{Sylowsätze} \label{skript:6.4} \index{Satz!Sylow}
+	Sei $p$ eine Primzahl und $| G | = p^a \cdot m$ mit $a \geq 0$ und $p \nmid m$.
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Es gilt $\Syl_p(G) \neq \emptyset$.
+		
+		\item[\textbf{(2)}]
+		Sei $U \leq G$ mit $|U| = p^b$ für $1 \leq b \leq a$.
+		Dann existiert ein $S \in \Syl_p(G)$ mit $U \leq S$.
+		Außerdem sind verschiedene Sylowuntergruppen aus $\Syl_p(G)$ zueinander konjugiert.
+		
+		\item[\textbf{(3)}]
+		Sei $n_p(G) := | \Syl_p(G)|$.
+		Dann gilt $n_p(G) \equiv 1 \mod p$ und $n_p(G) \mid m$.
+	\end{enumerate}
+\end{genericthm}
+
+\begin{proof}\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $K = \Z / p \Z$. Mit \ref{skript:3.12} exisitiert ein $n \geq 1$ und injektiver Gruppenhomomorphismus 
+		$\varphi : G \to \Gl_n(K)$. Damit erhalten wir $G \cong \varphi(G)$ und $\varphi(G) \leq \Gl_n(K)$.
+		Nach \ref{skript:6.2} \textbf{(2)} ist $\Syl_p(\Gl_n(K)) \neq \emptyset$. 
+		Mit \ref{skript:6.3} folgt dann $\Syl_p(G) \neq \emptyset$.		
+		
+		\item[\textbf{(2)}]
+		Sei $P \in \Syl_p(G)$.
+		Wir wenden \ref{skript:6.3} auf $U$ an.
+		Es existiert also ein $g \in G$ mit \\ 
+		$g P g^{-1} \cap U \in \Syl_p(U)$.
+		Nun gilt jedoch $\Syl_p(U) = \lbrace U \rbrace$, womit $g P g^{-1} \cap U = U $ folgt.
+		Es folgt weiter $P \leq Q:= g P g^{-1} \in \Syl_p(G)$.
+		Wenn $U \in \Syl_p(G) $ ist gilt $U = Q$, womit zwei $p$-Sylowgruppen zueinander konjugiert sind. 
+		
+		\item[\textbf{(3)}] 
+		In \textbf{(2)} haben wir gesehen, dass $ G $ auf $ \Syl_p(G) $ durch Konjugation operiert.
+		Diese Operation ist transitiv.
+		Sei nun $ S \in \Syl_p(G) $ beliebig aber fest. Dann ist nach \ref{skript:2.11} $ N_G(S)  $ der Stabilisator dieser Operation.
+		Nun erhalten wir 
+		\begin{align*}
+		|\Syl_p(G)| = \frac{|G|}{|N_G(S)|}
+		\end{align*}
+		mit dem Bahnensatz.
+		Weiter folgt mit $ S \leq N_G(S) $ und Lagrange, dass $ m := |G/S|$ von $ | \Syl_p(G) |$ geteilt wird.
+		Wir schränken die Operation nun auf $ S $ ein, also $ S $ operiert durch Konjugation auf $ \Syl_p(G) $. Dies ist nun nicht mehr transitiv.
+		Also gilt mit dem Bahnensatz 
+		\begin{align*}
+		\Syl_p(G) = O_1 \stackrel{.}{\cup} \  ...  \ \stackrel{.}{\cup} O_k
+		\end{align*}
+		und $ |O_i| = |S / N_S(S_i) | $ für $ 1 \leq i \leq k $.
+		Für $ S_1 = S $ folgt $ |O_1| = 1 $.
+		Wir betrachten nun ein beliebiges $ i \geq 2 $.
+		Angenommen es gilt auch $ |O_i| = p^0 = 1 $.
+		Damit gilt $ g^{-1} S_i g = S_i $ für alle $ g \in S $, womit $ S \subseteq N_G(S_i) $ gilt.
+		Also folgt $ S,S_i \in \Syl_p(N_G(S_i)) $ und mit \textbf{(2)} erhalten wir
+		\begin{align*}
+		P = h P_i h^{-1} = P_i
+		\end{align*}
+		für ein $ h\in N_G(S_i) $.
+		Dies ist ein Widerspruch, da $ P $ bereits in $ O_1 $ ist.
+		Also muss $ |O_i| = p^{k_i} $ mit $ k_i \geq 1 $ gelten und es folgt
+		\begin{align*}
+		|\Syl_p(G)| = |O_1| + \sum \limits_{i=2}^k |O_i| \equiv 1 \mod p.
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{genericthm}{Folgerung} \label{skript:6.5}
+	Sei $ S \in \Syl_p(G) $, dann gilt
+	\begin{align*}
+	S \nt G \Leftrightarrow \Syl_p(G) = \lbrace S \rbrace.
+	\end{align*}
+\end{genericthm}
+
+\begin{proof}
+	Diese Aussage erhalten wir direkt aus \ref{skript:6.4} \textbf{(2)}.
+\end{proof}
+
+\begin{genericthm}{Satz von Cauchy} \label{skript:6.6} \index{Satz!Cauchy}
+	Sei $ p  $ eine Primzahl und $ G $ eine Gruppe.
+	Falls $ p $ ein Teiler von $ |G| $ ist, so existieren Elemente der Ordnung $ p $ in $ G $.
+\end{genericthm}
+
+\begin{proof}
+	Sei $ S \in \Syl_p(G) $. Mit \ref{skript:6.4} wissen wir, dass dies existiert.
+	Nach \ref{skript:5.5} existiert eine Folge von Untergruppen 
+	\begin{align*}
+	1 = U_0 < U_1 < \ ... \ < U_n = S
+	\end{align*}
+	mit $ U_i / U_{i-1} \cong C_p $.
+	Also gilt $ |U_1| = p $, womit jedes nichttriviale Element in $ U_1 $ die Ordnung $ p $ besitzt. 
+\end{proof}
+
+\begin{genericdf}{Beispiele} \label{skript:6.7}
+	\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $ G $ eine Gruppe mit $ |G| = 12 = 2^2 \cdot 3 $.
+		Nach \ref{skript:6.4} \textbf{(3)} gilt $ n_3(G) \mid 2^2  $ und 
+		$ n_3(G) \equiv 1 \mod 3 $.
+		Damit erhalten wir die Möglichkeiten $ n_3(G) = 1 $ oder $ n_3(G)=4 $.
+		Nun nehmen wir an, dass $ n_3(G)  = | Syl_3(G)|= 4 $ gilt.
+		Jede $ 3 $-Sylowgruppe von $ G $ ist isomorph zu $ C_3 $.
+		Es existieren also vier $ 3 $-Sylowgruppen deren Schnitt paarweise disjunkt ist.
+		Also existieren acht Elemente der Ordnung $ 3 $. 
+		Es kann also nur noch vier Elemente  von Zweierpotenzordnung geben, wobei wir das neutrale Element mit $ 2^0 $ mitzählen. 
+		Damit folgt dann $ n_2(G)  =1  $.
+		Insgesamt gilt nun $ n_2(G) = 1 $ oder $ n_3(G) = 1 $.
+		
+		\item[\text{(2)}] 
+		Sei $ G $ eine Gruppe mit $ |G| = 30 = 2\cdot 3 \cdot5 $.
+		Nach den Sylowsätzen muss $ n_3(G) \equiv 1 \mod 3 $
+		und $ n_3(G) \mid 10 = \nicefrac{30}{3} $ gelten.
+		Dadurch erhalten wir $ n_3(G) = 1 $ oder $ n_3(G) = 10 $.
+		Sollte $ n_3(G) = 10 $ sein, so gibt es $20 $ Elemente der Ordnung $ 3 $
+		und es bleiben noch $ 10 $ Elemente für die anderen Ordnungen übrig.
+		Wenn $ n_3(G) = 1 $ ist, ist die $ 3 $-Sylowgruppe normal in $ G $.
+		Nun muss $ n_5(G) \equiv 1 \mod 5$ und $ n_5(G) \mid 6 = \nicefrac{30}{5} $ gelten.
+		Damit gilt $ n_5(G) = 1  $ oder $ n_5(G) =6 $.
+		Sollte $ n_5(G) = 6  $ sein, muss es $ 24  $ Elemente der Ordnung 5 geben.
+		Damit kann $ n_5(G) = 6 $ und $ n_3(G) =10 $ aufgrund der Kardinalität von $ G $
+		nicht gleichzeitig erfüllt sein.
+		Also hat $ G $ eine normale $ 3 $-Sylowgruppe oder eine normale $ 5 $-Sylowgruppe.
+		Es gilt also $ |G/S| = 10 $ oder $ |G/T| = 6 $, falls $ S $ eine normale $ 5 $-Sylowgruppe 
+		bzw. $ T $ eine normale $ 3 $-Sylowgruppe ist.
+		Bei Gruppen dieser Ordnung können wir durch schnelles Nachrechnen die Auflösbarkeit  überprüfen.
+		Da $ S $ und $ T $ aufgrund ihrer Ordnung auflösbar sind, erhalten wir mit \ref{skript:4.11}
+		die Auflösbarkeit von $ G $.
+	\end{enumerate}
+\end{genericdf}
+
+\begin{genericdf}{Bemerkung} \label{skript:6.8}
+	Seien $ p,q $ und $ r $ paarweise verschiedene Primzahlen.
+	Mithilfe der Sylowsätze können wir zeigen, dass Gruppen der Ordnung
+	$ p\cdot q , p\cdot q\cdot r$ und $p^2\cdot q$ 
+	auflösbar sind.
+	Die $ 60 = 2^2 \cdot 3 \cdot 5 $ ist die kleinste Zahl, welche nicht von dieser Form ist.
+	Somit sind alle Gruppen mit Ordnung $ < 60 $ auflösbar.
+	Die alternierende Gruppe $ A_5 $ ist einfach, perfekt und besitzt die Ordnung $ 60 $.
+\end{genericdf}
+
+\begin{genericthm_no_num}{Satz von Burnside}  \index{Satz!Burnside}
+	Seien $ a,b \in \N_0 $.
+	Dann sind Gruppen der Ordnung $ p^a \cdot q^b $ auflösbar.
+\end{genericthm_no_num}
+
+\begin{proof}
+	Dieser Beweis verwendet gewöhnliche Darstellungstheorie von Gruppen und wird wahrscheinlich in weiterführenden Algebravorlesungen geführt.
+\end{proof}
+
+\begin{generic_no_num}{Bemerkung}
+	Als weitere Anwendung von den Sylowsätzen \ref{skript:6.4} erhalten wir die Klassifikation der endlichen abelschen Gruppen.
+\end{generic_no_num}
+
+\begin{genericdf}{Bemerkung}\label{skript:6.9}
+	Sei $ G $ eine endliche abelsche Gruppe, dann sind alle Untergruppen Normalteiler.
+	Damit sind auch alle Sylowuntergruppen normal. Es gilt $ n_p(G) = 1 $ für eine passende Primzahl $ p $. 
+	Wir betrachten mit 
+	\begin{align*}
+	|G| = p_1^{d_1} \ \cdots p_k^{d_k}
+	\end{align*}
+	die bis auf Reihenfolge eindeutige Primfaktorzerlegung von $ |G| $.
+	Dann hat die $ p_i $-Sylowgruppe $ P_i $ die Ordnung $ p_i^{d_i} $ für $ 1 \leq i \leq k $. 
+	Nun gilt
+	\begin{align*}
+	G = \langle P_1 , P_2,...,P_k \rangle := P_1 \ \cdots \ P_k
+	\end{align*}
+	und 
+	\begin{align*}
+	P_1 \cap \langle P_2, ..., P_k \rangle = 1
+	\end{align*}
+	mit $ |\langle P_2, ..., P_k \rangle | = p_2^{d_2} \cdots P_k^{d_k} $.
+	In der Vortragsübung wurde gezeigt, dass dann $ G \cong P_1 \times \langle P_2, ..., P_k \rangle  $ gilt.
+	Setzen wir dies induktiv fort erhalten wir
+	\begin{align*}
+	G \cong P_1 \times \langle P_2, ..., P_k \rangle \cong \ ... \ \cong P_1 \times \cdots \times P_k 
+	\end{align*}
+	als Resultat und nennen dies \bi{Sylowzerlegung}. \index{Sylowzerlegung}
+	Endliche abelsche Gruppen sind also ein endliches Produkt ihrer Sylowgruppen.
+	Um die Struktur von $ G $ zu verstehen, genügt es uns die Struktur von abelschen $ p $-Gruppen zu bestimmen.
+\end{genericdf}

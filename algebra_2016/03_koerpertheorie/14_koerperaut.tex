@@ -1,0 +1,254 @@
+\section{Körpererweiterungen; Körper-Automorphismen}
+
+\begin{genericdf}{Vorbemerkung}\label{skript:14.1}
+	Seien $K,K'$ Körper,  $\sigma:K \to K'$ ein Ringhomomorphismus. Dann ist $\sigma$ injektiv.
+	\begin{proof}
+	Es gilt $\Ker\sigma\nt K$. Da $K$ ein Körper ist, gibt es nur zwei Möglichkeiten: Entweder ist $\Ker\sigma=0$ oder $\Ker\sigma=K$. Da $\sigma(1)=1$, kann $\Ker(	\sigma)=K$ nicht sein. Also muss $\Ker\sigma=0$ gelten und damit $\sigma$ injektiv sein.
+	\end{proof}
+	Ein Ringhomomorphismus zwischen Körpern heißt auch \bi{Körperhomomorphismus}. Ist $\sigma: K \to K'$ ein Körperhomomorphismus, dann kann man $\sigma$ zu dem Ringhomomorphismus 
+	\[\hat{\sigma}: K[x] \to K'[x]: f=\sum_{i=1}^n a_i x^{i} \mapsto \hat{\sigma}(f)=\sum_{i=1}^n \sigma (a_i) x^{i}\]
+	erweitern. Es gilt dann
+	\[f=\prod_{i=1}^n (x-z_i) \Rightarrow \hat{\sigma}(f)=\prod_{i=1}^n (x-\sigma(z_i))\]
+	und
+	\[\sigma(f(z))= \hat{\sigma}(f)(\sigma(z))\]
+	für alle $f \in K[x]$ und $z \in K$.
+\end{genericdf}
+
+\begin{df}\label{skript:14.2} 
+	Sei $L\supseteq K$ eine Körpererweiterung. Wir setzen
+	\[\Aut(L,K):=\{ \sigma \in \Aut(L) \ | \  \forall k \in K: \ \sigma(k)=k \}.\]
+	$\Aut(L,K)$ ist mit der Komposition als Verknüpfung eine Gruppe. Durch
+	\[\sigma.y = \sigma(y)\]
+	für $\sigma \in \Aut(L,K)$ und $y \in L$ operiert $\Aut(L,K)$ auf $L$.
+\end{df}
+
+\begin{lemma}\label{skript:14.3} 
+	Seien $\sigma \in G:=\Aut (L,K)$, $f \in K[x]$, $z \in L$ mit $ f(z)=0$. Dann folgt $f(\sigma(z))=0$, d. h. $\sigma$ operiert auf den Nullstellen von $f$. Ist $|L:K| < \infty$, dann gilt auch $|\Aut (L,K)| < \infty$.
+\end{lemma}
+\begin{proof}
+	Sei
+	\[f=\sum_{i=1}^n a_iz^i\]
+	mit $a_i\in K$. Dann gilt $\sigma(a_i)=a_i$, da $\sigma\in\Aut(L,K)$. Daraus folgt:
+	\[0=\sigma(0)=\sigma(f(z))=\sigma(\sum_{i=1}^n a_iz^i)=\sum_{i=1}^n \sigma(a_i) \sigma(z)^i=\sum_{i=1}^n a_i \sigma(z)^i \Rightarrow f(\sigma(z))=0.\]
+	Betrachte nun $L$ als $K$-Vektorraum. Sei $\sigma \in G$, dann ist $\sigma$ $K$-linear, denn
+	\[\sigma(kx)=\sigma(k) \sigma(x)=k \sigma(x)\]
+	und
+	\[\sigma(x+y)=\sigma(x)+\sigma(y).\]
+	Sei $B=\{b_1,...,b_m\}$ eine $K$-Basis von $L$. Da $|L:K|< \infty$, ist jedes $b_i$ algebraisch über $K$. Somit hat jedes $b_i$ ein Minimalpolynom $f_i \in K[x]$ mit $f_i(b_i)=0$, also nach dem ersten Teil auch $f_i(\sigma(b_i))=0$. Da $f_i$ nur endlich viele Nullstellen hat, gibt es nur endlich viele Möglichkeiten für $\sigma(b_i)$. Daraus folgt, dass $G$ endlich ist, denn $\sigma$ ist als $K$-lineare Abbildung durch die Bilder der Basis $B$ festgelegt.
+\end{proof}
+
+\begin{genericdf}{Fortsetzungslemma}\label{skript:14.4}
+	Seien $K,K'$ Körper, $\sigma: K \to K'$ ein Körperisomorphismus, $f \in K[x]$ irreduzibel, $L\supseteq K$ eine Körpererweiterung und $z \in L $ mit $f(z)=0$. Setze
+	\[f'=\hat{\sigma}(f)\]
+	(vgl. \ref{skript:14.1}). Sei nun $z'\in L'\supseteq K'$ mit $f'(z')=0$. Dann gibt es genau einen Körperisomorphismus
+	\[\sigma_1: K(z)\to K'(z')\]
+	mit $z\mapsto z'$ und $\forall k\in K: \sigma_1(k)=\sigma(k)$.
+\end{genericdf}
+\begin{proof}
+	Verwende hierzu den Homomorphiesatz (\ref{skript:8.5} \textbf{(2)})
+	\begin{center}
+	\begin{tikzpicture}
+		\node at (0,2) {$(f)$};
+		\node at (0,0) {$K[x]$};
+		\node at (0,-2) {$K[x]/(f)$};
+		\node at (1.5,-2) {$\cong K(z)$};
+		\node at (5,0) {$K'[x]$};
+		\node at (5,-2) {$K(z')$};
+		\draw [right hook-to] (0,1.75) -- (0,0.25) node [midway,right] {$\iota$};
+		\draw [->] (0,-0.25) -- (0,-1.75) node [midway,right] {$\kappa$};
+		\draw [->] (0.5,0) -- (4.5,0) node [midway,above] {$\hat{\sigma}$};
+		\draw [->] (5,-0.25) -- (5,-1.75) node [midway,right] {$\kappa'$};
+		\draw [dashed,->] (2.25,-2) -- (4.5,-2) node [midway,above] {$\exists!\sigma_1$};
+	\end{tikzpicture}
+	\end{center}
+	mit $\sigma_1\circ\kappa=\kappa'\circ\hat{\sigma}$. $\sigma_1$ ist ein Körperisomorphismus. Für das Polynom $x$ gilt:
+	\[\kappa(x)=z,\ \kappa'(x)=z'.\]
+	Daraus folgt
+	\[\sigma_1(z)=(\sigma_1\circ\kappa)(x)=(\kappa'\circ\hat{\sigma})(x)=\kappa'(x)=z'.\]
+	Analog sieht man für $k\in K$:
+	\[\sigma_1(k)=(\sigma_1\circ\kappa)(k)=(\kappa'\circ\hat{\sigma})(k)=\kappa'(\sigma(k))=\sigma(k).\]
+\end{proof}
+
+\begin{genericdf}{Beispiele}\label{skript:14.5}
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		Primkörper haben nur triviale Automorphismen:\\
+		Sei $K$ ein Körper mit $K\supseteq\Q$, dann ist $\Aut (K, \Q)=\Aut (K)$.
+		Sei $p$ eine Primzahl, $K$ ein Körper mit $\Char K=p$ und $K\supseteq\F_p=\Z/p\Z$, dann ist $\Aut(K,\F_p)=\Aut(K)$.
+		\item[\textbf{(2)}]
+		Sei $L_n = \Q (\zeta_n)$ mit $\zeta_n = e^{\frac{2 \pi \i}{n}}$. $L_n$ ist Zerfallungskörper zu $\Phi_n$, da alle Nullstellen von $\Phi_n$ Potenzen von $\zeta_n$ sind. Es gilt
+		\[|L_n : \Q | = \phi(n).\]
+		Sei nun $\sigma \in \Aut(L_n, \Q)$, dann ist $\sigma$ festgelegt durch $\sigma (\zeta_n)=\zeta_n^k$ mit $\ggT(n,k)=1$. Daraus folgt, dass
+		\[|\Aut (L_n, \Q)| \leq \phi (n).\]
+		Nach Lemma 14.4 gilt nun mit
+		\[L'=L=L_n,\ z=\zeta_n,\ z'= \zeta_n^{k}\ (\ggT(n,k)=1),\ f=\Phi_n=f',\ K'=K=\Q,\]
+		dass genau ein $\sigma_k: L_n\to L_n$ existiert mit $\zeta_n\mapsto\zeta_n^k$. Es gilt also
+		\[|\Aut (L_n, \Q)| = \phi (n).\]
+		Ferner ist die Abbildung
+		\[\tau: \Aut(L_n,\Q)\to(\Z/n\Z)^\ast: \sigma_k\mapsto\bar{k}\]
+		offensichtlich ein Gruppenisomorphismus.
+		\[\Aut(L_n)=\Aut(L_n,\Q)\cong(\Z/n\Z)^\ast\]
+	\end{itemize}
+\end{genericdf}
+
+\begin{genericdf}{Fortsetzungssatz für Körperisomorphismen}\label{skript:14.6}\
+	Seien $K,K'$ Körper und $\sigma: K \to K'$ ein Körperisomorphismus. $L\supseteq K$ sei Zerfällungskörper von $K$ bezüglich $f \in K[x]$ und $L'\supseteq K'$ ein Zerfällungskörper von $K'$ bezüglich $\hat{\sigma}(f)=f' \in K'[x]$. Dann gelten:
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		Es existiert ein Körperisomorphismus $\tau: L\to L'$ mit $\tau\big|_K=\sigma$, d. h. $\tau$ setzt $\sigma$ fort.
+		\item[\textbf{(2)}]
+		Hat $f$ in $L$ keine mehrfachen Nullstellen, dann existieren mindestens $|L:K|$ solche Fortsetzungen $\tau: L\to L'$.
+	\end{itemize}
+\end{genericdf}
+\begin{proof}
+Beweis durch Induktion nach $n=|L:K|$:\\
+Falls $n=1$ ist, $L=K$ und die Aussage ist trivial.\\
+Sei nun $n>1$. Dann gibt es ein $g \in K[x]$ irreduzibel mit $\Grad(g) \geq 2 $ und $g$ teilt $f$. Sei
+\[g' = \hat{\sigma} (g) \in K'[x].\]
+Dann teilt auch $g'$ $f'$, da $\hat{\sigma}$ ein Ringhomomorphismus ist. $f$ zerfällt über $L$ in Linearfaktoren, somit auch $g$. Analog gilt dies für $f',g'$ über $L'$. Seien nun $\{z_1,\ldots,z_d\}$ die Nullstellen von $g$ in $L$. Dann ist $d \leq \Grad(g)$. Sei $z' \in L'$ eine Nullstelle von $g'$. Nach \ref{skript:14.4} existiert nun für $1 \leq i \leq d$ ein Isomorphismus
+\[\sigma_i : K(z_i) \to K'(z')\]
+mit $\sigma_i (z_i) =z'$ und $\sigma_i\big|_K=\sigma$. Setze $K_i:=K(z_i)$, $K_1'=K'(z')$. Es gilt $f \in K_i[x]$, da $K_i\supseteq K$ ist, sowie $f' \in K_1'[x]$. Nach dem Gradsatz \ref{skript:13.9} gilt:
+\[|L:K|= |L:K_i|\cdot\underbrace{|K_i:K|}_{\geq2} > |L:K_i|.\]
+Nach der Induktionsvoraussetzung, wobei $L$ und $L'$ die Zerfällungskörper bleiben, existiert ein $\tau: L\to L'$ mit
+\[\tau\big|_{K_i}=\sigma_i.\]
+Also gilt auch
+\[\tau\big|_K=\sigma_i\big|_K=\sigma,\]
+woraus \textbf{(1)} folgt.
+Es fehlt noch zu zeigen, dass, wenn $f$ keine mehrfachen Nullstellen in $L$ hat, mindestens $|L:K|$ viele solche Fortsetzungen existieren. Nach Induktion gibt es mindestens $|L:K_i|$ Isomorphismen $L\to L'$, die $\sigma_i$ fortsetzen. Da es nun $d$ solche $\sigma_i$ gibt, existieren mindestens $d\cdot|L:K_i|$ Fortsetzungen.
+Da nach Voraussetzungen $d = \Grad (g)$ ist, folgt
+\[|L:K|=\underbrace{|K_i:K|}_{=d}\cdot|L:K_i|\]
+und es gibt somit mindestens $|L:K|$ Fortsetzungen.
+\end{proof}
+
+\begin{df}\label{skript:14.7}
+	Sei $f\in\Q[x]$, $f\neq0$ und $n=\Grad f\geq1$. Sei $L$ der Zerfällungskörper von $f$ über $\C$. Dann wird die Gruppe
+	\[\Aut(L,\Q)=\Aut(L)\]
+	die \bi{Galoisgruppe} von $f$ genannt. Schreibweise: $\Gal(f,\Q)$.
+\end{df}
+
+\begin{sz}\label{skript:14.8}
+	Sei $L\supseteq K$ Zerfällungskörper von $f\in K[x]$, $f\neq0$. Dann operiert $G=\Aut(L,K)$ auf der Menge
+	\[X:=\{z\in L|f(z)=0\}\]
+	und der Homomorphismus $\rho: G\to\Sym(X)$ ist injektiv. $G$ ist also isomorph zu einer Untergruppe von $S_n$ mit $n=\Grad f$. Ist $f$ irreduzibel, dann operiert $G$ transitiv auf $X$, d. h. $X$ besteht nur aus einer $G$-Bahn.
+\end{sz}
+\begin{proof}
+	Sei $X=\{z_1,\ldots,z_m\}$. Beachte hierbei $m\leq n$. Nach früheren Rechnungen operiert $G$ auf $X$ (vgl. \ref{skript:14.3} \textbf{(1)}). Nach §3 erhalten wir einen Gruppenhomomorphismus
+	\[\rho: G\to\Sym(X)\cong S_m\]
+	mit
+	\[\Ker\rho=\{\sigma\in G\ |\ \forall i\in\{1,\ldots,m\}: \sigma(z_i)=z_i\}.\]
+	Da als Zerfällungskörper $L=K(z_1,\ldots,z_m)$, folgt aus $\sigma(z_i)=z_i$ für $1\leq i\leq m$, dass $\sigma=\id$ ist. Somit folgt $\Ker\rho=0$ und damit, dass $\rho$ injektiv ist.\\
+	Ist $f$ irreduzibel, dann existiert zu jedem $i$ nach Lemma $\ref{skript:14.4}$ ein Isomorphismus
+	\[\tau_i: K(z_i)\to K(z_1)\]
+	mit $\tau_i(z_i)=z_1$ und $\tau_i\big|_K=\id$.
+	Nach \ref{skript:14.6} setzt sich $\tau_i$ fort zu einem Automorphismus $\sigma_i\in\Aut(L,K)$. Alle Nullstellen $z_i$ liegen also in einer Bahn der Operation, d. h. $G$ operiert transitiv.
+\end{proof}
+
+\begin{genericdf}{Beispiel}\label{skript:14.9}
+	Sei $L=\Q(\alpha)$ mit $\alpha=\sqrt[4]{2}\in\R^+$. Betrachte zunächst $\Aut(L,\Q)$.
+	\[f=x^4-2\]
+	ist irreduzibel mit den Nullstellen $\alpha,-\alpha,\i\alpha,-\i\alpha$. Da $L\subseteq\R$, kann ein $\sigma\in\Aut(L,\Q)$ die Nullstelle $\alpha$ nur auf $\pm\alpha$ abbilden. Nach \ref{skript:14.4} existiert genau ein $\sigma: L\to L$ mit $\alpha\mapsto-\alpha$. Zusammen mit der Identität ergibt dies
+	\[\Aut(L,\Q)\cong C_2.\]
+	Es gibt auch einen Körperisomorphismus $\sigma_2: L\to\Q(\i\alpha)$ mit $\alpha\mapsto\i\alpha$ (ebenfalls nach \ref{skript:14.4} mit $\sigma:\Q\to\Q, f'=f,z=\alpha,z'=\i\alpha$). Der Körper
+	\[\tilde{L}:=\Q(\alpha,\i\alpha)\]
+	ist Zerfällungskörper von $f$. Nach \ref{skript:13.16} gilt $|\tilde{L}:\Q|=8$. Sei nun $\sigma\in\Aut(\tilde{L},\Q)$. Dann operiert nach \ref{skript:14.8} $\Aut(\tilde{L},\Q)$ transitiv auf
+	\[X=\{\alpha,-\alpha,\i\alpha,-\i\alpha\}\hat{=}\{1,2,3,4\}.\]
+	Beachte: $\alpha\mapsto-\alpha\Rightarrow\i\alpha\mapsto\pm\i\alpha,-\alpha\mapsto\alpha$. Daraus ergeben sich die Permutationen
+	\[\id, (1,2), (1,2)(3,4).\]
+	Komposition liefert noch
+	\[(3,4).\]
+	Ebenso sieht man, dass die Permutationen
+	\[(1,3)(2,4), (1,4)(2,3)\]
+	ebenfalls von Automorphismen kommen. Erneute Komposition liefert
+	\[(1,2)(1,4)(2,3)=(1,3,2,4)\]
+	und damit auch das Inverse
+	\[(1,4,2,3)\]
+	als Automorphismus.\\
+	Die Permutation $(1,2,3,4)$ kann nicht von einem Automorphismus kommen, da $\alpha\mapsto-\alpha\mapsto\i\alpha$ unmöglich ist. Obige Rechnungen zeigen mit dem Erweiterungssatz und dem Erweiterungslemma, dass es 8 Automorphismen gibt.\\
+	Da $\Aut(\tilde{L},\Q)\cong S_4$ unmöglich ist, folgt mit Lagrange
+	\[|\Aut(\tilde{L},\Q)|=8,\]
+	da es keine größeren Untergruppen der $S_4$ gibt. Somit ist $\Aut(\tilde{L},\Q)$ isomorph zu einer 2-Sylowuntergruppe von $S_4$, also isomorph zur Diedergruppe der Ordnung 8.
+\end{genericdf}
+
+\begin{lemma}\label{skript:14.10}
+	Sei $f\in K[x]$ und $\Grad f\geq1$, $L\supseteq K$ eine Körpererweiterung.
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		Falls $f$ und $D(f)$ keinen gemeinsamen Teiler vom Grad mindestens 1 in $K[x]$ haben, dann hat $f$ keine mehrfachen Nullstellen in $L$.
+		\item[\textbf{(2)}]
+		Ist $f$ irreduzibel und $D(f)\neq0$, dann besitzt $f$ ebenfalls keine mehrfachen Nullstellen in $L$.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		Der Euklidsche Algorithmus liefert ein $d\in K[x]$, welches sowohl $f$ als auch $D(f)$ teilt und
+		\[d=g\cdot f+h\cdot D(f)\]
+		mit $g,h\in K[x]$. Angenommen, es gelte
+		\[f=(x-\alpha)^2 r\]
+		mit $r\in L[x]$. Dann folgt aus der Produktregel, dass
+		\[D(f)=2(x-\alpha)r+(x-\alpha)^2D(r),\]
+		also teilt $(x-\alpha)$ sowohl $f$ als auch $D(f)$ in $L[x]$. Damit muss aber $(x-\alpha)$ auch ein Teiler von $d$ sein und somit der Grad von $d$ mindestens 1.
+		\item[\textbf{(2)}]
+		Sei $D(f)\neq0$ und $f$ irreduzibel, d. h. $f$ besitzt nur Teiler vom Grad 0 oder vom gleichen Grad wie $f$. Wenn $\Grad f=1$ oder $\Grad D(f)=0$, dann folgt die Aussage sofort aus \textbf{(1)}. Ist $\Grad D(f)\geq1$ und $g$ ein nicht konstanter Teiler von $f$ und $D(f)$, dann gilt
+		\[1\leq\Grad g\leq\Grad D(f)<\Grad f.\]
+		Dies ist aber ein Widerspruch zur Irreduzibilität von $f$. Also gibt es kein solches $g$ und die Aussage folgt mit \textbf{(1)}.
+	\end{itemize}
+\end{proof}
+\begin{genericdf}{Bemerkung}\label{skript:14.11}
+	$f\in K[x]$ sei irreduzibel und $\Char K=0$. Dann ist $D(f)\neq0$. Falls aber $\Char K=p\neq0$ ist, kann $D(f)=0$ sein: z. B. sei
+	\[K=\F_p(t)=\Quot(\F_p[t])\]
+	und $f\in K[x]$ mit $f=x^p-t$. Dann ist
+	\[D(f)=px^{p-1}=0.\]
+	Beachte: $t$ ist prim in $\F_p[t]$. Nach Eisenstein ist $f$ irreduzibel in $\F_p[t]$ und nach Gauß auch in $\F_p(t)$. Sei $\alpha$ eine Nullstelle von $f$. Im Zerfällungskörper $L$ von $f$ gilt dann, da $t=\alpha^p$:
+	\[(x-\alpha)^p=x^p-\alpha^p=x^p-t.\]
+	Also ist $\alpha$ eine mehrfache Nullstelle!
+\end{genericdf}
+
+\begin{genericdf}{Hauptsatz für endliche Körper}\label{skript:14.12}
+	Sei $p$ eine Primzahl, $\F_p=\Z/p\Z$. Für $n\geq1$ sei $f=x^{p^n}-x\in\F_p[x]$ und es sei $K\supseteq\F_p$ ein Zerfällungskörper von $f$. Dann gelten:
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		$|K|=p^n$ und es existiert ein $g\in\F_p[x]$, $g\neq0$, welches irreduzibel ist und
+		\[K\cong\F_p[x]/(g).\]
+		\item[\textbf{(2)}]
+		Ist $K'$ ein Körper mit $|K'|=p^n$, dann ist $K'$ ein Zerfällungskörper von $f$ und $K'\cong K$.
+		\item[\textbf{(3)}]
+		$\Aut(K,\F_p)=\langle F\rangle$, wobei $F$ der Frobeniusautomorphismus ist, gegeben durch
+		\[F: K\to K: y\mapsto y^p.\]
+		Außerdem gilt $|\Aut(K,\F_p)|=n$.
+	\end{itemize}
+\end{genericdf}
+\begin{proof}
+	Zunächst: Da $K$ ein Zerfällungskörper ist, gilt $|K:\F_p|<\infty$ und damit auch $|K|<\infty$. Nach Lemma \ref{skript:8.7} ist $F$ injektiv. Wegen $|K|<\infty$ folgt, dass $F$ auch surjektiv ist. Somit ist $F\in\Aut(K,\F_p)$.
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		Es gilt
+		\[D(f)=p^nx^{p^n-1}-1=-1\neq0.\]
+		$f$ hat also keine mehrfachen Nullstellen in $K$. Sei $X$ die Menge der Nullstellen von $f$ in $K$, dann ist $|X|=p^n=\Grad f$. Es ist
+		\[X=\{y\in K\ |\ y^{p^n}=y\}=\{y\in K\ |\ F^n(y)=y\}.\]
+		Damit ist zunächst $F^n\big|_X=\id$. Da $F$ ein Körperautomorphismus ist, gilt nun $F^n=\id$ auf ganz $K$ und somit $X=K$. Nach Satz \ref{skript:8.10} ist $K^\ast$ zyklisch, d. h. es gibt ein $z_0$ mit $K^\ast=\langle z_0\rangle$. Daraus folgt
+		\[K=\F_p(z_0).\]
+		Sei $g=\mu_{z_0}$ das Minimalpolynom. Da $|K:\F_p|=n$, gilt $\Grad g=n$. Betrachte
+		\[\varphi: \F_p[x]\to K: h\mapsto h(z_0).\]
+		$\varphi$ ist surjektiv und $g\in\Ker\varphi$. Nach dem Homomorphiesatz ist
+		\[\F_p[x]/\Ker\varphi\cong K.\]
+		Nun ist aber $(g)\subseteq\Ker\varphi$ und $(g)$ ist maximal, da $g$ irreduzibel ist. Daraus folgt $(g)=\Ker\varphi$ und \textbf{(1)} ist bewiesen.
+		\item[\textbf{(2)}]
+		$\F_p$ ist auch der Primkörper von $K'$. Da $|K'|=p^n$ und $|K'^\ast|=p^n-1$, ist $K'$ ein Zerfällungskörper von $f$. \textbf{(2)} wird dann durch \ref{skript:14.6} gezeigt.
+		\item[\textbf{(3)}]
+		Sei $K^\ast=\langle z_0\rangle$, $g$ ein irreduzibles Polynom wie in \textbf{(1)} und $\sigma\in\Aut(K,\F_p)$. Dann ist $\sigma$ durch $z_0$ eindeutig bestimmt, da $K=\F_p(z_0)$. Es ist
+		\[g(\sigma(z_0))=\sigma(g(z_0))=\sigma(0)=0.\]
+		Da $\Grad g=n$ ist, existieren höchstens $n$ Möglichkeiten für $\sigma(z_0)$, d. h. es gibt höchstens $n$ verschiedene $\sigma$. Andererseits sei $m\geq1$ die Ordnung von $F$ in $\Aut(K,\F_p)$. Dann ist $z_0=F^m(z_0)$, also $z_0^{p-1}=1$. Die Ordnung von $z_0$ ist $p^n-1$, also ist $m\geq n$. Damit liefern die Potenzen $n$ verschiedene Automorphismen, d. h. $|\Aut(K,\F_p)|=n$ und folglich
+		\[\Aut(K,\F_p)=\langle F\rangle.\]
+	\end{itemize}
+\end{proof}
+
+\begin{generic_no_num}{Abschließende Bemerkungen zu §14}
+	In vielen Büchern zur Algebra finden sich die Begriffe normal und separabel für Körpererweiterungen. Sei $L\supseteq K$ eine algebraische Körpererweiterung.
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		Man nennt $L\supseteq K$ \bi{separabel}, falls für jedes $\alpha\in L$ das Minimalpolynom $\mu_\alpha$ keine mehrfachen Nullstellen im algebraischen Abschluss $\overline{K}$ besitzt.
+		\item[\textbf{(2)}]
+		Man nennt $L\supseteq K$ \bi{normal}, wenn für jeden Körperhomomorphismus $\sigma: L\to\overline{L}$ mit $\sigma\big|_K=\id$ gilt, dass $\sigma(L)=L$, d. h. $\sigma\in\Aut(L,K)$. Ist $|L:K|<\infty$, dann gilt: $L\supseteq K$ ist genau dann normal, wenn $L$ Zerfällungskörper eines Polynoms $f\in K[x]$ ist.
+	\end{itemize}
+\end{generic_no_num}

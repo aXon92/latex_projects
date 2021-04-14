@@ -1,0 +1,534 @@
+\section{Ideale und Ringhomomorphismen}
+
+\begin{df}\label{skript:8.1}
+	\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+			Sei $R$ ein Ring $I$ eine Untergruppe von $(R,+)$.
+			Dann heißt $I$
+			\begin{itemize}
+			\item
+			\bi{Linksideal} von $R$, falls $a\cdot b \in I$ für alle $a \in R$ und $b \in I$ gilt.
+			\index{Linksideal}
+			Wir schreiben dann $ I \unlhd_L R $.
+			\item 
+			\bi{Rechtsideal} von $R$, falls $b \cdot a \in I$ für alle $a \in R$ und $b \in I$ gilt.
+			\index{Rechtsideal}
+			Wir schreiben dann $ I \unlhd_R R $.
+		
+			\item
+			\bi{(zweiseitiges) Ideal} von $R$,
+			falls $a \cdot b \in I$ und $b \cdot a \in I$ für alle $a \in R$ und $b \in I$ gilt. 		
+			\index{Ideal}
+			Wir schreiben dann $ I \unlhd R $.
+		\end{itemize}
+		Falls $R$ kommutativ ist, fallen diese Begriffe zusammen.		
+		
+		\item[\textbf{(2)}]
+		Ist $I$ ein Ideal von $R$, dann ist $(R/ I, + )$ eine abelsche Gruppe.
+		Diese wird durch
+		\begin{align*}
+		(a + I) \cdot (b+ I) := a \cdot b + I
+		\end{align*}
+		zu einem Ring und wird auch \bi{Faktorring} genannt.
+		Um eine Klasse in $R / I $ schreiben wir auch $\overline{a}$ statt $a + I$.
+ 		\index{Faktorring}
+		Nun müssen wir noch zeigen, dass diese Verknüpfung wohldefiniert ist.
+		\begin{proof}
+		Sei $\overline{a} = \overline{a^\prime}$ und $\overline{b} = \overline{b^\prime}$.
+		Dann gilt
+		\begin{align*}
+		a &= a^\prime +x \\
+		b &= b^\prime + y 
+		\end{align*}
+		für $x,y \in I$ und es folgt
+		\begin{align*}
+		(a \cdot b) = (a^\prime +x ) \cdot ( b^\prime + y) 
+		= a^\prime \cdot b^\prime + \underbrace{x \cdot b^\prime +a^\prime \cdot y + x \cdot y}_{ \in I},
+		\end{align*}
+		womit $\overline{a \cdot b} = \overline{a^\prime \cdot b^\prime}$.
+		\end{proof}
+		
+	\end{enumerate}		
+\end{df}
+
+\begin{genericdf}{Beispiele}\label{skript:8.2}
+	\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $R = \Z$, dann ist $I = m \Z$ ein Ideal und $R/I = \Z / m \Z$ der zugehörige Faktorring.
+		
+		\item[\textbf{(2)}]
+		Sei $R $ ein kommutativer Ring und $a \in R$ fest gewählt.
+		Dann ist
+		\begin{align*}
+		(a) := aR = Ra = \lbrace ba \ | \ b \in R \rbrace \unlhd R
+		\end{align*}
+		das von $a$ \bi{erzeugte Ideal}.
+		\index{Ideal!erzeugt}
+		Ein solchs Ideal nennen wir auch \bi{Hauptideal}.
+		\index{Hauptideal}
+		Falls jedes Ideal von $R$ ein Hauptideal ist, nennen wir $R$ einen \bi{Hauptidealring}.
+		\index{Hauptideal!ring}
+		
+		\item[\textbf{(3)}]
+		Der Ring $\Z$ ist ein Hauptidealring.
+		Alle Körper $K$ sind Hauptidealringe mit den zwei Idealen $(0)$ und $(1) = K$.
+		
+		\item[\textbf{(4)}]
+		Sei $R$ ein kommutativer Ring und $a_1, \dots , a_m \in R$.
+		Dann lässt sich durch
+		\begin{align*}
+		(a_1, \dots, a_m) := \left\lbrace   \sum \limits_{i=1}^m f_i \cdot a_i \ | \ f_i \in R \right\rbrace 
+		\end{align*}
+		das Hauptideal allgemeiner definieren.
+	\end{enumerate}
+\end{genericdf}
+
+\begin{sz} \label{skript:8.3}
+	Sei $ R $ ein euklidischer Ring.
+	Dann ist $ R $ ein Hauptidealring.
+\end{sz}
+
+\begin{proof}
+	Sei $ I \unlhd R $.
+	Das Ideal $ I = 0 $ ist ein Hauptideal, denn $ (0) = 0 $.
+	Wir betrachten also $ I \neq 0 $ und setzen
+	\begin{align*}
+	d = \min \lbrace \nu(a) \ | \ 0 \neq a \in I \rbrace,
+	\end{align*}
+	wobei $ \nu $ die Norm von $ R $ ist.
+	Das Minimum muss existiert, da Mengen aus natürlichen Zahlen immer ein kleinstes Element besitzen.
+	Sei nun $ a_0 \in I $ mit $ \nu(a_0) = d$.
+	Wir behaupten, dass $ I = (a_0) $ gilt.
+	Um dies zu zeigen, wählen wir ein beliebiges $ b \in I $.
+	Dann gilt durch Division mit Rest
+	\begin{align*}
+	b = q \cdot a_0 + r
+	\end{align*}
+	für $ q,r \in R $ mit $ r = 0 $ oder $ r \neq 0 $ mit $ \nu(r) < \nu(a_0) $.
+	Angenommen $ r \neq 0 $, dann gilt
+	\begin{align*}
+	r = b - q\cdot a_0 \in I
+	\end{align*}
+	und es ist $ \nu(r) < \nu(a_0) $.
+	Dies ist ein Widerspruch zur Minimalität von $ a_0 $.
+	Also muss $ r = 0 $ gelten, womit $ b \in (a_0) $ folgt. 
+\end{proof}
+
+
+\begin{df}\label{skript:8.4}
+	Seien $R$ und $S$ Ringe.
+	Eine Abbildung 
+	\begin{align*}
+	\varphi : R \to S
+	\end{align*}
+	heißt \bi{Ringhomomorphismus}, wenn $\varphi$ ein Gruppenhomomorphismus von $(R,+)$ nach $(S,+)$ ist
+	\index{Homomorphismus!Ring}	
+	und
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		$\varphi(r_1 \cdot r_2 ) = \varphi(r_1) \cdot \varphi(r_2)$
+		
+		\item[\textbf{(2)}]
+		$ \varphi(1_R) = 1_S$
+	\end{enumerate}
+	gelten. Der Punkt muss gelten, da bei uns Ringe immer die $1$ enthalten.
+	Wenn $\varphi$ bijektiv ist, heißt $\varphi$ \bi{Isomorphismus}.
+	\index{Homomorphismus!Isomorphismus}\index{Homomorphismus!isomorph} 
+	Wir sagen dann $R$ und $S$ sind \bi{isomorph} und schreiben dafür $R \cong S$.
+	Einen Isomorphismus von $R$ nach $R$ nennen wir \bi{Automorphismus}.
+	\index{Homomorphismus!Automorphismus}
+	Einen Ringhomomorphismus von $R$ nach $R$ nennen wir \bi{Epimorphismus}.
+	\index{Homomorphismus!Epimorphismus}
+\end{df}
+
+\begin{sz}\label{skript:8.5}
+	Seien $R,S$ Ringe und $\varphi :R \to S$ ein Ringhomomorphismus.
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Es gelten $\Ker \varphi = \lbrace a \in R \ | \ \varphi(a) = 0 \rbrace \unlhd R$
+		und $\Bild \varphi $ ist ein Teilring von $S$.
+		
+		\item[\textbf{(2)}]\bi{Homomorphiesatz}:\index{Satz!Homomorphie}
+		Sei $I = \Ker \varphi$ Dann existiert ein eindeutiger Ringhomomorphismus
+		\begin{align*}
+		\overline{\varphi} : R/I \to S
+		\end{align*}
+		mit $ \varphi = \overline{\varphi} \circ \pi$, wobei 
+		\begin{align*}
+		\pi : R \to R/I, \ a \mapsto \overline{a}
+		\end{align*}
+		ein surjektiver Ringhomomorphismus ist.
+		Außerdem gilt $\Ker \overline{\varphi} = \lbrace \overline{0} \rbrace $ und $\overline{\varphi}$ ist injektiv.
+		Damit folgt $R/I \cong \Bild \varphi$. Falls $\varphi$ surjektiv ist, gilt sogar $R/I \cong S$.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Zunächst ist uns aus der Gruppentheorie bekannt, dass $(\Ker \varphi, + ) \leq (R,+)$ gilt.
+		Sei nun $a \in \Ker \varphi$ und $r \in R$. Wegen
+		\begin{align*}
+		\varphi(r \cdot a) &= \varphi(r) \cdot \varphi(r) = 0 \\
+		\varphi(a \cdot r) &= \varphi(a) \cdot \varphi(r) = 0
+		\end{align*}
+		folgt $\Ker \varphi \unlhd R$.
+		Der zweite Teil befindet sich in den Übungsaufgaben.
+		
+		\item[\textbf{(2)}]
+		In der Gruppentheorie(\ref{skript:5.1}) haben wir alle nötigen Eigenschaften für $\overline{\varphi}$ gezeigt.
+		Übrig bleibt die Wohldefiniertheit, was wir als zusätzliche Übungsaufgabe ansehen.
+	\end{enumerate}
+\end{proof}
+
+\begin{genericdf}{Charakteristik eines kommutativen Rings}\label{skript:8.6}
+	Sei $R$ ein kommutativer Ring, $a \in R$ und $m \in \Z$.
+	Ist $m > 0 $, dann definieren wir 
+	\begin{align*}
+	m \cdot a := \underbrace{a + \dots + a}_{m-\text{mal}}
+	\end{align*}
+	und für $m=0$ dann $0 \cdot a = 0$.
+	Sollte $m < 0 $ sein, so definieren wir $m \cdot a := -(-m) \cdot a$.
+	Die Abbildung 
+	\begin{align*}
+	\varphi : \Z \to R, m \mapsto m \cdot 1_R
+	\end{align*}
+	ist ein Ringhomomorphismus.
+	Da $\Z$ ein Hauptidealring ist existiert ein $n \in \Z$, sodass
+	\begin{align*}
+	\Ker \varphi = (n) = n \Z
+	\end{align*}
+	gilt.
+	Wir nennen $|n|$ die \bi{Charakteristik} von $R$ und schreiben hierfür $\Char R$.\index{Charakteristik}
+	Diese ist eindeutig bestimmt, denn $n$ und $-n$ erzeugen dasselbe Hauptideal.
+	Nun betrachten wir ein paar Eigenschaften:
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Falls $\Char R = 0$ gilt ist $\varphi$ injektiv und es ist $m \cdot 1 \neq 0$ für alle $m \neq 0$.
+		Also hat $R$ einen zu $\Z$ isomorphen Teilring.
+		\item[\textbf{(2)}]
+		
+		Ist $\Char R > 0$, dann gilt
+		\begin{align*}
+		\underbrace{1+ \dots + 1}_{\Char R- \text{mal}}
+		\end{align*}
+		und $\Char R$ ist die kleinste positive Zahl mit dieser Eigenschaft.
+		Nach \ref{skript:8.5} ist 
+		\begin{align*}
+		\overline{\varphi} : \Z / \Char R \Z \to R
+		\end{align*}				
+		injektiv, womit $R$ einen zu $\Z / \Char R \Z$ isomorphen Teilring besitzt.
+						
+		\item[\textbf{(3)}]
+		Sei $R$ ein Integritäsring mit $\Char R > 0$.
+		Dann ist $p := \Char R $ eine Primzahl.
+		Insbesondere gilt dies auch für Körper.
+		\begin{proof}
+			Angenommen $\Char R = m_1 \cdot m_2$ mit $0 < m_1,m_2 < \Char R$.
+			Dann gilt
+			\begin{align*}
+			\varphi(\Char R\cdot 1) 
+			= \varphi(m_1) \cdot \varphi(m_2) 
+			\end{align*}
+			und es folgt $\varphi(m_1) = 0$ oder $\varphi(m_2) = 0$.
+			Dies ist ein Widerspruch zur Minimalität von $\Char R$.
+			Damit muss $\Char R$ prim sein.		
+		\end{proof}
+	\end{enumerate}
+\end{genericdf}
+
+\begin{lemma}\label{skript:8.7}
+	Sei $R$ ein Integritätsring und $\Char R =: p > 0$.
+	Dann ist
+	\begin{align*}
+	F : R \to R, \ a \mapsto a^p
+	\end{align*}
+	ein injektiver Ringhomomorphismus und wir nennen $F$ \bi{Frobeniusendomorphismus}. \index{Endomorphismus!Frobenius}
+\end{lemma}
+
+\begin{proof}
+	Zunächst zeigen wir die Eigenschschaften für einen Ringhomomorphismus.
+	Seien $a,b \in R$ beliebig.
+	Da $R$ kommutativ ist gilt
+	\begin{align*}
+	F(a) \cdot F(b) = a^p \cdot b^p = (a\cdot b)^p = F(a \cdot b),
+	\end{align*}
+	womit die multiplikative Eigenschaft gezeigt ist.
+	Nun folgt wieder mit der Kommutativität
+	\begin{align*}
+	F(a+b) = (a+b)^p
+	= \sum \limits_{i=0}^p \binom{p}{i} \cdot a^i \cdot b^{p-i}
+	\end{align*}
+	Nun ist der Binomialkoeffizent für $ 1 \leq i \leq p-1$ durch $p$ teilbar.
+	Da $\Char R = p$ gilt folgt somit
+	\begin{align*}
+	F(a+b)  = a^p + a^p = F(a) + F(b),
+	\end{align*}
+	womit $\varphi$ ein Ringhomomorphismus ist.
+	Da $R$ ein Integritätsring ist, gilt auch
+	\begin{align*}
+	\Ker \varphi = \lbrace a \in R \ | \ a^p = 0 \rbrace
+	\end{align*}
+	und somit ist $\varphi$ injektiv.			
+\end{proof}
+
+\begin{genericthm}{Universelle Eigenschaft von Polynomringen}\label{skript:8.8}
+	\index{Polynomring!Universelle Eigenschaft}
+	Sei $ R $ ein kommutativer Ring, $ R[x] $ der zugehörige Polynomring,
+	$ \varphi : R \to S $ ein Ringhomomorphismus und $ s \in S $ fest gewählt.
+	Dann existiert ein eindeutiger Ringhomomorphismus
+	\begin{align*}
+	\varphi_s : R[x] \to S \quad \text{mit} \quad \varphi_s \Big|_R = \varphi \quad
+	\text{und} \quad \varphi_s(x) = s.
+ 	\end{align*}
+ 	Hierbei identifizieren wir $ R $ mit den Polynomen vom Grad $ 0 $ und $ - \infty $.
+	Wir schreiben für $ f \in R[x] $ statt $ \varphi_s(f) $ einfach $ f(s) $.
+	Daher kommt dann der Name \bi{Einsetzungshomomorphismus}.\index{Homomorphismus!Einsetzung}
+\end{genericthm}
+
+\begin{proof}
+	Sei $ f = a_0 +a_1 \cdot x + \dots + a_n \cdot x^n \in R[x]$.
+	Wir definieren $ \varphi_s(f) $ durch \\
+	$ \varphi(a_0) + \varphi(a_1) \cdot s + \dots + \varphi(a_n) \cdot s^n $.
+	Durch schnelles Nachrechnen erkennen wir, dass die Ringhomomorphismuseigenschaften erfüllt sind.
+	Um die Eindeutigkeit zu zeigen wählen wir einen anderen Ringhomomorphismus $ \tilde{\varphi_s} $
+	mit $ \tilde{\varphi_s}(x) = s $.
+	Dann gilt
+	\begin{align*}
+	\tilde{\varphi_s}(x^m) = (\tilde{\varphi_s}(x))^m = s^m = (\varphi_s(x))^m = \varphi(x^m)
+	\end{align*}
+	und jedes Element aus $ R[x] $ ist eine $ R $-Linearkombination von
+	$ \lbrace x^m \ | \ m \in \N \rbrace$. 
+	Also folgt\\
+	$ \tilde{\varphi_s} = \varphi_s $.
+\end{proof}
+
+\begin{lemma} \label{skript:8.9}
+	Sei $ K $ ein Körper und $ f \in K[x] $ mit $ \Grad (f) = n \geq 0 $.
+	Dann besitzt $ f $ höchstens $ n $ Nullstellen in $ K $.
+\end{lemma}
+
+\begin{proof}
+	Für den Fall das $ \Grad(f) = 0 $ ist folgt die Aussage sofort, denn $ f $ ist konstant und ungleich $ 0 $.
+	Also betrachten wir den Fall, dass $ \Grad(f) > 0 $ ist.
+	Sei $ a \in K  $ eine Nullstelle von $ f $, dann gilt $ f = (x-a) \cdot g $.
+	Dies müssen wir jedoch noch zeigen.
+	Die Division mit Rest liefert uns 
+	\begin{align*}
+	f = q \cdot (x-a) + r
+	\end{align*}
+	mit $ \Grad(r) < \Grad(q) $. Mit dem Einsetzungshomomorphismus aus \ref{skript:8.8} erhalten wir
+	\begin{align*}
+	0 = f(a) = q(a) \cdot \underbrace{(a-a)}_{=0} + r(a),
+	\end{align*}
+	woraus $ r(a) = 0 $ folgt.
+	Also ist $ a $ eine Nullstelle von $ r $ und es gilt $ \Grad(r) < \Grad(f) $.
+	Dann folgt mit Induktion nach dem Grad $ r = (x-a) \cdot \tilde{q} $, womit weiter
+	\begin{align*}
+	f = (x-a)  \cdot q + (x-a) \cdot \tilde{q}
+	= (x-a) \cdot \underbrace{(q + \tilde{q})}_{=g}
+	\end{align*}
+	folgt.
+	Sei nun $ f = (x-a) \cdot g $.
+	Dann gilt $ \Grad(g) = n -1  $ und es folgt induktiv, dass $ g $ höchstens $ n-1 $ Nullstellen besitzt.
+	Wir betrachten nun eine weitere Nullstelle $ b \neq a $ von $ f $.
+	Da $ R $ eine Integritätsring ist, folgt mit
+	\begin{align*}
+	0 = f(b) = \underbrace{(b-a)}_{\neq 0} \cdot g(b),
+	\end{align*}
+	dass $ g(b) = 0 $ ist.
+	Also hat $ f $ höchstens $ n $ Nullstellen.
+\end{proof} 
+
+\begin{generic_no_num}{Bemerkung}
+	Wenn $ K $ kein Körper ist, dann ist dieses Lemma im Allgemeinen falsch.
+	Das Polynom $ x^2-1 $ besitzt beispielsweise über $ \Z / 8 \Z $ vier Nullstellen.
+\end{generic_no_num}
+
+\begin{sz} \label{skript:8.10}
+	Sei $ K $ ein Körper und $ G $ eine endliche Untergruppe von $ K^\ast $.
+	Dann ist $ G $ zyklisch.
+	Sollte $ K $ endlich sein, ist somit $ K^\ast $ zyklisch.
+\end{sz}
+
+\begin{proof}
+	Sei $ g \in G $ mit maximaler Ordnung $ \ord(g) = n $.
+	Da Körper kommutativ bezügliche beiden Verknüpfungen sind muss $ G $ abelsch sein.
+	In \ref{skript:5.8} haben wir gezeigt, dass $ \ord(h) | n $ für alle $ h \in G $ gilt.
+	Damit sind alle $ h \in G $ eine Nullstelle von $ x^n -1 \in K[x] $.
+	Nach \ref{skript:8.9} hat dieses Polynom höchstens $ n $ Nullstellen.
+	Also gilt $ |G| \leq n $.
+	Jedoch gilt auch $ \ord(g) = n$, womit $ G = \langle g \rangle $ ist.
+	Somit ist $ G $ zyklisch.
+\end{proof}
+
+\begin{genericthm}{Chinesischer Restsatz}\label{skript:8.11}
+	Seien $ n,m \in \N $ und $ \ggT(n,m) = 1 $.
+	Dann gilt
+	\begin{align*}
+	\Z / (mn) \Z \cong \Z /m \Z \times \Z /n \Z.
+	\end{align*}
+\end{genericthm}
+
+\begin{proof}
+	Dieser Beweis knüpft direkt an den von \ref{skript:5.9} an.
+	Die Aussage 
+	\begin{align*}
+	(\Z / mn \Z , +) \cong (\Z / m \Z,+) \times (\Z / n \Z,+) 
+	\end{align*}
+	wurde in dort schon gezeigt, wobei wir nun die additive Schreibweise gewählt haben.
+	Die Abbildung 
+	\begin{align*}
+	\varphi : k + mn\Z \mapsto (k + m \Z, k + n \Z)
+	\end{align*}
+	ist der passende Ringhomomorphismus.
+	Wir müssen nur noch die Multiplikation überprüfen, was uns aber zur Übung freigestellt ist.
+\end{proof}
+
+\begin{generic_no_num}{Beispiel}
+	Wir wollen wissen was $ 2^{16}  \mod 15$ ergibt.
+	Wenden wir $ \varphi $ aus dem letzten Beweis darauf an, so erhalten wir 
+	$(2^{16} \mod 3, 2^{16} \mod 5)$.
+	Nun gilt
+	\begin{align*}
+	2^{16} \mod 3 &= (-1)^{16} \mod 3 \\
+	2^{16} \mod 5	&= 4^8 \mod 5 = (-1)^8 \mod 5,
+	\end{align*}
+	womit
+	\begin{align*}
+	(2^{16} \mod 3, 2^{16} \mod 5) = (1 \mod 3, 1 \mod 5)
+	\end{align*}
+	gilt. Das Urbild bezüglich $ \varphi $ ist dann $ 1 \mod 15 $.
+	Es gilt als $ 2^{16} \mod 15  = 1$.
+\end{generic_no_num}
+
+\begin{lemma}\label{skript:8.12}
+	Sei $ \varphi : R \to S $ ein surjektiver Ringhomomorphismus.
+	Dann gelten:
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Ist $ I \unlhd R $, dann auch $ \varphi(I) \unlhd S $.
+		\item[\textbf{(2)}]
+		Für $ J \unlhd S $ gilt $ \varphi^{-1}(J) \unlhd R $. 
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Den ersten Teil haben wir in den Übungen bewiesen.
+	Deswegen kommen wir direkt zu dem zweiten Teil.
+	Es gilt $ \varphi^{-1}(J) \leq R $, denn es gilt $(J,+) \leq (S,+)  $.
+	Seien nun $ x \in \varphi^{-1}(J) $ und $ r \in R $.
+	Wegen $ J \unlhd_L S $ ist
+	\begin{align*}
+	\varphi(r \cdot x) = \underbrace{\varphi(r) }_{\in S} \cdot \underbrace{\varphi(x)}_{\in J},
+	\end{align*}
+	womit $ r \cdot x \in \varphi^{-1}(J) $ gilt.
+	Durch analoges Vorgehen mit $ J \unlhd_R S $ folgt $ x \cdot r \in \varphi^{-1}(J) $.
+\end{proof}
+
+\begin{generic_no_num}{Bemerkung}
+	Die zweite Teil des letzten Lemmas gilt auch wenn $ \varphi $ nicht surjektiv ist.
+	Die Surjektivität wird nur für den ersten Teil benötigt.
+\end{generic_no_num}
+
+\begin{df} \label{skript:8.13}
+	Sei $ R $ ein Ring.
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Hier ist $ R $ noch zusätzlich kommutativ.
+		Sei $ I,J \unlhd R $, dann definieren wir 
+		\begin{align*}
+		I\cdot J = 
+		\lbrace x_1 \cdot y_1 + \dots + x_n \cdot y_n\ | \ x_i \in I, y_i \in J, n \in \N \rbrace 
+		\end{align*}
+		und durch schnelles Nachrechnen sehen wir $ I \cdot J \unlhd R $.
+		Aus diesem Grund nennen wir dies \bi{Produktideal}.
+		\index{Ideal!Produkt}
+		Wir gehen analog für $ I + J $ vor und nennen dies \bi{Summenideal}.
+		\index{Ideal!Summe}
+		
+		\item[\textbf{(2)}]
+		Sei $ I \unlhd R $ mit $ I \neq R $.
+		Wir nennen $ I $ \bi{Primideal}, falls für beliebige Ideale
+		$ J,K \unlhd R $ \index{Ideal!prim}
+		\begin{align*}
+		J \cdot K \subseteq I \Rightarrow J \subseteq I \vee K \subseteq I 
+		\end{align*}
+		gilt.
+		
+		\item[\textbf{(3)}]
+		Wir nennen $ I \unlhd R $ \bi{maximales Ideal},\index{Ideal!maximal}
+		falls für $I \neq R$ und $ J \unlhd R $
+		\begin{align*}
+		I \subseteq J \subseteq R
+		\Rightarrow
+		I = J \vee J = R
+		\end{align*}
+		gilt.
+	\end{enumerate}
+\end{df}
+
+\begin{lemma}\label{skript:8.14}
+	Sei $R$ ein kommutativer Ring und $I \unlhd R$, dann gelten:
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		$R/I \ \text{Integritätsring} \quad \Leftrightarrow \quad  I \ \text{Primideal} $
+		
+		\item[\textbf{(2)}]
+		$R/I \ \text{Körper} \qquad  \qquad \Leftrightarrow \quad  I \ \text{maximales Ideal} $  
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Den ersten Teil werden wir in den Übungen zeigen.
+	Deswegen gehen wir direkt zum zweiten Teil über.
+	Angenommen $R/ I$ ist ein Körper und sei $I \subseteq J \subseteq R$ und $J \unlhd R$.
+	Sei $\pi : R \to R/I$ die Quotientenabbildung.
+	Da $\pi$ surjektiv ist, gilt $\pi(J) \unlhd R/I $ und aufgrund der Körpereigenschaft
+	folgt
+	\begin{align*}
+	\pi(J) = 0 \vee \pi(J) = R/I
+	\Rightarrow
+	J = I \vee J = R.
+	\end{align*}
+	Also ist $I$ ein maximales Ideal.
+	Umgekehrt sei $I$ ein maximales Ideal von $R$ und $a \in R/I$.
+	Damit ist auch $(a)$ ein Ideal von $R/I$, womit nach \ref{skript:8.2} $\pi^{-1}((a)) \unlhd R $ gilt.
+	Wegen $I \subseteq \pi^{-1}(\pi(I)) \subseteq \pi^{-1}((a))$ folgt 
+	\begin{align*}
+	\pi^{-1}((a)) = I \vee \pi^{-1}((a)) = R,
+	\end{align*}
+	da $I$ ein maximales Ideal ist. 
+	Wir erhalten nun
+	\begin{align*}
+	\pi^{-1}((a)) &= I \Rightarrow (a) = 0\\
+	\pi^{-1}((a)) &= R \Rightarrow (a) = (1) = R/I,
+	\end{align*}
+	womit $a$ invertierbar ist.
+	Dies gilt, da ein $b \in R/I$ existiert mit $a \cdot b = 1$.
+	Aufgrund der Kommutativität von $R$ ist jedes Element von $R/I$ invertierbar und $R/I$ ist kommutativ.
+	Also ist $R/I$ ein Körper.
+\end{proof}
+
+\begin{genericdf}{Beispiele und Bemerkung}\label{skript:8.15} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $R = \Z$ und $I = p \Z$ mit $p$ prim.
+		Dann ist $R/I$ ein Körper und $I$ somit ein maximales Ideal.
+		
+		\item[\textbf{(2)}]
+		Sei $m = m_1 \cdot m_2$ mit $1 \leq m_1, m_2 \leq m$.
+		Dann ist $\Z / m \Z$ kein Körper und besitzt sogar Nullteiler.
+		Damit is $m \Z$ weder maximal noch ein Primideal.
+		
+		\item[\textbf{(3)}]
+		Jedes maximale Ideal ist ein Primideal, da Körper Integritätsringe sind.
+		
+		\item[\textbf{(4)}]	
+		Das Ideal $0 \Z$ ist ein Primideal, denn $\Z / 0 \Z \cong \Z$ ist ein Integritätsring.	
+	\end{enumerate}
+\end{genericdf}
+
+

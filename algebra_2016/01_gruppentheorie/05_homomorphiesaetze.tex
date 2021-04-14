@@ -1,0 +1,295 @@
+\section{Homomorphiesatz mit Anwendungen auf endlichen (abelschen) p-Gruppen}
+
+\begin{genericthm}{Homomorphiesatz}\label{skript:5.1} \index{Satz!Homomorphie}
+
+Sei $ \varphi : G \to H$ ein surjektiver Gruppenhomomorphismus und \\
+$N= \Ker \varphi$.
+Dann gibt es genau einen Gruppenhomomorphismus $\overline{\varphi}: G/N \rightarrow H$ mit
+\begin{align*}
+\varphi = \overline{ \varphi  } \circ \pi,
+\end{align*}
+wobei $  \pi : G \to G/N$ die Faktorabbildung ist. 
+Durch $\overline{\varphi }$ ist ein Isomorphismus gegeben und wir schreiben $H \cong G/N$. 
+%Wir können die gegebene Situation durch
+%%\begin{figure}[H]
+%%	\centering
+%%	\begin{tikzcd}
+%%	G \arrow{r}{\varphi} \arrow{rd}{\pi}  &   H \\
+%%		{ }			&	G/N \arrow{u}{\overline{ \varphi }}
+%%	\end{tikzcd}
+%%\end{figure}
+%ein kommutatives Diagramm veranschaulichen.
+\end{genericthm}
+
+\begin{proof}
+	Nach \ref{skript:3.3} ist
+	\begin{align*}
+	\overline{\varphi} : G/N \to H, \ gN \to \varphi(g)
+	\end{align*}
+	ein wohldefinierter Gruppenhomomorphismus.
+	Nun gilt
+	\begin{align*}
+	\overline{\varphi}(\pi(g)) = \overline{\varphi}(gN) = \varphi(g)
+	\end{align*}
+	für jedes $ g \in G $. Also gilt $ \overline{\varphi} \circ \pi = \varphi $.
+	Für diese Identität kann $ \overline{\varphi} $  nicht anders definiert sein, woraus die Eindeutigkeit folgt. 
+	Da $ \varphi $ surjektiv ist, muss dies auch für $ \overline{\varphi} $ gelten.
+	Es gilt $ N = \Ker \varphi $ und das neutrale Element von $ G/N $ ist $ N $.
+	Mit  
+	\begin{align*}
+	\overline{\varphi}(gN) = 1_H = \varphi(g)
+	\end{align*}
+	muss $ g \in N $ sein. Also ist $ \overline{\varphi} $ injektiv.
+\end{proof}
+
+\begin{genericdf}{Beispiel}\label{skript:5.2}
+	Wir betrachten die Signumsabbildung
+	\begin{align*}
+	\varepsilon : S_n \to \Q^\ast , \ \sigma \mapsto \det(A(\sigma))
+	\end{align*}
+	mit $ \Bild \varepsilon  = \lbrace \pm 1 \rbrace$. Mit der Multiplikation haben wir hier $ C_2 $.
+	Nun ist
+	\begin{align*}
+	\tilde{\varepsilon} : S_n \to \lbrace \pm 1 \rbrace , \ \sigma \to \varepsilon(\sigma)
+	\end{align*}
+	surjektiv und mit \ref{skript:5.1} folgt
+	\begin{align*}
+	S_n / \Ker \tilde{\varepsilon} = S_n / A_n \cong C_2.
+	\end{align*}
+\end{genericdf}
+
+\begin{genericdf}{Beispiel}\label{skript:5.3}
+	Wir betrachten eine zyklische Gruppe $ G = \langle g \rangle $. Die Abbildung
+	\begin{align*}
+	\varphi : \Z \to \langle g \rangle, \ k \mapsto g^k
+	\end{align*}
+	ist ein surjektiver Gruppenhomomorphismus mit $ \Ker \varphi = m\Z  $ für ein $ m \geq 0 $.
+	Damit gilt \\
+	$ G \cong \Z / m \Z $.
+\end{genericdf}
+
+\begin{genericthm}{Korrespondezsatz} \label{skript:5.4} \index{Satz!Korrespondez} \index{Normalteiler!Korrespondenz}
+	Sei $ \varphi : G \to H $ ein surjektiver Gruppenhomomorphismus.
+	Seien $ U \leq G $, $ V \leq H $ und $ \Ker \varphi \leq U $.
+	Dann gelten:
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		$ V = \varphi(U) \Leftrightarrow U = \varphi^{-1}(V) $
+		\item[\textbf{(2)}] 
+		Wenn $ V = \varphi(U) $ ist, so folgt
+		\begin{align*}
+		U \nt G \Leftrightarrow V \nt H.
+		\end{align*}
+		Dies nennen wir dann auch die \bi{Korrespondenz von Normalteilern}.
+		\item[\textbf{(3)}] 
+		Wenn $ V = \varphi(U) $ ist, existiert eine Bijektion $ \sigma: G/U  \to H/V$.
+		Falls $ U \nt G $ gilt, gilt sogar $ G/U \cong H/V $.
+	\end{enumerate}
+\end{genericthm}
+
+\begin{proof} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Wir setzen $ U =  \varphi^{-1}(V)$ voraus.
+		Da $ \varphi $ surjektiv ist, gilt $ \varphi(\varphi^{-1}(V)) = V $. 
+		Mit $ U = \varphi^{-1}(V) $ erhalten wir $ \varphi(U) = V $.
+		Sei nun umgekehrt $ \varphi(U)  = V $, dann gilt $ U \leq \varphi^{-1}(V) $.
+		Wir wählen ein beliebiges $ g \in \varphi^{-1}(V) $, woraus $ \varphi(g) \in V $ folgt.
+		Wegen $ \varphi(U )  = V$ existiert dann ein $ u \in U $ mit $ \varphi(g) = \varphi(u) $.
+		Dann ist $ gu^{-1} \in \Ker \varphi \leq U$, denn es gilt $ \varphi(gu^{-1}) = 1_H $.
+		Damit gilt dann auch $ g \in U $, womit $ \varphi^{-1}(V) \subseteq U $ gilt.
+		Insgesamt erhalten wir $ \varphi^{-1}(V) = U $.
+		
+		\item[\textbf{(2)}] 
+		Dies erhalten wir sofort durch Anwendung von \ref{skript:3.5}.
+		Volle Urbilder von Normalteilern sind Normalteiler.
+		Bilder von Normalteileren unter surjektiven Homomorphismen sind Normalteiler.
+		
+		\item[\textbf{(3)}] 
+		Zunächst definieren wir die Abbildung
+		\begin{align*}
+		\sigma : G/ U \to H/V, \ gU \mapsto \varphi(g) V
+		\end{align*}
+		und zeigen deren Wohldefiniertheit.
+		Sei $ g U = \tilde{g } U $. Dann existiert ein $ \tilde{u} \in U $ mit $ g = \tilde{g} \tilde{u} $.
+		Wegen $ \varphi(U) = V $ gilt $ \varphi(\tilde{u}) \in V $ und es folgt $ g U = \tilde{g} U $.
+		Aufgrund der Surjektivität von $ \varphi $ müssen wir uns bei $ \sigma $ keine Gedanken machen.
+		Wir kommen nun zur Injektivität.
+		Sei $ \varphi(g)V = \varphi(\tilde{g}) V$. Wegen $ \varphi(U) = V $ existiert ein $ u \in U $, sodass 
+		$ \varphi(g) \cdot \varphi(u) = \varphi(\tilde{g})$ gilt.
+		Damit existiert dann auch ein $ k \in \Ker \varphi $ mit $ g u = \tilde{g} k $.
+		Dies ist äquivalent zu $ g u k^{-1} = \tilde{g} $ und durch $ u, k \in U $ folgt $ g U = \tilde{g} U$.
+		Gilt nun $ U \nt G $, dann folgt aus \textbf{(2)} $ V \nt H $.
+		Wir sehen durch schnelles Nachrechnen, dass $ \sigma  $ dann auch ein Homomorphismus ist. 
+	\end{enumerate}
+\end{proof}
+
+\begin{sz} \label{skript:5.5}
+	Sei $ G $ eine Gruppe und $ p $ eine Primzahl mit $ |G| = p^n $ für ein $ n \in \N $. 
+	Dann existiert
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		ein Normalteiler $ N $ von $ G $ mit $ G / N  \cong C_p$.
+		
+		\item[\textbf{(2)}] 
+		eine Folge von Untergruppen
+		\begin{align*}
+		1 = U_0 < U_1 < ... < U_n = G
+		\end{align*}
+		mit $ U_{i-1 }  \nt U_i$ und $ U_i / U_{i-1} \cong C_p$ für $ 1 \leq i \leq n $.
+	\end{enumerate}
+	Insbesondere sind $ p $-Gruppen auflösbar.
+\end{sz}
+
+\begin{proof}\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Wir führen eine Induktion nach $ n $ durch.
+		Für $ n = 1 $ ist nichts zu zeigen.
+		Nach \ref{skript:2.10} gilt $ Z(G) \neq 1 $.
+		Sei nun $ g \in Z(G) \setminus 1 $, dann gilt $ o(g) = p^k $ für ein $ k \in \lbrace 1,...,n \rbrace $. Damit existiert ein $ m \in \N $ mit $ o(g^m) = p  $.
+		Wir setzen $ C := \langle g^m  \rangle$. Mit $ C \leq Z(G)  $ folgt $ C \nt G $.
+		Wir betrachten nun $ G/ C $ und $ \kappa : G \to G/C:=Q $. Mit Lagrange gilt $ |Q| = p^{n-1} $.
+		Nach Induktion existiert nun ein $ N \nt Q $ mit $ |Q/N| = p $.
+		Damit folgt mit \ref{skript:5.4}  $ \kappa^{-1}(N) \nt G $ und $ G/\kappa^{-1}(N) \cong Q/N \cong C_p $. 
+		
+		\item[\textbf{(2)}] 
+		Wir erhalten die Aussage direkt aus \textbf{(1)} durch Iteration. Hierfür sei
+		$ U_n = G $. Nach \textbf{(1)} existiert ein Normalteiler $ N $ von $ G $ mit 
+		$ G / N \cong C_p $. Wir setzen $ U_{n-1} = N $ und durch Wiederholung erhalten wir die Folge
+		\begin{align*}
+		G = U_n \unrhd U_{n-1} \unrhd ...\unrhd U_0 = 1.
+		\end{align*}
+		Die Auflösbarkeit folgt dann sofort mit \ref{skript:4.5} oder mit \ref{skript:4.11}.
+	\end{enumerate}
+\end{proof}
+
+\begin{genericdf}{Beispiel} \label{skript:5.6}
+	Sei $ G $ eine zyklische Gruppe mit $ |G| = p^m $.
+	Dann gibt es zu jedem $ i \in \lbrace 0,...,m \rbrace $ genau eine Untergruppe mit $ |U_i| = p^i $, d.h. wir erhalten
+	\begin{align*}
+	1=U_0 \lhd U_1 \lhd ...\lhd U_m = G
+	\end{align*}
+	als Folge. Es gibt also genau eine Folge wie in \ref{skript:5.5}.
+\end{genericdf}
+
+\begin{generic_no_num}{Bemerkung}
+	Die Folge aus \ref{skript:5.5} \textbf{(2)} ist eine Kompositionsreihe.
+\end{generic_no_num}
+
+\begin{lemma}\label{skript:5.7}
+	Sei $ G $ eine endliche, nicht zyklische und abelsche $ p $-Gruppe.
+	Außerdem sei $ a $ ein Element größter Ordnung.
+	Dann existiert $ U \leq G $, sodass $ G \cong \langle a \rangle \times U $ gilt. 
+\end{lemma}
+
+\begin{proof}
+	Muss noch ergänzt werden.
+\end{proof}
+
+\begin{sz} \label{skript:5.8}
+	\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $ p $ eine Primzahl und $ G $ eine endliche abelsche $ p $-Gruppe.
+		Dann gilt
+		\begin{align*}
+		G \cong C_{p^{\alpha_1}} \times \ ... \ C_{p^{\alpha_k}},
+		\end{align*}
+		wobei $ C_{p^i} $ die zyklische Gruppe der Ordnung $ p^i $ ist und
+		\begin{align*}
+		p^{\alpha_1 } \geq \ ... \ \geq p^{\alpha_k}
+		\end{align*}
+		gilt.
+		
+		\item[\textbf{(2)}] 
+		Sei $ G $ eine endliche abelsche Gruppe.
+		Dann gilt
+		\begin{align*}
+		G \cong C_{n_1} \times \ ... \ \times C_ {n_k},
+		\end{align*}
+		wobei $ n_{i+1}  \mid n_i$ gilt. 
+		Dies nennen wir \bi{Elementarteilerzerlegung} und die $ n_i $ bezeichnen wir als \bi{Elementarteiler}.
+		\index{Elementarteiler} \index{Elementarteiler!Zerlegung}
+	\end{enumerate}
+\end{sz}
+
+\begin{proof}
+	Die \textbf{(1)} folgt sofort aus \ref{skript:5.7} durch Induktion nach Gruppenordnung.
+	Für die \textbf{(2)} benötigen wir \ref{skript:6.9} und ein
+	\begin{genericthm}{Hilfslemma} \label{skript:5.9}
+		Seien $ m,n \in \N $ mit $ \ggT(m,n) = 1 $.
+		Dann folgt
+		\begin{align*}
+		C_m \times C_n \cong C_{mn}.
+		\end{align*}
+	\end{genericthm}
+	Nun können wir den Beweis fortsetzen.
+	Sei 
+	\begin{align*}
+	|G| = p_1^{\beta_1}\cdots p_k^{\beta_k}
+	\end{align*}
+	die Primfaktorzerlegung von $ |G| $. Wenn $ P_i $ die $ p_i $- Sylowgruppe für $ 1 \leq i \leq k $ ist, dann gilt nach \ref{skript:6.9}
+	\begin{align*}
+	G \cong P_1 \times \cdots \times P_k.
+	\end{align*}
+	Nach \textbf{(1)} erhalten wir nun 
+	\begin{align*}
+	P_i \cong C_{p_i^{\alpha_{i1}}} \times \cdots \times C_{p_i^{\alpha_{i l_i}}}
+	\end{align*}
+	und damit folgt dann
+	\begin{align*}
+	G \cong C_{p_1^{\alpha_{11}}} \times \cdots \times C_{p_1^{\alpha_{1 l_1}}}
+	\times \cdots \times C_{p_k^{\alpha_{k1}}} \times \cdots \times C_{p_k^{\alpha_{k l_k}}}.
+	\end{align*}
+	Wir setzen nun 
+	\begin{align*}
+	n_1 := p_1^{\alpha_1} \cdot p_2^{\alpha_2} \cdots p_k^{\alpha_k}
+	\end{align*}
+	und es gilt mit dem Hilfslemma
+	\begin{align*}
+	C_{n_1} \cong C_{p_1^{\alpha_{11}}} \times \cdots \times C_{p_k^{\alpha^{k1}}}.
+	\end{align*}
+	Nach Konstruktion ist $ n_1 $ die größtmögliche Ordnung eines Elements in $ G $ und es gilt
+	\begin{align*}
+	G \cong C_{n_1} \times \ \text{Rest} .
+	\end{align*}
+	Setzen wir dieses Verfahren iterativ fort, so erhalten wir die gewünschte Aussage.
+\end{proof}
+
+\begin{genericdf}{Beispiele} \label{skript:5.10}
+	Sei $ G $ eine abelsche Gruppe.
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Falls $ |G| = p^3 $, so gibt es 
+		\begin{align*}
+		G &\cong C_p \times C_p \times C_p \\
+		G &\cong C_{p^2} \times C_p \\
+		G &\cong C_{p^3}
+		\end{align*}
+		als Möglichkeiten. Somit gibt es drei verschiedene Isomorphietypen in diesem Fall.
+		
+		\item[\textbf{(2)}] 
+		Wir betrachten
+		\begin{align*}
+		G = C_9 \times C_6 \times C_{10}.
+		\end{align*}
+		Dies ist keine Elementarteilerzerlegung und auch keine Sylowzerlegung. Zunächst folgt mit \ref{skript:5.9}, dass
+		\begin{align*}
+		G \cong C_9 \times C_3 \times C_2 \times C_5 \times C_2
+		\end{align*}
+		gilt. Durch umsortieren erhalten wir
+		\begin{align*}
+		G \cong C_2 \times C_2 \times C_9 \times C_3 \times C_5
+		\cong P_2 \times P_3 \times P_5
+		\end{align*}
+		die Sylowzerlegung. Gehen wir nun so vor wie im Beweis zu \ref{skript:5.8} \textbf{(2)} erhalten wir mit
+		\begin{align*}
+		G \cong C_{90} \times C_6
+		\end{align*}
+		die Elementarteilerzerlegung.
+	\end{enumerate}
+ \end{genericdf}
+
+
+

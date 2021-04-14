@@ -1,0 +1,411 @@
+\section{Beispiele und Grundbegriffe zu Ringen}
+
+\begin{df}\label{skript:7.1}
+	Wir nennen eine nichtleere Menge $ R $ mit den Verknüpfungen
+	$ + : R \times R \to R $ und $ \cdot : R \times R \to R $
+	einen \bi{Ring}, falls 			\index{Ring}
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		$ (R,+) $ eine abelsche Gruppe ist. Wir bezeichnen das neutrale Element mit $ 0 $.
+		
+		\item[\textbf{(2)}]
+		die Multiplikation $ \cdot $ assoziativ ist die Distributivgesetze  gelten.
+		Das heißt es gilt
+		\begin{align*}
+		a \cdot ( b+c) = a\cdot b + a \cdot c 
+		\quad
+		(a+b) \cdot c = a \cdot c + b \cdot c
+		\end{align*}
+		für alle $ a,b,c \in R $.
+		
+		\item[\textbf{(3)}] 
+		ein Einselement $ 1 $ bezüglich der Multiplikation existiert. Es gilt also
+		\begin{align*}
+		1 \cdot a = a \cdot 1 = a
+		\end{align*}
+		für alle $ a \in R $.
+		In der Literatur wird dieser Punkt meist weggelassen und separat definiert.
+		In unserem Fall sprechen wir von einem \bi{Ring ohne $ 1 $}, falls dieser Punkt nicht erfüllt ist.
+	\end{enumerate}
+	Wir nennen $ R $ \bi{kommutativ}, falls			\index{Ring!kommutativ}
+	\begin{align*}
+	r \cdot s = s \cdot r
+	\end{align*}
+	für alle $ r,s \in R $ erfüllt ist.
+	Eine Teilmenge $ S \subseteq R $ heißt \bi{Teilring} von $ R $, wenn $ S $ mit den beiden Verknüpfungen ein Ring ist und die $ 1 $ von $ S $ der von $ R $ entspricht.		\index{Teilring}
+\end{df}
+
+\begin{genericdf}{Bemerkungen} \label{skript:7.2}
+	Sei $ R $ ein Ring.
+ 	\begin{enumerate}
+		\item[\textbf{(1)}]
+		In einem Ring gilt
+		\begin{align*}
+		a \cdot 0 =0 \cdot a = 0 
+		\end{align*}
+		für alle $ a \in R $. Dies erhalten wir sofort durch Anwendung der Gruppenaxiome.
+		Außerdem kann in $ R $ gelten, dass $ 1 = 0  $ ist.
+		Damit gilt dann jedoch
+		\begin{align*}
+		a = a \cdot 1 = a \cdot 0 = 0,
+		\end{align*}
+		woraus $ R = \lbrace 0 \rbrace  $ folgt.
+		
+		\item[\textbf{(2)}]
+		Die Menge 
+		\begin{align*}
+		R^\ast := \lbrace a \in R \ | \ \exists b \in R : ab = ba = 1 \rbrace
+		\end{align*}
+		nennen wir die \bi{Einheiten} von $ R $. 
+		Diese ist bezüglich der Multiplikation eine Gruppe.
+		\index{Einheiten} 
+		
+		\item[\textbf{(3)}]
+		Falls $ R^\ast = R \setminus \lbrace 0 \rbrace $ gilt, 
+		so nennen wir $ R $ einen \bi{Schiefkörper} oder \bi{Divisionsring}.
+		\index{Schiefkörper} \index{Divisionsring}
+		Einen kommutativen Schiefkörper nennen wir \bi{Körper}. \index{Körper}
+	\end{enumerate}
+\end{genericdf}
+
+\begin{genericdf}{Beispiele} \label{skript:7.3} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Die ganzen Zahlen $ (\Z,+, \cdot) $ sind ein kommutativer Ring und es gilt
+		$ \Z^\ast = \lbrace \pm 1 \rbrace $.
+		Die geraden Zahlen $ 2 \Z $ bilden nur einen kommutativen Ring ohne $ 1 $.
+		
+		\item[\textbf{(2)}]
+		Sei $ K $ ein Körper.
+		Dann ist $ M_n(K) $ der $ n \times n  $ \bi{Matrizenring} über $ K $.
+		\index{Ring!Matrizen}
+		Für $ n \geq 2  $ ist $ M_n(K) $ nicht kommutativ
+		und es gilt $ M_n(K)^\ast = \Gl_n(K) $.
+		Die Menge 
+		\begin{align*}
+		\mathbb{H} = \Bigg\lbrace \begin{pmatrix}
+		u & v \\ \
+		\overline{v} & \overline{u}
+		\end{pmatrix} 
+		\ | \ u, v \in \C \Bigg\rbrace
+		\subsetneq
+		M_2(\C)
+		\end{align*}
+		bildet den sogenannten \bi{Quaternionenschiefkörper} und für die
+		\index{Schiefkörper!Quaternionen} 
+		Quaterionengruppe gilt $ Q_8 \leq H^\ast $.
+		Hierfür vergleiche mit der Vortragsübung und Übung.
+	\end{enumerate}	
+\end{genericdf}
+
+\begin{df}\label{skript:7.4}
+	Sei $ R $ ein kommutativer Ring mit $ 1 \neq 0 $ und $ a,b \in R $.
+	Wir sagen \bi{$ a $ teilt $ b $}, falls es ein $ c \in R $ gibt
+	mit $ b = a \cdot c $ und schreiben hierfür $ a \mid b $.
+	\index{Teilbarkeit}
+	Ein Element heißt \bi{Nullteiler},
+	wenn es ein $  0 \neq c \in R $ gibt mit $ a \cdot c = 0 $.
+	\index{Nullteiler}
+	Wir nennen $ R $ \bi{nullteilerfrei} oder \bi{Integritätsring}, falls es außer $ 0 $ keinen anderen Nullteiler gibt. In solchen Mengen gilt
+	\index{Nullteiler!frei}\index{Integritätsring}
+	\begin{align*}
+	a \cdot b = 0 \quad \Rightarrow a= 0 \vee b = 0.
+	\end{align*}
+\end{df}
+
+\begin{genericdf}{Beispiel}\label{skript:7.5}
+	Die Menge
+	\begin{align*}
+	\Z[i] := \lbrace a + b \cdot i \ | \ a,b \in \Z \rbrace \subseteq \C 
+	\end{align*}
+	nennen wir \bi{Gaußsche Zahlen}.
+	\index{Gaußsche Zahlen} 
+	Diese lässt sich mit 
+	\begin{align*}
+	\Z[\sqrt{d}] := \lbrace a + b \cdot \sqrt{d} \ | \ a,b \in \Z \rbrace
+	\end{align*}
+	für $ \sqrt{d} \notin \Q $ und $ d \in \Z $ allgemeiner definieren.
+\end{genericdf}
+
+\begin{genericdf}{Restklassenringe}\label{skript:7.6}\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Wir betrachten $(\Z  / m \Z, + ) $ für ein festes $m \in \N$.
+		Sei $a \in \Z$, dann schreiben wir für die Restklasse $a + m \Z$ bzw. $\overline{a}$.
+		Mit 
+		\begin{align*}
+		(a + m \Z) \cdot (b + m \Z ) = (ab + m \Z) = \overline{ab} = \overline{a} \cdot \overline{b}
+		\end{align*}
+		wird auf $\Z m / \Z$ eine Multiplikation definiert.
+		Die Wohldefiniertheit erhalten wir durch direktes Nachrechnen.
+		Somit wird $\Z / m \Z$ zu einem kommutativen Ring und wir nennen diesen
+		\bi{Restklassenring modulo $m$}.
+		\index{Restklassenring}
+		
+		\item[\textbf{(2)}]
+		Nun interessieren wir uns für die Einheiten in $\Z / m \Z$.
+		Sei $\overline{a} \in \Z / m \Z$ eine Einheit.
+		Dann existiert ein $\overline{b } \in \Z / m \Z$, sodass
+		\begin{align*}
+		\overline{a} \cdot \overline{b} = (a + m \Z) \cdot (b + m \Z) = \overline{1}
+		\Leftrightarrow
+		\exists c \in \Z : 1 = ab + mc
+		\Leftrightarrow
+		\ggT(a,m) = 1
+		\end{align*}
+		gilt. Damit erhalten wir
+		\begin{align*}
+		(\Z / m \Z)^\ast = \lbrace \overline{a} \in \Z / m \Z \ | 0 \neq a \in \Z : \ggT(a,m)  = 1 \rbrace
+		\end{align*}
+		als Einheitengruppe.
+		Sei nun $p$ eine Primzahl. Gilt $m = p $ so ist $\Z / p \Z$ ein Körper.
+		Wenn $m$ keine Primzahl ist, so ist $\Z / m \Z$ kein Körper, denn mit
+		\begin{align*}
+		m = ab 
+		\Rightarrow 
+		\overline{0} = \overline{m} = \overline{a} \cdot \overline{b}
+		\end{align*}
+		erhalten wir die Existenz von Nullteilern ungleich $\overline{0}$.
+		Die Abbildung
+		\begin{align*}
+		\Phi : \N \to \N, \ m \mapsto | \lbrace a \in \N \ : \ 1 \leq a \leq m, \ \ggT(a,m) = 1 \rbrace | 
+		\end{align*}
+		nennen wir  \bi{Eulersche $\Phi$-Funktion} und es gilt
+		\index{Eulersche Phi-Funktion}
+		\begin{align*}
+		| ( \Z / m\Z)^\ast | = \Phi(m). 
+		\end{align*}
+		
+		\item[\textbf{(3)}]
+		Es gilt
+		\begin{align*}
+		a^{\Phi(m)} \equiv 1 \mod m
+		\end{align*}
+		für $a \in \Z$ mit $\ggT(a,m)=1$.
+		\begin{proof}
+			Es gilt $\overline{a} \in ( \Z / m \Z )^\ast$.
+			Mit Lagrange folgt dann $\ord(\overline{a}) \mid \Phi(m)$ und es gilt
+			\begin{align*}
+			\overline{a^{\Phi(m)}} = \overline{1}.
+			\end{align*}
+		\end{proof}
+		
+		\item[\textbf{(4)}]
+		\bi{\underline{Kleiner Satz von Fermat}}:
+		\index{Satz!kleiner Fermat}
+		Sei $p$ eine Primzahl. Dann gilt
+		\begin{align*}
+		a^p \equiv a \mod p
+		\end{align*}
+		für alle $a \in \Z$.
+		\begin{proof}
+			Es gilt
+			\begin{align*}
+			a^{p-1} \equiv 1 \mod p 
+			\Rightarrow
+			a^p \equiv a \mod p
+			\end{align*}
+			für alle $a \in \Z$ mit $\ggT(a,p) = 1$ und für
+			$\overline{a} = \overline{0}$
+			\begin{align*}
+			a^p \equiv 0 \mod p.
+			\end{align*}
+		\end{proof}
+	\end{enumerate}		
+		
+\end{genericdf}
+
+\begin{genericdf}{Polynomringe}\label{skript:7.7}
+	Sei $R$ ein kommutativer Ring und $x$ eine Unbekannte über $R$.
+	Dann bezeichnen wir mit $R[x]$ den \bi{Ring der Polynome} in einer Unbestimmten mit Koeffizienten in $R$.
+	\index{Polynomring}
+	Ein Element $0 \neq f \in R[x]$ lässt sich durch
+	\begin{align*}
+	f = a_0 + a_1 \cdot x + a_2 \cdot x^2 + \ \dots \ + a_n \cdot x^n
+	\end{align*}
+	mit $n \geq 0 $, $a_i \in R$ und $a_n \neq 0$ eindeutig beschreiben. 
+	Für das Nullpolynom schreiben wir schlicht $0 $.
+	Den \bi{Polynomgrad} $n$ kürzen wir mit $\Grad(f)$ ab und $a_n $ nennen wir den \bi{Leitkoeffizient}.
+	\index{Polynom}\index{Polynom!Grad}\index{Polynom!Leitkoeffizient}\index{Polynom!normiert}
+	Sollte dieser $1$ sein, so nennen wir $f$ \bi{normiert}.
+	Für $f = 0$ setzen wir 
+	\begin{align*}
+	\Grad(f) = - \infty.
+	\end{align*}	 
+	Nun nehmen wir ohne Beschränkung der Allgemeinheit an, dass $m \leq n$ und betrachten
+	\begin{align*}
+	g = b_0 + b_1 \cdot x + \dots + b_m \cdot x^m \in R[x].
+	\end{align*}
+	Dann gilt
+	\begin{align*}
+	f+g = (a_0 + b_0) + (a_1 + b_1) \cdot x + \dots + (a_m + b_m) \cdot x^m
+		= a_{m+1} \cdot x^{m+1} + \dots + a_n \cdot x^n
+	\end{align*}
+	und
+	\begin{align*}
+	f \cdot g = a_0 \cdot b_0 + (a_1 \cdot b_0 + a_0 \cdot b_1 ) \cdot x 
+				+ \dots + a_n \cdot b_m \cdot x^{n+m}.
+	\end{align*}
+	Falls $a_n \cdot b_m \neq 0$ ist, so folgt $\Grad(f+g) = m+n$.
+	Dies gilt immer wenn $R$ ein Integritätsring ist, insbesondere ist dann auch $R[x]$ ein Integritätsring.
+	Wenn $R$ ein Integritätsring ist, dann sind Polynome $f$ mit $\Grad(f) \geq 1$ nicht invertierbar bezüglich der Multiplikation.
+	Es gilt also $R[x]^\ast = R^\ast$.
+\end{genericdf}
+
+\begin{genericdf}{Bemerkung} \label{skirpt:7.8}
+	Sei $R$ ein Integritätsring.
+	Wir definieren analog zur Analysis durch
+	\begin{align*}
+	D: R[x] \to R[x], 
+	\ \sum \limits_{i=0}^n a_i \cdot x^i \mapsto \sum \limits_{i=1}^n \underbrace{i \cdot a_i}_{a_i+ \dots +a_i} \cdot x^i
+	\end{align*}		
+	eine \bi{formale Ableitung}.
+	\index{Formale Ableitung}
+	Seien $a,b \in R$ und $f,g \in R[x]$ beliebig.
+	Dann gelten:
+	\begin{enumerate}
+		\item[\textbf{(1)}] \bi{$R$-Linearität:}\\
+		$D(a\cdot f + b\cdot g) = a \cdot D(f) + b \cdot D(g)$
+		
+		\item[\textbf{(2)}] \bi{Produktregel:}\\
+		$D(f\cdot g) = f \cdot D(g) + D(f) \cdot g$
+		
+		\item[\textbf{(3)}]
+		$D(f^n) = n \cdot D(f) \cdot f^{n-1}$
+	\end{enumerate}
+\end{genericdf}
+
+\begin{proof}
+	Der Beweis wird in der Übung geführt.
+\end{proof}
+
+\begin{generic_no_num}{Anwendung}
+	Seien $0 \neq f,g \in R[x]$ mit $g$ teilt $f$.
+	Wir nennen $g$ einen \bi{mehrfachen Faktor}, falls $g^2 \mid f$ gilt.
+	\index{Faktor!mehrfach}
+\end{generic_no_num}
+
+\begin{genericthm_no_num}{Behauptung}
+	Wenn $f = g^2 \cdot h$ ist, so gilt $D(f) = g \cdot \tilde{h}$.
+	Dies bedeutet $g \mid D(f)$.
+\end{genericthm_no_num}
+
+\begin{proof}
+	Es gilt
+	\begin{align*}
+	f = g^2 \cdot h
+	\Rightarrow 
+	D(f) = D(g^2 \cdot h) &= D(g^2) \cdot h + g^2 \cdot D(h)
+	= 2 \cdot D(g) \cdot g\cdot h + g^2 \cdot D(h)\\
+	&= g \cdot (\underbrace{2 \cdot D(g) \cdot h + g \cdot D(h)}_{\tilde{h}})
+	\end{align*}
+\end{proof}
+
+\begin{generic_no_num}{Beispiel}
+	Sei $m \geq 1$ und $f(x) = x^m - 1 \in \Z[x]$.
+	Dann gilt $D(f) = m \cdot x^{m-1}$ und $\ggT(f,D(f)) = 1$.
+	Nun haben $f$ und $D(f)$ keine gemeinsamen Faktoren außer $\pm 1$.
+	Damit hat $f$ keine mehrfachen Nullstellen.
+\end{generic_no_num}
+
+\begin{df} \label{skript:7.9}
+	Ein Integritätsring $R$ heißt \bi{euklidischer Ring}, wenn eine \bi{Normfunktion} bzw. \bi{Gradfunktion}
+	\index{euklidischer Ring} \index{Ring!euklidisch} \index{Normfunktion} \index{Gradfunktion}
+	\begin{align*}
+	\nu : R \setminus \lbrace 0 \rbrace \to \N_0
+	\end{align*}
+	mit der folgenden Eigenschaft existiert:
+	Zu $ a,b \in R $ mit $ b \neq 0 $ gibt es $ q,r \in R $ mit $ a = b \cdot q +r $,
+	wobei $ r = 0 $ oder $ r \neq 0 $ und $ \nu(r) < \nu(b) $ gilt.
+\end{df}
+
+\begin{sz} \label{skript:7.10} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Der Ring $ \Z $ ist euklidisch mit $ \nu(n) = | n |  $ für $ n \in \Z $.
+		
+		\item[\textbf{(2)}]
+		Sei $ K $ ein Körper. Dann ist der Polynomring $ K[x] $ euklidisch mit $ \nu(f) = \Grad(f) $ für
+		$ f \in K[x] $.
+		
+		\item[\textbf{(3)}]  
+		Die Gaußschen Zahlen $ \Z[i] $ sind euklidisch mit $ \nu(a+ib) = a^2 +b^2 $ für $ a,b \in \Z $.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Folgt sofort durch den Euklidischen Algorithmus und Division mit Rest.
+		
+		\item[\textbf{(2)}]
+		Seien $ f,g \in K[x] $ mit $ g \neq 0 $. Dann gilt
+		\begin{align*}
+		f(x) = \sum \limits_{i=0}^n a_i \cdot x^i, \quad g(x) = \sum \limits_{i=0}^m b_i \cdot x^i.
+		\end{align*}
+		Wenn $ n < m $ ist, so folgt $ f = 0 \cdot g + f $, also ist $ q =0 $ und $ r = f $.
+		Sollte $ n \geq m $ sein, so setzen wir
+		\begin{align*}
+		\tilde{f} = f - a_n\cdot b_m^{-1} \cdot x^{n-m} \cdot g
+		\end{align*}
+		und erhalten für $ \tilde{f}  = 0$
+		\begin{align*}
+		f = a_n \cdot b_m^{-1} \cdot x^{n-m} \cdot g
+ 		\end{align*}
+ 		mit $ r = 0 $.
+ 		Falls $ \tilde{f}  \neq 0$ ist, so gilt
+ 		\begin{align*}
+ 		f = \underbrace{a_n \cdot b_m^{-1} \cdot x^{n-m}}_{h^\prime}\cdot g + \tilde{f} 
+ 		\end{align*}
+ 		mit $ \Grad(\tilde{f}) < \Grad (f) $.
+ 		Wir werden nun eine Induktion nach dem Grad von $ f $ durchführen.
+ 		Unsere Induktionsvoraussetzung ist
+ 		\begin{align*}
+ 		\tilde{f} = g \cdot \tilde{h} + r 
+ 		\end{align*}
+ 		mit $ r = 0  $ oder $ r \neq 0 $ und $ \Grad(r) < \Grad(g) $.
+ 		Dann folgt
+ 		\begin{align*}
+ 		f = h^\prime \cdot g + g \cdot \tilde{h} + r = g \cdot ( h^\prime + \tilde{h}) + r
+ 		\end{align*}
+ 		und falls $ r \neq 0 $ erhalten wir mit der Induktionsvoraussetzung sofort 
+ 		$ \Grad(r) < \Grad(g) $. Sollte $ r = 0 $ sein sind wir direkt fertig.
+		\item[\textbf{(3)}]  
+		Diesen Teil behandeln wir in der Übung.
+	\end{enumerate}
+\end{proof}
+
+\begin{genericdf}{Bemerkungen} \label{skript:7.11}
+	\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $R$ ein kommutativer Ring.
+ 		Die Division mit Rest im letzten Beweis funktioniert auch wenn $b_m \in R^\ast$.
+ 		
+ 		\item[\textbf{(2)}]
+ 		Die Polynome $q$ und $r$ aus dem letzen Beweis sind eindeutig bestimmt.
+ 		Sei 
+ 		\begin{align*}
+ 		f = g \cdot q + r = g \cdot g^\prime + r^\prime,
+ 		\end{align*}
+ 		und ohne Beschränkung der Allgemeinheit $\Grad(r) \leq \Grad(r^\prime)$.
+ 		Dann folgt 
+ 		\begin{align*}
+ 		g \cdot (q - q^\prime) = r^\prime -r 
+ 		\Rightarrow g \mid (r^\prime -r ).
+ 		\end{align*}
+ 		und für $r \neq r^\prime$ sein erhalten wir mit
+ 		\begin{align*}
+ 		\Grad(r^\prime- r) \leq \Grad(r) < \Grad(g)
+ 		\end{align*}
+ 		einen Widerspruch.
+ 		Also muss auch $q = q^\prime$ gelten.
+ 		
+ 		\item[\textit{(3)}]
+	 	Sei $R$ ein euklidischer Ring.
+	 	Die endliche iterative Anwendung der Division mit Rest
+	 	liefert zu $a,b \in R \setminus \lbrace 0 \rbrace$ die Existenz von 
+	 	$d, r , s \in R$ mit $\ggT(a,b) = d = r \cdot a + s \cdot b$. 		
+ 		
+	\end{enumerate}
+\end{genericdf}

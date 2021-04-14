@@ -1,0 +1,109 @@
+\section{Lösungen zum Abschnitt 8}
+
+\begin{loes}\hypertarget{loes:8.1}\
+	\begin{enumerate}
+		\item[a)]
+		Wir haben bereits gezeigt, dass alle Untergruppen von $ \Z $
+		die Form $ m\Z $ besitzen.
+		Sei $ m \in \Z $, $ a \in \Z $ und $ b \in m \Z $ beliebig.
+		Dann gilt
+		\begin{align*}
+		a \cdot b = a \cdot k \cdot m \in m \Z
+		\end{align*}
+		und wir sind aufgrund der Kommutativität von $ \Z $ fertig.
+		
+		\item[b)]
+		Sei $ I \unlhd K[x] $ ein Ideal.
+		Wir wählen $ f \in I $ mit $ \Grad(f) $ minimal
+		und $ x \in I $ beliebig.
+		Nun wenden wir Polynomdivision an und erhalten
+		\begin{align*}
+		x = \underbrace{q \cdot f}_{\in I} + r , \ \Grad(r) < \Grad(g). 
+		\end{align*}
+		Also ist auch $ r \in I $ und aus der Minimalität von $ f $ folgt $ r = 0 $.
+		Insgesamt gilt $ x = q \cdot f $, womit $ K[x] $ ein Hauptidealring ist.
+		
+		\item[c)]
+		Fehlt noch.
+		
+		\item[d)]
+		Fehlt noch.  
+	\end{enumerate}
+\end{loes}
+
+\begin{loes}\hypertarget{loes:8.2}\
+	Sei $ I $ ein Primideal von $ R $
+	und $ a + I,b+I \in R/I $ mit
+	\begin{align*}
+	0 + I = (a  + I ) \cdot (b + I ) = ab + I.
+	\end{align*}
+	Daraus erhalten wir mit der Primidealeigenschaft
+	\begin{align*}
+	a \cdot b \in I
+	\Rightarrow
+	a \in I \vee b \in I
+	\Rightarrow 
+	(a + I) = 0 \vee (b + I) = 0
+	\end{align*}
+	die Nullteilerfreiheit.
+	Da $ I \neq R $ ist, ist $ R/I $ ein Integritätsring.
+	Umgekehrt nehmen wir nun an, dass $ R/I $ ein Integritätsring ist.
+	Sei $ a \cdot b \in I $, dann folgt
+	\begin{align*}
+	0 + I = ab + I = (a+I)\cdot (b+I)
+	\end{align*}
+	und aus der Nullteilerfreiheit erhalten wir
+	\begin{align*}
+	a + I = 0 \vee b + I = 0
+	\Rightarrow 
+	a \in I \vee b \in I.
+	\end{align*} 
+	Damit $ I $ ein Primideal.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:8.3}\
+	Sei $ r \in R $ beliebig
+	und $ f,h \in R[x] $ mit $ f \cdot g \in P := \Ker \varphi_r $.
+	Dann gilt
+	\begin{align*}
+	0 = (f \cdot g)(r) = f(r) \cdot g(r)
+	\Rightarrow
+	f(r) = 0 \vee g(r) = 0
+	\Rightarrow
+	f \in P \vee g \in P,
+	\end{align*}
+	womit $ P $ ein Primideal ist.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:8.4}\
+	Wir verwenden den chinesischen Restsatz.
+	Durch 
+	\begin{align*}
+	17^{68} \mod 10
+	\rightarrow
+	(17^{68} \mod 2, 17^{68} \mod 5 )
+	\rightarrow
+	 \dots
+	\rightarrow
+	(1 \mod 2, 1 \mod 5 )
+	\rightarrow
+	1 \mod 10
+	\end{align*}
+	erhalten wir als letzte Ziffer die $ 1 $.
+	Nun zum zweiten Teil.
+	Hier erhalten wir nach ein wenig herumrechnen
+	\begin{align*}
+	14^{200} \mod 100
+	\rightarrow
+	\dots
+	\rightarrow
+	(0 \mod 4, 1 \mod 25),
+	\end{align*}
+	wodurch
+	\begin{align*}
+	1 + 25 \cdot k \equiv 0 \mod 4
+	\end{align*}
+	erfüllt sein muss.
+	Dies tritt zuerst bei $ k= 3 $ auf.
+	Damit sind die letzten beiden Ziffern $ 76 $.
+\end{loes}

@@ -1,0 +1,152 @@
+\section{Lösungen zum Abschnitt 9}
+
+\begin{loes}\hypertarget{loes:9.1}\
+	Sei $ I $ ein Primideal von $ R $.
+	Damit gilt $ I = (p) $ für ein Primelement $ p $.
+	Wir betrachten nun ein maximales Ideal $ (a) $
+	mit $ I \subseteq (a) \subsetneq R $.
+	Damit folgt $ p = r \cdot a $  mit $ a \notin R^\ast $ 
+	Da in einem Hauptidealbereich alle Primelemente irreduzibel sind, 
+	erhalten wir $ r \in R^\ast $.
+	Also folgt $ (p) = (a) $, womit $ I $ maximal ist.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:9.2}\
+	Sei $ R[x] $ ein Hauptidealring.
+	Wir betrachten den Einsetzungshomomorphismus $ \varphi_0 $
+	für $ \varphi = \id_R $.
+	Dann ist $ I := \Ker \varphi_0 $ ein Primideal.
+	Da $ R[x] $ ein Hauptidealbereich ist, ist $ I $ auch maximal.
+	Mit dem Homomorphiesatz für Ringe und der Surjektivität von $ \varphi_0 $ folgt
+	\begin{align*}
+	R = \Bild \varphi_0 \cong R/I,
+	\end{align*}
+	womit $ R $ ein Körper ist.
+	Nun nehmen wir an, dass $ R $ ein Körper ist.
+	Dann ist $ R[x] $ euklidisch und somit auch ein Hauptidealring.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:9.3}\
+	\begin{enumerate}
+		\item[a)]
+		Wegen 
+		\begin{align*}
+		2 = (1-i) \cdot (1 + i)
+		\end{align*}
+		ist $ \Z[\i] / 2 \Z[\i] $ nicht nullteilerfrei und somit kein Körper.
+		
+		\item[b)]
+		Zunächst zeigen wir, dass $ 3\Z[\i] = (3) $ ein maximales Ideal ist.
+		Wir wissen, dass $ \Z[\i] $ ein euklidischer Ring ist, womit $ \Z[\i] $
+		auch Hauptidealring ist.
+		Insgesamt ist $ \Z[\i] $ ein Hauptidealbereich.
+		Nun betrachten wir ein $ a \notin R^\ast $ mit
+		\begin{align*}
+		(3) \subseteq (a) \subseteq \Z[i]
+		\end{align*}
+		und mit $ 3 $ irreduzibel folgt $ (3) = (a) $,
+		Also ist $ (3) $ maximal und $ \Z[\i] / 3 \Z[\i] $ ein Körper mit den Elementen
+		\begin{align*}
+		\lbrace
+		\overline{0},
+		\overline{1},
+		\overline{2},
+		\overline{\i},
+		\overline{2\i},
+		\overline{1+\i},
+		\overline{2+\i},
+		\overline{1+2\i},
+		\overline{2+2\i}
+		\rbrace.
+		\end{align*}
+		Alternativ könnte man zeigen, dass $ \Z[\i] / 3 \Z[\i]^\ast = \Z[\i] / 3 \Z[\i]\setminus \lbrace 0 \rbrace $ gilt, denn $ \Z[\i] / 3 \Z[\i]$ ist bereits kommutativ.
+		
+		\item[c)]
+		Sei $ \Z[\i] / n \Z[\i]  $ ein Körper.
+		Wir nehmen an, dass $ n $ keine Primzahl ist oder
+		$ n = a^2 + b^2 $ für $ a, b \in \Z $ gilt.
+		Beide Fälle können nicht eintreten, da wir ansonsten jeweils einen direkten
+		Widerspruch zur Nullteilerfreiheit erhalten.
+		Damit ist unsere Annahme falsch und es gilt das Gegenteil.
+		Sei nun $ n $ eine Primzahl und $ n \neq a^2 +b^2 $ für $ a,b \in \Z $.
+		Wegen $ n \neq a^2 +b^2 $  ist $  \Z[\i] / n \Z[\i]   $ nullteilerfrei.
+		Und da $ n $ prim ist, ist $ (n)  $ maximal und $ \Z[\i] / n \Z[\i]  $ somit ein Körper.
+		
+	\end{enumerate}
+\end{loes}
+
+\begin{loes}\hypertarget{loes:9.4}\
+	\begin{enumerate}
+		\item[a)]
+		Wir ersparen uns zu zeigen, dass $ \beta $ multiplikativ ist.
+		Wer Lust darauf hat kann dies gerne machen.
+		Mit 
+		\begin{align*}
+		\beta(z) = 1 
+		\Leftrightarrow
+		z \in \Z[\sqrt{-5}]^\ast = \lbrace \pm 1 \rbrace
+		\end{align*}
+		erhalten wir die für die Aufgabe wichtige Äquivalenz.
+		\begin{itemize}
+			\item $ 2 $:
+			Sei $ 2 = x \cdot y $ mit $ x,y \in \Z[\sqrt{-5}] $.
+			Damit gilt dann
+			\begin{align*}
+			\beta(2) = 4 = \beta(x) \cdot \beta(y),
+			\end{align*} 
+			womit $ \beta(x) \in \lbrace 1, 2, 4 \rbrace $ sein kann.
+			Falls $ \beta(x) = 1 $ gilt, ist $ x \in \Z[\sqrt{-5}]^\ast $ und $ \beta(y) = 4 $.
+			Analog gehen wir vor, falls $ \beta(x) = 4 $ ist.
+			Der Fall $ \beta(x) = 2 $ kann nicht erfüllt sein, denn ansonsten müsste
+			\begin{align*}
+			\beta(x) = 2 = a^2 
+			\end{align*}
+			gelten.
+			Insgesamt ist $ 2 $ irreduzibel in $ \Z[\sqrt{-5}] $.
+			Jedoch kann $ 2 $ nicht prim sein.
+			Wir betrachten
+			\begin{align*}
+			2 \mid 6 =\underbrace{(1 + \sqrt{-5})}_{a_1:=}  \cdot \underbrace{(1 - \sqrt{-5})}_{a_2:=}
+			\end{align*}
+			und es gilt $ \beta(2) = 4 $ und $ \beta(a_1) = \beta(a_2) = 6 $.
+			Damit wird $ \beta(a_1) $ und $ \beta(a_2) $ nicht von $ \beta(2)$ geteilt.
+			Da $ \beta $ multiplikativ ist, ist $ 2 $ nicht prim.
+			
+			\item $ 3 $:
+			Das Vorgehen ist analog zur $ 2 $.
+			Wir müssen nur die Zahlen austauschen.
+			
+			\item $ 1 + \sqrt{-5} $:
+			Sei $ 1 + \sqrt{-5} = x \cdot y $
+			Es gilt $ \beta(1 + \sqrt{-5}) = 6 $.
+			Damit kann $ \beta \in \lbrace 1, 2, 3 ,6 $ sein.
+			Wenn $ \beta(x)  = 1 $ oder $ \beta(x) = 6  $ folgt direkt,
+			dass $ x \in \Z[\sqrt{-5}] ^\ast$ ist.
+			Die anderen beiden Fälle führen analog zur $ 2 $ zu einem Widerspruch.
+			Angenommen $ 1 + \sqrt{-5} $ ist prim.
+			Dann gilt
+			\begin{align*}
+			1 + \sqrt{-5} \mid 2 \cdot 3
+			\Rightarrow
+			1 + \sqrt{-5} \mid 2  \vee 1 + \sqrt{-5} \mid 3, 
+			\end{align*}
+			womit ein $ a + b \cdot \sqrt{-5} \in \Z[\sqrt{-5}] $ mit
+			\begin{align*}
+			(1+ \sqrt{-5}) \cdot a + b \cdot \sqrt{-5}
+			= a - 5\cdot b + \sqrt{-5} \cdot (a + b) = 5
+			\end{align*}
+			existiert.
+			Nach kurzem Überlegen erhalten wir, dass dies nicht erfüllt sein kein.
+			Das Vorgehen bei $ 1 + \sqrt{-5} \mid 3 $ ist vollkommen analog.
+			
+			\item $ 1 - \sqrt{-5} $: 
+			Analog zu $ 1 + \sqrt{-5} $. 
+		\end{itemize}
+		
+		\item[b)]
+		Steht sofort da, dass Ergebnis steht in der in a) aufgeführten Äquivalenz.
+		
+		\item[c)] 
+		Da für einen Hauptidealbereich gelten muss, dass prim irreduzibel entspricht, kann $ \Z[\sqrt{-5}] $ kein Hauptidealring und somit auch kein euklidischer Ring sein.
+	\end{enumerate}
+\end{loes}

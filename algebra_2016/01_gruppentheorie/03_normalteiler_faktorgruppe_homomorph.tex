@@ -1,0 +1,326 @@
+
+\section{Normalteiler, Faktorgruppe und Homomorphismen}
+
+\begin{df}\label{skript:3.1} \index{Faktorgruppe} \index{Quotientengruppe}
+Sei $G$ eine Gruppe mit $N \nt G$.
+Durch die Verknüpfung
+\begin{align*}
+G / N \times G / N \to G / N, \ (gN,hN) \mapsto (gh)N
+\end{align*}
+wird eine \textbf{\textit{Faktorgruppe von $G$ nach $N$}} auf der Nebenklassenmenge $G / N$ 
+definiert.
+Diese Gruppe nennen wir auch \textbf{\textit{Quotient}} oder \textbf{\textit{Quotientengruppe}}.
+\end{df}
+
+\begin{proof}
+Leider wissen wir noch nicht, ob diese Verknüpfung wohldefiniert ist. Dies werden wir jetzt zeigen.
+Sei $g_1N = g_2 N $ und $h_1N = h_2 N$.
+Dann existieren $n_1, n_2 \in N $, sodass $g_1n_1 = g_2$ und $h_1n_2 = h_2$.
+Mit der Normalteilereigenschaft erhalten wir durch
+\begin{align*}
+g_2 h_2 = g_1n_1h_1n_2 = g_1h_1 \underbrace{h_1^{-1}n_1h_1n_2}_{=: \tilde{n }\in N} = g_1h_1\tilde{n} 
+\end{align*}
+die Wohldefiniertheit. Die Assoziativität der Verknüpfung erhalten wir direkt aus der von $G$.
+Das neutrale Element ist $N$ und das zu $gN$ inverse Element ist $g^{-1} N$.
+\end{proof}
+
+\begin{genericdf}{Beispiel}\label{skript:3.2} \index{Restklassenring}
+Sei $G = (\Z,+)$ und $N = m\Z$. Da $G$ abelsch ist, gilt $N \nt G$. Die  Faktorgruppe
+ist dann $(\Z / m \Z,+)$. Nun können wir auf $\Z / m \Z$ durch
+\begin{align*}
+(a + m\Z)(b + m\Z) := (a\cdot b + m\Z) 
+\end{align*}
+eine Multiplikation (eine zweite Verknüpfung) definieren. 
+Dann ist $(\Z / m \Z,+, \cdot ) $ ein kommutativer Ring und wir bezeichnen diesen mit 
+\textbf{\textit{Restklassenring modulo $m$}}.
+\end{genericdf}
+
+\begin{genericdf}{Beispiel}\label{skript:3.3}
+Sei $G$ eine Gruppe mit $N \nt G$ und $\varphi : G \to Q $ eine Gruppenhomomorphismus mit $\varphi(N) = 1$.
+Dann ist
+\begin{align*}
+\kappa : G / N \to Q , \ gN \mapsto \varphi(g)
+\end{align*}
+ein wohldefinierter Gruppenhomomorphismus. 
+\begin{proof}\
+\begin{itemize}
+\item $\kappa$ ist wohldefiniert:
+Sei $g_1N = g_2N$, dann existiert ein $n \in N $ mit $g_1 n = g_2$.
+Damit erhalten wir durch
+\begin{align*}
+\varphi(g_2) = \varphi(g_1 n) = \varphi(g_1) \varphi(n) = \varphi(g_1) 1_Q = \varphi(g_1)
+\end{align*}
+die Wohldefiniertheit.
+\item $\kappa$ ist ein Gruppenhomomorphismus:
+Durch 
+\begin{align*}
+\kappa(g_1 N \cdot g_2 N ) = \kappa((g_1g_2) N ) = \varphi(g_1g_2) = \varphi(g_1) \cdot\varphi(g_2) = \kappa(g_1 N) \cdot \kappa(g_2 N)
+\end{align*}
+folgt dies sofort.
+\end{itemize}
+\end{proof}
+\end{genericdf}
+
+\begin{genericthm}{Grundeigenschaften von Gruppenhomomorphismen} \label{skript:3.4} 
+\index{Homomorphismus!Gruppen!Eigenschaften}
+Sei $\varphi : G \to H$ ein Gruppenhomomorphismus. Dann sind
+\begin{enumerate}
+\item[\textbf{(1)}]
+$\varphi(1_G) = 1_H$
+\item[\textbf{(2)}]
+$\forall g \in G: \varphi(g)^{-1} = \varphi(g^{-1})$
+\end{enumerate}
+erfüllt.
+\end{genericthm}
+
+\begin{proof}
+Den ersten Teil erhalten wir mit 
+\begin{align*}
+\varphi(1_G) = \varphi(1_G \cdot 1_G) = \varphi(1_G) \cdot \varphi(1_G)
+\stackrel{\varphi(1_G)^{-1}}{\Rightarrow} 1_H = \varphi(1_G)
+\end{align*}
+sofort. Den zweiten erhalten wir durch
+\begin{align*}
+1_H = \varphi(1_G) = \varphi(g \cdot g^{-1}) = \varphi(g) \cdot \varphi(g^{-1}),
+\end{align*}
+denn $\varphi(g^{-1})$ ist invers zu $\varphi(g)$. Der Rest folgt aus der Eindeutigkeit des Inversen.
+\end{proof}
+
+\begin{sz}\label{skript:3.5}
+Sei $\varphi : G \to H$ ein Gruppenhomomorphismus. Dann gelten:
+\begin{enumerate}
+\item[\textbf{(1)}] \index{Homomorphismus!Kern}
+Wir nennen $\Ker \varphi := \lbrace g \in G \ | \ \varphi(g)= 1_H \rbrace$ den \textbf{\textit{Kern}} von $\varphi$. Für diesen gilt 
+\begin{align*}
+\Ker \varphi = 1 \Leftrightarrow \varphi \ \text{injektiv}
+\end{align*}
+und $\Ker \varphi \nt G$.
+\item[\textbf{(2)}] \index{Homomorphismus!Bild}
+Wir bezeichnen mit $\Bild \varphi := \lbrace h \in H \ | \ \exists g \in G : \varphi(g)=h \rbrace$
+das \textbf{\textit{Bild}} von $\varphi$.
+Sei $U \leq G$, dann gilt $\varphi(U) \leq H$.
+Aus dieser Aussage folgt sofort $\Bild \varphi \leq H$.
+\item[\textbf{(3)}] \index{volles Urbild}
+Sei $V \leq H $, dann gilt $\varphi^{-1}(V) = \lbrace g \in G \ | \ \varphi(g) \in V \rbrace \leq G$.
+Falls zusätzlich $V \nt H$ gilt, folgt $\varphi^{-1}(V) \nt G$.
+Dies bezeichnen wir dann als \textbf{\textit{volles Urbild}}.
+\end{enumerate}
+\end{sz}
+
+\begin{proof}\
+\begin{itemize}
+\item $\Ker \varphi$ ist Untergruppe von $G$: Wegen $\varphi(1_G) = 1_H$ gilt $1_G \in \Ker \varphi$.
+Sei nun $g,h \in \Ker \varphi$.
+Mit
+\begin{align*}
+\varphi(g^{-1}) =\varphi(g)^{-1} = 1_H^{-1} = 1_H &\Rightarrow g^{-1} \in \Ker \varphi\\
+\varphi(g\cdot h) = \varphi(g) \cdot \varphi(h) = 1_H  &\Rightarrow gh \in \Ker \varphi 
+\end{align*}
+erhalten wir die anderen Untergruppeneigenschaften.
+\item $\Ker \varphi$ ist Normalteiler von $G$: 
+Sei $x \in G$ und $g \in \Ker \varphi$.
+Dann gilt
+\begin{align*}
+\varphi(x^{-1} g x ) = \varphi(x^{-1}) \varphi(g) \varphi(x) = \varphi(x)^{-1} 1_H \varphi(x) = 1_H,
+\end{align*}
+womit $\Ker \varphi$ unter Konjugation invariant ist. Also folgt $\Ker \varphi \nt G$. 
+\item $\Ker \varphi = 1 \Leftrightarrow \varphi \ \text{injektiv}$: 
+Für die Hinrichtung nehmen wir an, dass $\varphi$ nicht injektiv ist.
+Damit existieren $g,h \in G$ mit $g \neq h$ und $\varphi(g) = \varphi(h)$.
+Wir erhalten durch 
+\begin{align*}
+\varphi(g^{-1}h) = \varphi(g)^{-1} \cdot \varphi(h) = 1_H
+\end{align*}
+eine Widerspruch zu $\Ker \varphi = 1$. Für die Rückrichtung nehmen wir an, dass $\Ker \varphi \neq \lbrace 1_G \rbrace$ gilt. Dann würde aber ein $g \neq 1_G$ existieren mit $\varphi(g) = 1_H$.
+Dies ist ein Widerspruch zur Injektivität.
+\end{itemize}
+Die Aussagen aus \textbf{(2)} und \textbf{(3)} können wir durch ähnliches Vorgehen beweisen.
+\end{proof}
+
+\begin{genericdf}{Bemerkung}\label{3.6} \index{Homomorphismus!natürlich}
+	Sei $ G $ eine Gruppe, $ N \nt G$ und $ G/N $ die zugehörige Faktorgruppe. Dann ist 
+	\begin{align*}
+	\kappa : G \to G/N, \ g \mapsto gN
+	\end{align*}
+	ein Gruppenhomomorphismus. Diesen nennen wir \textit{\textbf{natürlicher Homomorphismus}}.
+	Für den Kern von $ \kappa $ gilt
+	\begin{align*}
+	\kappa(g) = N \Leftrightarrow g \in \Ker \kappa \Leftrightarrow g \in N,
+	\end{align*}
+	womit $ \Ker \kappa  = N $ und $ \Bild \kappa = G/ N $.
+	
+\end{genericdf}
+
+\begin{genericdf}{Beispiel} \label{skript:3.7} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $ K $ ein Körper. Wir betrachten die Determinante $ \det : \Gl_n(K) \to K^\ast $. Für deren Kern gilt
+		\begin{align*}
+		\Ker \det = \Sl_n(K))= \lbrace A \in \Gl_n(K) \ | \ \det(A) = 1 \rbrace,
+		\end{align*}
+		womit $ \Sl_n(K) \nt \Gl_n(K)$ folgt. Außerdem gilt $ \Bild \det = K^\ast $.
+		\item[\textbf{(2)}] 
+		Wir betrachten die Abbildung $ \exp : (\R,+) \to (\R^\ast, \cdot) , \ x \mapsto e^x$. Wegen
+		\begin{align*}
+		\exp(x+y) = e^{x+y} = e^x \cdot e^y = \exp(x) + \exp(y)
+		\end{align*}
+		ist $ \exp $ ein Homomorphismus. Dieser ist injektiv und es gilt $ \Bild \exp = \R^\ast_{\geq 0} $
+	\end{enumerate}
+\end{genericdf}
+
+\begin{genericthm}{Lemma}\label{skript:3.8}
+	Sei $ X $ eine nicht-leere $ G $ Menge. Dann ist 
+	\begin{align*}
+	\mu_g : X \to X, \ x \mapsto g.x
+	\end{align*}
+	für ein festes $ g \in G $ eine Bijektion. Die Abbildung 
+	\begin{align*}
+	\varphi: G \to \Sym(X), \ g \mapsto \mu_g
+	\end{align*}
+	ist ein Gruppenhomomorphismus mit 
+	\begin{align*}
+	\Ker \varphi = \lbrace g \in G \ | \ \forall x \in X: \ g.x = x \rbrace = \bigcap\limits_{x\in X} \Stab_G(x).
+	\end{align*}
+\end{genericthm}
+
+\begin{proof}\
+	\begin{itemize}
+		\item $ \mu_g $ ist bijektiv: Sei $ g \in G $ fest. Dann können wir durch
+		\begin{align*}
+		\mu_{g^{-1}} : X \to X, \ x \to g^{-1}.x 
+		\end{align*}
+		die Umkehrabbildung explizit angeben. Damit gilt $ \mu_g \in \Sym(X) $ für alle $ g \in G $.
+		\item $ \varphi $ ist ein Gruppenhomomorphismus: Aufgrund von
+		\begin{align*}
+		\varphi(gh) = \mu_{gh}: \ &x \mapsto (gh).x \\
+		\varphi(g) \circ \varphi(h) = \mu_g \circ \mu_h : \  &x \mapsto g.(h.x)
+		\end{align*}
+		erhalten wir die Homomorphismuseigenschaft aus Axiom \textbf{(2)} aus \ref{skript:2.1}.
+	\end{itemize}
+\end{proof}
+
+\begin{genericthm}{Satz von Cayley} \label{skript:3.9} \index{Satz!Cayley}
+	Sei $ G $ eine endliche Gruppe mit $ |G| = n $. Dann gibt es einen injektiven
+	Gruppenhomomorphismus $ \varphi : G \to S_n $. Damit ist $ G $ isomorph zu einer Untergruppe von $ S_n $.
+\end{genericthm}
+
+\begin{proof}
+	Sei $ X = G $, dann ist $ X $ eine $ G $-Menge mit $ g.x = g \cdot x $. 
+	Aus \ref{skript:3.8} erhalten wir dann
+	\begin{align*}
+	\varphi : G \to \Sym(X) \cong S_{|G|}
+	\end{align*}
+	als Gruppenhomomorphismus. Weiter ist $ g.x = x $ für alle $ x \in X $ nur für $ g = 1_G $ erfüllt.
+	Damit gilt $ \Ker \varphi = 1 $ und somit ist $ \varphi $ injektiv.
+\end{proof}
+
+\begin{generic_no_num}{Bemerkung}
+	Im Allgemeinen ist $ |G| = n $ aus \ref{skript:3.9} bestmöglich.
+	Hat $ G $ eine Untergruppe $ U $ vom Index $ m $ mit 
+	\begin{align*}
+	\bigcap \limits_{g \in G} U^g = \bigcap \limits_{g \in G} g^{-1} U g ,
+	\end{align*}
+	so lässt sich \ref{skript:3.8} auf $ X = G/U $ mit Linksmultiplikation anwenden.
+	Wir erhalten $ \varphi $ wie in \ref{skript:3.8}. 
+	Es gilt $ \Ker \varphi \nt G $, $ \Ker \varphi \leq  U = \Stab_G(U) $ und in $ U $ 
+	liegt kein nichttrivialer Normalteiler.
+ mit \end{generic_no_num}
+
+\begin{df} \label{skript:3.10} \index{Permutation!Matrix}
+	Sei $ K $ ein Körper, $ n \geq 1 $ und $ \sigma \in S_n $.
+	Die zu $ \sigma $-gehörige \textbf{\textit{Permutaionsmatrix}} $ A(\sigma) $ ist definiert durch
+	\begin{align*}
+	A(\sigma) := (a_{ij}) \in M_n(K)
+	\end{align*}
+	mit
+	\begin{align*}
+	a_{ij} = 
+	\begin{cases}
+	1 & \text{ falls } i=\sigma(j) \\
+	0 & \text{ falls}
+	\end{cases}.
+	\end{align*}
+	Außerdem gilt $ A( \sigma ) \cdot e_i = e_{\sigma(i)} $.
+\end{df}
+
+\begin{generic_no_num}{Beispiel}
+	Für $ (123),(12) \in S_3 $ gilt
+	\begin{align*}
+	A((123)) =  
+	\begin{pmatrix}
+	0 & 0 & 1 \\
+	1 & 0 & 0 \\
+	0 & 1 & 0
+	\end{pmatrix}
+	\ \text{und} \ 
+	A((12)) = 
+	\begin{pmatrix}
+	0 & 1 & 0 \\
+	1 & 0 & 0 \\
+	0 & 0 & 1
+	\end{pmatrix}.
+	\end{align*}
+\end{generic_no_num}
+
+\begin{genericthm}{Lemma} \label{skript:3.11}
+	Die Abbildung $ \rho : S_n \to \Gl_n(K), \ \sigma \mapsto A(\sigma) $
+	ist ein injektiver Gruppenhomomorphismus.
+\end{genericthm}
+
+\begin{proof}
+	Sei $ \lbrace e_1,...,e_n \rbrace $ die kanonische Basis  von $ K^n $.
+	Es gilt $ A ( \sigma )\cdot e_i = e_{\sigma(i)} $ und $ A(\sigma)  $ ist invertierbar.
+	Wir wählen nun $ \sigma, \tau \in S_n$ beliebig, aber fest. Dann gilt 
+	\begin{align*}
+	(A(\tau) \cdot A(\sigma)) \cdot e_i = A(\tau) \cdot e_{\sigma(i)} = e_{\tau \circ \sigma (i)} = A(\tau \circ \sigma ) \cdot e_i
+	\end{align*}
+	für alle $ i \in \lbrace 1,...,n \rbrace $. Damit folgt $ \rho(\tau) \cdot \rho(\sigma) = \rho(\tau \circ \sigma) $, womit 
+	$ \rho  $ ein Gruppenhomomorphismus ist.
+	Die Injektivität folgt direkt, da $ \rho(\sigma) = \id $ nur für $ \sigma = \id  $ erfüllt ist.
+\end{proof}
+
+\begin{genericthm}{Folgerung} \label{skript:3.12}
+	Sei $ G $ eine endliche Gruppe mit $ |G|= n $ und $ K $ ein Körper.
+	Dann ist $ G $ isomorph zu einer Untergruppe von $ \Gl_n(K) $.
+\end{genericthm}
+
+\begin{proof}
+	Die Aussage erhalten wir direkt durch Anwenden von \ref{skript:3.9} und \ref{skript:3.11}.
+\end{proof}
+
+\begin{generic_no_num}{Bemerkung}
+	Wir können also das Rechnen auf endlichen Gruppen auf Matrizen übertragen.	
+\end{generic_no_num}
+
+\begin{sz} \label{skript:3.13} \index{Gruppe!alternierend} \index{Signumsfunktion}
+	Sei $ K = \Q $. Die Abbildung
+	\begin{align*}
+	\varepsilon : S_n \to \Q^\ast , \ \sigma \mapsto \det(A(\sigma))
+	\end{align*}
+	ist ein Gruppenhomomorphismus. Falls $ \tau  $ eine Transposition ist gilt $ \varepsilon(\tau) = -1 $ und für das Bild
+	gilt $ \Bild \varepsilon = \lbrace -1, 1 \rbrace $.
+	Wir nennen $ \varepsilon $ \textbf{\textit{Signumsfunktion}} und kürzen diese mit $ \sgn $ ab.
+	Der Kern $ \Ker \varepsilon $ heißt \textbf{\textit{alternierende Gruppe}} vom Grad $ n $. Für diese führen wir die Abkürzung
+	$ A_n $ ein.
+	Außerdem gilt $ A_n \nt S_n $ und $ \nicefrac{|S_n|}{|A_n|} = 2$.
+\end{sz}
+
+\begin{proof}
+	Die Abbildung $ \varepsilon = \det \circ \rho $ ist eine Komposition von Gruppenhomomorphismen, also auch ein Gruppenhomomorphismus. Für $ \tau = (ij) $ entsteht $ A(\tau) $ durch Vertauschen der $ i $-ten und $ j $-ten Spalte.
+	Damit folgt $ \det(A(\tau)) = -1 $. Insbesondere lässt sich jede Permutation als Produkt von Transpositionen schreiben, womit $ \varepsilon(\sigma) ) = \pm 1 $ für alle $ \sigma \in S_n  $ folgt. 
+	Darüber hinaus erhalten wir die Äquivalenz
+	\begin{align*}
+	\sigma \in A_n \Leftrightarrow \sigma \ \text{ist gerades Produkt von Transpositionen}
+	\end{align*}
+	und mit \ref{skript:3.5} \textbf{(1)} gilt $ A_n = \Ker \varepsilon \nt S_n $.
+	Weiter gilt
+	\begin{align*}
+	\sigma \in A_n &\Rightarrow (12)\sigma \notin A_n\\
+	\sigma \notin A_n &\Rightarrow (12) \sigma \in A_n,
+	\end{align*}
+	woraus $ S_n = A_n \stackrel{.}{\cup} (12)A_n $ resultiert. Es gibt also zwei disjunkte Nebenklassen, damit ist der Index von $ A_n $ gleich $ 2 $.
+\end{proof}
+
+\begin{genericdf}{Bemerkung} \label{skript:3.14}
+	Sei $ \sigma $ ein $ k $-Zykel. Dann gilt $ \sigma \in A_n \Leftrightarrow k \ \text{ungerade} $.
+\end{genericdf}

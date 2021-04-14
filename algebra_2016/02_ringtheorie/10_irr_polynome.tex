@@ -1,0 +1,340 @@
+\section{Irreduziblität von Polynomen}
+
+\begin{genericdf}{Vorbemerkung}\label{skript:10.1}
+	Sei $ R $ ein Integritätsring und $ p \in R $ prim.
+	Nach \ref{skript:9.6} ist dann auch $ R / (p) $ ein Integritätsring.
+	Die Abbildung
+	\begin{align*}
+	\pi_p : R[x] \to R/(p)[x], \ 
+	f = \sum \limits_{i=0}^{n} a_i \cdot x^i \to \sum \limits_{i=0}^{n} \overline{a_i} \cdot x^i = f^\ast
+	\end{align*}
+	ist ein surjektiver Ringhomomorphismus mit $ \Ker \pi = (p) $ in $ R[x] $.	
+\end{genericdf}
+
+\begin{df}\label{skript:10.2}
+	Sei $ R $ ein Integritätsring und $ 0 \neq f \in R[x] $.
+	Dann nennen wir $ f $ ein \bi{primitives Polynom},\index{Polynom!primitiv}
+	wenn es keine Nichteinheit $ 0 \neq a \in R $ gibt, sodass $ a $ alle Koeffizienten
+	von $ f $ teilt.
+	Insbesondere sind normierte Polynome primitiv.
+\end{df}
+
+\begin{genericthm}{Reduktionskriterium}\label{skript:10.3}\index{Reduktionskriterium}
+	Sei $ R $ ein Integritätsring,
+	$ 0 \neq f \in R[x] $ sei primitiv mit $ \Grad(f) \geq 1 $ und Leitkoeffizient $ a_n  $.
+	Sei nun $ p \in R $ ein Primelement mit $ p \nmid a_n $.
+	Ist $ \pi_p(f) = f^\ast $ irreduzibel in $ R/(p)[x] $,
+	dann ist $ f $ irreduzibel in $ R[x] $.
+\end{genericthm}
+
+\begin{proof}
+	Wegen $ p \nmid a_n $ muss $ \Grad(f^\ast) = n$ gelten.
+	Wir nehmen an, dass $ f = g \cdot h $ mit $ g,h \in R[x] $ gilt.
+	Da $ R $ ein Integritätsring ist, gilt $ n = \Grad(f) = \Grad(g) + \Grad(h) $.
+	Außerdem ist $ a_n $ Produkt der Leitkoeffizienten von $ g $ und $ h $.
+	Damit werden diese auch nicht von $ p $ geteilt.
+	Also folgt $ 0 \neq g^\ast $, $ 0 \neq h^\ast $, $ \Grad(g) = \Grad(g^\ast) $
+	und $ \Grad(h)  = \Grad(h^\ast)$.
+	Somit gilt mit $ \pi_p $ und der Irreduziblität von $ f^\ast $
+	\begin{align*}
+	f^\ast = g^\ast \cdot h^\ast
+	\Rightarrow
+	\Grad(g^\ast) = 0 \vee \Grad(h^\ast ) = 0
+	\Rightarrow
+	\Grad(g) = 0 \vee \Grad(h) = 0.
+	\end{align*}
+	Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $ \Grad(g) = 0  $ gilt.
+	Dann gilt $ f = r \cdot h  $ mit $ r \in R $ und 
+	\begin{align*}
+	f = \sum a_i \cdot x^i, \quad h = \sum c_i \cdot x^i.
+	\end{align*}
+	Hieraus folgt $ a_i = r \cdot c_i $.
+	Da $ f $ primitiv ist, muss $ r \in R^\ast  $ gelten, womit $ f $ irreduzibel ist.
+\end{proof}
+
+\begin{genericthm}{Eisensteinkriterium}\label{skript:10.4}\index{Eisensteinkriterium}
+	Sei $ R $ ein Integritätsring und 
+	\begin{align*}
+	0 \neq f = \sum \limits_{i = 0}^n a_i \cdot x^i \in R[x]
+	\end{align*}
+	sei  primitiv mit $ \Grad(f) = n \geq 1  $.
+	Wenn ein Primelement $ p \in R $ mit $ p \nmid a_n $, $ p \mid a_i $ für alle $ 0 \leq i \leq n-1 $
+	und $ p^2 \nmid a_0 $ existiert, dann ist $ f $ irreduzibel in $ R[x] $.
+\end{genericthm}
+
+\begin{proof}
+	Wir nehmen an, dass $ f = g \cdot h $ ist.
+	Wie im letzten Beweis sehen wir, dass $ f^\ast  $, $ g^\ast  $ und $ h^\ast  $ ungleich null sind.
+	Außerdem gilt wieder $ \Grad(f^\ast) = \Grad(f) = n = m + k $
+	mit \\
+	$ m = \Grad(g)  = \Grad(g^\ast)$ und $ k = \Grad(h) = \Grad(h^\ast) $.
+	Nun gilt mit unseren Voraussetzungen
+	\begin{align*}
+	f^\ast = \overline{a_n} \cdot x^n 
+	\Rightarrow
+	g^\ast= \overline{b_m} \cdot x^m, \quad h^\ast = \overline{c_k} \cdot x^k.
+	\end{align*}
+	Angenommen $ m > 0 $ und $ k > 0  $.
+	Dann sind $ b_0 $ und $ c_0 $ durch $ p $ teilbar, womit $ p^2 \mid a_0 $ gilt.
+	Dies ist ein Widerspruch zu unseren Voraussetzungen.
+\end{proof}
+
+\begin{genericdf}{Beispiele}\label{skript:10.5}\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Wir betrachten $ f = x^{24} - 18 \cdot x^{7} + 15 \in \Z[x] $,
+		dann folgt mit Eisenstein und $ p =3 $, dass $ f $ irreduzibel in $ \Z[x] $ ist.
+		
+		\item[\textbf{(2)}]
+		Sei $ f = x^3-5 \cdot x + 3 \in \Z[x] $.
+		Wir wählen $ p = 2 $, womit
+		$ f^\ast = x^3 + x + \overline{1}  \in \Z / 2 \Z[x]$ gilt.
+		Da $ f^\ast $ keine Nullstellen über $ \Z / 2 \Z $ besitzt, ist $ f^\ast $ irreduzibel.
+		Nun ist $ f $ primitiv. 
+		Mit dem Reduktionskriterium folgt, dass $ f $ irreduzibel in $ \Z[x] $ ist.
+		
+		\item[\textbf{(3)}]
+		Wir betrachten $ h = x^4 + 1 \in \Z[x]$.
+		Aus LAAG ist bekannt, dass Nullstellen das Absolutglied teilen.
+		Wegen $ h(\pm 1) = 2 $ besitzt $ h $ keine Nullstellen.
+		Wir führen nun das \bi{Verfahren von Kronecker} exemplarisch durch.\index{Kroneckerverfahren}
+		Angenommen $ h = h_1 \cdot h_2 $ mit $ \Grad(h_1) = 2  $ und $ \Grad(h_2) = 2 $.
+		Sei $ h_1 = a \cdot x^2 + b \cdot x + c$.
+		Da $ h $ normiert ist, können wir annehmen, dass $ h_1 $ und $ h_2 $ normiert sind.
+		Somit folgt $ h_1 = x^2 + b \cdot x + c $.
+		Für ein $ k \in \Z $ erhalten wir $ h(k) = h_1(k) \cdot h_2(k) $, womit $ h_1(k) \mid h(k) $ gelten muss. Nun gilt
+		\begin{align*}
+		k = 0 		  &\Rightarrow h(0) = 1 \Rightarrow h_1(0) = \pm 1 \\
+		k = 1 		  &\Rightarrow h(1) = 2 \Rightarrow h_1(1) = \pm 1, \pm 2\\
+					  &\Rightarrow c = \pm 1, \quad 1 + b + c = \pm 1 , \pm 2\\
+		\bullet c = \ 1 &\Rightarrow b + 2 = \pm 1 , \pm 2 \Rightarrow b = -4,-3,-1, 0\\
+		\bullet c =-1 &\Rightarrow b = \pm 1 , \pm 2 
+		\end{align*}
+		und für diese insgesamt 8 Möglichkeiten von $ h_1 $ müssen wir jetzt untersuchen, 
+		ob diese Teiler von $ h $ sind.
+		Jedoch gilt dies für keines, womit $ h $ irreduzibel ist.
+		Alternativ wählen wir $ p = 2 $, dann ist $ x^2 + x + 1$ das einzige in $ \Z / 2 \Z[x] $ irreduzible
+		Polynom.
+		Wir nehmen an, dass $ h $ reduzibel ist und betrachten wieder $ h = h_1 \cdot h_2 $
+		mit $ \Grad(h_1) = \Grad(h_2) = 2 $. Nach \ref{skript:9.7} ist $ \Z / 2 \Z[x] $ faktoriell, womit 
+		$ h^\ast $ Produkt von irreduziblen Polynomen sein muss.
+		Dies ist wegen
+		\begin{align*}
+		h^\ast = x^4 + \overline{1} \neq (x^2  + x + \overline{1})^2
+		\end{align*}
+		nicht erfüllt. Damit ist $ h$ irreduzibel.
+		
+		\item[\textbf{(4)}]
+		Sei $ p $ eine Primzahl. Wir betrachten
+		\begin{align*}
+		f(x) = 1 + x + x^2 + \dots + x^{p-1}
+		\end{align*}
+		mit der Abbildung
+		\begin{align*}
+		\varphi : \Z[x] \to \Z[x], f(x) \mapsto f(x+1),
+		\end{align*}
+		welche nach \ref{skript:8.8} ein Ringhomomorphismus ist.
+		Falls $ f = g \cdot h $ ist, folgt $ f(x+1) = g(x+1) \cdot h(x+1) $.
+		Wenn also $ f(x+1) $ irreduzibel ist, so ist es auch $ f $.
+		Nun gilt 
+		\begin{align*}
+		f(x+1) = 1 + (x+1) + (x+1)^2 + \dots + (x+1)^{p-1},
+		\end{align*}
+		womit wir aber nicht zufrieden sind und deswegen
+		\begin{align*}
+		x^p  - 1 = (x-1) \cdot (1 + x + \dots + x^{p-1}) = (x-1) \cdot f(x)
+		\stackrel{\varphi}{\Rightarrow}
+		(x+1)^p -1 = x \cdot f(x+1)
+		\end{align*}
+		betrachten. Weiter gilt
+		\begin{align*}
+		x \cdot f(x+1) &= x^p + \binom{p}{1} \cdot x^{p-1} + \dots + \binom{p}{p-1} \cdot x + 1 - 1 \\
+				&= x \left( x^{p-1} + \binom{p}{1} \cdot x^{p-2} + \dots + \binom{p}{p-1} \right)\\
+		\Rightarrow
+		f(x+1) &= x^{p-1} + \binom{p}{1} \cdot x^{p-2} + \dots + \binom{p}{p-1} 
+		\end{align*}
+		und mit Eisenstein folgt, dass $ f(x+1) $ irreduzibel ist.
+		Hierfür schaut euch nochmal den Beweis zu \ref{skript:8.7} an. 
+		Damit ist auch $ f $ irreduzibel.
+		
+		\item[\textbf{(5)}]
+		Sei $ p  $ eine Primzahl. Für
+		\begin{align*}
+		(p \cdot x + 1) \cdot (x-1) = p \cdot x^2 + (1-p) \cdot x - 1
+		\end{align*}
+		gilt über $ \Z / p \Z $, dass $ f^\ast  = \overline{x} - \overline{1} $ ist.
+		Dies ist irreduzibel, jedoch $ f $ nicht.
+		Dies zeigt, dass $ p \nmid a_n $ notwendig für $ \ref{skript:10.3} $ ist.
+		Im weiteren Verlauf werden wir uns der folgende Frage beantworten:
+		Falls $ f \in \Z[x] $ irreduzibel ist, gilt dies dann auch über $ \Q[x] $ ?
+	\end{enumerate}
+\end{genericdf}
+
+\begin{lemma}\label{skript:10.6}
+	Sei $ R $ ein Integritätsring und $ p \in R $ prim.
+	Dann ist $ p $ prim in $ R[x] $.
+\end{lemma}
+
+\begin{proof}
+	Mit \ref{skript:9.2} folgt aus $ p  $ prim, dass $ R/(p) $ ein Integritätsring ist.
+	Dann ist auch $ R/(p)[x] $ ein Integritätsring und mit dem Homomorphiesatz für Ringe gilt
+	$ R/(p)[x] \cong R[x]/(p) $.
+	Also folgt mit \ref{skript:9.2}, dass $ p $ Primelement von $ R[x] $ ist.
+\end{proof}
+
+\begin{genericthm}{Lemma von Gauß}\label{skript:10.7}\index{Satz!Lemma von Gauß}
+	Sei $ R $ faktoriell und $ 0 \neq a \in R[x] $ irreduzibel mit $ \Grad(a) \geq 1 $.
+	Falls $ a $ teilt $ b \cdot c $ in $ R[x] $ mit $ 0 \neq b \in R[x] $ und $ c \in R[x] $ gilt,
+	dann folgt $ a $ teilt $ c $ in $ R[x] $.
+\end{genericthm}
+
+\begin{proof}
+	Sei $ l $ die Längenfunktion von $ R $.
+	Für $ l(b) = 0 $ folgt $ b \in R^\ast $.
+	In diesem Fall folgt die Aussage sofort.
+	Sei also $ l(b) > 0$.
+	Wir werden nun induktiv über diese Länge vorgehen.
+	Sei $ 0 \neq p \in R $ irreduzibel mit $ p \mid b $.
+	Dann gilt $ b = p \cdot b^\prime $ mit $ b^\prime \in R $ 
+	und $ l(b^\prime) = l(b) -1 $.
+	Nun gilt nach Voraussetzung $ b \cdot c = a \cdot d $ mit $ d \in R[x] $.
+	Damit gilt $ p \mid a\cdot d  $ in $ R[x] $.
+	Da $ R $ faktoriell ist, ist $ p $ auch prim.
+	Nach \ref{skript:10.6} ist $ p $ prim in $ R[x] $,
+	wodurch $ p \mid a $ oder $ p \mid d  $ folgt.
+	Aufgrund der Irreduziblität von $ a $ folgt
+	\begin{align*}
+	p | d 
+	\Rightarrow
+	d = p \cdot d^\prime
+	\end{align*}
+	für eine $ d^\prime \in R[X] $.
+	Also gilt
+	\begin{align*}
+	b \cdot c = p \cdot b^\prime \cdot c &= a \cdot d = a \cdot p \cdot d^\prime \\
+	\Rightarrow b^\prime \cdot c &= a \cdot d^\prime
+	\end{align*}
+	und es folgt durch Induktion $ a \mid c $.
+\end{proof}
+
+\begin{df}\label{skript:10.8}
+	Sei $R$ ein Integritätsring,
+	dann können wir mit $R \subset K$ als Teilring
+	und $K = \lbrace a \cdot b^{-1} \ | \ a \in R , b \in R \setminus \lbrace 0 \rbrace \rbrace$
+	einen Körper konstruieren.
+	Offensichtlich ist $K$ bis auf Isomorphie der kleinste Körper, der $R$ enthält. 
+	Wir nennen $K$ den \bi{Quotientenkörper} von $R$ und schreiben $K = \Quot(R)$.
+	\index{Quotientenkörper}
+\end{df}
+
+\begin{generic_no_num}{Bemerkung}
+	Besonders leicht sehen wir dies, wenn $R$ bereits in $K$ enthalten ist.
+	Wir betrachten zum Beispiel $\Z \subset \R  $, womit $\Quot(\Z) = \Q$ gilt.
+\end{generic_no_num}
+
+\begin{genericthm}{Satz von Gauß}\label{skript:10.9} \index{Satz!Gauß}
+	Sei $R$ ein faktorieller Ring mit $\Quot(R) = K$.
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $0 \neq f \in R[x]$ und $\Grad(f) \geq 1$.
+		Falls $f$ irreduzibel $R[x]$ folgt,
+		dass $f$ irreduzibel in $\Quot(R)[x]$ ist.
+		
+		\item[\textbf{(2)}]
+		$R[x]$ ist ebenfalls faktoriell.
+	\end{enumerate}
+\end{genericthm}
+
+\begin{proof}\
+	\begin{enumerate}
+		\item[\textbf{(1)}]		
+		Sei $g \cdot h = f \in R[x]$ mit $g, h \in K[x]$ und $\Grad(g) \geq 1$.
+		Die Koeffizenten von $g $ und $h$ sind von der Form
+		\begin{align*}
+		a \cdot b^{-1} = \frac{a}{b}
+		\end{align*}				
+		mit $a \in R$ und $b \in R \setminus \lbrace 0 \rbrace$.
+		Sei $d$ das Produkt aller Nenner.
+		Wir setzen $\tilde{g} = d \cdot g$ und $\tilde{h} = d \cdot h$.
+		Damit folgt
+		\begin{align*}
+		\tilde{g}, \tilde{h} \in R[x]
+		\Rightarrow
+		d^2 \cdot f = \tilde{g} \cdot \tilde{h}, \quad \Grad(\tilde{g}) \geq 1,
+		\end{align*}				
+		womit $ \tilde{g} \notin R[x]^\ast$ ist.
+		In \textbf{(2)} werden wir sehen, dass 
+		\begin{align*}
+		\tilde{g} = q_1 \cdot q_2 \cdots q_r
+		\end{align*}
+		mit $r \geq 1$ und $q_i$ irreduzibel gilt.
+		Sei ohne Beschränkung der Allgemeinheit $\Grad(q_1) \geq 1$.
+		Dann folgt mit \ref{skript:10.7}
+		\begin{align*}
+		q_1 \mid d^2 \cdot f 
+		\Rightarrow
+		q_1 | f
+		\end{align*}
+		und da $f$ irreduzibel ist gilt $f = \tilde{u} \cdot q_1$ mit $\tilde{u} \in R^\ast$.
+		Es folgt
+		\begin{align*}
+		d^2 \cdot \tilde{u} = q_2 \cdots q_r \cdot \tilde{h},
+		\end{align*}
+		damit besitzt die linke Seite den Grad $0$, womit
+		$\Grad(\tilde{h}) = \Grad(h) = 0$ folgt.
+		Also gilt $h \in K[x]^\ast$.
+		\item[\textbf{(2)}]	
+		Zunächst haben wir zu zeigen:
+		Falls $f \in R[x]$, dann ist $f$ eine Einheit oder ein Produkt aus irreduziblen Elementen
+		aus $R[x]$.
+		Wir setzen die Längenfunktion $l$ von $R$ auf $R[x]$ durch
+		\begin{align*}
+		l(g) := n + l(a_n)
+		\end{align*}
+		für $0 \neq g \in R[x]$ mit $\Grad(g) = n \geq 0$ und Leitkoeffizent $a_n \neq 0$ fort.
+		Wegen $l(a\cdot b) = l(a)+l(b)$ für $a,b \in R$ 
+		und $\Grad(g \cdot h) = \Grad(g) + \Grad(h)$ für $0 \neq g,h \in R[x]$ gelten
+		\begin{itemize}
+			\item
+			$l(f) = 0 \Rightarrow f \in R^\ast$
+			
+			\item
+			$l(g \cdot h) = l(g) + l(h) $
+		\end{itemize}
+		und damit folgt induktiv die Aussage.
+		Nun müssen wir noch zeigen, dass prim gleich irreduzibel ist.
+		Sei also $0 \neq f \in R[x]$ irreduzibel.
+		Falls $Grad(f) = 0$ ist, dann liegt $f$ in $R$.
+		Da $R$ faktoriell ist, ist $f$ prim in $R$ und damit auch $R[x]$.
+		Wir betrachten also $\Grad(f) \geq 1 $ 
+		mit $f \mid g \cdot h$ in $R[x]$.
+		Dies gilt dann auch in $K[x]$.
+		In \textbf{(1)} haben wir gezeigt, dass $f$ irreduzibel in $K[x]$ ist.
+		Nach \ref{skript:9.7} ist $K[x]$ euklidisch, damit auch faktoriell.
+		Also ist $f$ prim in $K[x]$.
+		Damit gilt $f \mid g$ oder $f \mid h$ in $K[x]$.
+		Wir nehmen an, dass $f \mid g$ gilt.
+		Dann folgt $g = a \cdot f  $ mit $a \in K[x]$.
+		Sei $d$ das Produkt der Nenner aller Koeffizenten von $a$. 
+		Es folgt 
+		\begin{align*}
+		d \cdot g =   \underbrace{d \cdot a}_{\tilde{a}:=} \cdot f
+		\end{align*}
+		mit $\tilde{a} \in R[x]$.
+		Es folgt weiter $f | \ d \cdot g $ in $R[x]$ und mit \ref{skript:10.7} 
+		$f \mid g$ in R[x].
+	\end{enumerate}		
+\end{proof}
+
+\begin{genericthm}{Folgerung}\label{skript:10.10}
+	Sei $R$ faktoriell und $K = \Quot(R)$.
+	Falls $0 \neq f \in R[x]$ irreduzibel nach \ref{skript:10.3}
+	oder \ref{skript:10.4} ist, ist $f$ auch irreduzibel in $K[x]$.
+\end{genericthm}
+
+\begin{genericthm}{Folgerung}\label{skript:10.11}
+	Sei $R$ faktoriell, dann ist der Polynomring
+	in $n$ kommutierenden Unbestimmten
+	$R[X_1,\dots,X_n]$
+	auch faktoriell.
+\end{genericthm}

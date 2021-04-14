@@ -1,0 +1,180 @@
+\section{Lösungen zum Abschnitt 6}
+
+\begin{loes}\hypertarget{loes:6.1}\
+	Es gilt
+	\begin{align*}
+	|G| = 80 = 2^4 \cdot 5^1
+	\end{align*}
+	und nach den Sylowsätzen \ref{skript:6.4} müssen
+	\begin{align*}
+	n_2(G) &\equiv 1 \mod 2 \quad  \wedge \quad n_2(G) \mid 5\\
+	n_5(G) &\equiv 1 \mod 5 \quad  \wedge \quad  n_5(G) \mid 16
+	\end{align*}
+	erfüllt.
+	Angenommen es gibt $ 16  $ verschiedene $ 5 $-Sylowuntergruppen.
+	Da Untergruppen der Ordnung $ 5 $ zyklisch sind, besitzen die Gruppen
+	in $ \Syl_5(G) $ nur den trivialen Schnitt.
+	Damit erhalten wir $ 16 \cdot 4  +1 = 65  $ Elemente.
+	Also kann es nur eine $ 2 $-Sylowuntergruppe mit Ordnung $ 16 $ geben, womit
+	\begin{align*}
+	\Syl_2(G) = \lbrace P \rbrace 
+	\Leftrightarrow
+	P \nt G
+	\end{align*}
+	gilt.
+	Also ist $ G $ nicht einfach.
+ \end{loes}
+ 
+ \begin{loes}\hypertarget{loes:6.2}\
+ 	\begin{enumerate}
+ 		\item[a)]
+ 		Wir nehmen ohne Beschränkung der Allgemeinheit an, dass $ p < q $ gilt.
+ 		Wegen
+ 		\begin{align*}
+ 		n_q(G) \equiv 1 \mod q \quad \wedge \quad n_q(G)  \mid p
+ 		\end{align*}
+ 		kann nur $ n_q(G) = 1 $ erfüllt sein.
+ 		Damit gilt nach \ref{skript:6.5}
+ 		\begin{align*}
+ 		\Syl_q(G) = \lbrace Q \rbrace 
+ 		\Leftrightarrow
+ 		Q \nt G,
+ 		\end{align*}
+ 		womit $ G $ nicht einfach ist.
+ 		
+ 		\item[b)]
+ 		Mit den Voraussetzungen erhalten wir
+ 		\begin{align*}
+ 		p \notin 1 + q \Z \quad \wedge \quad q \notin 1 + p \Z,
+ 		\end{align*}
+ 		womit $ p \neq n_q(G) $ und $ q \neq n_p(G) $ gilt.
+ 		Da $ p $ und $ q $ Primzahlen sind, 
+ 		kann nur
+ 		\begin{align*}
+ 		n_p(G) = 1  \quad \wedge \quad n_q(G) = 1 
+ 		\end{align*}
+ 		erfüllt sein.
+ 		Damit folgt dann
+ 		\begin{align*}
+ 		\Syl_p(G) = \lbrace P \rbrace &\Leftrightarrow P \nt G\\
+ 		\Syl_q(G) = \lbrace Q \rbrace &\Leftrightarrow Q \nt G
+ 		\end{align*}
+ 		und $ P,Q $ sind aufgrund ihrer Ordnungen zyklisch.
+ 		Nun gilt noch $ P \cap Q = 1  $ und $ P \cdot Q = G $.
+ 		Damit folgt dann
+ 		\begin{align*}
+ 		G \cong P \times Q \cong C_p \times C_q \cong C_{pq},
+ 		\end{align*}
+ 		womit $ G $ zyklisch ist.
+ 		Eine andere Variante wäre es über den Kommutator zu gehen.
+ 		Da $ P \cap Q  = 1$ und $ P,Q \nt G $ muss 
+ 		\begin{align*}
+ 		[p,q] = 1
+ 		\end{align*}
+ 		für beliebige $ p \in P $ und $ q \in Q $ gelten.
+ 		Wegen $ G = P \cdot Q $ ist $ G $ somit abelsch.
+ 		Damit folgt dann sofort
+ 		\begin{align*}
+ 		(pq)^{\ord(p) \cdot \ord(g)} = 1
+ 		\end{align*}
+ 		und wir sind fertig.
+ 	\end{enumerate}
+ \end{loes}
+ 
+ \begin{loes}\hypertarget{loes:6.3}\
+ 	Wir wissen zunächst, dass
+ 	\begin{align*}
+ 	n_p(G) \equiv 1 &\mod p \quad \wedge \quad n_p(G) \mid q \\
+ 	n_q(G) \equiv 1 &\mod q \quad \wedge \quad n_q(G) \mid p^2
+ 	\end{align*}
+ 	erfüllt sein müssen.
+ 	Nun müssen wir drei Fälle betrachten:
+ 	\begin{itemize}
+ 		\item $ q < p $:
+ 		 In diesem Fall folgt sofort, dass $ n_p(G) = 1 $ sein muss.
+ 		 Damit gilt 
+ 		 \begin{align*}
+ 		 \Syl_p(G) = \lbrace P \rbrace \Leftrightarrow P \nt G,
+ 		 \end{align*}
+ 		 womit $ G $ nicht einfach ist und eine normale $ p $-Sylowuntergruppe existiert.
+ 		 Nach \ref{skript:5.5} sind $ P $ und $ G/P $ auflösbar 
+ 		 und mit $ \ref{skript:4.11}  $ auch $ G $.
+ 		 
+ 		 \item $ q > p^2 $:
+ 		 Hier folgt wieder sofort, dass $ n_q(G) = 1 $ sein muss.
+ 		 Mit der selben Argumentation wie im ersten Fall
+ 		 existiert eine $ q $-Sylowuntergruppe und $ G $ ist auflösbar.
+ 		 
+ 		 \item $ p < q < p^2 $:
+ 		 Aufgrund der Voraussetzungen wissen wir, dass 
+ 		 $ n_q(G)  \in \lbrace 1 , p , p^2 \rbrace$
+ 		 gilt und erhalten schon wieder drei Fälle:
+ 		 \begin{itemize}
+ 		 	\item $ n_q(G) = 1 $:
+ 		 	Hierfür einfach die zwei ersten Punkte anschauen.
+ 		 	
+ 		 	\item $ n_q(G) = p $:
+ 		 	Dieser Fall kann wegen
+ 		 	\begin{align*}
+ 		 	n_q(G) \equiv 1 \mod q \quad \wedge \quad p<q
+ 		 	\end{align*}
+ 		 	nicht erfüllt sein.
+ 		 	
+ 		 	\item $ n_q(G) = p^2 $:
+ 		 	In diesem Fall gibt es $ p^2 $ Untergruppen der Ordnung $ q $.
+ 		 	Also erhalten wir $ p^2 \cdot (q-1) $ Elemente der Ordnung $ q $
+ 		 	und es bleiben noch $ p^2 $ Elemente die fehlen.
+ 		 	Somit ist $ n_p(G) = 1 $.
+ 		 	Den Rest kennen wir ja schon.
+ 		 \end{itemize} 
+ 	\end{itemize}
+ 	Insgesamt finden wir immer entweder eine normale $ p $-Sylowgruppe oder eine normale $ q $-Sylowgruppe und $ G $ ist auflösbar.
+ \end{loes}
+ 
+\begin{loes}\hypertarget{loes:6.4}\
+	Wenn wir uns die Eigenschaft \textbf{(3)} aus \ref{skript:6.4} aufschreiben,
+	erhalten wir sofort
+	\begin{align*}
+	n_5(G) = 1 \quad \wedge \quad n_7(G) = 1. 
+	\end{align*}
+	Damit folgt mit \ref{skript:4.11} und \ref{skript:5.5} auch direkt die Auflösbarkeit.
+	Also sind Gruppen der Ordnung $ 6125 $ immer auflösbar.
+\end{loes}
+
+\begin{loes}\hypertarget{loes:6.4}\
+	\begin{enumerate}
+		\item[a)]
+		Sei $ |G| = p^a \cdot m $ mit $ \ggT(p, m ) = 1 $.
+		Da $p$ kein Teiler von $ [G:N] $ ist, muss
+		\begin{align*}
+		|N| = p^a \cdot \tilde{m}
+		\end{align*}
+		mit $ \ggT(p,\tilde{m}) = 1 $ und $ m = c \cdot \tilde{m} $ gelten.
+		Also erhalten wir mit
+		\begin{align*}
+		P \in Syl_p(N) \Rightarrow |P| = p^a
+		\quad \wedge \quad
+		Q \in Syl_p(G) \Rightarrow |G| = p^a
+		\end{align*}
+		die gesuchte Aussage.
+		
+		\item[b)]
+		Sei $ P \in \Syl_p(N)$.
+		Dann gilt insbesondere auch $ P \leq G $ mit $ |P| = p^a $.
+		Nach den Sylowsätzen existiert dann ein $ S \in \Syl_p(G)$
+		mit $ P \leq S $.
+		Aufgrund von a) folgt somit $ P = S $.
+		Nun wählen wir ein $ Q \in \Syl_p(G) $ und wollen zeigen,
+		dass $ Q $ in $ \Syl_p(N) $ liegt.
+		Da die Menge der Sylowuntergruppen nicht leer ist,
+		existiert ein $ P \in \Syl_p(N) $.
+		Mit der selben Argumentation wie in der Hinrichtung liegt $ P $ in $ \Syl_p(G) $.
+		Also existiert ein $ g \in G $ mit $ g^{-1} P g = Q $.
+		Wegen $ N \nt G $ gilt
+		\begin{align*}
+		g^{-1} P g \in \Syl_p(N)
+		\end{align*}
+		für alle $ g \in G $, womit auch $ Q $ in $ \Syl_p(N) $ liegt.
+		Insgesamt erhalten wir $ \Syl_p(N) = \Syl_p(G)$.
+	\end{enumerate}
+\end{loes}

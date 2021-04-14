@@ -1,0 +1,51 @@
+\section{Lösungen zum Abschnitt 11}
+
+\begin{loes}\hypertarget{loes:11.1}\
+	\begin{enumerate}
+		\item[a)]
+		Zunächst bemerken wir, falls $ d $ teilt $ n $ gilt, folgt
+		\begin{align*}
+		E_d \subseteq E_n \Rightarrow E_d^\ast \subseteq E_d \subseteq E_n.
+		\end{align*}
+		Nun wählen wir $ \alpha \in E_n $ beliebig
+		und setzen $ d = \ord(\alpha) $.
+		Damit folgt dann $ \alpha \in E_d^\ast $ und mit Lagrange gilt
+		\begin{align*}
+		d \mid n 
+		\Rightarrow 
+		E_n = \biguplus \limits_{d \mid n} E_d^\ast.
+		\end{align*}
+		Die Vereinigung muss disjunkt sein, sonst gäbe es Elemente mit verschiedenen Ordnungen.
+		Nun gilt
+		\begin{align*}
+		x^n -1 
+		= \prod \limits_{\alpha \in E_n} (x - \alpha)
+		= \prod \limits_{d \mid n} \cdot \left( \prod \limits_{\alpha \in E_d^\ast} (x- \alpha) \right)
+		=\prod \limits_{d \mid n} \Phi_d
+		\end{align*}
+		und damit folgt
+		\begin{align*}
+		n = \Grad(x^n - 1)
+		=\Grad\left(\prod \limits_{d \mid n} \Phi_d\right)
+		= \sum \limits_{d \mid n} \Grad(\Phi_d)
+		= \sum \limits_{d \mid n} \Phi_d.
+		\end{align*}
+		
+		\item[b)]
+		Die zweite Aussage wurde bereits in a) gezeigt.
+		Die Erste werden wir mit Induktion zeigen.
+		Für $ n=1 $ folgt $ \Phi_1 = x - 1 \in \Z[x] $.
+		Sei nun $ n > 1 $, dann ist nach Induktionsvoraussetzung $ \Phi_d \in \Z[x] $
+		für $ d < n $.
+		Nun gilt
+		\begin{align*}
+		x^n - 1 
+		=\prod \limits_{d \mid n} \Phi_d
+		= \Phi_n \cdot 
+		\underbrace{\prod \limits_{d \mid n, d < n} \Phi_d}_{=: g \in \Z[x]}
+		= \Phi_n \cdot g 
+		\end{align*}
+		und da $ x^n -1  $ normiert ist folgt mit Divison mit Rest, dass 
+		$ \Phi_n \in \Z[x] $ ist. 
+	\end{enumerate}
+\end{loes}

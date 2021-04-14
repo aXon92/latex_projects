@@ -1,0 +1,236 @@
+\section{Lösungen zum Abschnitt 10}
+
+\begin{loes}\hypertarget{loes:10.1}\
+	\begin{enumerate}
+		\item[a)]
+		Wir wenden Eisenstein für $ p = 2 $ an.
+		Der Leitkoeffizient wird nicht von $ 2 $ geteilt,
+		alle anderen Koeffizienten jedoch schon und es gilt $ 4 \nmid 2 $.
+		Damit ist das Polynom irreduzibel.
+		
+		\item[b)]
+		Dasselbe wie in a), nur für $ p=3 $.
+		
+		\item[c)]
+		Dieses Polynom besitzt keine ganzzahligen Nullstellen.
+		Da der Grad des Polynoms gleich drei ist, ist es irreduzibel.  
+		
+		\item[d)]
+		Wir wenden das Reduktionskriterium für $ p=2 $ an.
+		Das Polynom
+		\begin{align*}
+		x^4+x+1
+		\end{align*}
+		besitzt über $ \Z / 2 \Z $ keine Nullstellen.
+		Es könnte also nur noch in Polynome vom Grad zwei zerfallen. 
+		Da $ \Z / 2 \Z $ faktoriell ist, gilt dies auch für $ \Z/2 \Z[x] $.
+		Also muss das Polynom ein Produkt aus irreduziblen Elementen sein,
+		jedoch gilt
+		\begin{align*}
+		x^4+x+1 \neq (x^2 + x +1)^2 = x^4 +x^2 + 1
+		\end{align*}
+		und $ x^2 + x +1 $ ist das einzige irreduzible Polynom vom Grad zwei.
+		Damit ist unser Polynom irreduzibel.
+	\end{enumerate}
+\end{loes}
+
+\begin{loes}\hypertarget{loes:10.2}\
+	\begin{enumerate}
+		\item[a)]
+		Es gilt
+		\begin{align*}
+		x^4+ x^2 +1
+		=(x^2 + x +1 )^2 
+		\end{align*}
+		woraus die Reduziblität folgt.
+		
+		\item[b)]
+		Mit Eisenstein für $ p = 2 $ erhalten wir die Irreduziblität in
+		$ \Z[x] $ und nach dem Satz von Gauß folgt diese auch für $ \Q[x] $.
+		
+		\item[c)]
+		Wir wenden das Reduktionskriterium für $ p = 2 $ an.
+		Durch schnelles Nachrechnen sehen wir, dass
+		\begin{align*}
+		 x^6 + x^3 + 1		
+		\end{align*} 
+		keine Nullstellen besitzt.
+		Das Polynom kann also noch zwei irreduzible Polynome vom Grad drei,
+		vom Grad zwei und vier oder drei irreduzible Polynome vom Grad zwei
+		zerfallen.
+		Nach dem Ausprobieren aller Möglichkeiten, erfahren wir, dass dies nicht möglich ist.
+		Also ist das Polynom irreduzibel.  
+	\end{enumerate}
+\end{loes}
+
+\begin{loes}\hypertarget{loes:10.3}\
+	\begin{enumerate}
+		\item[a)]
+		Wir nehmen an, dass
+		\begin{align*}
+		\prod \limits_{i=1}^n (x-a_i) -1
+		\end{align*}
+		reduzibel ist.
+		Dann folgt 
+		\begin{align*}
+		f = g \cdot h
+		\end{align*}
+		mit $ \Grad(f) = n $ und $ \Grad(g),\Grad(h) < n $.
+		Weiter erhalten wir 
+		\begin{align*}
+		f(a_i) = -1
+		\Rightarrow
+		h(a_i) \cdot g(a_i) = -1
+		\Rightarrow
+		h(a_i) = -g(a_i) \wedge h(a_i), g(a_i) \in \Z[x]^\ast
+		\end{align*}
+		für alle $ i \in \lbrace 1,\dots, n \rbrace $.
+		Wegen $ n \geq \Grad(g)  + 1$ und $ n \geq \Grad(h)  +  1$
+		folgt somit
+		\begin{align*}
+		h(x) = - g(x)
+		\Rightarrow
+		f(x) = -h^2(x)
+		\Rightarrow
+		\Grad(h) = \frac{n}{2}
+		\end{align*}
+		für alle $ x \in \Z $.
+		Nun ist der Leitkoeffizient unseres Polynoms eins.
+		Sei $ b $ der Leitkoeffizient von $ h $.
+		Durch
+		\begin{align*}
+		-b^2 \cdot x^{\frac{n}{2} + \frac{n}{2}}
+		= 1 \cdot x^n
+		\end{align*}
+		erhalten wir einen Widerspruch.
+		Also war unsere Annahme falsch und unser Polynom ist irreduzibel.
+		
+		\item[b)]
+		Zuerst betrachten wir zerlegbare normierte Polynome zweiten Grades.
+		Diese können wir durch
+		\begin{align*}
+		(x-a)(x-b)
+		\end{align*}
+		für $ a,b \in \F_p $ zerlegen.
+		Wir haben also
+		\begin{align*}
+		\binom{p+2-1}{2} =\frac{(p+1)p}{2}
+		\end{align*}
+		mögliche Zerlegungen, denn die Reihenfolge ist egal und wir können zurücklegen.
+		Nun gibt es insgesamt $ p^2 $ Polynome der Form
+		\begin{align*}
+		x^2 + c\cdot x + d
+		\end{align*}
+		für $ c,d \in \F_p $.
+		Damit erhalten wir 
+		\begin{align*}
+		p^2 - \frac{(p+1)p}{2}
+		\end{align*}
+		irreduzible Polynome von Grad zwei.
+	\end{enumerate}
+\end{loes}
+
+\begin{loes}\hypertarget{loes:10.4}\
+	\begin{enumerate}
+		\item[a)]
+		Seien $ a, b \in R $ koprim und $ I := (a,b) \unlhd R $.
+		Da $ R $ ein Hauptidealbereich ist, existiert ein $ x \in R $
+		mit 
+		\begin{align*}
+		(x) = (a,b)
+		\Rightarrow
+		(a) \subseteq (x) \wedge (b) \subseteq (x)
+		\Rightarrow
+		x \mid a \wedge x \mid b
+		\Rightarrow
+		x \in R^\ast
+		\end{align*}
+		und es existieren $ r ,s \in R $, sodass
+		\begin{align*}
+		x = a \cdot r + b \cdot s
+		\end{align*}
+		gilt. Da $ R $ kommutativ ist erhalten wir
+		\begin{align*}
+		1 = a \cdot \underbrace{r \cdot x^{-1}}_{c:=}  + b \cdot 
+		\underbrace{s \cdot x^{-1} }_{d:=}
+		\end{align*}
+		als Resultat.
+		
+		\item[b)]
+		Sei $ I \unlhd F $ mit $ \nicefrac{a}{b}  \in I$ .
+		Da $ R $ ein Hauptidealring ist, existiert ein $ x \in R $ mit
+		$ (x)_R  =(a,b)_R$ und es folgt
+		\begin{align*}
+		a = a^\prime \cdot x, \ b = b^\prime \cdot x
+		\Rightarrow
+		R (a^\prime \cdot x) +R (b^\prime \cdot x) = R x
+		\Rightarrow
+		R a^\prime + R b^\prime = R
+		\Rightarrow
+		(a^\prime, b^\prime) = R.
+		\end{align*}
+		Gilt nun $ x^\prime \mid a^\prime $ und $ x^\prime \mid b^\prime $,
+		so folgt
+		\begin{align*}
+		(a^\prime, b^\prime) \subseteq (x^\prime)
+		\Rightarrow 
+		(x^\prime) = R
+		\Rightarrow
+		x^\prime \in R^\ast,
+		\end{align*}
+		womit $ a^\prime $ und $ b^\prime $ koprim sind.
+		Nun gilt 
+		\begin{align*}
+		\frac{a}{b} = \frac{a^\prime}{b^\prime}
+		\end{align*}
+		und mit a) existieren $ c,d \in R $, sodass
+		\begin{align*}
+		1 = a^\prime \cdot c + b^\prime \cdot d
+		\Rightarrow
+		\frac{1}{b^\prime} = \frac{a^\prime}{b^\prime} \cdot c + d
+		\Rightarrow
+		\frac{1}{b^\prime} \in F
+		\end{align*}
+		folgt.
+		Damit erhalten wir direkt
+		\begin{align*}
+		\left(\frac{a^\prime}{b^\prime}\right)_F = (a^\prime)_F.
+		\end{align*}
+		Diese Aussage wenden wir nun auf
+		\begin{align*}
+		\left(\frac{a_1}{b_1}\right) 
+		\subseteq
+		\left(\frac{a_1}{b_1}, \frac{a_2}{b_2}\right) 
+		\subseteq
+		\dots
+		\subseteq
+		I \unlhd F
+		\end{align*}
+		an und erhalten
+		\begin{align*}
+		(a_1^\prime) 
+		\subseteq
+		(a_1^\prime, a_2^\prime)
+		\subseteq
+		\dots
+		\subseteq
+		I \unlhd F.
+		\end{align*}
+		Wir betrachten nun $ J \unlhd R $ mit
+		\begin{align*}
+		J = (a_1\prime)_R \cup (a_1^\prime,a_2^\prime)\cup \dots
+		=(z_1)_R \cup (z_2)_R \cup \dots = (z)_R,
+		\end{align*}
+		womit ein $ i \in \N $ mit $ z \in (z_i) $ existiert.
+		Damit folgt dann
+		\begin{align*}
+		(z_i) = (z_{i+1}) = \dots
+		\end{align*}
+		und es gilt
+		\begin{align*}
+		a_i^\prime \in (z)_R \subseteq (z)_F
+		\Rightarrow 
+		I = (z)_F.
+		\end{align*}
+	\end{enumerate}
+\end{loes}

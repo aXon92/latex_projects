@@ -1,0 +1,58 @@
+\section{Lösungen zum Abschnitt 13}
+
+\begin{loes}\hypertarget{loes:13.1}\
+	\begin{enumerate}
+		\item[a)]
+		Zunächst bemerkten wir das $ (L,+) $ eine abelsche Gruppe ist.
+		Die Eigenschaften der Skalarmultiplikation stehen aufgrund der
+		Teilkörpereigenschaft von $ K $ direkt da.
+		
+		\item[b)]
+		Sei $ K := \Z /2 \Z  $.
+		\begin{itemize}
+			\item 4 Elemente:
+			Wir wählen das Polynom $ f_1 = x^2 + x + 1 \in K[x] $
+			und mit \ref{skript:9.10} ist
+			\begin{align*}
+			\lbrace 1, \alpha \rbrace
+			\end{align*}
+			eine Basis von $K_1 := K[x] /(f_1) $, wobei $ \alpha = \pi(x) $ gilt.
+			Es folgt $  |K_1 : K |=  \dim K_1 = 2 $, womit $ |K_1| = 4 $ gilt.
+			Durch 
+			\begin{align*}
+			K_1 = \lbrace 0 +(f_1), 1 + (f_1), x + (f_1), (x+1) + (f_1) \rbrace
+			\end{align*}
+			erhalten wir alle Elemente.
+			
+			\item 8 Elemente:
+			Wir wählen das Polynom $ f_2 = x^3 + x + 1 \in K[x] $ und mit
+			\ref{skript:9.10} ist
+			\begin{align*}
+			\lbrace 1, \alpha , \alpha^2 \rbrace
+			\end{align*}
+			eine Basis von $ K_2 := K[x] / (f_2) $.
+			Es folgt $|K_2 : K |= \dim K_2 = 3 $, womit $ |K_2| = 8 $ gilt.
+			
+			\item 16 Elemente:
+			Wir wählen das Polynom $ f_3 = x^4 + x + 1 \in K[x] $
+			und mit \ref{skript:9.10} ist
+			\begin{align*}
+			\lbrace 1, \alpha , \alpha^2 , \alpha^3 \rbrace
+			\end{align*}
+			eine Basis von $ K_3 := K[x] /(f_3) $.
+			Es folgt $ |K_3 : K | = \dim K_3 = 3 $, womit $ |K_3| = 16 $ gilt.
+		\end{itemize}
+		
+		\item[c)]
+		Sei $ L $ ein endlicher Körper.
+		Damit gilt $ \Char L = p $ für eine Primzahl $ p $.
+		Also ist $ \F_p = \Z /p \Z $ der Primkörper von $ L $.
+		In der a) haben wir gezeigt, dass $ L  $ ein $ F_2 $-Vektorraum ist, womit
+		wegen der Endlichkeit eine endliche Basis
+		\begin{align*}
+		\lbrace b_1, \dots,  b_k \rbrace
+		\end{align*}
+		mit $ b_1,\dots,b_n \in L $ und $ k \in \N $ existiert.
+		Damit erhalten wir schon $ |L| = p^k $.
+	\end{enumerate}
+\end{loes}

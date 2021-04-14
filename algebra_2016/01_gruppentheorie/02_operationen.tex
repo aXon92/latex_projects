@@ -1,0 +1,375 @@
+\section{Operationen von Gruppen auf Mengen}
+
+\begin{df}\label{skript:2.1}\index{Operation} \index{G-Menge}
+Sei $X $ eine nicht-leere Menge und $G$ eine Gruppe.
+Wir sagen \textbf{\textit{$G$ operiert auf $X$}},
+falls eine Abbildung  $G \times X \to X, \ (g,x) \mapsto g.x$
+mit
+\begin{enumerate}
+\item[\textbf{(i)}] $\forall x \in X: \ 1_G.x=x$
+\item[\textbf{(ii)}] $\forall g,h \in G \ \forall x \in X: \ g.(h.x)=(gh).x $
+\end{enumerate}
+existiert. In diesem Fall sagen wir, dass $G$ \textbf{\textit{von links}} auf $X$ operiert.
+Ersetzen wir jedoch \textbf{(ii)} durch
+\begin{enumerate}
+\item[$\textbf{(ii)}^\prime$] $\forall g,h \in G \ \forall x \in X: \ g.(h.x) = (hg).x$,
+\end{enumerate}
+sprechen wir von einer \textbf{\textit{Rechtsoperation}}.
+Falls wir $x.g$ anstatt $g.x$ schreiben, wird $\textbf{(ii)}^\prime  $ durch $(x.h).g = x.(hg)$ ersetzt.
+In der Regel werden wir aber Linksoperationen betrachten.
+$X$ bezeichnen wir auch als \textbf{\textit{$G$-(Links)Menge}}.
+\end{df}
+
+\begin{genericdf}{Beispiele}\label{2.2} \
+\begin{enumerate}
+\item[\textbf{(1)}]
+Die symmetrische Gruppe $S_n$ operiert durch
+\begin{align*}
+\sigma.i := \sigma(i)
+\end{align*}
+für $i \in \lbrace 1,...,n \rbrace$ auf $\lbrace 1,...,n \rbrace$.
+\item[\textbf{(2)}]
+Die lineare Gruppe $\Gl_n(K)$ operiert durch Matrixmultiplikation auf $V= K^n$.
+Es gilt also 
+\begin{align*}
+A.v := A \cdot v
+\end{align*}
+für $A \in \Gl_n(K)$ und $v \in V$.
+\end{enumerate}
+
+\end{genericdf}
+
+\begin{genericthm}{Lemma}\label{2.3} \index{Stabilisator}
+Sei $X$ eine $G$-Menge und $x \in X$ beliebig, aber fest.
+Dann gilt
+\begin{align*}
+G_x := \lbrace g \in G \ | \ g.x=x \rbrace \leq G.
+\end{align*}
+Wir bezeichnen $G_x$ als \textbf{\textit{(Punkt)-Stabilisator von $x$}} und schreiben hierfür $\Stab_G(x)$.
+\end{genericthm}
+
+\begin{proof}
+Wir arbeiten nun die Punkte der Untergruppendefinition ab.
+Wegen $1_G.x= x$ folgt direkt, dass $1_G$ in $G_x$ liegt.
+Nun wählen wir $g,h \in G_x$ beliebig.
+Mit 
+\begin{align*}
+(gh).x &=g.(h.x) =g.x  = x\\
+x = 1_G.x = (g^{-1}g).x &=g^{-1}.(g.x)= g^{-1}.x
+\end{align*} 
+folgen die geforderten Eigenschaften sofort.
+\end{proof}
+
+\begin{sz}\label{2.4}\index{Bahn} \index{G-Bahn}
+Sei $X$ eine $G$-Menge und $ x \in X$ beliebig, aber fest.
+Dann nennen wir 
+\begin{align*}
+O_x := \lbrace g.x \ | \ g \in G \rbrace
+\end{align*}
+die \textbf{\textit{Bahn von $x$ unter der Operation}} von $G$.
+Wir sprechen auch von \textbf{\textit{$G$-Bahnen}}.
+Außerdem ist die Abbildung
+\begin{align*}
+\mu_x: O_x \to G / G_x , \ g.x \mapsto g G_x
+\end{align*}
+bijektiv.
+\end{sz}
+
+\begin{proof}
+Wir werden nun zeigen, dass $\mu_x$ eine wohldefinierte, bijektive Abbildung ist.
+\begin{itemize}
+\item $\mu_x$ ist wohldefiniert: 
+Wir wählen $g,h \in G$ mit $g.x=h.x$.
+Damit folgt  $x = (g^{-1}h).x$ und somit auch $g^{-1}h \in G_x$.
+Also existiert ein $u \in G_x$ mit $u = g^{-1}h $, was äquivalent zu $h = gu$ ist.
+Mit 
+\begin{align*}
+h G_x = gu G_x = g G_x
+\end{align*}
+erhalten wir die Wohldefiniertheit.
+\item $\mu_x$ ist offensichtlich surjektiv. Warum eigentlich?
+Die einzelnen Klassen von $G / G_x$ enthalten die Elemente $g,h \in G$ mit $g.x = h.x$.
+Durch 
+\begin{align*}
+g \sim h &\Leftrightarrow
+\exists u \in G_x : \ gu = h \Leftrightarrow \exists u \in G_x: \ u = g^{-1}h 
+\Leftrightarrow g^{-1}h \in G_x 
+\Leftrightarrow (g^{-1}h).x = x \\
+ &\Leftrightarrow g.x = h.x
+\end{align*}
+erhalten wir die Aussage.
+\item
+$\mu_x$ ist injektiv:
+Durch 
+\begin{align*}
+g G_x = h G_x 
+&\Rightarrow g^{-1}h G_x = G_x 
+\Rightarrow g^{-1}h \in G_x
+\Rightarrow (g^{-1}h).x = x \\
+&\Rightarrow g.x = g.(g^{-1}h).x = h.x
+\end{align*}
+erhalten wir die Injektivität.
+\end{itemize}
+\end{proof}
+
+\begin{genericthm}{Bahnensatz}\label{2.5} \index{Bahnensatz}
+Sei $X$ eine $G$-Menge.
+\begin{enumerate}
+\item[\textbf{(1)}]
+Dann ist $X$ eine disjunkte Vereinigung von Bahnen.
+\item[\textbf{(2)}]
+Sei $O$ eine Bahn und $x,y \in O$.
+Dann existiert ein $h \in G$ mit
+\begin{align*}
+h^{-1} G_y h = G_x.
+\end{align*}
+Damit sind die Punktstabilisatoren verschiedener Elemente einer Bahn zueinander konjugiert.
+\item[\textbf{(3)}]
+Sei $|G| < \infty$. Dann gilt
+\begin{align*}
+|O_x| = \frac{|G|}{|G_x|}
+\end{align*}
+für alle $x \in X$.
+Die Länge einer Bahn ist also der Index des Punktstabilisators eines Elementes der Bahn.
+\end{enumerate}
+\end{genericthm}
+
+\begin{proof}\
+\begin{enumerate}
+\item[\textbf{(1)}]
+Wir definieren die Relation
+\begin{align*}
+x \sim y \Leftrightarrow \exists g \in G : \ g.x=y 
+\end{align*}
+auf $X$. Mit 
+\begin{align*}
+1_G.x &= x  \Rightarrow x \sim x\\
+x \sim y  &\Rightarrow \exists g \in G : \ g.x= y
+\Rightarrow g^{-1}.(g.x) = g^{-1} y
+\Rightarrow ... \Rightarrow x = g^{-1}.y 
+\Leftrightarrow y \sim x\\
+x \sim y &\wedge y \sim z 
+\Rightarrow h.(g.x) = h.y = z  
+\Rightarrow x \sim z
+\end{align*}
+für $x,y,z \in X$ erhalten wir die Eigenschaften einer Äquivalenzrelation.
+Die Bahnen sind die Äquivalenzklassen dieser Relation und bilden somit eine disjunkte Vereinigung von $X$.
+\item[\textbf{(2)}]
+Wir wählen $x,y \in O$. Damit existiert ein $k \in G$ mit $k.x = y$.
+Sei nun $g \in G_x$, dann gilt
+\begin{align*}
+(kgk^{-1}).y= (kgk^{-1})k.x =  (kgk^{-1}k).x = (kg).x = k.(g.x) = k.x = y
+\end{align*}
+und es folgt $kgk^{-1} \in G_y$. Nun haben wir $g$ beliebig gewählt, womit dann auch 
+\begin{align*}
+k G_x k^{-1} \subseteq G_y 
+\end{align*}
+gilt.
+Nun müssen wir noch die Teilmengenbeziehung in die andere Richtung zeigen.
+Sei nun $\tilde{g} \in G_y$. Mit $k^{-1}.y =x$ sehen wir durch analoges Vorgehen, dass
+$k^{-1} \tilde{g} k \in G_x$ gilt. Insbesondere folgt
+\begin{align*}
+k (k^{-1} \tilde{g} k ) k^{-1}  \in G_y
+\Rightarrow \tilde{g} \in k G_x k^{-1}
+\Rightarrow G_y  \subseteq k G_x k^{-1},
+\end{align*}
+womit wir die andere Richtung erledigt haben.
+Insgesamt haben wir 
+\begin{align*}
+G_y = k G_x k^{-1} \Leftrightarrow k^{-1} G_y k = G_x
+\end{align*}
+als Resultat.
+\item[\textbf{(3)}]
+Sei $G_x = \lbrace g \in G \ | \ g.x= x \rbrace$ ein Punktstabilisator.
+Netterweise ist die Abbildung aus \ref{2.4} bijektiv, woraus wir direkt
+\begin{align*}
+|O_x| = | G / G_x| = \frac{|G|}{|G_x|} 
+\end{align*}
+erhalten.
+\end{enumerate}
+\end{proof}
+
+\begin{genericdf}{Beispiele}\label{2.6} \
+\begin{enumerate}
+	\item[\textbf{(1)}]\index{Operation!transitiv} \index{G-Menge!transitiv}
+	Sei $G = S_n$ und $X= \lbrace 1,...,n \rbrace$.
+	Dann gibt es genau eine Bahn, denn wir finden zu jedem $i \in \lbrace 1,...,n \rbrace$ ein
+	$\sigma_i \in S_n$ mit $\sigma_i(1) = i$.
+	Eine Operation mit nur einer Bahn heißt \textbf{\textit{transitiv}} und X heißt dann auch 
+	\textbf{\textit{transitive G-Menge}}.
+	Sei nun $m \in \lbrace 1,...,n \rbrace$. Dann gilt
+	\begin{align*}
+	\Stab_{S_n}(m) = \lbrace \sigma \in S_n \ | \ \sigma(m) = m \rbrace
+	\end{align*}
+	und für $n = m$ sehen wir sofort, dass $\Stab_{S_n}(n) \simeq S_{n-1}$ gilt.
+	Wir erhalten aus \ref{2.5} \textbf{(3)}
+	\begin{align*}
+	|O_n| = \frac{|S_n|}{|S_{n-1}|} = n,
+	\end{align*}
+	weswegen es nur eine Bahn geben kann.
+\item[\textbf{(2)}]
+	Sei $G = \Gl_n(K)$ und $X = K^n$ mit $A.v = A \cdot v$.
+	Für den Nullvektor $0$ gilt $A.0 = 0$.
+	Somit bildet $0$ eine einelementige Bahn und es gilt 
+	$\Stab_{\Gl_n(K)}(0) = \Gl_n(K)$.
+	Zu jeden $v \neq 0 $ aus $K^n$ gibt es eine reguläre Matrix $A$ mit $A.e_1 = v$,
+	wobei $e_1$ der erste Standartbasisvektor und $v$ die erste Spalte der Matrix $A$ ist.
+	Die andere Spalten erhalten wir, indem wir $v$ zu einer Basis von $K^n$ ergänzen.
+	Ingesamt haben wir hier also die Bahnen $\lbrace 0 \rbrace$ und $K^n \setminus \lbrace 0 \rbrace$.
+\end{enumerate}
+\end{genericdf}
+
+\begin{genericdf}{Beispiel}\label{2.7}
+Die lineare Gruppe $\Gl_n(K)$ operiert auf $M_n(K)$ durch Konjugation, dass heißt es gilt
+\begin{align*}
+T.A = T^{-1}\cdot A \cdot T
+\end{align*}
+für $T \in \Gl_n(K)$ und $A \in M_n(K)$.
+Die Bahnen bestehen dann aus zueinander ähnlichen Matrizen. 
+Das Normalformproblem können wir nun durch Finden eines möglichst einfachen Repräsentanten einer Bahn lösen.
+\end{genericdf}
+
+\begin{genericdf}{Beispiel}\label{2.8} \index{Konjugation!Klassen} \index{Klassengleichung} \index{Stabilisator!Zentralisator}
+Sei $G$ eine beliebige Gruppe. Durch 
+\begin{align*}
+h.g = h^{-1} g h 
+\end{align*}
+für $g,h \in G$ operiert $G$ durch Konjugation auf sich selbst.
+Die Bahnen dieser Operation nennen wir \textbf{\textit{Konjugationsklassen}} der Gruppe $G$.
+Für $g \in G $ bezeichnen wir mit $g^G$ oder $C_g$ die Konjugationsklasse von $g$.
+Nach \ref{2.5} \textbf{(1)} ist
+\begin{align*}
+G =  \bigcup\limits_{g_i \in T} g_i^G
+\end{align*}
+eine disjunkte Vereinigung, wobei $T$ ein Repräsentantensystem der Konjugationsklassen von $G$ ist.
+Falls $G$ endlich ist setzen wir $n := |T|$. Damit erhalten wir mit
+\begin{align*}
+|G| = |g_1^G| + ... + |g_n^G|
+\end{align*}
+die sogenannte \textbf{\textit{Klassengleichung}}. Weiter betrachten wir den Stabilisator
+\begin{align*}
+\Stab_G(x) = \lbrace h \in G \ | \ h^{-1} x h = x \rbrace =\lbrace h \in G \ | \ x h = h x \rbrace
+\end{align*}
+und bezeichnen diesen als \textbf{\textit{Zentralisator}} von $x$ in $G$.
+Hierfür schreiben wir auch $C_G(x)$.
+\end{genericdf}
+
+\begin{df}\label{2.9} \index{Zentrum}
+Das \textbf{\textit{Zentrum}} von $G$ ist
+\begin{align*}
+Z(G) = \lbrace g \in G \ | \ \forall x \in G : \ gx = xg \rbrace
+\end{align*}
+und es gilt $Z(G) \nt G$.
+Das Zentrum $Z(G)$ ist also die Menge der Elemente aus $G$, deren Konjugationsklassen die Länge 1 haben.
+Außerdem gelten $Z(G) \subseteq C_G(x)$ für alle $x \in X$ und 
+\begin{align*}
+Z(G) = \bigcap\limits_{x \in G } C_G(x).
+\end{align*}
+\end{df}
+
+\begin{sz}\label{skript:2.10} \index{p-Gruppe}
+Sei $p$ eine Primzahl und $G$ eine endliche Gruppe mit $|G| = p^n$ und $n \geq 1$.
+Dann gilt
+\begin{align*}
+Z(G) \neq 1 = \lbrace 1_G \rbrace.
+\end{align*}
+Gruppen dieser Form bezeichnen wir auch als \textbf{\textit{$p$-Gruppen}}.
+\end{sz}
+
+\begin{proof}
+Seien $C_1,...,C_k$ die Konjugationsklassen von $G$ mit $C_i = x_i^G$.
+Dann erhalten wir 
+\begin{align*}
+|G| = \sum\limits_{i=1}^k |C_i|
+\end{align*}
+aus der Klassengleichung, wobei wir aus dem Bahnensatz \ref{2.5} und dem Satz von Lagrange \ref{1.14}
+\begin{align*}
+|C_i| = \frac{|G|}{|C_G(x_i)|} = p^{n_i}, \quad 1 \leq n_i \leq n
+\end{align*}
+erhalten. Setzen wir $x_1 = 1_G$, so gilt $|C_1| = 1$ und es folgt
+\begin{align*}
+|G| = p^n = \sum \limits_{i=1}^k p^{n_i} = 1 + \sum \limits_{i=2}^k p^{n_i}
+\end{align*}
+als Resultat. Nun nehmen wir an, dass $1_G$ das einzige zentrale Element ist.
+Es gilt also $Z(G) = 1$, womit $n_i \geq 1$ für $i \geq 2$ folgt. Sonst hätte das Zentrum mehr als ein Element.
+Nun gilt jedoch 
+\begin{align*}
+|G| \equiv 0 \mod p \wedge 1 + \sum \limits_{i=2}^k p^{n_i} \equiv 1 \mod p,
+\end{align*}
+wodurch $1$ durch $p$ teilbar ist. Dies ist ein Widerspruch.
+Insgesamt gilt also $Z(G) \neq 1$.
+\end{proof}
+
+\begin{df}\label{skript:2.11} \index{Stabilisator!Normalisator} \index{Untergruppe!konjugierte}
+Sei $G$ eine beliebige Gruppe und $X = \lbrace U \subseteq G \ | \ U \ \text{Untergruppe} \rbrace$.
+Durch
+\begin{align*}
+g.U := g^{-1} U g
+\end{align*}
+für $g \in G$ und $U \in X$ ist eine Operation von $G$ auf $X$ definiert.
+Die Konjugation $\gamma_g$ mit $g \in G$ ist ein Automorphismus, womit $g^{-1} U g \leq U $ gilt.
+Wir nennen $g^{-1} U g $ die zu $U$ \textbf{\textit{konjugierte}} Untergruppe von $g$. 
+Den Stabilisator 
+\begin{align*}
+\Stab_G(U) = \lbrace g \in G \ | \ g^{-1} U g = U \rbrace
+\end{align*}
+nennen wir \textbf{\textit{Normalisator}} von $U$ in $G$ und schreiben $N_G(U)$.
+Mit \ref{2.4} und \ref{2.5} gilt außerdem $N_G(U) \leq G$.
+\end{df}
+
+\begin{genericdf}{Bemerkung} \label{2.12}
+Es gilt $U \leq N_G(U)$ und $U \nt G \Leftrightarrow N_G(U) = G$.
+\end{genericdf}
+
+\begin{genericdf}{Bemerkung} \label{skript:2.13}
+Sei $U \leq G$. Dann gilt für den Zentralisator
+\begin{align*}
+C_G(U) = \lbrace g \in G \ | \ \forall u \in U : g^{-1} u g = u \rbrace \leq G
+\end{align*}
+und $U \leq C_G(U) \Leftrightarrow U \ \text{abelsch}$.
+Wir betrachten beispielsweise $G=U=S_3$.
+Dort gilt $N_G(G) = N_{S_3}(S_3) = S_3$ und $C_G(G) = C_{S_3}(S_3) = Z(S_3) = 1$.
+\end{genericdf}
+
+\begin{genericdf}{Beispiel} \label{skript:2.14}
+Sei $G = S_3$. Dann ist $\lbrace <(12)>, <(13)>, <(23)> \rbrace$ die Menge aller zu $<(12)>$ konjugierten Untergruppen. Dies ist die Bahn $O_{<(12)>}$ bezüglich der Operation in \ref{skript:2.11}.
+Hierauf können wir nun den Bahnensatz anwenden
+\begin{align*}
+3 = |O_{<(12)>}| = |S_3 / \Stab_G(<(1,2)>)| = | S_3 / N_{S_3}(<(12)>) |  = \frac{|S_3|}{|N_{S_3}(<(12)>)|}
+\end{align*}
+und erhalten damit $|N_{S_3}(<(12)>)| = 2$.
+\end{genericdf}
+
+\begin{genericdf}{Bemerkung} \label{skript:2.15}
+Sei $U \leq G$ und $|G / U | = 2$, dann gilt $U \nt G$. Hierfür vergleiche mit Blatt 1, Aufgabe 4b).
+Die Aussage gilt nicht mehr für $|G / U | = 3$. Ein Gegenbeispiel haben wir im Prinzip in \ref{skript:2.14}
+angegeben.
+\end{genericdf}
+
+\begin{genericdf}{Bemerkung} \label{skript:2.16}
+Es gilt $Z(G) \nt G$. Außerdem sehen wir mit 
+\begin{align*}
+C_G(Z(G)) = G = N_G(Z(G)),
+\end{align*}
+dass $Z(G)$ ein abelscher Normalteiler ist.
+\end{genericdf}
+
+\begin{genericdf}{Bemerkung} \label{skript:2.17} \index{Core}
+Sei $U \leq G$ und $G / U$ die Menge der Linksnebenklassen. Durch
+\begin{align*}
+G \times G / U \to G / U, \ (g,hU) \mapsto (gh) U
+\end{align*}
+wird $G / U$ zu einer transitiven $G$-Menge. Wir sehen durch schnelles Nachrechnen, dass diese Operation
+transitiv ist.
+Für $U \in G / U$ gilt
+\begin{align*}
+\Stab_G(gU) &= g U g^{-1}\\
+\bigcap \limits_{g \in G } \Stab_G(gU) &\leq G
+\end{align*}
+und $G / U$ ist bezüglich Konjugation abgeschlossen. Nun setzen wir $U^g := g^{-1} U g$ und erhalten durch
+\begin{align*}
+\bigcap \limits_{g \in G } \Stab_G(gU) = \bigcap \limits_{g \in G } U^g \nt G.
+\end{align*}
+den kleinsten Normalteiler der in $U$ liegt. Dieser wird auch oft \textbf{\textit{Core}} von $G$ genannt.
+
+\end{genericdf}

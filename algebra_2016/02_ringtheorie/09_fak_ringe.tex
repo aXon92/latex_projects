@@ -1,0 +1,408 @@
+\section{Faktorielle Ringe}
+
+\begin{df}\label{skript:9.1}
+	Sei $R$ ein Integritätsring, $p \in R \setminus \lbrace 0 \rbrace$ und $p \notin R^\ast$.
+	
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Wir nennen $p$ \bi{irreduzibel},\index{Irreduziblität}
+		falls aus $p = a \cdot b$ für $a,b \in R$ folgt,
+		dass $a \in R^\ast $ oder $b \in R^\ast$ gilt.
+		
+		\item[\textbf{(2)}]
+		Wir nennen $p$ \bi{prim} oder \bi{Primelement},\index{Primelement}
+		falls aus $p \ | \ a \cdot b$ für $a,b \in R$ folgt,
+		dass $p \ | \ a$ oder $p \ | \ b$ gilt.
+	\end{enumerate}
+\end{df}
+
+\begin{lemma}\label{skript:9.2}
+	Sei $R$ ein Integritätsring.
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $p \in R$ prim, dann folgt $p$ ist irreduzibel.
+		
+		\item[\textbf{(2)}]
+		Es gilt
+		\begin{align*}
+		p \in R \ \text{prim}
+		\quad \Leftrightarrow \quad
+		R/ (p) \ \text{Integritätsring} 
+		\quad \Leftrightarrow \quad
+		(p) \ \text{Primideal}.
+		\end{align*}				
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $p = a \cdot b$, dann gilt $p$ teilt $a \cdot b$.
+		Da $p$ prim ist gilt $p$ teilt $a$ oder $p$ teilt $b$.
+		Angenommen $p$ teilt $a$, dann exisitiert ein $c \in R$ mit $a = p \cdot c$
+		und es gilt 
+		\begin{align*}
+		p = a \cdot b = p \cdot c \cdot b
+		\Rightarrow
+		p \cdot (1 - b\cdot c) = 0.
+		\end{align*}
+		Da nun $R$ ein Integritätsring und $p \neq 0$ ist gilt
+		\begin{align*}
+		(1 -c \cdot b ) = 0 
+		\Rightarrow
+		1 = c \cdot b. 
+		\end{align*}
+		Damit gilt $b \in R^\ast$.
+		Für den Fall $p$ teilt $b$ gehen wir analog vor und erhalten, dass $p$ irreduzibel ist.
+		
+		\item[\textbf{(2)}]
+		Sei $p$ prim. 
+		Wir wählen $\overline{a}, \overline{b} \in  R / (p)$ mit
+		$\overline{a} \cdot \overline{b} = \overline{a \cdot b} = 0$.
+		Damit gilt $a \cdot b \in (p)$, womit 
+		\begin{align*}
+		a \cdot b = p \cdot x 
+		\end{align*}
+		für ein $x \in R$ folgt. Damit gilt $p$ teilt $a \cdot b$.
+		Da $p$ prim ist, gilt $p$ teilt $a$ oder $p$ teilt $b$.
+		Also muss $\overline{a} = 0$ oder $\overline{b} = 0$ sein,
+		womit $R / (p)$ ein Integritätsring ist.
+		Sei nun umgekehrt $R/ (p)$ ein Integritätsring und $p$ teilt $a \cdot b$.
+		Dann gilt $a \cdot b = p \cdot x$ für ein $x \in R$.
+		Mit der Quotientenabbildung $\pi : R \to R / (p)$ erhalten wir 
+		\begin{align*}
+		\overline{a} \cdot \overline{b} 
+		= \overline{a \cdot b}
+		= \overline{p \cdot x}
+		= \overline{p} \cdot \overline{x}
+		= 0
+		\end{align*}
+		und mit der Integritätsringeigenschaft von $R/ (p)$
+		folgt
+		\begin{align*}
+		\overline{a} = 0 \vee  \overline{b} = 0
+		\Rightarrow
+		a \in (p) \vee b \in (p),
+		\end{align*}
+		womit $p $ teilt $a$ oder $p$ teilt $b$ gilt.
+		Also ist $p$ prim.
+	\end{enumerate}		
+\end{proof}
+
+\begin{genericdf}{Beispiel}\label{skript:9.3} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Sei $R = \Z$. Primzahlen sind nach Definition irreduzible Elemente.
+		Es ist zunächst nicht klar, ob Primzahlen prim sind.
+		
+		\item[\textbf{(2)}]
+		Sei $R = \Z[\sqrt{-5}]$.
+		Dann gilt 
+		\begin{align*}
+		2 \cdot 3 = (1 + \sqrt{-5}) \cdot (1 - \sqrt{-5}).
+		\end{align*}
+		Also sind $2$, $3$, $1 + \sqrt{-5}$ und $1 - \sqrt{-5}$ irreduzibel, aber nicht prim.
+	\end{enumerate}
+\end{genericdf}
+
+\begin{df}\label{skript:9.4} \
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Ein Integritätsring $ R $ heißt \bi{faktoriell}, wenn\index{Ring!faktoriell} \index{Faktoriell}
+		\begin{itemize}
+			\item
+			jedes $ 0 \neq a \in R $ entweder eine Einheit ist
+			oder sich als endliches Produkt von irreduziblen Elementen schreiben lässt.
+			Das heißt
+			\begin{align*}
+			a = p_1\cdots p_i \cdots p_k
+			\end{align*}
+			mit $ p_i $ irreduzibel für $ 1 \leq i \leq k $.
+			
+			\item
+			jedes irreduzible Element aus $ R $ ein Primelement ist.	
+		\end{itemize}
+		
+		\item[\textbf{(2)}]
+		Sei $ R $ faktoriell.
+		Wir definieren für $ 0 \neq a \in R $ durch
+		 \begin{align*}
+		 l(a) := \min \lbrace r \geq 1 \ | \ a= p_1 \cdots p_r 
+		 \ \text{mit} \ p_i \ \text{irreduzibel} \rbrace
+		 \end{align*}
+		 für $ a \notin R^\ast $ und $ l(a) = 0 $ für $ a \in R^\ast $.
+		 Dies bezeichnen wir als \bi{Länge} von $ a $.
+		 \index{Faktoriell!Länge}
+	\end{enumerate}
+\end{df}
+
+\begin{sz}\label{skript:9.5}
+	Sei $ R $ ein faktorieller Ring und 
+	$ 0 \neq a \in R $ mit $ l(a) = k \geq 1 $.
+	Also ist $ a = p_1 \cdots p_k $ mit $ p_i $ irreduzibel.
+	Für
+	\begin{align*}
+	a = q_1 \cdots q_l
+	\end{align*}
+	mit $ q_j $ irreduzibel für $ 1 \leq j \leq l $ gilt $ k = l $.
+	Außerdem existiert ein $ \pi \in S_n $ und $ u_i \in R^\ast$
+	für $ 1 \leq i \leq k$, sodass 
+	\begin{align*}
+	u_i \cdot p_i = p_{\pi(i)}
+	\end{align*}
+	gilt.
+	Nun gilt noch $ l(a \cdot b) = l(a) + l(b) $ für alle
+	$ a \in R \setminus \lbrace 0 \rbrace $.
+\end{sz}
+
+\begin{proof}
+	Angenommen $ k = 1 $, dann folgt
+	$ p_1 = q_1 \cdots q_l $ mit $ q_i $ irreduzibel.
+	Da $ p_1 $ irreduzibel ist, kann nur $ l = 1 $ gelten.
+	Sei nun $ k \geq 2 $. Dann gilt
+	\begin{align*}
+	p_1 \cdots p_k = q_1 \cdots q_l
+	\end{align*}
+	und weil $ R $ faktoriell ist folgt
+	\begin{align*}
+	q_1 \mid p_1 \vee \dots \vee q_1 \mid p_k,
+	\end{align*}
+	denn irreduzible Elemente sind prim.
+	Ohne Beschränkung der Allgemeinheit nehmen wir an, dass $ q_1 | p_1 $ gilt.
+	Da $ p_1 $ irreduzibel ist folgt $ p = c \cdot q_1 $ mit $ c \in R^\ast $.
+	Damit erhalten wir
+	\begin{align*}
+	c \cdot q_1 \cdot p_2 \cdots p_k = q_1 \cdot q_2 \cdots q_l
+	\Leftrightarrow
+	c \cdot p_2 \cdots p_k =  q_2 \cdots q_l
+	\end{align*}
+	und mit der Induktionsvoraussetzung $ k-1 = l-1 $ folgt $ k = l $.
+	Weiter existiert ein $ \tilde{\pi} \in S_n $ mit
+	\begin{align*}
+	q_i = p_{\tilde{\pi}(i)}
+	\end{align*}
+	und $ u_i \in R^\ast $ für $ 2 \leq i \leq k $.
+	Wir setzen $ \pi(1) = 1 $ und $ \pi(i) = \tilde{\pi}(i) $ und haben somit unsere gesuchte Permutation.
+	Seien nun $ 0 \neq a,b \in R $.
+	Für $ a \in R^\ast $ gilt $ l(a \cdot b) = l(a) $ und analog gilt dies auch für $ b \in R^\ast $.
+	Deswegen seien $ a $ und $ b $ keine Einheiten. Dann gilt
+	\begin{align*}
+	a &= p_1 \cdots p_k\\
+	b &= q_1 \cdots q_l\\
+	a \cdot b &= p_1 \cdots p_k \cdot q_1 \cdots q_l,
+	\end{align*}
+	womit $ a \cdot b $ wieder ein Produkt aus irreduziblen Elementen ist.
+	Die Anzahl der Faktoren ist wie oben gezeigt immer minimal, womit
+	$ l(a \cdot b ) = l(a) + l(b)  $ gilt. 
+\end{proof}
+
+\begin{generic_no_num}{Bemerkung}
+	Ist $ p $ irreduzibel und $ a \in R^\ast $, so ist $a \cdot p  $
+	irreduzibel.
+\end{generic_no_num}
+
+\begin{lemma} \label{skript:9.6}
+	Sei $ R $ ein Integritäts-und Hauptidealring,
+	dann gilt irreduzibel gleich prim. 
+	Einen solchen Ring nennen wir auch \bi{Hauptidealbereich}.
+	\index{Hauptideal!Bereich}
+\end{lemma}
+
+\begin{proof}
+	Wir müssen zeigen, dass unter den Voraussetzungen aus irreduzibel prim folgt.
+	Die andere Richtung haben wir bereits in \ref{skript:9.2} gezeigt.
+	Sei $ q $ irreduzibel mit $ q $ teilt $ a \cdot b $.
+	Da $ R $ ein Hauptidealring ist, gibt es ein $ d \in R $, sodass
+	\begin{align*}
+	(q) + (a) = (d)
+	\end{align*}
+	gilt.
+	Damit folgt $ q = s \cdot d $.
+	Da $ q $ irreduzibel ist, folgt $ s \in R^\ast $ oder $ r \in R^\ast $.
+	Falls $ s \in R^\ast $ ist, folgt $ d = s^{-1}  \cdot q$ und $ q $ teilt $ d $.
+	Wegen
+	\begin{align*}
+	q | d \wedge d | a
+	\end{align*}
+	gilt $ q $ teilt $ a $.
+	Nun kommen wir zu dem Fall, dass $ d \in R^\ast $ ist.
+	Damit gilt $ (d) = (1)  = R$, womit
+	\begin{align*}
+	1 = r_1 \cdot q + r_2 \cdot a
+	\Rightarrow 
+	b = b \cdot r_1 \cdot q +b \cdot r_2 \cdot a
+	\end{align*}
+	für passende $ r_1  $ und $ r_2 $ folgt.
+	Mit $ q $ teilt $ a \cdot b $ folgt
+	\begin{align*}
+	q \mid b \cdot r_2 \cdot a
+	\Rightarrow 
+	q | b.
+	\end{align*} 
+	Also ist $ q $ prim.
+\end{proof}
+
+\begin{sz}\label{skript:9.7}
+	Sei $ K $ ein Körper.
+	Die Ringe $ \Z $ und $ K[x] $ sind faktoriell.
+\end{sz}
+
+\begin{proof}
+	Die Ringe $ \Z $ und $ K[x] $ sind euklidisch und somit auch Hauptidealringe.
+	Außerdem sind diese auch Integritätsringe, womit prim gleich irreduzibel ist.
+	Sei $ a \in R \setminus R^\ast $.
+	Wir müssen noch zeigen, dass $ a $ ein endliches Produkt von irreduziblen Elementen ist.
+	Zunächst betrachten wir $ R = \Z $.
+	Für $ a = b \cdot c $ folgt $ |a| = |b| \cdot |c| $ mit $ |b|, |c| < |a| $.
+	Da für $ 0 \neq a \notin R^\ast $ immer $ |a| \geq 2 $ gilt, folgt mit der Beschränktheit nach unten von $ \N $ die Aussage.
+	Nun kommen wir zu $ R = K[x] $.
+	Das Vorgehen ist analog, wir verwenden die Gradfunktion.
+	Es gilt
+	\begin{align*}
+	f \in R^\ast &\Leftrightarrow \Grad(f) = 0 \\
+	0 \neq f \notin R^\ast &\Leftrightarrow \Grad(f) \geq 1
+	\end{align*}
+	und für $ a = b \cdot c $ folgt
+	\begin{align*}
+	\Grad(a) = \Grad(b ) + \Grad(c)
+	\Rightarrow
+	\Grad(b) < \Grad(a) \wedge \Grad(c) < \Grad(a),
+	\end{align*}
+	falls $ 0 \neq a,b,c \notin R^\ast $.
+\end{proof}
+
+\begin{genericdf}{Bemerkungen}\label{skript:9.8}
+	\
+	\begin{enumerate}
+		\item[\textbf{(1)}]
+		Satz \ref{skript:9.7} gilt allgemein für jeden Hauptidealbereich.
+		
+		\item[\textbf{(2)}]
+		Insbesondere also für euklidische Ringe.
+		Sei $ R $ euklidisch und $ \nu $ die zugehörige Normfunktion.
+		Dann können wir zeigen, dass
+		\begin{align*}
+		\mu : R \setminus \lbrace 0 \rbrace \to \N_0, \ 
+		a \mapsto \min \lbrace \nu(c \cdot a) \ | \ c \in R \setminus\lbrace 0 \rbrace \rbrace
+		\end{align*}
+		auch ein Normfunktion ist und $ \mu(a \cdot b) \geq \mu(a) $
+		für alle $ 0 \neq a,b \in R $ gilt.
+		Hiermit können wir konstruktiv zeigen, dass R faktoriell ist.
+		
+		\item[\textbf{(3)}] 
+		Die Sätze \ref{skript:9.5} und \ref{skript:9.7} 
+		ergeben zusammen den sogenannten
+		\bi{Hauptsatz der elementare Zahlentheorie}, also die bis auf die Reihenfolge eindeutige Zerlegung von ganzen Zahlen in Primfaktoren.
+		Insbesondere wissen wir jetzt auch, dass Primzahlen prim sind.
+	\end{enumerate}
+\end{genericdf}
+
+\begin{lemma} \label{skript:9.9}
+	Sei $ R $ ein Hauptidealbereich und $ p \in R $ irreduzibel,
+	dann ist $ (p) $ ein maximales Ideal.
+	Also ist $ R / (p) $ ein Körper.
+\end{lemma}
+
+\begin{proof}
+	Sei $ a \in R $ und $ \overline{a} = a + (p) $ mit $ \overline{a} \neq 0 $.
+	Es gilt also $ p \nshortmid a $.
+	Nun betrachten wir das Ideal $ (p,a) \unlhd R $.
+	Da $ R $ ein Hauptidealbereich ist, existiert ein $ d \in R $ mit
+	 \begin{align*}
+	 (p,a) = (d) 
+	 \Rightarrow
+	 d = r \cdot p + s \cdot a
+	 \end{align*}
+	 für passende $ r, s \in R $.
+	 Nun gilt $ p \in (d) $, woraus
+	 \begin{align*}
+	 p = d \cdot c 
+	 \Rightarrow
+	 d \in R^\ast \vee c \in R^\ast
+	 \end{align*}
+	 folgt.
+	 Nun nehmen wir an, dass $ c \in R^\ast  $ ist.
+	 Dann gilt
+	 \begin{align*}
+	 d = c^{-1} \cdot p
+	 \Rightarrow
+	 p \mid d
+	 \Rightarrow 
+	 p \mid a,
+	 \end{align*}
+	 was ein Widerspruch zu unserer Annahme $ \overline{a}  \neq 0$ ist.
+	 Also muss $ d \in R^\ast $ gelten, womit $ (d) = R $ und $ (p) $ maximal ist.
+	 Nach \ref{skript:8.14} ist auch $ R/(p) $ ein Körper.
+\end{proof}
+
+\begin{genericdf}{Konstruktion von Erweiterungkörpern}\label{skript:9.10}
+	\index{Erweiterungskörper!Konstruktion}
+	Sei $ K $ ein Körper, $ R  = K[x]$ und $ f $ ein irreduzibles Polynom.
+	Nach \ref{skript:9.6} bzw. \ref{skript:9.7} ist $ f $ prim.
+	Da $ K[x] $ ein Hauptidealbereich ist, ist $ K[x] / (f) $ nach 
+	\ref{skript:9.9} ein Körper.
+	Wir betrachten nun $ n = \Grad(f) \geq 1$ und die Quotientenabbildung
+	\begin{align*}
+	\pi : K[x] \to K[x] / (f), g \mapsto \overline{g} = g + (f).
+	\end{align*}
+	Wir identifizieren $ K $ mit den Polynomen vom Grad $ \leq 1 $ in $ K[x] $.
+%	\begin{figure}[H]
+%		\centering
+%		\begin{tikzcd}
+%			G \arrow{r}{\pi}   &   K[x] / (p) \\
+%			K \arrow[u,hook] \arrow{r}{\pi \mid_{K} }  &   \pi(K) \arrow[u,hook]
+%		\end{tikzcd}
+%	\end{figure}
+	Außerdem ist $ \pi $ eingeschränkt auf $ K $ injektiv, damit existiert in
+	$ K[x] / (f) $ ein zu $ K $ isomorpher Teilkörper, welchen wir auch mit $ K $
+	identifizieren.
+	Nun gilt also $ K \subset K[x] / (f) $,
+	womit $ K[x] / (f) $ eine Erweiterung von $ K $ ist.
+	\begin{generic_no_num}{Bemerkung}
+		Sind $ K,L $ Körper mit $ K \subset L $, dann wird $ L $ zu einem Vektorraum über $ K $.
+		Die Skalarmultiplikation definieren wir einfach über die Multiplikation in $ L $.
+	\end{generic_no_num}
+	Nun kommen wir zu der 
+	\begin{genericthm_no_num}{Behauptung}
+		Sei $ \alpha = \pi(x) $, dann gilt
+		\begin{align*}
+		K[x] / (f) = \left\lbrace \sum \limits_{i=0}^{n-1}  k_i \cdot \alpha^i 
+		\ | \ k_i \in K , n = \Grad(f)\right\rbrace
+		\end{align*}
+		und
+		\begin{align*}
+		\lbrace 1, \alpha, \alpha^2, \dots , \alpha^{n-1} \rbrace
+		\end{align*}
+		ist eine $ K $-Basis von $ K[x] / (f) $.
+		Außerdem gilt $ f (\alpha) = \overline{f} = \overline{0} $.
+	\end{genericthm_no_num}
+	
+	\begin{proof}
+		Dass jede Restklasse modulo $ (f) $ einen Repräsentanten der Form
+		\begin{align*}
+		\sum \limits_{i=0}^{n-1} k_i \cdot \alpha_i
+		\end{align*}
+		besitzt erhalten wir aus Division mit Rest nach $ (f) $.
+		Nun nehmen wir an, dass 
+		$ \lbrace 1 , \alpha , \dots , \alpha^{n-1} \rbrace $
+		linear abhängig ist.
+		Damit gilt für
+		\begin{align*}
+		g:= \sum \limits_{i= 0}^{n-1} k_i \cdot \alpha^i = 0,
+		\end{align*}
+		dass nicht alle $ k_i = 0  $ sind.
+		Nun folgt $ \Grad(g) \leq n-1 $ oder $ g = a \cdot \tilde{g} $ mit $ \Grad(\tilde{g}) \leq n -1 $.
+		Weiter gilt $ g(\alpha) = 0 $ bzw. $ \tilde{g}(a) = 0 $.
+		Da $ \Ker \pi  = (f)$ ist, müssen $ g $ bzw. $ \tilde{g} $ Vielfache von $ f $ sein.
+		Damit gilt $ \Grad g \geq n $ bzw. $ \Grad \tilde{g} \geq n $.
+		Dies ist ein Widerspruch zu unserer Annahme.
+	\end{proof}
+\end{genericdf}
+
+\begin{genericdf}{Beispiel}\label{skript:9.11}
+	Sei $ K = \R $ und $ f = x^2 + 1 $.
+	Dann ist $ f $ irreduzibel, da es in $ \R $ keine Nullstellen hat und es gilt
+	\begin{align*}
+	\R[x] / (f) \cong \C
+	\end{align*}
+\end{genericdf}

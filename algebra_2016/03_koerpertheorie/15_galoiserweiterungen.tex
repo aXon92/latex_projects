@@ -1,0 +1,87 @@
+\section{Galoiserweiterungen}
+
+Ab jetzt wird durchweg folgende Notation bzw. Situation betrachtet: $L\supseteq K$ sei eine Körpererweiterung mit $|L:K|<\infty$ und $G:=\Aut(L,K)$. Nach \ref{skript:14.3} gilt $|G|<\infty$.
+
+\begin{lemma}\label{skript:15.1}
+	Seien $M_1,\ldots,M_n$ Zwischenkörper von $L\supseteq K$, d. h. $K\subseteq M_i\subseteq L$. Sei
+	\[L=\bigcup_{i=1}^n M_i,\]
+	dann existiert ein $i_0$ mit $M_{i_0}=L$.
+\end{lemma}
+\begin{proof}
+	Sei $|K|<\infty$, dann ist auch $|L|<\infty$. Nach Satz \ref{skript:8.10} existiert ein $z_0\in L$ mit $L^\ast=\langle z_0\rangle$. Andererseits gilt nach Voraussetzung
+	\[L=\bigcup_{i=1}^n M_i.\]
+	Dann muss es ein $i_0$ mit $z_0\in M_i$ geben. Daraus folgt $L^\ast\subseteq M_{i_0}$ und somit $L=M_{i_0}$.\\
+	Sei nun $|K|=\infty$. Der Beweis wird durch Induktion nach $n$ geführt: Für $n=1$ ist die Aussage trivialerweise richtig. Sei nun $n>1$ und $M_1\neq L$. Sei $z\in M_1$ und $w\in L\backslash M_1$. Für jedes $k\in K^\ast$ ist dann
+	\[z+kw\notin M_1\Rightarrow\exists i\geq2: z+kw\in M_i.\]
+	Da $|K|=\infty$ und es nur endlich viele Zwischenkörper gibt, existieren $k_1,k_2\in K$, sodass für ein geeignetes $j\geq2$
+	\[k_1+k_2\in M_j,\ z+k_1w\in M_j,\ z+k_2w\in M_j\]
+	gelten. Damit ist auch
+	\[0\neq k_1-k_2\in M_j,\ (z+k_1w)-(z-k_2w)=(k_1-k_2)w\in M_j\]
+	und somit $w\in M_j$. Also ist auch für jedes $k\in K$ $kw\in M_j$ und damit auch $z\in M_j$. $z$ war aber beliebig aus $M_1$, d. h.
+	\[M_1\subseteq\bigcup_{i=2}^n M_i\]
+	und damit
+	\[\bigcup_{i=2}^n=L.\]
+	Mit der Induktionsvoraussetzung folgt nun, dass ein $i_0\geq 2$ existiert mit $M_{i_0}=L$.
+\end{proof}
+
+\begin{lemma}\label{skript:15.2}
+	Sei $z\in L$ und $\mu_z$ das Minimalpolynom von $z$ über $K$. Sei
+	\[B=\{\sigma(z)\ |\ \sigma\in G\}\]
+	die Bahn von $z$ unter der Operation von $G$ auf $L$. Dann ist $|B|<\infty$ und
+	\[\forall y\in B: \mu_z(y)=0.\]
+	Ferner ist
+	\[|L:K|\geq|K(z):K|=\Grad(\mu_z)\geq |B|.\]
+\end{lemma}
+\begin{proof}
+	Da $|G|<\infty$, ist auch $|B|<\infty$. Nach \ref{skript:14.1} gilt für jedes $\sigma\in G$
+	\[\mu_z(\sigma(z))=\sigma(\mu_z(z))=\sigma(0)=0.\]
+	Somit kann $|B|$ höchstens gleich der Anzahl der Nullstellen von $\mu_z$ in einem Zerfällungskörper sein, was gerade $\Grad \mu_z$ ist. Da $K(z)\subseteq L$, gilt auch $|L:K|\geq|K(z):K|$.
+\end{proof}
+
+\begin{lemma}\label{skript:15.3}
+	Es gilt stets $|G|\leq|L:K|$ und es gibt ein $z_0\in L$ mit
+	\[\Stab_G(z_0)=1.\]
+	Falls $|G|=|L:K|$, dann gilt $L=K(z_0)$.
+\end{lemma}
+\begin{proof}
+	Für $G=1$ ist nichts zu zeigen (trivial). Sei nun $G\neq1$ und $\sigma\in G$. Dann setze
+	\[M_\sigma:=\{y\in L\ |\ \sigma(y)=y\}.\]
+	$M_\sigma$ ist offensichtlich ein Teilkörper von $L$. Ist $\sigma\neq\id$, dann ist $M_\sigma\subsetneq L$. Da $G\neq1$, ist auch $K\subsetneq L$. Nach Lemma \ref{skript:15.1} gilt dann:
+	\[L\neq\bigcup_{\sigma\in G\backslash\{\id\}} M_\sigma\]
+	Dann existiert $z_0\in L$, sodass für jedes $\sigma\neq\id$
+	\[\sigma(z_0)\neq z_0\]
+	ist. Damit besteht $\Stab_G(z_0)$ nur aus der Identität. Wenn $B$ die Bahn mit $z_0\in B$ ist, dann hat $B$ also genau $|G|$ Elemente. Nach Lemma \ref{skript:15.2} gilt:
+	\[|L:K|\geq|K(z_0):K|\geq|B|=|G|\]
+	Falls $|L:K|=|G|$, dann gilt oben überall Gleichheit. Insbesondere ist $|L:K|=|K(z_0):K|$, also $L=K(z_0)$.
+\end{proof}
+
+\begin{df}\label{skript:15.4}
+	Ist $|G|=|L:K|$, dann heißt $L\supseteq K$ \bi{Galoiserweiterung}. Man spricht bei Galoiserweiterungen dann auch von der \bi{Galoisgruppe} $G$ von $L$.
+\end{df}
+
+\begin{genericdf}{Beispiele}\label{skript:15.5}
+	\begin{itemize}
+		\item[\textbf{(1)}]
+		$\C\supseteq\R$ ist eine Galoiserweiterung: $|\C:\R|=2$, $G=\langle z\mapsto\overline{z}\rangle\cong C_2$.
+		\item[\textbf{(2)}]
+		$L=\Q(\zeta_n)\supseteq\Q$ ist eine Galoiserweiterung: $|L:\Q|=\phi(n)$, $G\cong(\Z/n\Z)^\ast$ (vgl. \ref{skript:14.5})
+		\item[\textbf{(3)}]
+		$K=\F_{p^n}\supseteq\F_p$ ist eine Galoiserweiterung: $|K:\F_p|=n$. Nach Satz \ref{skript:14.12} ist $G\cong C_n$.
+		\item[\textbf{(4)}]
+		$K=\Q(\sqrt[4]{2})\supseteq\Q$ ist keine Galoiserweiterung: $|K:\Q|=4$, aber $G=\Aut(K,\Q)\cong C_2$ (vgl. \ref{skript:14.9}).
+	\end{itemize}
+\end{genericdf}
+
+\begin{genericthm}{Charakterisierung von Galoiserweiterungen}\label{skript:15.6}
+	Sei $L\supseteq K$ eine Körpererweiterung mit $|L:K|<\infty$ und $G=\Aut(L,K)$. Dann sind folgende Aussagen äquivalent:
+	\begin{itemize}
+		\item[\textbf{(i)}]
+		$|L:K|=|G|$, d. h. $L\supseteq K$ ist eine Galoiserweiterung.
+		\item[\textbf{(ii)}]
+		Es existiert ein $z_0\in L$ mit $L=K(z_0)$, sodass $\mu_{z_0}\in K[x]$ über $L$ in Linearfaktoren zerfällt und keine mehrfachen Nullstellen besitzt.
+		\item[\textbf{(iii)}]
+		$L$ ist Zerfällungskörper eines $f\in K[x]$ mit $\Grad f\geq 1$ und $f$ besitzt keine mehrfachen Nullstellen.
+		\item[\textbf{(iv)}]
+		Es gilt: $K=\{y\in L\ |\ \forall\sigma\in G:\sigma(y)=y\}$.
+	\end{itemize}
+\end{genericthm}
