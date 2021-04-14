@@ -1,0 +1,870 @@
+
+
+%\section{Grundlagen}
+\chapter{Grundlagen}
+
+\section{Notation}
+%\subsection{Notation und Definitionen}
+%Zu Beginn werden wir grundlegende Schreibweisen vorstellen.
+Mit $ \N $, $ \Z $, $ \Q $, $ \R $ und $ \C $ bezeichnen wir die Mengen der 
+natürlichen, ganzen, rationalen, reellen und komplexen Zahlen.
+Wir setzen $ \N_0 := \N \cup \{0\} $ und mit $ \K $ bezeichnen wir entweder $ \R $ oder $ \C $. Falls nicht anders gekennzeichnet, stehen die Buchstaben $ i,j,k,n$ und  $m$ für natürliche Zahlen.
+Die Menge der Permutationen einer Menge $ A $ kennzeichnen wir mit $ \mathcal{S}_A $. In unserem Fall wird dies meist $ A =  \N $ oder eine endliche Teilmenge hiervon sein.
+Die charakteristische Funktion einer Menge $ A $ beschreiben wir durch $ \chi_A $.\\
+\\ 
+%Die Abhängigkeit einer Konstanten von äußeren Parametern kennzeichnen wir mit einer passenden Umschreibung oder durch ein geeignetes Subskript.
+Wir werden uns hauptsächlich mit Banachräumen über $ \K $ beschäftigen.
+Falls diese unendlich-dimensional sind, bezeichnen wir diese mit $ X $, $ Y $, $ Z $. Wenn auf die Vollständigkeit verzichtet wird, erwähnen wir dies explizit.
+Für endlich-dimensionale Räume verwenden wir die Buchstaben $ E $, $ F $, $ H $. In diesem Fall sind die Begriffe Banachraum und normierter Raum synonym.
+Falls die Buchstaben nicht ausreichen, werden wir uns mit Indizes behelfen.
+Der Aufspann einer Teilmenge $ M $ eines normierten Raums ist gekennzeichnet durch $ \spn \ M $.\\
+\\
+Die Norm eines Raumes ist durch $ \| \cdot \| $ notiert. 
+Sollten mehrere Räume verwendet werden, kennzeichnen wir dies mit $ \| \cdot \|_X $,
+$ \| \cdot \|_Y $.
+Die abgeschlossene Einheitskugel in $ X $ beschreiben wir mit  $ B_X = \{ x \in X : \|x  \| \leq 1 \} $ und die Einheitssphäre mi $ S_X = \{ x \in X : \|x  \| = 1 \} $.
+Das \textit{Skalarprodukt} $ \langle \cdot, \cdot \rangle_X $ des Raumes $ X $ ist, abhängig von dem zugrundeliegenden Körper $ \K $, entweder eine positiv definite symmetrische Bilinearform oder eine positiv definite hermitesche Sesquilinearform.
+Einen Banachraum mit einem Skalarprodukt nennen wir \textit{Hilbertraum} und kürzen diesen mit $ H $ ab. Insbesondere wird die Norm dann von dem Skalarprodukt durch $ \| \cdot \|_H = (\langle \cdot , \cdot \rangle_H)^\frac{1}{2} $ induziert.\\
+\\
+Seien $ X,Y $ Banachräume.
+Den Raum der linearen und beschränkten Abbildungen von $ X $ nach $ Y $ schreiben wir als $ \mathcal{L}(X,Y) $ und nennen dessen Elemente Operatoren.
+Für Operatoren verwenden wir zum Kontext passende Großbuchstaben.
+Falls wir Operatoren zwischen endlichdimensionalen Räumen betrachten, werden wir von dieser Konvention abweichen. Für die koordinatenfreie Variante wählen wir Kleinbuchstaben und wenn Basen vorliegen Großbuchstaben.
+$ \mathcal{L}(X,Y) $ wird durch die Operatornorm $ \|T\| = \sup_{\|x\| \leq 1} \|Tx\| $ zu einem Banachraum.
+Falls $ X=Y $ ist, schreiben wir auch $ \mathcal{L}(X) := \mathcal{L}(X,X) $.
+Für die Identität verwenden wir die Bezeichnung $ \id $.
+Ein Operator $ T: X \to Y $ heißt isometrisch, falls $ \|Tx\|_Y = \|x \|_X $ gilt.
+Wenn $ T $ zusätzlich surjektiv ist, sagen wir isometrische Isomorphie.
+Ein Operator $ K : X \to Y $ heißt kompakt, falls dieser beschränkte Teilmengen in $ X $ auf relativ kompakte Teilmengen in $ Y $ abbildet.\\
+\\
+Mit $ X^\prime := \mathcal{L}(X, \K)  $ bezeichnen wir den topologischen Dualraum von $ X $ und nennen dessen Elemente Funktionale.
+Die Auswertungen der Funktionale kennzeichnen wir durch $ \langle x^\prime , x \rangle_{X^\prime} $ und bezeichnen dies als Dualitätsprodukt.
+Sofern es dem Verständnis nicht schadet, verzichten wir auf das Subskript. 
+Sei $ T : X \to Y $ ein Operator.
+Der zugehörige adjungierte Operator ist durch
+\begin{align*}
+	T^\prime : Y^\prime \to X^\prime, \
+	y^\prime \mapsto y^\prime \circ T 
+\end{align*}
+definiert.
+Der Satz von Schauder\cite[10.6]{Alt2012} besagt:
+Ein Operator $ K : X \to Y $ ist genau dann kompakt, wenn der adjungierte Operator $ K^\prime : Y^\prime  \to X^\prime $ kompakt ist.
+Die Norm eines normierten Raums lässt sich nach dem Satz von Hahn-Banach\cite[Abschnitt III.1]{Werner2011} durch
+\begin{align*}
+	\|x \| = \sup \limits_{x^\prime \in B_{X^\prime} } |\langle x^\prime, x \rangle_{X^\prime}|
+\end{align*}
+bestimmen. 
+In einem Hilbertraum $ H $ gilt nach dem Rieszschen Darstellungssatz\cite[Kapitel 4]{Alt2012} $ H = H^\prime $  
+und das Skalarprodukt entspricht dem Dualitätsprodukt.
+Der Bidualraum ist durch $ X^{\prime \prime} := \mathcal{L}(X^\prime, \mathbb{K}) $ definiert.
+Die zugehörige Bidualraumisometrie ist durch
+\begin{align*}
+	J_X: X \to X^{\prime \prime}, \
+	x \mapsto \langle \cdot, x \rangle_{X^\prime }
+\end{align*}
+gegeben\cite[Abschnitt 6.2]{Alt2012}.
+Wie der Name schon verrät, ist $ J_X $ eine Isometrie.
+Falls $ X = X^{\prime \prime} $ gilt, nennen wir $ X $ reflexiv. Insbesondere ist $ J_X $ dann eine isometrische Isomorphie.
+\\
+\\
+%\newpage
+Für den $ n $-dimensionalen Raum mit der Norm 
+\begin{align*}
+	\| x \|_{\ell^p_{(n)}} := \left(
+	\sum \limits_{ i = 1}^n |x_i|^p
+	\right)^\frac{1}{p}, \quad x = (x_1,...,x_n)
+\end{align*}
+schreiben wir $ \ell^p_{(n)} $.
+Analog definieren wir den $ n $-dimensionalen Raum mit der Maximumsnorm und schreiben $ \ell^\infty_{(n)} $.
+Desweiteren gilt die Monotonie
+\begin{align*}
+	\| x \|_{\ell^q_{(n)}} \geq \| x\|_{\ell^p_{(n)}}
+\end{align*}
+für $ x = (x_1,...,x_n) $ mit $ 1 \leq q \leq p \leq \infty $\cite{Alt2012}.
+Alle Normen des $ n $-dimensionalen Raums sind äquivalent.\\
+Falls die Norm eines $ n $-dimensionalen Raumes nicht relevant ist schreiben wir $ \R^n $.\\
+\\
+Durch $ (x_n)  := (x_n)_{n \in \N}$ bezeichnen wir eine Folge mit Gliedern in einem Banachraum $ X $. 
+Unter einer Indexfolge $ (n_j) $ verstehen wir eine streng monoton wachsende Folge mit Gliedern in $ \N $.
+Eine Folge $ (\alpha_n) $ mit $ \alpha_n = \pm 1 $ nennen wir $ \pm 1 $-Folge und kennzeichnen die Menge dieser Folgen durch $ \{\pm 1\}^\N $. 
+Außerdem verwenden wir folgende Folgenräume:
+\begin{align*}
+%	(a_n) \in c_0 \ &\Leftrightarrow \ \lim \limits-{n\to \infty } a_n = 0\\
+	(a_n) \in \ell^p := \ell^p(\N)  \ &\Leftrightarrow \ \|(a_n)\|_{\ell^p} := \left(\sum \limits_{i = 1}^{\infty} |a_i|^p\right)^\frac{1}{p} < \infty, \quad 1 \leq p < \infty\\
+	(a_n) \in \ell^\infty := \ell^\infty(\N)  \ &\Leftrightarrow \ \|(a_n)\|_{\ell^\infty} := \sup \limits_{n \in \N} |a_n| < \infty. 
+\end{align*}
+%Wenn wir mit Folgen in Folgenräumen arbeiten, verwenden wir auch die Notation $ (a^{(n)}) := (a^{(n)}_i) $.
+Für $ p = 2 $ erhalten wir mit dem Skalarprodukt
+\begin{align*}
+	\langle(a_n),(b_n ) \rangle_{\ell^2} 
+	=
+	\sum \limits_{i = 1}^\infty a_i \cdot \overline{b_i}
+\end{align*}
+einen Hilbertraum.
+Den \textit{Raum der Nullfolgen}, versehen mit der $ \|\cdot\|_{\ell^\infty} $-Norm, bezeichnen wir mit $  c_0  $.
+Wir nennen eine Folge $ (x_n) $ in $ X $ schwach konvergent, falls ein $ x \in X $ mit
+\begin{align*} 
+	\textrm{w}-\lim \limits_{n \to \infty } x_n = x
+	\ :\Leftrightarrow \
+	x_n \rightharpoonup x^\prime  \ :\Leftrightarrow \
+	\langle x^\prime , x_n \rangle
+	\rightarrow
+	\langle x^\prime , x \rangle
+\end{align*}
+für alle $ x^\prime \in X^\prime $ exisitiert.
+Ein Operator $ K : X  \to Y  $ ist genau dann kompakt, wenn jede beschränkte Folge $ (x_n) $ in $ X $ eine Teilfolge $ (x_{n_j}) $ enthält, sodass $ (K x_{n_j}) $ konvergiert\cite[Abschnitt 8.1]{Alt2012}. 
+Außerdem verwenden wir die kürzende Schreibweise $ \sum x_i := \sum_{ i = 1}^\infty x_i $.
+%\begin{align*}
+%	\sum x_i := \sum \limits_{ i = 1}^\infty x_i.
+%\end{align*}
+%Die hier aufgeführte Indexierung wird in dieser Arbeit durchgehend verwendet.
+%Beispielsweise bedeutet dies, dass wir versuchen den Laufindex der Summation mit $ i $ zu bezeichnen.\\
+
+Ein \textit{Maßraum} ist ein Tripel $ (\Omega, \mathcal{A}, \mu) $, wobei $ \Omega $ eine nicht-leere Menge, $ \mathcal{A} $ eine $ \sigma $-Algebra und $ \mu  $ ein Maß auf $ \mathcal{A} $ ist.
+Sei $ f : \Omega \to \K $ eine messbare Abbildung.
+Wir definieren die $ \L^p $-Räume durch
+\begin{align*}
+	f \in \L^p(\Omega) := \L^p(\Omega, \mu)
+	\ &\Leftrightarrow \
+	\| f \|_{\L^p}:= 
+	\left(\int \limits_{\Omega} |f(x)|^p \dx{\mu(x)} \right)^\frac{1}{p} < \infty, \quad 1 \leq p < \infty\\
+	f \in \L^\infty(\Omega) := \L^\infty(\Omega, \mu)
+	\ &\Leftrightarrow \
+	\| f \|_{\L^\infty}:= 
+	\esssupp \limits_{x \in \Omega} |f(x)| < \infty,
+\end{align*}
+wobei wir die eigentlich notwendige Quotientenbildung\cite[Kapitel 1]{Werner2011} bewusst ignorieren. Für $ p = 2 $ erhalten wir einen Hilbertraum mit dem 
+Skalarprodukt
+\begin{align*}
+	\langle f, g \rangle_{\L^2}
+	=
+	\int \limits_{\Omega} f(x) \overline{g(x)} \dx{\mu(x)}
+	.
+\end{align*}
+
+Wenn $ \mu(\Omega) = 1 $ gilt, nennen wir den Maßraum auch Wahrscheinlichkeitsraum und setzen $ \mathrm{P} := \mu $.
+Eine messbare Abbildung mit einem Wahrscheinlichkeitsraum als  Definitionsraum heißt \textit{Zufallsvariable}.
+Unter einer Rademachervariablen $ r $ verstehen wir eine Zufallsvariable, welche die Werte $ \pm 1 $ mit gleicher Wahrscheinlichkeit annimmt.
+Das heißt, es gilt 
+\begin{align*}
+		\mathrm{P}
+	\left(
+	r =  \pm 1
+	\right)
+	= \frac{1}{2}.
+\end{align*}
+Mit $ (r_n) $ werden wir eine Folge solcher \textit{Rademachervariablen} bezeichnen und diese \textit{Rademacherfolge} nennen. 
+Eine endliche Anzahl von Rademachervariablen kennzeichnen wir durch $ r_1,...,r_n $.
+Verschiedene Rademachervariablen sind voneinander unabhängig.
+In dieser Arbeit begegnen uns hauptsächlich diskrete Zufallsvariablen der Form
+\begin{align*}
+	R_M := \left\| \sum \limits_{ i \in M} r_i x_i \right\|,
+\end{align*}
+wobei $ M \subset \N $ und $ x_i \in X $ ist. Abhängig von der Kardinalität nennen wir $ \sum_{ i \in M} r_i x_i $ entweder \textit{Rademachersumme} oder \textit{Rademacherreihe}.
+Mit $ \mathbb{E}(\rho) $ kennzeichnen wir den \textit{Erwartungswert} einer Zufallsvariablen $ \rho. $
+Der Erwartungswert von $ R_M $ berechnet sich durch
+\begin{align*}
+	\mathbb{E}(R_M)
+	=
+	\sum \limits_{\alpha_i = \pm 1} 
+	\frac{1}{2^{|M|}}
+	\left\| \sum \limits_{ i \in M} \alpha_i x_i \right\|,
+\end{align*}
+falls $ M $ endlich ist.\\
+\\
+Für einen normierten Raum $ X $ definieren wir die schwache Topologie als die gröbste Topologie auf $ X $, sodass alle $ x^\prime \in X^\prime $ stetig sind. 
+Konkret lässt sich diese Topologie über eine geeignete Sub-oder Nullumgebungsbasis konstruieren. Nähere Informationen finden sich in \cite[Abschnitt 3.5]{Dobrowolski2010}.
+Ähnlich definiert man die schwach-*-Topologie.
+Sie ist die gröbste Topologie auf $ X' $, sodass alle $ x^{\prime \prime} \in J_X(X) \subseteq X^{\prime \prime} $ stetig sind.
+Die schwach-*-Topologie lässt sich auch über Umgebungsbasen definieren.
+Sei $ x^\prime \in X^\prime $. Dann ist für beliebige $ x_1,...,x_n \in X $ und $ \delta > 0 $ durch
+\begin{align*}
+	U(x^\prime , x_1,...,x_n, \delta)
+	:=
+	\{
+	\tilde{x}^\prime \in X^\prime
+	\ : \ 
+	| \langle x^\prime ,x_i \rangle - \langle \tilde{x}^\prime, x_i \rangle | < \delta, \ i = 1,...,n
+	\}
+\end{align*}
+eine Umgebungsbasis von schwach-*-offenen Mengen von $ x^\prime  $ gegeben.
+Der Satz von Banach-Alagolu\cite[Chapter II]{Diestel1984} für Banachräume $ X $ besagt, dass der duale Einheitsball $ B_{X^\prime} $ kompakt bezüglich der schwach-*-Topologie ist.
+$ B_{X^\prime} $ ist schwach-*-metrisierbar, wenn $ X $ zusätzlich separabel ist.
+
+
+%\begin{itemize}
+%	%\item Lp-Räume
+%	%\item Saubere und schöne Darstellung von +-1 Folgen
+%	%\item Kennzeichnung endlichdim. Räume mit gewisser Norm 
+%	%\item Notation für Folgen
+%	%\item Menge der Permutationen
+%	%\item Verwendung Indices
+%	%\item Indexfolge(Konvention usw.)
+%	%\item schwache Konvergenz und zugehörige Abkürzungen(z.B. w-lim)
+%	%\item relevante Aussagen schwach / schwach-* Topologie
+%	%\item charakteristische Funktion
+%	%\item Dualitätsprodukt ( insb. wenn mehrere Dualräume im Spiel sind.)
+%	%\item relevante Folgerungen Hahn-Banach.
+%	%\item Bidualraumisometrie
+%	%\item Skalarprodukt
+%	%\item Wahrscheinlichkeitsraum
+%	%\item Erwartungswert
+%	%\item Zufallsvariable
+%	%\item Abhängigkeit von Konstanten <-- Kennzeichnung von Indicies
+%	%\item Erwartungswert (ohne Klammern)
+%\end{itemize}
+
+
+%\textbf{\textcolor{red}{TODO:
+%Dies entsprechend in Notation und Definition verarbeiten.	
+%}
+%}
+%
+%Unter einer \textit{Permutation} $ \pi  $ einer beliebigen Menge $ A $ verstehen wir eine bijektive Abbildung $ \pi : A \to A $.
+%Mit $ \mathrm{S}_A $ bezeichnen wir die Menge aller Permutationen von $ A $.
+%In unserem Fall wird dies meist $ A= \N $ sein.
+%Unter Konvergenz einer Reihe in $ \R $ verstehen wir die Konvergenz der Partialsummenfolge.\\
+%\\
+
+
+%Von nun an werden wir $ \sum x_i := \sum_{i=1}^\infty x_i $ verwenden.
+
+\newpage
+\section{Reelle Reihen}
+%\subsection{Reelle Reihen}
+%\vspace{-0.5cm}
+In diesem Abschnitt sind die grundlegenden Resultate von Reihen über $ \R $ aufgeführt.
+Diese werden üblicherweise in den Grundvorlesungen der Analysis behandelt.
+Wir beweisen die für diese Arbeit relevanten Ergebnisse. 
+Diese sind grob gesprochen:
+Wann ist eine Reihe beliebig umsortierbar? Was geschieht, falls dies nicht mehr möglich ist?
+Die Antworten darauf werden durch die Äquivalenz von absoluter und unbedingter Summierbarkeit und dem Riemannschen Umordnungsatz gegeben.
+Die Beweisideen dieser Aussagen entsprechen dem intuitiven Vorgehen. Dies ist bei dem Übergang zu belieben Banachräumen nicht mehr der Fall.\\
+\\
+%Unter Konvergenz einer reelle Reihe verstehen wir die Konvergenz der Partialsummenfolge.
+%Wir sagen auch die zugehörige reelle Folge ist \textit{summierbar} mit dem Grenzwert $ s $, falls die Partialsummenfolge gegen $ s  $ konvergiert. Wenn die Partialsummenfolge divergiert, nennen wir die zugehörige Folge \textit{unsummierbar}.
+%Falls wir mit einer Permutation $ \pi \in \mathcal{S}_\N $ die Reihenfolge einer Folge ändern, bezeichnen wir diese als \textit{Umordnung}.\\
+%\\
+Die bekannten Konvergenzkriterien übertragen sich in Aussage und Beweis nahezu nahtlos auf beliebige Banachräume. Deswegen werden wir auf den Beweis dieser Aussagen verzichten und diese im nächsten Abschnitt der Vollständigkeit halber angeben.
+
+
+\begin{df}
+	Gegeben sei eine reelle Folge $ (x_n) $.
+	\begin{enumerate}[label = (\roman*)]
+		\item Die $ n $-te \textit{Partialsumme} ist gegeben durch
+		\begin{align*}
+			S_n := \sum \limits_{i=1}^n x_i  = x_1 + \dots + x_n.
+		\end{align*}
+		Die \textit{Partialsummenfolge} $ (S_n) $ bezeichnen wir als \textit{Reihe}.
+		
+		\item 
+		
+		$ (x_n) $ heißt \textit{summierbar}, falls der Grenzwert der Partialsummenfolge  existiert. Wir schreiben hierfür
+		\begin{align*}
+			s:= \sum \limits_{i=1}^\infty x_i := \lim \limits_{n \to \infty}  S_n 
+		\end{align*}
+		und bezeichnen $ s $ als \textit{Grenzwert} oder \textit{Summe} der Reihe.
+		Andern falls nennen wir $ (x_n) $ \textit{unsummierbar}.
+		
+		\item 
+		Die Folge heißt \textit{absolut summierbar}, falls $ (|x_n|)$ summierbar ist.
+		
+		\item 
+		Eine Folge heißt \textit{unbedingt summierbar}, falls jede Umordnung dieser Folge summierbar ist. Das heißt, die Folge $ (x_{\pi(n)}) $ ist für alle
+		$ \pi \in \mathcal{S}_\N $ summierbar.
+%		konvergiert und jede Umordnung der Reihe konvergiert. Das heißt, für jede Permutation $ \pi \in \mathrm{S}_\N $ ist $ \sum_{k=1}^\infty x_{\pi(k)}  $ konvergent.
+%		 
+		\item 
+		Die Folge heißt \textit{bedingt summierbar}, falls diese summierbar und $ (| x_n |) $ unsummierbar ist.
+%		Die Reihe heißt \textit{bedingt konvergent}, falls diese konvergiert und $\sum_{k=1}^\infty |x_k|$ divergiert.
+	\end{enumerate}
+\end{df}
+
+
+Die nächsten beiden Aussagen liefern uns, dass aus absoluter Konvergenz die unbedingte Konvergenz bei reellen Reihen folgt.
+Diese Richtung bleibt uns im Allgemeinen erhalten.
+Da für reelle Reihen auch aus unbedingter Konvergenz die absolute Konvergenz folgt, können wir die bedingte Summierbarkeit über die absolute Summierbarkeit definieren.
+%Die Definition der bedingten Summierbarkeit für reelle Reihen basiert darauf, dass die andere Richtung auch gilt.
+\begin{lem}\label{thm:numerical_series_positiv}
+	Sei  $  (x_n) $ summierbar mit $ x_n \geq 0 $ und dem Grenzwert $ s $.
+	Dann gilt für eine beliebige Permutation $ \pi \in \mathcal{S}_\N $:
+	\begin{align*}
+	\sum \limits_{i=1}^\infty x_{\pi(i) } = s.
+	\end{align*}
+\end{lem}
+
+\begin{proof}
+	Sei $ \pi \in \mathcal{S}_\N $ eine beliebige Permutation.
+	Die Partialsummenfolge
+	\begin{align*}
+	S_n := \sum \limits_{i=1}^n x_{\pi(i) }
+	\end{align*}
+	ist wegen $ x_i \geq 0 $ monoton wachsend.
+	Aufgrund von $ \sum_{i=1}^\infty x_i = s $ erhalten wir $ \sup_{n \in \N} S_n \leq s $.
+	Damit konvergiert $ S_n $ gegen ein $ \tilde{s} $ mit $ \tilde{s} \leq s $.
+	Mit der inversen Permutation $ \pi^{-1}  $ gilt
+	\begin{align*}
+	\sum \limits_{i=1}^\infty x_{i } = \sum \limits_{i=1}^\infty x_{\pi^{-1}(\pi(i)) }.
+	\end{align*}
+	Hierauf wenden wir dasselbe Argument an und erhalten $ s \leq \tilde{s}\leq s $.
+	Insbesondere gilt dann $ s = \tilde{s} $.
+\end{proof}
+
+
+\begin{sz}\label{thm:numerical_series_abs_to_conv}
+	Sei  $ ( x_n )$ eine absolut summierbare Folge.
+	Dann ist $ (x_n) $ summierbar und es gilt
+	\begin{align*}
+	\sum \limits_{i=1}^\infty x_{\pi(i) }
+	=
+	\sum \limits_{i=1}^\infty x_i
+	\end{align*}
+	für jede Permutation $ \pi \in \mathcal{S}_\N $.
+\end{sz}
+
+\begin{proof}[Beweisidee]
+	Sei $ \sum_{i=1}^\infty x_i $ absolut konvergent.
+	Wir definieren
+	\begin{align*}
+	x^+_i
+	:=
+	\begin{cases}
+	x_i, \ &\textrm{falls} \ x_i > 0\\
+	0, \ &\textrm{falls} \ x_i \leq 0
+	\end{cases}
+	\qquad \textrm{und} \qquad
+	x^-_i
+	:=
+	\begin{cases}
+	x_i, \ &\textrm{falls} \ x_i < 0\\
+	0, \ &\textrm{falls} \ x_i \geq 0
+	\end{cases}.
+	\end{align*}
+	Die Reihen über $ (x_n^+) $ und $ (x_n^-) $ konvergieren, da die Reihe über $ (| x_n|) $ eine Majorante liefert.
+	Durch \ref{thm:numerical_series_positiv} folgt dann die Aussage. 
+\end{proof}
+
+Damit erhalten wir, dass aus absoluter Konvergenz die unbedingte Konvergenz einer Reihe folgt.
+Für die andere Richtung benötigen wir den bereits in der Einleitung erwähnten klassischen Satz.
+
+\begin{genericthm}{Riemannscher Umordnungssatz(1867)}\label{th:riemann_rearrangement_lemma}
+	Sei $ (x_n) $ bedingt summierbar in $ \R $.
+	Dann gibt es für alle $ s \in \R \cup \{ \pm \infty\} $ eine Permutation $ \pi \in \mathcal{S}_\N $, sodass
+	\begin{align*}
+	\sum \limits_{i=1}^\infty x_{\pi(i) } = s
+	\end{align*}
+	gilt. 
+\end{genericthm}
+
+\begin{proof}[Beweisskizze]
+	Wir definieren zunächst zwei Teilfolgen um positive und negative Folgenglieder zu trennen. Seien $ (a_k) , (b_k)$ Indexfolgen mit $ x_{a_k} \geq 0  $, $ x_{b_k} < 0 $
+	und $ \{x_{a_k}\}_{k=1}^\infty \cup \{x_{b_k}\}_{k=1}^\infty = \{ x_n\}_{n =1}^\infty $.\\
+	\\
+	Für die Reihen über $ x_{a_k} $ bzw. $ x_{b_k} $ unterscheiden wir nun einige Fälle.
+	Es gilt $ \sum | x_i | < \infty $, falls beide Teilfolgen summierbar sind.
+	Dies ist ein Widerspruch zur bedingten Summerbarkeit. Damit ist $ x_{a_k} $ oder $ x_{b_k} $ nicht summierbar.
+	Falls eine Teilfolge summierbar und die andere nicht summierbar ist, folgt $ \sum x_i = \pm \infty $. Das ist erneut ein Widerspruch zur Summierbarkeit.\\
+	\\
+	Es bleibt also der Fall $ \sum x_{a_k} = \infty $ und $ \sum x_{b_k} = - \infty $ übrig. Wir können uns dem eigentlichen Beweis widmen.
+	Zuerst sei ohne Beschränkung $0 \leq  s < \infty $. Das Ziel ist die Konstruktion einer Permutation $ \pi $, sodass $ \sum x_{\pi(k)} = s $ gilt.
+	Wir setzen
+	\begin{align*}
+	\pi(1)= a_1,...,\pi(j)= a_j, 
+	\end{align*}
+	solange bis $ S_j = \sum_{k =1}^j x_{\pi(k)} > s $ für $ j_1 := j $ gilt.
+	Das heißt $ S_j \leq s $ für $ 0 < j \leq j_1 - 1 $ und $ S_{j_1} > s $.
+	Wir wiederholen dieses Spiel in die andere Richtung. Wir setzen also
+	\begin{align*}
+	\pi(j_1 + 1 ) = b_1,....,\pi(j_1+j) = b_j 
+	\end{align*}
+	solange bis $ S_{j_1 + j_2 } < s  $ gilt.
+	Da beide Teilsummen unbeschränkt sind lässt sich dies unendlich fortsetzen und aufgrund von $ x_n \to 0  $ nähern wir uns immer mehr an $ s $ an.
+	Damit gilt 
+	\begin{align*}
+	\lim \limits_{j \to \infty}
+	S_j = s
+	\end{align*}
+	für ein beliebiges $ s \in \R $.\\
+	\\
+	Für die Konstruktion einer Divergenz-Permutation, überlegen wir uns wie wir alle Folgenglieder einbeziehen können.
+	\newpage
+	Wir setzen 
+	\begin{align*}
+	\pi(1) = a_1,...,\pi(j) =a_j,
+	\end{align*}
+	solange bis $ S_{j_1} \geq 1-x_{b_1}  $ gilt und setzen dann $ \pi(j_1 + 1) = b_1 $.
+	Dann addieren wir weiter positive Terme bis $ S_{j_2} \geq 2 - x_{b_2} $ und setzen $ \pi(j_2 + 1) = b_2 $.
+	Allgemein erhalten wir mit dieser Konstruktion:
+	\begin{align*}
+	S_{j_n} &\geq n - x_{b_n}\\
+	\pi(j_n + 1) &= b_n.
+	\end{align*}
+	Damit werden alle Folgenglieder von $ (x_n) $ erreicht und es gilt $ S_j \to \infty $ für $ j \to \infty $.
+	Das Argument für $ - \infty $ funktioniert analog.  
+
+\end{proof}
+
+Mithilfe des Riemannschen Umordnungssatzes folgt aus der unbedingter Konvergenz die absolute Konvergenz.
+Diese Folgerung erhalten wir durch die Annahme des Gegenteils.
+Der Riemannsche Umordungsatz liefert dann eine Permutation, wofür die Reihe divergiert.
+Dies widerspricht der unbedingten Konvergenz.
+
+
+\section{Reihen über allgemeinen Banachräumen}
+%\subsection{Reihen über allgemeinen Banachräumen}
+Sei $ X $ ein Banachraum mit der Norm $ \| \cdot \| $.
+Wir wiederholen die Definition der Reihenkonvergenz und führen  die Begriffe der unbedingten und bedingten Summierbarkeit ein.
+Im Vergleich zu den reellen Reihen können wir die unbedingte Summierbarkeit nicht über die absolute Summierbarbarkeit definieren, da im Allgemeinen die Äquivalenz zwischen absoluter und unbedingter Konvergenz nicht mehr erfüllt ist.
+
+
+%Von nun an betrachten wir einen Banachraum $ X $ mit zugehöriger Norm $ \| \cdot \| $.
+%Falls nicht anders gekennzeichnet kürzen wir dies mit $ X $ ab.
+%Wir schreiben Folgen mit natürlichen Indices als $ (x_n) := (x_n )_{n \in \N} $.
+
+\begin{df}
+	Sei $ (x_n) $ eine Folge in $ X $.
+	\begin{enumerate}[label = (\roman*).]
+		\item Die $ n $-te \textit{Partialsumme} ist gegeben durch
+		\begin{align*}
+		S_n := \sum \limits_{i=1}^n x_i  = x_1 + \dots + x_n.
+		\end{align*}
+		Die \textit{Partialsummenfolge} $ (S_n) $ bezeichnen wir als \textit{Reihe} und	schreiben hierfür $ \sum_{i  = 1}^\infty x_i $.
+		
+		
+		\item 
+		
+		$ (x_n) $ heißt \textit{summierbar}, falls der Grenzwert der Partialsummenfolge bezüglich $ \| \cdot \| $ existiert. Wir schreiben hierfür
+		\begin{align*}
+		s:= \sum \limits_{i=1}^\infty x_i := \lim \limits_{n \to \infty}  S_n 
+		\end{align*}
+		und bezeichnen $ s $ als \textit{Wert} oder \textit{Summe} der Reihe.
+		Wir sagen auch die Reihe ist \textit{konvergent}.
+		
+		\item 
+		$ (x_n) $ heißt \textit{nicht summierbar} bzw. die Reihe heißt  \textit{divergent}, falls der Grenzwert der Partialsummenfolge nicht existiert. 
+		%Falls bestimmte Divergenz vorliegt, schreiben wir $\sum \limits_{k=1}^\infty x_k = \pm \infty  $.
+		
+		\item 
+		$ (x_n) $ heißt \textit{absolut summierbar}, falls $ (\| x_n \|) $ über $ \R $ summierbar ist.
+		Die Reihe heißt dann \textit{absolut konvergent}. 
+		
+%		Eine Reihe heißt \textit{absolut konvergent}, falls
+%		\begin{align*}
+%		\sum \limits_{k=1}^\infty \| x_k \| < \infty
+%		\end{align*}
+%		gilt.
+		
+		\item 
+		$ (x_n) $ heißt \textit{unbedingt summierbar}, falls diese für eine beliebige Umordnung summierbar ist.
+		Die Reihe heißt dann \textit{unbedingt konvergent}. 
+		
+		\item 
+		$ (x_n) $ heißt \textit{bedingt summierbar}, falls diese summierbar und nicht unbedingt summierbar ist.  
+		Die Reihe heißt dann \textit{bedingt konvergent}.
+	\end{enumerate}
+\end{df}
+
+Solange die Raumdimension endlich ist, bleibt uns die Äquivalenz der unbedingten und absoluten Konvergenz erhalten.
+Ebenso ist der Satz von Steinitz \ref{th:lemma_of_steiniz}
+ähnlich zu dem Riemannschen Umordnungssatz:
+Beide Sätze liefern überabzählbar vieler mögliche Grenzwerte unter der Voraussetzung der bedingten Summierbarkeit.
+
+
+
+\begin{sz}\label{th:uncond_implies_absolut_finite_dim}
+	Sei $ E $ ein endlichdimensionaler normierter Raum.
+	Dann ist jede unbedingt summierbare Folge absolut summierbar.
+\end{sz}
+
+\begin{proof}
+	Wir betrachten $ X = \R^n $ mit der Norm
+	\begin{align*}
+		\| x \|_1 = \sum \limits_{i = 1 }^n | x_i |
+	\end{align*}
+	und die Komponentenfunktionale $ f_i : \R^n \to \R, \ x \mapsto x_i $ für $ i = 1,...,n $. Mit $ (x^{(n)}) $ bezeichnen wir die unbedingt summierbare Folge in $ X $. Dann gilt mit der Stetigkeit der Komponentenfunktionale
+	\begin{align*}
+		f_i
+		\left(
+		\sum \limits_{k=1}^\infty x^{(k)}
+		\right)
+		=
+		\sum \limits_{k=1}^\infty \underbrace{f_i(x^{(k)})}_{= x_i^{(k)}}.
+	\end{align*}
+	Damit ist $ (f_i(x^{(n)})) $ über $ \R $ unbedingt summierbar. Über $ \R $ ist dies äquivalent zu absoluter Summierbarkeit.
+	Insgesamt erhalten wir mit
+	\begin{align*}
+		\sum \limits_{k = 1}^\infty \|x^{(k)} \|
+		=
+		\sum \limits_{k = 1}^\infty \sum \limits_{i = 1 }^n | x_i^{(k)} |
+		=
+		\sum \limits_{i = 1}^n \sum \limits_{k = 1 }^\infty | f_i(x^{(k)}) | < \infty
+	\end{align*}
+	die absolute Konvergenz.
+\end{proof}
+Dieser Satz gilt für beliebige Banachräume nicht mehr.
+Als Beispiel betrachten wir $ X = \ell^2 $ mit der Folge 
+\begin{align*}
+	x^{(k)}_i := 
+	\begin{cases}
+		\frac{1}{k}, &\ \text{falls } i = k\\
+		0, &\ \text{sonst}
+	\end{cases}.
+\end{align*}
+Dann konvergiert die Reihe $ \sum_{k=1}^\infty x^{(k)} $ für jede Umordnung gegen die Folge $ x_i = \frac{1}{i} $.
+Wegen $ \| x^{(k)} \| = \frac{1}{k} $ ist die Reihe jedoch nicht absolut konvergent.
+Wir werden mithilfe des Satzes von Dvoretzky-Rogers \ref{th:dvoretzky_rogers} beweisen, dass in jedem unendlichdimensionalen Banachraum eine solche Folge existiert.
+
+\begin{sz}\label{th:every_rearrangement_same_limit}
+	Sei $ X $ ein Banachraum und $ (x_n) $ eine unbedingt summierbare Folge mit dem Grenzwert $ s $.
+	Dann besitzt jede Umordnung denselben Grenzwert.
+\end{sz}
+
+\begin{proof}
+	Angenommen es existiert eine Umordnung $ \pi \in \mathcal{S}_\N $, sodass
+	$ \sum x_{\pi(i)} = \tilde{s} \neq s $ gilt.
+	Dann existiert ein $ x^\prime \in X^\prime $ mit $ \langle x^\prime,s \rangle  \neq \langle x^\prime,\tilde{s}\rangle $.
+	Insbesondere ist $  \sum \langle x^\prime ,x_i \rangle $ nicht absolut konvergent in $ \R $, da $ \pi $ den Grenzwert ändert.
+	Nach dem Riemannschen Umordnungssatz existiert eine Permutation $ \sigma \in \mathrm{S}_\N $, sodass $ \sum \langle x^\prime ,x_{\sigma(i)} \rangle $ divergiert.
+	Damit divergiert auch $ \sum x_{\sigma(i)} $ und unsere Annahme war falsch.
+\end{proof}
+
+Wegen \ref{thm:numerical_series_abs_to_conv} folgt in Banachräumen aus absoluter Summierbarkeit immer die unbedingte Summierbarkeit.
+Konkrekt folgt dies für eine absolute summierbare Folge $ (x_n) $
+und einer beliebigen Permutation $  \pi  $ durch
+\begin{align*}
+	\left\|\sum x_{\pi(i)} \right\| \leq \sum \|x_{\pi(i)} \| = 
+	\sum \|x_{i} \| < \infty
+\end{align*}
+mithilfe der Dreiecksungleichung. Aus der unbedingten Summierbarkeit folgt unter gewissen Umständen eine Verallgemeinerung der absoluten Summierbarkeit.
+
+\begin{df}
+	Eine Folge $ (x_n) $ in einem normierten Raum $ X $ heißt $p $\textit{-absolut} summierbar, falls $ (\|x_n\|^p)  $ summierbar ist.
+\end{df}
+Insbesondere werden wir auch sehen, dass aus $ p $-absoluter Konvergenz im Allgemeinen keine unbedingte Konvergenz folgt.
+%\textcolor{red}{
+%\begin{itemize}
+%	%\item Verweis auf $ p $-absolute Konvergenz.
+%	\item Konstruiere Gegenbeispiel mit $ X = C([-1,1]) $ mit
+%$ \| f \| = \int_{-1}^1 |f(x)| \ dx $
+%\end{itemize}
+%}
+Mithilfe des nachfolgenden Satzes werden Banachräume darüber charakterisiert, dass jede absolut konvergente Reihe konvergiert.
+
+\begin{sz}\label{thm:abs_to_conv}
+	Sei $ X$ ein normierter Raum.
+	Dann ist $ X $ genau dann vollständig, wenn jede absolut summierbare Folge summierbar ist.
+%	\begin{enumerate}
+%		\item $ X $ ist vollständig.
+%		\item Jede absolut summierbare Folge ist summierbar.
+%	\end{enumerate}
+\end{sz}
+
+\begin{proof}
+	\begin{description}
+		\item[\glqq$ \Rightarrow $\grqq:]
+		Sei $ X $ vollständig und eine beliebige absolut summierbare Folge $ (x_n) $ gegeben. Dann gilt
+		\begin{align*}
+			\| S_n - S_m \| = \left\| \sum \limits_{i = m+1}^n x_i \right\|
+			\leq
+			\sum \limits_{i = m+1}^n \| x_i \| < \varepsilon
+		\end{align*}
+		für ein passendes $ N_\varepsilon $ mit $ n,m > N_\varepsilon $ und $ n > m $.
+		Damit ist $ S_n = \sum_{i=1}^n  x_i$ eine Cauchyfolge in $ X $. Die Vollständigkeit liefert die Konvergenz.		
+		\item[\glqq$ \Leftarrow $\grqq:]
+		Wir nehmen an, dass jede absolut konvergente Reihe konvergiert. Sei $ (x_k) $ eine Cauchyfolge in $ X $. Für $ \varepsilon_n = 2^{-n} $ existiert ein $ N_n $, sodass
+		\begin{align*}
+			\| x_k - x_l \| < 2^{-n}
+		\end{align*}
+		für alle $ k, l > N_n $ gilt. Insbesondere existiert eine Teilfolge $ (x_{k_l}) $, sodass
+		\begin{align*}
+			\| x_{k_{n+1}} - x_{k_n} \| < 2^{-n}
+		\end{align*}
+		für alle $ n \in \N $ gilt. Mit $ y_n = x_{k_{n+1}} - x_{k_n}  $ erhalten wir 
+		\begin{align*}
+			\sum \limits_{n=1}^\infty \| y_n \| < \sum \limits_{n=1}^\infty \frac{1}{2^n} < \infty.
+		\end{align*}
+		Da jede absolut konvergente Reihe konvergiert, existiert ein $ y \in X $, sodass
+		\begin{align*}
+			\left\| y - \sum_{n  = 1}^N y_n \right\|
+			=
+			\| y - x_{k_{N+1}} + x_{k_1} \| \to 0
+		\end{align*}
+		für $  N \to \infty $ gilt. Damit besitzt $ (x_k)$ eine konvergente Teilfolge.
+		$ (x_k) $ ist eine Cauchyfolge mit konvergenter Teilfolge ist.
+		Damit ist $ (x_k) $ selbst konvergent und $ X $ ist vollständig.	
+	\end{description}	
+\end{proof}
+
+
+\begin{genericthm}{Cauchy-Kriterium}\label{th:chauchy_crit}
+	Sei $ X $ ein Banachraum.
+	Dann ist eine Folge $ (x_n) $ genau dann summierbar, falls gilt:
+	\begin{align*}
+		\lim\limits_{n,m \to \infty} \left\| \sum \limits_{i= m+1}^n x_i \right\| = 0.
+	\end{align*}
+	%gilt.
+\end{genericthm}
+
+Der Beweis des Cauchy-Kriteriums folgt unmittelbar aus der Tatsache, dass jede konvergente Folge eine Cauchyfolge ist und $ X $ vollständig ist.
+Die Hinrichtung folgt aus der Tatsache, dass jede konvergente Folge eine Cauchyfolge ist.
+Die Vollständigkeit von $ X $ liefert die Rückrichtung. 
+Ähnlich leicht übertragen sich die folgenden bekannten Aussagen auf beliebige Banachräume.
+Die Beweise hiervon sind im Wesentlichen analog zu den reellen Formulierungen.
+
+\begin{genericthm}{Majorantenkriterium}
+	Sei $ (\alpha_n) $ positiv, reelle und summierbar und $ (x_n) $ eine Folge in einem Banachraum $ X $.
+	Falls ein $ n_0 \in \N $ existiert, sodass
+	\begin{align}
+		 \| x_n \| \leq \alpha_n
+	\end{align}
+	für alle $ n \geq n_0 $ gilt, ist $ (x_n) $ absolut summierbar.
+\end{genericthm}
+%\textbf{\textcolor{red}{TODO.}}
+
+
+\begin{genericthm}{Quotientenkriterium}
+	Sei $ (x_n) $ eine Folge in einem Banachraum $ X $ und es existiere ein $ n_0 \in \N $, sodass $ x_n \neq 0  $ für $ n \geq n_0 $.
+	Dann ist $ (x_n) $ absolut summierbar, falls $ \limsup_{n \to \infty} \frac{\|x_{n+1} \|}{\|x_n \|} < 1  $ gilt.
+\end{genericthm}
+%0\textbf{\textcolor{red}{TODO.}}
+
+\begin{genericthm}{Wurzelkriterium}
+	Sei $ (x_n) $ eine Folge in einem Banachraum $ X $ mit $ \limsup_{n \to \infty} \sqrt[n]{\|x_n \|} < 1  $.
+	Dann ist $ (x_n) $ absolut summierbar.
+\end{genericthm}
+%\textbf{\textcolor{red}{TODO.}}
+
+\begin{genericthm}{Eigenschaften}
+	Seien $ X $ und $ Y $ Banachräume. Dann gelten:
+	\begin{enumerate}
+		\item Seien $ (x_n) $ und $ (y_n) $ summierbar in $ X $. Dann ist $ (a x_n + b y_n) $ für alle $ a,b \in \R $ summierbar in $ X $.
+		
+		
+		
+		\item 
+		Sei $ T : X \to Y $ ein stetiger linearer Operator und $ (x_n) $ summierbar in $ X $.
+		Dann ist $ (Tx_n) $ summierbar in $ Y $.
+	\end{enumerate}
+\end{genericthm}
+
+\begin{proof}
+	%Erste GW-Def und zweite Partialsummenfolge.
+	Die erste Aussage folgt unmittelbar aus der Dreiecksungleichung und die Zweite aus der Stetigkeit von $ T $.
+\end{proof}
+
+
+
+\section{Affin lineare Konvergenzbereiche im endlichdimensionalen Raum}\label{sc:construction_steiniz_prop_finite}
+%\subsection{Affin lineare Konvergenzbereiche im endlichdimensionalen Raum}
+
+
+\begin{df}
+	Sei $ (x_n) $ summierbar in $ X $.
+	Der \textit{Konvergenzbereich} der Reihe ist gegeben durch:
+	\begin{align*}
+		\mathcal{K}_{(x_n) }:= 
+		\left\{
+		x \in X \ | \ \exists \pi \in \mathcal{S}_\N\ : \sum \limits_{i=1}^\infty x_{\pi(i)} = x
+		\right\}.
+	\end{align*}
+\end{df}
+
+Für $ X = \R $ liefert der Riemannsche Umordnungssatz für eine bedingt summierbare Folge $ (x_n) $, dass $ \mathcal{K}_{(x_n)} = \R $ gilt.
+Für höhere Dimensionen reicht die bedingte Summierbarkeit im Allgemeinen nicht für den ganzen Raum. \\
+Sei $ X = \R^n $ und $ (x_n) $ bedingt summierbar mit $  \dim  \spn\{x_n\} =1 $.
+Dann gibt es ein $ y \in \spn {x_n} $, sodass für alle $ i \in \N $ ein $ \lambda_i \in \R $ mit $ x_i = \lambda_i \cdot y $ existiert.
+Damit gilt
+\begin{align*}
+	\sum x_i = \sum \lambda_i y = y \sum \lambda_i.
+\end{align*}
+Der Riemannsche Umordnungssatz \ref{th:riemann_rearrangement_lemma} liefert dann $ \mathcal{K}_{(x_n )} = \spn\{x_n\} $.\\
+Sei $ X = \R^n  $ und $ Y=\R^m $ mit $ m \leq n $.
+Wir konstruieren nun explizit eine Folge $ (x_n)$, sodass $ \mathcal{K}_{(x_n)} = Y $ ist.
+Dafür setzen wir
+\begin{align*}
+	x_{m(k-1)+ l}  := (-1)^k \frac{1}{k} \mathrm{e}_l
+\end{align*}
+für $ k \in \N $ und $ 1 \leq l \leq m $.
+Dann erhalten wir mit
+\begin{align*}
+	\sum \limits_{i=1}^\infty x_i
+	=
+	\sum \limits_{l=1}^m  \mathrm{e}_l \left(\sum \limits_{i = 1}^\infty (-1)^i \frac{1}{i} \right) 
+\end{align*}
+und dem Riemannschen Umordnungssatz \ref{th:riemann_rearrangement_lemma} den Konvergenzbereich $ K_{(x_n)} = \R^m$.
+Mit diesen Beispielen haben wir die nötigen Werkzeuge, um in endlichdimensionalen Räumen beliebige affine Unterräume zu konstruieren.
+
+\begin{genericthm}{Konstruktionsprinzip für einen affinen Unterraum}
+	Sei $  E $ ein endlichdimensionaler Raum, $ U $ ein Unterraum von $ E $ und $ s \in E $.
+	Dann exisitiert eine bedingt summierbare Folge $ (x_n) $, sodass
+	\begin{align*}
+		\mathcal{K}_{(x_n)}
+		= 
+		s + U
+	\end{align*}
+	gilt. 
+\end{genericthm}
+
+\begin{proof}
+	Sei $ n := \dim E $, $ m := \dim U $ und $ \mathrm{b}_1,...,\mathrm{b}_m $ eine Basis von $ U $.
+	Dann erhalten wir analog zu dem vorangegangenen Beispiel mit
+	\begin{align*}
+		\tilde{x}_{m(k-1) + l }
+		:=
+		(-1)^k \frac{1}{k} \mathrm{b}_l
+	\end{align*}
+	für $ k \in \N $ und $ 1 \leq l \leq m $ eine Folge $ (\tilde{x}_n) $ mit Konvergenzbereich $ K_{(x_n)} = U $.
+	Dies folgt wegen
+	\begin{align*}
+		\sum \limits_{i=1}^\infty \tilde{x}_i
+		=
+		\sum \limits_{l=1}^m  \mathrm{b}_l \left(\sum \limits_{i = 1}^\infty (-1)^i \frac{1}{i} \right)
+	\end{align*}
+	mit dem Riemannschen Umordnungssatz \ref{th:riemann_rearrangement_lemma}.
+	Nun fehlt noch die affine Verschiebung. 
+	Wir nehmen o.B.d.A. an, dass $ s \notin U $ gilt.
+	Sei $ s^{(k)} > 0 $ mit $ 1 \leq k \leq n $ eine Komponente von $ s $. 
+	Dann existiert ein $ z_k \in \R $, sodass $ s^{(k)} =e^{z_k} $ gilt.
+	Indem wir mit $ (-1) $ multiplizieren, erreichen wir dasselbe für strikt negative Zahlen. 
+	Falls $ s^{(k)}  = 0$ gilt, ignorieren wir diese Komponente.
+ 	Damit erhalten wir die Folge
+	\begin{align*}
+		s_{i}:=
+		\frac{1}{i!}
+		\begin{pmatrix}
+			z_1^i\\
+			\vdots\\
+			z_n^i
+		\end{pmatrix}
+	\end{align*}
+	und es gilt
+	\begin{align*}
+		\sum \limits_{i=0}^\infty
+		s_{\pi(i)}
+		=
+		\begin{pmatrix}
+			s^{(1)}\\
+			\vdots\\
+			s^{(n)}
+		\end{pmatrix}
+	\end{align*}
+	für eine beliebige Umordnung $ \pi \in \mathcal{S}_\N $.
+	Alternativ könnten wir für die affine Verschiebung die unspektakuläre Folge
+	\begin{align*}
+		(s,0,0,.....)
+	\end{align*}
+	wählen.
+	Mit der Folge 
+	\begin{align*}
+		x_i := s_{i-1} + \tilde{x}_i
+	\end{align*}
+	erhalten wir den Konvergenzbereich $ \mathcal{K}_{(x_n)} = s + U $.
+\end{proof}
+
+
+Für eine unbedingt summierbare Folge $ (x_n) $ mit Grenzwert $ s $ erhalten wir $ \mathcal{K}_{(x_n)} = s$.
+Nach dem Satz \ref{th:every_rearrangement_same_limit} stellt dies auch keine Überraschung dar. 
+Damit ist der Konvergenzbereich nicht relevant für die Untersuchung unbedingt konvergenter Reihen.
+Mit obiger Konstruktion können wir jeden möglichen affinen Unterraum als Konvergenzbereich konstruieren. 
+Nun eröffnet sich die Frage, ob Konvergenzbereiche im Allgemeinen eine solche Form besitzen.
+Der Satz von Steiniz \ref{th:lemma_of_steiniz} wird dies für endlichdimensionale Räume zeigen.
+Mit den Sätzen von Pecherskii \ref{th:lemma_of_pecherskii} und Chobanyan \ref{th:lemma_of_chobanyan} werden wir einen linearen Konvergenzbereich auch für unendlichdimensionale Räume erhalten.
+Diese Sätze haben gemein, dass diese affin lineare Konvergenzbereiche liefern. Um hiermit sinnvoll zu arbeiten benötigen wir zwei neue Definitionen.
+
+
+
+\begin{df}
+	Sei $ (x_n) $ eine summierbare Folge in einem Banachraum $ X $.
+	Die \textit{Menge der Konvergenzfunktionale} von $ (x_n) $ ist durch
+	\begin{align}
+		\Gamma :=
+		\left\{
+		x^\prime \in X^\prime \ | \ \sum \limits_{i=1}^\infty |x^\prime(x_i)| < \infty
+		\right\}
+	\end{align}
+	definiert. 
+	Den zugehörigen Annihilator von $ \Gamma $ bezeichnen wir mit
+	\begin{align*}
+		\Gamma_0 := \Gamma^\bot =  \{ x \in X \ | \ \forall \ x^\prime \in \Gamma  \ : \ x^\prime(x) = 0 \}. 
+	\end{align*}
+	Dieser ist ein abgeschlossener Unterraum von $ X $.
+\end{df}
+
+Für eine unbedingt summierbare Folge $ (x_n) $  ist $ \langle x^\prime, x_n \rangle$ für ein beliebiges $ x^\prime \in X^\prime$ unbedingt summierbar auf $ \R $.
+Damit folgt wegen der Äquivalenz auf $ \R $ : $ \sum  |\langle x^\prime, x_n \rangle |< \infty $. Also besteht die Menge der Konvergenzfunktionale aus dem Dualraum $ X^\prime $ und es gilt $ \Gamma_0 = \{0\} $.
+Das andere Extrem erhalten wir mit der harmonischen Reihe über $ \R $. Hier ist nur das Nullfunktional ein Konvergenzfunktional, womit $ \Gamma_0 = \R $ gilt.
+
+\begin{lem}
+	Seien die Voraussetzungen wie in dem Konstruktionsprinzip für den affinen Unterraum.
+	Dann gilt $ \Gamma_0 = U $.
+\end{lem}
+
+\begin{proof}
+	Sei $ n := \dim E $, $ m := \dim U $ und $ \mathrm{b}_1,...,\mathrm{b}_m, \mathrm{b}_{m+1},..., \mathrm{b}_n $ eine Basis von $ E $, wobei die ersten $ m $ Vektoren den Unterraum $ U $ erzeugen.
+	Mit $ \mathrm{b}_1^\prime,..., \mathrm{b}_n^\prime $ bezeichnen wir die zugehörige duale Basis von $ E^\prime $.
+	Für diese gilt $ \langle \mathrm{b}^\prime_i, \mathrm{b}_j \rangle = \delta_{ij}$. Um uns Schreibarbeit zu sparen, betrachten wir
+	\begin{align*}
+		\sum \limits_{i=1}^\infty |\langle \mathrm{b}_j^\prime,x_i
+		\rangle|
+		=
+		\sum \limits_{k=1}^\infty
+		\sum \limits_{ l = 1}^m
+		|\langle\mathrm{b}_j^\prime,x_{m(k-1) + l} \rangle|
+		=
+		\sum \limits_{k=1}^\infty
+		\frac{1}{k} = \infty.
+	\end{align*} 
+	Damit sind die Elemente von $ \spn \{\mathrm{b}_i^\prime\}_{i = 1}^m $ keine Konvergenzfunktionale.
+	Der Aufspann der restlichen dualen Basiselemente liefert uns die Konvergenzfunktionale.
+	Für den zugehörigen Annhilator hiervon gilt $ \Gamma_0 = U $.
+\end{proof}
+Diese Beobachtung motiviert die nachfolgende Definition.
+Unser Ziel wird es dann sein, zu zeigen, dass die Unterraumstruktur von dem Annhilator der Konvergenzfunktionale stammt.
+Insbesondere können wir auch sagen, dass die affine Verschiebung aus einem unbedingt summierbaren Teil der Folge stammt.
+
+
+\begin{df}
+	Sei $ (x_n) $ eine summierbare Folge mit Grenzwert $ s $ in einem Banachraum $ X $.
+	Falls deren Konvergenzbereich $ K_{(x_n)} $ ein affiner Unterraum der Form
+	\begin{align*}
+		\mathcal{K}_{(x_n)} := s + \Gamma_0
+	\end{align*}
+	ist, hat $ (x_n) $ die \textit{Steinitz-Eigenschaft}.
+	Wir nennen $ (x_n) $ auch \textit{Steinitzfolge}.
+\end{df}
+Damit ist jede unbedingt summierbare Folge eine Steinitzfolge, da deren Konvergenzbereich aus einem Punkt besteht.
+Der nachfolgende Satz zeigt uns, dass der Konvergenzbereich einer Folge immer in einer affinen Strukur enthalten ist.
+Die spannende Frage für uns wird sein, wann die Teilmengenbeziehung in die andere Richtung auch gilt. 
+ 
+
+\begin{sz}\label{th:subset_conv_area}
+	Sei $ (x_n) $ summierbar in einem Banachraum $ X $.
+	Dann gilt $ \mathcal{K}_{(x_n)} \subseteq s + \Gamma_0 $.
+\end{sz}
+\begin{proof}
+	Sei $  x^\prime  \in \Gamma $ ein Konvergenzfunktional.
+	Dann ist $ (\langle x^\prime,  x_n\rangle) $ absolut summierbar.
+	Falls $  (x_{\pi(n)}) $ für $ \pi \in \mathcal{S}_\N $ summierbar ist, so gilt aufgrund der Stetigkeit von $ x^\prime $:
+	\begin{align*}
+		\left\langle x^\prime, \sum \limits_{i = 1}^\infty x_{\pi(i)}\right\rangle
+		= \sum \limits_{i = 1}^\infty 	\langle  x^\prime, x_{\pi(i)} \rangle
+		=
+		\sum \limits_{i = 1}^\infty \langle  x^\prime, x_{\pi(i)} \rangle
+		=
+		\langle  x^\prime, s \rangle
+		\ \Leftrightarrow \
+		\left\langle x^\prime,
+		\sum \limits_{k = 1}^\infty x_{\pi(k)}
+		- s
+		\right\rangle =0.
+	\end{align*}
+	Somit ist $ \sum x_{\pi(i)} -s  \in \Kern \ x^\prime $.
+	Da dies für alle $ x^\prime \in \Gamma $ gilt, erhalten wir $ \sum x_{\pi(i)} -s \in \Gamma_0 $ und insbesondere $ \mathcal{K}_{(x_n)} \subseteq s + \Gamma_0 $.
+\end{proof}
+
+
+
+
+
+
+ 

@@ -1,0 +1,2420 @@
+
+\chapter{Unbedingte Konvergenz in Banachräumen}
+%\section{Unbedingte Konvergenz in Banachräumen}
+
+
+\section{Charakterisierung der unbedingten Konvergenz}\label{sc:char_uncon_sum}
+%\subsection{Charakterisierung der unbedingten Konvergenz}
+
+
+
+
+
+Um den Begriff der unbedingten Konvergenz zu charakterisieren, führen wir weitere Konvergenzbegriffe ein und zeigen deren Äquivalenz zur unbedingten Konvergenz.
+%Wir werden dann zeigen, dass diese äquivalent zu der unbedingten Konvergenz sind. 
+
+\begin{df}
+	Sei $ (x_n) $ eine Folge in einem Banachraum $ X $.
+	\begin{enumerate}
+	\item 
+	Eine Folge $ (x_n) $ heißt \textit{perfekt summierbar}, falls
+	$ (\alpha_n x_n ) $ für alle $ \alpha \in \{\pm 1\}^\N $ summierbar ist.
+	Die Reihe heißt dann \textit{perfekt konvergent}.
+	%		Eine Reihe $ \sum_{k=1}^\infty x_k $ heißt \textit{perfekt konvergent}, falls
+	%		\begin{align*}
+	%		\sum \limits_{k=1}^\infty \alpha_k x_k
+	%		\end{align*}
+	%		für alle $ \alpha \in \{\pm 1\}^\N $ konvergiert.
+	
+	\item
+	Eine Folge $ (x_n) $ heißt \textit{ungeordnet summierbar}, falls zu jedem 
+	$ \varepsilon >0  $ ein $ N_\varepsilon  \in \N$ existiert, sodass für jede endliche Menge $ M \subset \N $ mit $ \min \ M > N_\varepsilon $
+	\begin{align*}
+		\left\| \sum \limits_{i \in M } x_i \right\| < \varepsilon
+	\end{align*}
+	gilt.
+	Die Reihe heißt dann \textit{ungeordnet konvergent}.
+	
+	\item
+	Eine Folge $ (x_n) $ heißt \textit{teil-summierbar}, falls $ (x_{n_j}) $
+	für jede Indexfolge $ (n_j) $ summierbar ist.
+	Die Reihe heißt dann \textit{teil-konvergent}.\\
+	%Unter einer \textit{Indexfolge} $ (k_n) $ verstehen wir eine streng monoton wachsende Folge mit Gliedern in $ \N $.
+\end{enumerate}
+\end{df}
+
+
+\begin{sz}\label{th:equi_uncond_1}
+	Sei $ X $ ein Banachraum und $ (x_n) $ eine Folge in $ X $.
+	Dann sind äquivalent:
+	\begin{enumerate}
+		\item $  (x_n) $ ist unbedingt summierbar.
+		\item $ (x_n) $ ist ungeordnet summierbar.
+		\item $ (x_n) $ ist teil-summierbar.
+		\item $ (x_n) $ ist perfekt summierbar.
+	\end{enumerate}	
+	
+\end{sz}
+
+\begin{proof}
+	\begin{description}
+		\item[\textit{ \itshape\textrm{(i)}} $ \Rightarrow $ \textbf{\textit{\textrm{(ii)}}}:]
+		Angenommen $ (x_n) $ ist nicht ungeordnet summierbar, d.h.
+		\begin{align*}
+			\exists \delta > 0 \  
+			\forall n \in \N \
+			\exists \tilde{M}_n \subset \N \ \textrm{endlich mit}\min \tilde{M}_n > n:
+			\left\| \sum_{m \in \tilde{M}_n} x_m \right\| \geq \delta. 
+		\end{align*}
+		Wir definieren uns eine Mengenfolge durch
+		\begin{align*}
+			M_1 := \tilde{M}_1, \quad 
+			M_n := \tilde{M}_{n + \min\{ k \ | \ \tilde{M}_n \cap \tilde{M}_{n+k} = \emptyset \}}. 
+		\end{align*} 
+		Diese Konstruktion erfüllt $ \max M_n < \min M_{n+1} $ und $\left\| \sum_{m \in M_n} x_m \right\| \geq \delta $ für alle $ n \in \N $.
+		Damit sind die $ M_n $ disjunkt und es existiert eine Permutation $ \pi $ mit
+		\begin{align*}
+			\pi(\{\min M_n,...,\min M_n + |M_n| \}) = M_n
+		\end{align*}
+		für alle $ n \in \N  $. Damit ist die Partialsummenfolge über $ (x_{\pi(n)}) $  keine Cauchyfolge.
+		Also erhalten wir einen Widerspruch zur unbedingten Summierbarkeit.		
+		\item[\textit{ \itshape\textrm{(ii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(i)}}}:]
+		Sei $ \varepsilon > 0  $ beliebig. Dann existiert ein $ N_\varepsilon  \in \N$, sodass
+		\begin{align*}
+			\left\| \sum \limits_{m \in M } x_m \right\| < \varepsilon
+		\end{align*}
+		für alle endlichen $ M \subset \N $ mit $ \min M > N_\varepsilon $ gilt.
+		Wir wählen eine beliebige Permutation $ \pi \in \mathrm{S}_\N $.
+		Dann existiert ein $ M_\varepsilon \in \N $, sodass $ \{1,...,N_\varepsilon\} \subseteq 
+		\pi(\{1,...,M_\varepsilon\}) $ gilt. Damit erhalten wir insbesondere
+		\begin{align*}
+			\left\| \sum \limits_{k=n}^m x_{\pi(k)} \right\| < \varepsilon
+		\end{align*}
+		für $ m > n > M_\varepsilon $ und mit der Vollständigkeit von $ X $ ist $ (x_{\pi(n)}) $ summierbar. Da $ \pi $ beliebig gewählt wurde, erhalten wir die unbedingte Summierbarkeit.
+		\item[\textit{ \itshape\textrm{(ii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(iii)}}}:]
+		Sei $ \varepsilon > 0  $ beliebig. Dann existiert ein $ N_\varepsilon  \in \N$, sodass
+		\begin{align*}
+			\left\| \sum \limits_{m \in M } x_m \right\| < \varepsilon
+		\end{align*}
+		für alle endlichen $ M \subset \N $ mit $ \min M > N_\varepsilon $ gilt.
+		Sei $ (n_j) $ eine Indexfolge.
+		Dann existiert ein $ p \in \N $ mit $ n_p > \N_\varepsilon $. 
+		Insbesondere erhalten für $ q > p $ die Teil-Summierbarkeit durch
+		\begin{align*}
+			\left\| \sum \limits_{j = p}^q x_{n_j} \right\| < \varepsilon.
+		\end{align*}
+	
+		
+		
+		\item[\textit{ \itshape\textrm{(iii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(iv)}}}:]
+		Sei $ (\alpha_n) \in \{\pm 1\}^\N$ beliebig.
+		Wir trennen $ \N $ durch 
+		\begin{align*}
+			S_\pm := \{n \in \N  \ | \ \alpha_n = \pm 1 \}
+		\end{align*} 
+		in zwei Indexmengen auf. 
+		Sei ohne Beschränkung der Allgemeinheit $ |S_+| = | S_- | = \infty $ und seien $ (n_j^\pm) $ die entsprechenden streng monotonen Indexfolgen.
+		Die Teil-Summierbarkeit von $ (x_n) $ liefert die Summierbarkeit von $ (x_{n_j^+}) $ und $ (x_{n_j^-}) $.
+		Aus den Grenzwertsätzen erhalten wir dann die Summierbarkeit von $ (\alpha_n x_n) $.
+		\item[\textit{ \itshape\textrm{(iv)}} $ \Rightarrow $ \textbf{\textit{\textrm{(ii)}}}:]
+		Sei $ (x_n) $ perfekt summierbar. Angenommen $ (x_n) $ ist nicht ungeordnet summierbar.
+		Wie in dem ersten Teil des Beweises lässt sich eine Mengenfolge mit
+		\begin{align*}
+			\max  M_n < \min M_{n+1} 
+			\ \textrm{und} \
+			\left\| \sum \limits_{m \in M_n } x_m \right\| \geq \delta 
+		\end{align*}
+		für ein $ \delta > 0 $ und alle $ n \in \N  $ konstruieren.
+		Wir definieren die Koeffizientenfolge $ (\alpha_n) $ durch
+		\begin{align*}
+			\alpha_n	
+			:=
+			\begin{cases}
+				1 \quad &\quad  \textrm{falls } n \in \bigcup \limits_{i \in \N} M_i\\
+				-1 \quad &\quad  \textrm{sonst.}
+			\end{cases}.
+		\end{align*}
+		Die negativen Koeffizienten müssen auftreten, da wir ansonsten unmittelbar einen Widerspruch zur perfekten Summierbarkeit von $ (x_n) $ erhalten.
+		Wegen 
+		\begin{align*}
+			\left\| \sum \limits_{i = \min M_n}^{\max M_n} x_i \right\| \geq \delta 
+		\end{align*}
+		für alle $ n \in \N $ ist die Partialsummenfolge zu $ ((1+ \alpha_n ) x_n) $ eine Cauchyfolge. Damit ist $ (x_n) $ oder $ (\alpha_n x_n)$ unsummierbar.
+		Beide Fälle sind ein Widerspruch zu der perfekten Summierbarkeit.
+	\end{description}
+\end{proof}
+
+\begin{genericthm}{Schranken-Test}\label{th:bounded_test}
+	Sei $ X $ ein Banachraum.
+	Die Folge $ (x_n) $ ist in $ X $ genau dann unbedingt summierbar, wenn
+	$ (b_n x_n) $ für alle $ (b_n) \in \ell^\infty $  summierbar ist.
+\end{genericthm}
+\begin{proof}
+	Sei $ (b_n x_n) $ für alle $ (b_n) \in \ell^\infty $ summierbar.
+	Wegen $ \{\pm 1\}^\N \subset \ell^\infty $ ist $ (x_n) $ perfekt summierbar und mit dem Satz \ref{th:equi_uncond_1} folgt die unbedingte Summierbarkeit.\\
+	Nun sei $ (x_n) $ unbedingt summierbar.
+	Aufgrund der Vollständigkeit von $ X $ genügt es 
+	\begin{align*}
+		\lim \limits_{n,m \to \infty } \left\| \sum \limits_{i = m }^n b_i x_i \right\| = 0
+	\end{align*}
+	für alle $ b =  (b_n)  \in \ell^\infty$ zu zeigen. Mit dem Satz von Hahn-Banach gilt
+	\begin{align*}
+		 \left\| \sum \limits_{i = m }^n b_i x_i \right\|
+		 =
+		 \sup \limits_{x^\prime \in X^\prime} \left| \left\langle x^\prime, \sum \limits_{i = m }^n b_i x_i \right\rangle \right|
+		 \leq
+		 \| b \|_\infty \cdot \sup \limits_{x^\prime \in X^\prime} \sum \limits_{i = m }^n \left| \left\langle x^\prime,   x_i \right\rangle \right|
+	\end{align*}
+	für $ n > m  $.
+	Wir verwenden nun die Äquivalenz zur ungeordneten Summierbarkeit \ref{th:equi_uncond_1}.
+	Sei $ \varepsilon > 0  $ beliebig. Dann existiert ein $ m_\varepsilon  \in \N$, sodass
+	für jede endliche Menge $ M \in \N $, mit $ \min M >m_\varepsilon $, die Abschätzung
+	$ \left\| \sum_{i \in M} x_i \right\| < \varepsilon $ gilt.
+	Wir nehmen an, dass $ X $ ein $ \R $-Banachraum ist.
+	Ansonsten muss der Real-und Imaginärteil des Dualitätprodukts (analog) seperat untersucht werden.
+	Wir fixieren  $ x^\prime $, wählen $ n >m > m_\varepsilon $ und setzen
+	\begin{align*}
+		M_+ &:= \{m \leq i \leq n \ | \ \langle x^\prime, x_i  \rangle \geq 0 \}\\
+		M_- &:=  \{m \leq i \leq n \ | \ \langle x^\prime, x_i \rangle   <  0 \}.
+	\end{align*}
+	Dann folgt mit der ungeordneten Summierbarkeit:
+	\begin{align*}
+		\sum 
+		\limits_{i = m }^n |\langle x^\prime ,x_i \rangle | 
+		=
+		\left|
+		\sum 
+		\limits_{i \in M_+ } \langle x^\prime , x_i \rangle 
+		\right|
+		+ 
+			\left|
+		\sum 
+		\limits_{i \in M_- } \langle x^\prime , x_i \rangle 
+		\right|
+		\leq
+		\left\| \sum	\limits_{i \in M_+ } x_i \right\|
+		+
+		\left\| \sum	\limits_{i \in M_- } x_i \right\| 
+		< 2 \varepsilon.
+	\end{align*}
+	Damit ist $ (b_n x_n) $ summierbar.
+\end{proof}
+
+Es ist bekannt, dass die Normkonvergenz die schwache Konvergenz in jedem normierten Raum impliziert.
+Umgekehrt ist dies im Allgemeinen nicht der Fall. 
+Jedoch gibt es Räume, für welche diese Richtung gilt.
+Für unsere Zwecke betrachten wir in diesem Kontext die von Schur\cite{Schur1920} gezeigte Aussage.
+
+
+\begin{genericthm}{$ \ell^1 $-Satz von Schur(1920)}\label{th:schur_l1}
+	Sei $ (x^{(n)}) $ eine schwach konvergente Folge in $ \ell^1 $.
+	Dann ist $ (x^{(n)}) $ konvergent in $ \ell^1 $.
+	%In $ \ell^1 $ sind schwache Konvergenz und Normkonvergenz für Folgen identisch.
+\end{genericthm}
+\begin{proof}
+	Sei $ (x^{(n)}) $ schwach konvergent in $ \ell^1 $.
+	Wir können ohne Beschränkung annehmen, dass $ (x^{(n)}) $ schwach gegen $ 0 $ konvergiert.
+	Der Dualraum von $ \ell^1 $ ist gegeben durch $ \ell^\infty $. Wegen $ x_n \rightharpoonup 0 $ gilt
+	\begin{align*}
+		\langle
+		y, x^{(n)} 
+		\rangle
+		= \sum \limits_{i = 1}^\infty y_i x_i^{(n)} \overset{n \to \infty}{\rightarrow} 0
+	\end{align*}
+	für alle $ y \in \ell^\infty $.
+	Damit folgt $ x^{(n)}_i \rightarrow 0 $ für alle $ i \in \N $ und wir erhalten
+	\begin{align*}
+		\sum \limits_{i = 1 }^N | x^{(n)}_i | \rightarrow 0
+	\end{align*}
+	für alle (fixierten) $ N \in \N  $.
+	Nach dem Satz von Banach-Alaoglu ist $ B_{\ell^\infty} $ schwach-$ \ast $ kompakt.
+	Wegen der Separabilität von $ \ell^1 $ ist $ B_{\ell^\infty} $ schwach-$ \ast $ metrisierbar.
+	Durch 
+	\begin{align*}
+		U(\hat{y},\delta,N)
+		=
+		\{
+		y \in B_{\ell^\infty} \ : \
+		|y_k - \hat{y}_k| < \delta , \ 1 \leq k \leq N
+		\}
+	\end{align*}
+	für $ \delta > 0 $ und $ N \in \N $ erhalten wir eine Basis aus schwach-$ * $ Umgebungen von $ \hat{y} \in B_{\ell^\infty} $.
+	%Durch diese zwei Eigenschaften lässt sich der Bairsche Kategoriensatz anwenden.
+	Wir wählen $ \varepsilon > 0  $ fest und definieren
+	\begin{align*}
+		B_m 
+		:= \bigcap \limits_{n \geq m}
+			\left\{
+			y \in B_{\ell^\infty} \ : \ |\langle y, x^{(n)} \rangle | \leq \frac{\varepsilon}{3}
+			\right\}
+	\end{align*}
+	für $ m \in \N $.
+	Da der beliebige Schnitt abgeschlossener Mengen abgeschlossen ist, folgt die schwach-$ \ast $ Abgeschlossenheit von $ B_m $.
+	Desweiteren ist die Mengenfolge $ (B_m) $ monoton wachsend
+	und $ x_n \rightharpoonup 0 $ impliziert
+	\begin{align*}
+		B_{\ell^\infty }
+		=
+		\bigcup \limits_{m \in \N} B_m.
+	\end{align*}
+	Damit können wir den Baireschen Kategoriensatz anwenden.
+	Nach diesem existiert ein $ m_0 \in \N $, sodass das Innere von $ B_{m_0} $ nichtleer ist. Insbesondere gilt dies für alle $ B_m $ mit $ m \geq m_0 $.
+	Außerdem finden wir ein $ \hat{y} \in B_{m_0} $, $ \delta > 0 $ und $ N \in \N $, sodass
+	\begin{align*}
+		U(\hat{y}, \delta , N)
+		\subset B_{m_0} \subseteq B_m
+	\end{align*}
+	für $ m \geq m_0 $ gilt. Unter eventueller Anpassung von $ m_0 $ gilt dann auch
+	\begin{align*}
+		\sum \limits_{i =1}^N | x^{(m)}_i | < \frac{\varepsilon}{3}
+	\end{align*}
+	für $ m \geq m_0 $.
+	Wir fixieren ein beliebiges $ m \geq m_0 $ und verwenden, dass in der Umgebung $ U(\hat{y},\delta, N) $ nur endlich viele Folgenglieder relevant sind. Damit definieren wir $ y \in B_{\ell^\infty} $ durch
+	\begin{align*}
+		y_i
+		:=
+		\begin{cases}
+			\hat{y}_i , &\ 1 \leq i \leq N,\\
+			\sign \  x^{m}_i , &\ i > N.
+		\end{cases}
+	\end{align*}
+	Dies impliziert $ y \in U(\hat{y},\delta, N) \subset B_{m_0}  $
+	und $ | \langle y ,x^{(m)} \rangle  | \leq \frac{\varepsilon}{3}$.
+	Insgesamt erhalten wir mit
+	\begin{align*}
+		\| x^{(m)} \|
+		&=
+		\sum \limits_{i \geq 1} |x_i^{(m)}|
+		=
+		\sum \limits_{i \leq N} |x_i^{(m)}|
+		+
+		\sum \limits_{i > N} |x_i^{(m)}|
+		=
+		\sum \limits_{i \leq N} |x_i^{(m)}|
+		+
+		\left|
+		\sum \limits_{i \geq 1} y_i x_i^{(m)}
+		-
+		\sum \limits_{i \leq N} y_i x_i^{(m)}
+		\right|\\
+		&\leq
+		\sum \limits_{i \leq N} (1+ y_i)|x_i^{(m)}|
+		+ | \langle y, x^{(m )} \rangle | 
+		<
+		\frac{2 \varepsilon}{3} + \frac{\varepsilon}{3}
+		= \varepsilon
+	\end{align*}
+	die gewünschte Aussage.
+	
+
+
+	
+\end{proof}
+
+\begin{df}
+	Sei $ (x_n) $ eine Folge in einem Banachraum $ X $. 
+	\begin{enumerate}
+		\item 
+		Die Folge $ (x_n) $ heißt  \textit{schwach summierbar}, falls ein $ s  \in X$ existiert, sodass
+		\begin{align*}
+			\lim\limits_{n \to \infty}
+			\left\langle x^\prime,
+			\sum \limits_{i = 1}^n x_{\pi(i)}
+			\right\rangle_{X^\prime}
+			= 
+			\langle x^\prime,s\rangle_{X^\prime}
+		\end{align*}
+		für alle $ x^\prime \in X^\prime $ gilt.
+		
+		\item 
+		Die Folge $ (x_n) $ heißt  \textit{schwach unbedingt summierbar}, falls ein $ s  \in X$ existiert, sodass
+		\begin{align*}
+			\lim\limits_{n \to \infty}
+			\left\langle x^\prime,
+			\sum \limits_{i = 1}^n x_{\pi(i)}
+			\right\rangle_{X^\prime}
+			= 
+			\langle x^\prime,s \rangle_{X^\prime}
+		\end{align*}
+		für alle $ x^\prime \in X^\prime $ und $ \pi \in \mathcal{S}_\N $ gilt.
+		
+		\item 
+		Die Folge $ (x_n) $ heißt  \textit{schwach perfekt summierbar}, falls für alle $ \pm 1 $-Folgen $ (\alpha_n) $ ein $ s  \in X$ existiert, sodass
+		\begin{align*}
+			\lim\limits_{n \to \infty}
+			\left\langle x^\prime,
+			\sum \limits_{i = 1}^n \alpha_i x_i
+			\right\rangle_{X^\prime}
+			= 
+			\langle x^\prime,s\rangle_{X^\prime}
+		\end{align*}
+		für alle $ x^\prime \in X^\prime $ gilt.
+%		
+		\item 
+		Die Folge $ (x_n) $ heißt  \textit{schwach beschränkt summierbar}, falls für alle $ (b_n)  \in \ell^\infty $ ein $ s  \in X$ existiert, sodass
+		\begin{align*}
+			\lim\limits_{n \to \infty}
+			\left\langle x^\prime,
+			\sum \limits_{i = 1}^n b_i x_i
+		\right\rangle_{X^\prime}
+		= 
+		\langle x^\prime,s\rangle_{X^\prime}
+		\end{align*}
+		für alle $ x^\prime \in X^\prime $ gilt.
+%		
+		\item 
+		Die Folge $ (x_n) $ heißt  \textit{schwach teil-summierbar}, falls für eine beliebige Indexfolge $ (k_j) $ ein $ s  \in X$ existiert, sodass
+		\begin{align*}
+			\lim\limits_{n \to \infty}
+			\left\langle
+			x^\prime,
+			\sum \limits_{j = 1}^n x_{k_j}
+			\right\rangle_{X^\prime}
+			= 
+		\langle x^\prime,s\rangle_{X^\prime}
+		\end{align*}
+		für alle $ x^\prime \in X^\prime $ gilt.
+	\end{enumerate}
+	
+	
+
+\end{df}
+
+%Im Endeffekt übertragen sich die starken Begriffe ohne Modifikation auf die schwachen Begriffe.
+%Die schwache Teil-Summierbakeit bedeutet, dass die Partialsummenfolgen zu den Teilfolgen $ (x_{n_j}) $ schwach summierbar sind.
+Mithilfe der schwachen Teil-Summierbarkeit lässt sich nun ein kompakter Operator definieren.
+Dieser existiert dann auf natürliche Weise auch für unbedingt summierbare Folgen.
+
+
+\begin{lem}\label{th:weak_subseries_implies_compact}
+	Sei $ (x_n) $ schwach teil-summierbar in $ X $.
+	Dann ist 
+	\begin{align}\label{eq:compact_operator_charact_uncond_conv_1}
+		\psi  :  X^\prime \to \ell^1, \
+		x^\prime \mapsto (\langle x^\prime , x_n \rangle)
+	\end{align}
+	ein kompakter Operator.
+\end{lem}
+
+\begin{proof}
+	Sei $ (x_n) $ schwach teil-summierbar.
+	Wir treffen die zusätzliche Annahme, dass $ X $ separabel ist.
+	%Dies ist ohne weiteres möglich. 
+	Falls $ X $ nicht separabel sein sollte, betrachten wir den schwachen Abschluss von $ \spn \{x_n\}_{n \in \N} $.
+	Nun beweisen wir, dass die Abbildung \eqref{eq:compact_operator_charact_uncond_conv_1} ein wohldefinierter linearer beschränkter Operator ist.
+	Nach Voraussetzung existiert $ \mathrm{w}- \lim_{n \to \infty}
+	\sum_{j =1}^n x_{k_j} $
+	für eine beliebige Indexfolge $ (k_j) $.
+%	Insbesondere existiert dann $ \sum_{j=1}^{\infty} \langle x^\prime, x_{k_j} \rangle $, 
+	Damit ist die Skalarfolge $ (\langle x^\prime , x_n \rangle) $ unbedingt bzw. absolut summierbar.
+	Also ist $ \psi $ wohldefiniert und die Linearität folgt durch Einsetzen.
+	Der Satz vom abgeschlossenen Graphen liefert die Stetigkeit von $ \psi $.\\
+	Nun bleibt zu zeigen, dass $ \psi $ kompakt ist.
+	Sei $ (x^\prime_m) $ eine Folge in $ B_{X^\prime} $.
+	Der Einheitsball $ B_{X^\prime} $ ist kompakt und metrisierbar in der schwach-$ \ast $ Topologie, da wir die Separabilität von $ X $ angenommen haben.
+	Damit existiert eine schwach-$ \ast $ konvergente Teilfolge $ (x^\prime_{m_j}) $
+	mit schwach-$ \ast $ Grenzwert $ x_0^\prime $.
+	Falls $ \psi(x^\prime_{m_j}) \rightarrow \psi(x_0^\prime)$ gilt, haben wir unser Ziel erreicht. 
+	Nach dem $ \ell^1 $-Satz von Schur \ref{th:schur_l1} ist dies äquivalent zu
+	$ \psi(x^\prime_{m_j}) \rightharpoonup \psi(x_0^\prime)$.
+	Da der Aufspann von $ Y := \{
+	\chi_M \ | \ M \subset \N
+	\} $ dicht in $ \ell^\infty $ liegt, reicht es wegen der Linearität des Dualitätsprodukts
+	\begin{align*}
+		\langle f, \psi x_0^\prime \rangle_{\ell^\infty} 
+		=
+		\lim \limits_{j \to  \infty} 
+		\langle f, \psi x_{m_j} \rangle_{\ell^\infty} 
+	\end{align*}
+	für alle $ f \in Y $ zu zeigen.
+	Mit der  schwachen Teil-Summierbarkeit von $ (x_n) $ gilt für $ f \in Y $:
+	\begin{align*}
+		\langle f , \psi x_0^\prime \rangle_{\ell^\infty} 
+		&=
+		\sum \limits_{n \in M} \langle x_0^\prime, x_n \rangle_{X^\prime }
+		=
+		\left\langle x_0^\prime,
+		\sum \limits_{n \in M } x_n
+		\right\rangle_{X^\prime }
+		=
+		\lim\limits_{j \to \infty}
+		\left\langle x_{m_j}^\prime,
+		\sum \limits_{n \in M } x_n
+		\right\rangle_{X^\prime }\\
+		&=
+		\lim\limits_{j \to \infty}
+		\sum \limits_{n \in M} \langle x_{m_j}^\prime, x_n \rangle_{X^\prime }
+		=
+		\langle f , \psi x_0^\prime \rangle_{\ell^\infty}. 
+	\end{align*}
+	Damit gilt $ \psi(x^\prime_{m_j}) \rightarrow \psi(x^\prime)$ und $ \psi $ ist kompakt.
+\end{proof}
+
+\begin{lem}\label{th:compact_implies_uncond}
+	Sei $ (x_n) $ eine Folge in $ X $, sodass
+	\begin{align*}
+		\psi  :  X^\prime \to \ell^1, \
+		x^\prime \mapsto (\langle x^\prime , x_n \rangle)
+	\end{align*}
+	ein kompakter Operator ist.
+	Dann ist $ (x_n) $ unbedingt summierbar.
+\end{lem}
+\newpage
+\begin{proof}
+	Nach Voraussetzung ist $ \psi $ kompakt. Damit werden beschränkte Mengen von $ X^\prime $ auf relativ kompakte Mengen $ K $ in $ \ell^1 $ abgebildet.
+	Diese lassen sich durch
+	\begin{align*}
+		\textcolor{black}{(a_n) \in K
+			\ \Leftrightarrow \
+			\forall_{\varepsilon  > 0}
+			\exists_{n_\varepsilon \in \N}
+			\forall_{(a_n) \in K} :	
+			\sum \limits_{n > n_\varepsilon}
+			| a_n |
+			< \varepsilon}
+	\end{align*}
+	charakterisieren. Die relativ kompakten Mengen sind demnach die gleichmäßig verschwindenden Restterme.
+	Insbesondere wissen wir, dass $ K :=  \psi(B_{X^\prime}) $ genau diese Struktur besitzt.
+	Sei $  \varepsilon > 0 $ beliebig. Dann gilt für jede endliche Teilmenge $ M \subset \N $
+	mit $ \min M > n_\varepsilon $:
+	\begin{align*}
+		\left\|
+		\sum \limits_{n \in M } x_n 
+		\right\|
+		=
+		\sup \limits_{x^\prime \in B_{X^\prime} }
+		\left|\left\langle 
+		x^\prime , \sum \limits_{n \in M } x_n 
+		\right\rangle\right|
+		\leq 
+		\sup \limits_{x^\prime \in B_{X^\prime}}
+		\sum \limits_{n \in M } | \langle x^\prime , x_n \rangle |
+		=
+		\sup \limits_{x^\prime \in B_{X^\prime}}
+		\sum \limits_{n \in M } | \psi(x^\prime) | < \varepsilon.
+	\end{align*}
+Somit ist $ (x_n) $ ungeordnet summierbar und damit auch unbedingt summierbar.
+\end{proof}
+
+
+Die unbedingte Summierbarkeit impliziert die schwache Teilsummierbarkeit. 
+Mit den Lemmas \ref{th:weak_subseries_implies_compact} und \ref{th:compact_implies_uncond} folgt aus der schwachen Teil-Summierbarkeit die unbedingte Summierbarkeit.
+Insbesondere ist auch die Kompaktheit von $ \psi $
+und die schwache Teil-Summierbarkeit äquivalent zur unbedingten Summierbarkeit.
+
+\begin{genericthm}{Satz von Orlicz-Pettis}\label{th:orlicz_pettis}
+	Sei $ (x_n) $ schwach teil-summierbar in $ X $.
+	Dann ist $ (x_n) $ teil-summierbar.
+\end{genericthm}
+
+\begin{proof}
+	Ergibt sich aus Lemma \ref{th:weak_subseries_implies_compact} und Lemma \ref{th:compact_implies_uncond}.
+\end{proof}
+
+%Effektiv haben wir mit den zwei vorangegangenen Aussagen den Satz von Orlicz-Pettis bereits bewiesen.
+%Der Beweis ergibt sich durch unmittelbare Aneinanderreihung der Aussagen.
+
+\begin{genericthm}{Charakterisierung der unbedingten Summierbarkeit}\label{th:equi_uncond_2}
+	Sei $ X $ ein Banachraum und $ (x_n) $ eine Folge in $ X $.
+	Dann sind äquivalent:
+	\begin{enumerate}
+		\item$  (x_n) $ ist unbedingt summierbar.
+		\item $ (x_n) $ ist ungeordnet summierbar.
+		\item $ (x_n) $ ist teil-summierbar.
+		\item $ (x_n) $ ist perfekt summierbar.
+		\item $ (b_nx_n) $ ist summierbar für alle $ (b_n) \in \ell^\infty $.
+		\item $ (x_n) $ ist schwach teil-summierbar.
+		\item $ (x_n) $ ist schwach perfekt summierbar.
+		\item $ (b_nx_n) $ ist schwach summierbar für alle $ (b_n ) \in \ell^\infty $.
+		\item $  \psi : X^\prime \to \ell^1, \ x^\prime \mapsto (\langle x^\prime , x_n \rangle_{X^\prime} )_n $ ist ein kompakter Operator.
+		\item
+		$ (b_n )  \mapsto \sum b_n x_n$ definiert einen kompakten Operator $ \ell^\infty \to X $.
+		\item
+		$ (b_n )  \mapsto \sum b_n x_n$ definiert einen kompakten Operator $ c_0 \to X $.
+		\item
+		$ (b_n )  \mapsto \sum b_n x_n$ definiert einen beschränkten Operator $ \ell^\infty \to X $.
+	\end{enumerate}	
+\end{genericthm}
+
+Die schwache unbedingte Summierbarkeit fehlt in dieser Liste.
+Der Grund ergibt sich aus nachfolgendem Gegenbeispiel. 
+Sei $ X = c_0 $ mit $ X^\prime = \ell^1 $ und dem Dualitätsprodukt
+\begin{align*}
+	\langle a , x \rangle_{\ell^1}
+	=
+	\sum \limits_{ i = 1}^\infty a_i x_i
+\end{align*}
+für $ a  \in \ell^1 $ und $ x \in c_0 $.
+Wir betrachten die Folge 
+\begin{align*}
+	x^{(n)} := 
+	\begin{cases}
+		e^{(1)}, &\ \textrm{falls } n = 1\\
+		e^{(n)} - {e}^{(n-1)} , &\ \textrm{falls } n \geq 2
+	\end{cases}.
+\end{align*}
+Hierbei gilt $ e^{(n)}_i = 1 $ für $ n= i $ und $ e^{(n)}_i = 0 $ sonst.
+Dann ist $ x^{(n)} $ schwach unbedingt summierbar. 
+%ist jedoch in $ X $ unsummierbar, 
+Da $ \| x^{(n)} \|_{\ell^\infty} = 1$ für alle $ n \in \N $ gilt, ist $ x^{(n)} $ jedoch in $ X $ unsummierbar.
+
+
+
+\begin{proof}
+	Mit \textbf{\textit{\itshape\textrm{(viii)}}} $ \Rightarrow $ \textbf{\textit{\textrm{(vi)}}} $ \Rightarrow $ \textbf{\textit{\textrm{(iii)}}} folgt die Äquivalenz von \textbf{\textit{\itshape\textrm{(viii)}}} zur unbedingten Konvergenz. Hierbei haben wir den Satz \ref{th:orlicz_pettis} verwendet.
+	\begin{description}
+		\item[\textit{ \itshape\textrm{(i)}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(ii)}}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(iii)}}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(iv)}}}:]
+		Bewiesen in Satz \ref{th:equi_uncond_1}.
+		
+		\item[\textit{ \itshape\textrm{(i)}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(v)}}}:] Bewiesen in Satz \ref{th:bounded_test}.
+		
+		\item[\textbf{\textit{\textrm{(i)}}} $ \Leftrightarrow $ \textit{ \itshape\textrm{(vi)}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(ix)}}}:]
+		Mithilfe von \ref{th:weak_subseries_implies_compact} und dem Satz von Orlicz-Pettis \ref{th:orlicz_pettis} bewiesen.
+		
+		\item[\textbf{\textit{\itshape\textrm{(v)}}} $ \Rightarrow $  \textbf{\textit{\textrm{(viii)}}}:] Folgt unmittelbar.
+		
+		\item[\textbf{\textit{\itshape\textrm{(viii)}}} $ \Rightarrow $ \textbf{\textit{\textrm{(vi)}}}:]
+		Folgt durch entsprechende Wahl der $ (b_n) $.
+		
+		\item[\textit{ \itshape\textrm{(vi)}} $ \Rightarrow $ \textbf{\textit{\textrm{(vii)}}}:]
+		Analog zu \textbf{\itshape\textrm{(iii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(iv)}}} in dem Beweis zu Satz \ref{th:equi_uncond_1}.
+		
+		\item[\textcolor{black}{\textit{ \itshape\textrm{(vii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(viii)}}}:}]
+		Sei $ (x_n) $ schwach perfekt summierbar.
+		Dann existiert der Grenzwert
+		\begin{align*}
+			\lim\limits_{n > m \to \infty}
+			\left|\left\langle x^\prime , 
+			\sum \limits_{i = m}^n  \alpha_i x_i
+			\right\rangle \right|
+			=
+			\lim\limits_{n > m \to \infty}
+			\left|
+			\sum \limits_{i = m}^n
+			\left\langle x^\prime , 
+			 \alpha_i x_i
+			\right\rangle
+			\right|
+			=0
+		\end{align*}
+		für alle $ \alpha_i = \pm 1 $ und $ x^\prime \in X^\prime $.
+		Für jedes (reelle) $ (b_n) \in \ell^\infty $ existiert eine $ \pm 1 $-Folge $ (\alpha_n) $, sodass $ b_n = \alpha_n | b_n| $ gilt. Der komplexe Fall ist mit der Zerlegung in Real- und Imaginärteil analog.
+		Sei $ x^\prime  \in X^\prime$ und $ (b_n) \in \ell^\infty $ beliebig.
+		Dann gilt
+		\begin{align*}
+			\left| \left\langle x^\prime , 
+			\sum \limits_{i = m+1}^n  b_i x_i
+			\right\rangle \right|
+			=
+			\left| \left\langle x^\prime , 
+			\sum \limits_{i = m}^n  |b_i| \alpha_i x_i
+			\right\rangle \right|
+			\leq 
+			\| (b_n) \|_{\ell^\infty}
+			\left|  \left\langle x^\prime , 
+			\sum \limits_{i = m}^n   \alpha_i x_i
+			\right\rangle \right|,
+		\end{align*}
+		womit das Cauchy-Kriterium \ref{th:chauchy_crit} die Summierbarkeit von $ (b_nx_n) $ liefert.
+		
+		
+		
+		\item[\textit{ \itshape\textrm{(ix)}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(xi)}}}:]
+		Wir betrachten den Operator
+		\begin{align*}
+			 \eta: c_0 \to X, \ (b_n) \mapsto \sum \limits_{n = 1}^\infty b_n x_n
+		\end{align*}
+		und den zugehörigen adjungierten Operator
+		\begin{align*}
+			\eta^\prime : X^\prime \to (c_0)^\prime, \
+			x^\prime \mapsto  (b \mapsto x^\prime \circ \eta (b)).
+		\end{align*}
+		Es gilt $ (c_0)^\prime \cong \ell^1 $. 
+		%mit der Dualität
+		Für $ a=  (a_n)  \in \ell^1$ und $ b=  (b_n) \in c_0 $ ist das Dualitätsprodukt durch
+		\begin{align*}
+			\langle a, b\rangle_{\ell^1 }
+			=
+			\sum \limits_{n = 1}^\infty a_n b_n
+		\end{align*}
+		gegeben.
+		%für $ a=  (a_n)  \in \ell^1$ und $ b=  (b_n) \in c_0 $. 
+		Wegen
+		\begin{align*}
+			x^\prime \circ \eta (b)
+			=
+			x^\prime 
+			\left(
+			\sum \limits_{n=1}^\infty b_n x_n 
+			\right)
+			=
+			\sum 
+			\limits_{n=1}^\infty \underbrace{\langle x^\prime, x_n \rangle_{X^\prime } }_{=: a} b_n
+		\end{align*}
+		gilt $ \eta^\prime = \psi $.
+		Nach dem Satz von Schauder ist $ \eta $ genau dann kompakt, wenn $ \psi $ kompakt ist.
+		
+		\item[\textit{ \itshape\textrm{(x)}} $ \Rightarrow $ \textbf{\textit{\textrm{(xi)}}}:]
+		Folgt aus der Definition eines kompakten Operators.
+		
+		\item[\textit{ \itshape\textrm{(x)}} $ \Rightarrow $ \textbf{\textit{\textrm{(xii)}}}:]
+		Alle kompakte Operatoren sind stetig.
+		
+		\item[\textit{ \itshape\textrm{(xii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(v)}}}:]
+		Die Stetigkeit impliziert für beliebige $ b = (b_n) \in \ell^\infty $ mit
+		\begin{align*}
+			\left\| 
+			\sum\limits_{n \in \N} b_n x_n
+			\right\|
+			\leq C \| b\|_{\ell^\infty}
+		\end{align*}
+		die Summierbarkeit von $ (b_n x_n) $.
+		
+		\item[\textit{ \itshape\textrm{(ix)}} $ \Leftrightarrow $ \textbf{\textit{\textrm{(x)}}}:]
+		Für diesen Schritt nehmen wir die Summierbarkeit von $ (b_nx_n) $ für beliebige $ (b_n) \in \ell^\infty  $ an.
+		Dies ist möglich, da dies beide Seiten der Äquivalenz impliziert.
+		Wir betrachten den adjungierten Operator zu $ \psi $:
+		\begin{align*}
+			\psi^\prime :
+			\ell^\infty \to X^{\prime \prime},
+			b \mapsto (x^\prime \mapsto \langle b, \psi(x^\prime) \rangle_{\ell^\infty} ).
+		\end{align*}
+		Es gilt
+		\begin{align*}
+			\langle b, \psi(x^\prime) \rangle_{\ell^\infty}
+			= \sum \limits_{n \in \N} b_n \langle x^\prime , x_n \rangle_{X^\prime}
+			=
+			\left\langle x^\prime , \sum\limits_{n \in \N} b_n x_n \right\rangle_{X^\prime} 
+			=
+			\left\langle  J_X \left(\sum\limits_{n \in \N} b_n x_n \right), x^\prime \right\rangle_{X^{\prime \prime }}	
+		\end{align*}
+		für alle $ x^\prime \in X^\prime  $ und $ b = (b_n) \in \ell^\infty $.
+		Da $ J_X$ eine Isometrie ist, liegt das Bild von $ \psi^\prime $ in $ X $.
+		Damit lässt sich der adjungierte Operator auch durch
+		\begin{align*}
+			\psi^\prime :
+			\ell^\infty \to X,
+			(b_n) \mapsto \sum \limits_{n \in \N} b_n x_n
+		\end{align*}
+		beschreiben.
+		Die Äquivalenz folgt dann mit dem Satz von Schauder.
+	\end{description}
+\end{proof}
+
+\begin{lem}\label{th:unconditional_uniform}
+	Sei $ X $ ein Banachraum und $ (x_n) $ unbedingt summierbar in $ X $.
+	Dann gilt:
+	Für alle $ \varepsilon > 0 $ existiert ein $ N_\varepsilon \in \N $, sodass
+	\begin{align}
+		\sup
+		\left\{
+		\left\|
+		\sum \limits_{i=N_\varepsilon}^{N_\varepsilon+ m } \alpha_i x_i \right\| \ : \
+		\alpha_i = \pm 1, \ m \in \N	
+		\right\}
+		< \varepsilon 
+	\end{align}
+gilt.
+\end{lem}
+
+\begin{proof}
+	Angenommen die Aussage gilt nicht.
+	%Unser Ziel ist es, einen Widerspruch zur unbedingten Summierbarkeit von $ (x_n) $ zu finden.
+	Dann existiert ein $ \varepsilon > 0 $, sodass für alle $ N \in \N $
+	\begin{align*}
+		\sup\left\{
+		\left\| \sum \limits_{i = N}^{N+m} \alpha_i x_i \right\| \ : \ m \in \N , \alpha_i = \pm 1
+		\right\}
+		=
+		\sup \limits_{m \in \N}
+		\max \limits_{\alpha_i = \pm 1}
+		\left\| \sum \limits_{i = N}^{N+m} \alpha_i x_i \right\|
+		\geq \varepsilon
+	\end{align*}
+	gilt.
+	Insbesondere existieren streng monotone Folgen
+	$ (m_j) $ und $ (r_j) $ mit \\
+	$ m_1 < r_1 < m_2 < r_2 <... $, sodass
+	\begin{align*}
+		\max \limits_{\alpha_i = \pm 1}
+		\left\| \sum \limits_{i = m_j}^{r_j} \alpha_i x_i \right\|
+		\geq \varepsilon
+	\end{align*}
+	für alle $ j \in \N $ gilt. 
+	Sei $ (\alpha^{(j)}_n) $ eine $ \pm 1 $-Folge, sodass das Maximum von $ \left\| \sum_{i = m_j}^{r_j} \alpha_i x_i \right\| $ angenommen wird.
+	Da $ (\alpha_n^{(j)} x_n) $ nach Voraussetzung für alle $ j \in \N $ summierbar sein muss, erhalten wir durch hinreichend große Wahl von $ j $
+	einen Widerspruch zum Cauchy-Kriterium \ref{th:chauchy_crit}.
+	Demzufolge war die Annahme falsch.
+%	Damit können wir die $ \pm 1 $-Folgen 
+%	\begin{align*}
+%		b^{(j)}_i
+%		:=
+%		\begin{cases}
+%			\alpha_i^{(j)}
+%		\end{cases}
+%	\end{align*}
+%	
+%	Wir können nun $ \pm 1 $ Folgen definieren, sodass das Maximum auf
+%	
+%	
+%	Wir wählen $ j \in \N $ hinreichend groß.
+%	Es ist bekannt, dass das Maximum von $  $
+%	
+%	 definieren $ \beta_i = \pm 1 $ durch
+%	\begin{align*}
+%		\left\| \sum \limits_{i = m_j}^{r_j} \beta_i x_i \right\|
+%		=
+%		\max \limits_{\alpha_i = \pm 1}
+%		\left\| \sum \limits_{i = m_j}^{r_j} \alpha_i x_i \right\|
+%	\end{align*}
+\end{proof}
+
+
+
+\begin{genericthm}{Satz von Gelfand}\label{th:gelfand}
+	Sei $ X $ ein Banachraum, $ (x_n) $ unbedingt summierbar in $ X $
+	und $ K = \{ (\alpha_i)  :  \alpha_i = \pm 1 \} $.
+	Dann liegt das Bild der Abbildung
+	\begin{align*}
+		s : K \to X, \ 
+		\alpha \mapsto s(\alpha) =
+		\sum \limits_{i = 1}^\infty \alpha_i x_i 
+	\end{align*}
+	kompakt in $ X $.
+\end{genericthm}
+
+\begin{proof}
+	Wir versehen $ K $ mit der Topologie der koordinatenweisen Konvergenz.
+	Die koordinatenweise Konvergenz $ \alpha^{(m)} \to  \alpha$ in $ K $ bedeutet, dass $ \alpha_i^{(m)} \to \alpha_i $
+	für alle $ i \in \N $ und $ m \to \infty $ gilt.
+	Der daraus entstandene Raum ist homöomorph zu dem kompakten Produktraum $  \{-1,1\}^\N $.
+	Nun zeigen wir, dass $ s $ stetig ist .
+	Sei $ \alpha^{(m)} \to \alpha $ für $ m \to \infty $ in $ K $ und $ \varepsilon > 0 $.
+	Das vorangegangene Lemma \ref{th:unconditional_uniform} liefert die Existenz eines $ N_\varepsilon $, sodass
+	\begin{align*}
+		\left\| \sum \limits_{i = N_\varepsilon}^{\infty} \beta_i x_i \right\|
+		\leq \varepsilon
+	\end{align*}
+	für beliebige $ (\beta_i) $ mit $ \beta_i = \pm 1 $ gilt. 
+	Wegen der koordinatenweisen Konvergenz existiert ein $ m_0 \in \N $, sodass
+	$ \alpha_i^{(m)} = \alpha_i $ für $ m\geq m_0 $ und $ 1 \leq i < N_\varepsilon $
+	gilt. Damit erhalten wir
+	\begin{align*}
+		\| s(\alpha^{(m)}) - s(\alpha) \|
+		=
+		\left\|
+		\sum \limits_{i = N_\varepsilon}^{\infty} \alpha^{(m)}_i x_i
+		-
+		\sum \limits_{i = N_\varepsilon}^{\infty} \alpha_i x_i
+		\right\|
+		\leq
+		\left\|
+		\sum \limits_{i = N_\varepsilon}^{\infty} \alpha^{(m)}_i x_i
+		\right\|
+		+\left\|
+		\sum \limits_{i = N_\varepsilon}^{\infty} \alpha_i x_i
+		\right\|
+		< 2 \varepsilon
+	\end{align*}
+	für $ m \geq m_0 $.
+	Damit gilt $s(\alpha^{(m)}) \to s(\alpha)  $ für $ m \to \infty $ und $ s $ ist stetig.
+	Da das Bild eines kompakten Raumes unter einer stetigen Abbildung wieder kompakt ist, folgt die Aussage.
+	
+\end{proof}
+
+
+\section{Der Satz von Dvoretzky-Rogers}\label{sc:dv_rg}
+%\subsection{Der Satz von Dvoretzky-Rogers}
+
+In diesem Abschnitt werden wir zeigen, dass im Allgemeinen aus unbedingter Konvergenz in einem unendlichdimensionalen Raum keine absolute Konvergenz folgt.
+Wir richten uns nach dem von Diestel in \cite{Diestel1995} geführten Beweis.
+Der Kern des Beweises ist das nachfolgende geometrische Lemma.
+
+
+
+
+\begin{lem}\label{th:estimate_2n_dim_subspace}
+	Sei $ E $ ein $ 2n $-dimensionaler normierter Raum.
+	Dann existieren $ \{x_i\}_{i=1}^n \subset B_E $ mit $ \| x_i \| \geq\frac{1}{2} $, sodass
+	\begin{align}
+		\left\|
+		\sum \limits_{i = 1}^n \lambda_i x_i 
+		\right\|
+		\leq
+		\sqrt{
+			\sum \limits_{i = 1}^n \lambda_i^2
+		}
+	\end{align}
+	für alle $ \lambda = (\lambda_1,...,\lambda_n) \in \R^n $ gilt.
+\end{lem}
+M.I. und V.M. Kadets\cite{Kadets1997} verwenden das geometrische Lemma von Dvoretzky-Rogers\cite{DvoretzkyRogers1950}.
+%Wie der Name schon verrät, wurde dies ursprünglich von Dvoretzky und Rogers 
+%bewiesen. 
+In deren Formulierung existieren zu einem $ n $-dimensionalen Raum $ E $ die $ n $ Vektoren $ \{x_i\}_{i=1}^n  \subset S_E $, sodass
+\begin{align*}
+	\left\|
+	\sum \limits_{i = 1}^m \lambda_i x_i 
+	\right\|
+	\leq
+	\left(
+	1 + \sqrt{\frac{m(m-1)}{n}}
+	\right)
+	\sqrt{
+		\sum \limits_{i = 1}^m \lambda_i^2
+	}
+\end{align*}
+für alle $ 1 \leq m \leq  n $ und $ \lambda = (\lambda_1,...,\lambda_m) \in \R^m $ gilt.
+Der Beweis hiervon ist jedoch technisch deutlich anspruchsvoller, weswegen wir den Beweis von Diestel verwenden.
+
+\begin{proof}
+	Sei $ w : V \to W $ eine lineare Abbildung mit $ \dim V = \dim W < \infty $.
+	Dann ist die Spur $ \tr (w) $ invariant unter Basistransformationen.
+	Für die Determinante gilt dies mit einer von der Transformation abhängigen Konstante. Dadurch können wir auf explizite Basen zunächst verzichten.\\
+	Das erste Ziel ist es, einen Isomorphismus $ u : \ell^2_{2n}  \to E$ mit $ \| u \| = 1 $ und 
+	\begin{align}\label{eq:proof_dvor_rog_trace_prop}
+		| \tr(u^{-1} v) | \leq 2n \| v \|
+	\end{align}
+	für alle $ v \in \mathcal{L}(\ell^2_{2n}, E ) $ zu finden.
+	Wir wählen ein beliebiges $ u $, welches 
+	\begin{align*}
+		\det(u)
+		=
+		\max \limits_{v \in \mathcal{L}(\ell^2_{2n}, E ) , \| v \| = 1  } | \det(v) |
+	\end{align*}
+	erfüllt. Dieses existiert, da die Einheitssphäre von $ \mathcal{L}(\ell^2_{2n} , E) $ kompakt und die Determinante stetig ist. Nun werden wir für dieses $ u $
+	die Eigenschaft \eqref{eq:proof_dvor_rog_trace_prop} nachweisen.
+	Sei $ \varepsilon \neq 0  $ und \\ $ v \in \mathcal{L}(\ell^2_{2n} , E) $ beliebig.
+	Dann gilt
+	\begin{align*}
+		\left|\det \left(
+		\frac{1}{\| u + \varepsilon v \|} ( u + \varepsilon v)
+		\right)\right|
+		=
+		\frac{| \det(u + \varepsilon v ) |}{\| u + \varepsilon v \|^{2n}}
+		\leq \det(u),
+	\end{align*}
+	womit 
+	\begin{align*}
+		|\det ( u + \varepsilon  v) |
+		\leq \det(u) \| u + \varepsilon v \|^{2n}
+		\leq  \det(u) (1 + \varepsilon \|v \|)^{2n}
+	\end{align*}
+	folgt.
+	Die Invertierbarkeit von $ u $ und die Approximation von $ \det $ liefern
+	\begin{align*}
+		| \det (u + \varepsilon v ) |
+		=
+		\det(u) |\det(\id + \varepsilon u^{-1} v ) |
+		=
+		\det(u) | 1 + \varepsilon\cdot \tr(u^{-1} v) + \mathcal{O}(|\varepsilon|^2) |
+	\end{align*}
+	für $ \varepsilon \to 0 $.
+	Die Kombination dieser Aussagen führt zu 
+	\begin{align*}
+		\left| 1 + \varepsilon \cdot\tr(u^{-1} v) + \mathcal{O}(|\varepsilon|^2) \right|
+		\leq (1+ |\varepsilon| \| v \| )^{2n} = 1 + 2n |\varepsilon | \cdot \|v\| + \mathcal{O}(|\varepsilon|^2)
+	\end{align*}
+	für hinreichend kleine $ \varepsilon $. Wir verfeinern die Wahl von $ \varepsilon $, sodass $ \varepsilon \cdot\tr(u^{-1} v) = | \varepsilon \cdot\tr(u^{-1} v)| $ gilt.
+	Damit folgt insbesondere
+	\begin{align*}
+		1 + | \varepsilon | | \tr ( u^{-1} v) | 
+		\leq 
+		1 + 2n | \varepsilon |  \| v \| + \mathcal{O}(|\varepsilon|^2)
+		\ \Rightarrow \
+		| \tr ( u^{-1} v) | 
+		\leq 2n \| v \| + \mathcal{O}(|\varepsilon|^2)
+	\end{align*}
+	und mit $ \varepsilon \to 0 $ erhalten wir $ | \tr ( u^{-1} v) | 
+	\leq 2n \| v \| $.\newpage
+	Sei $ P $ eine beliebige orthogonale Projektion von $ \ell^2_{2n} $
+	auf einen $ m $-dimensionaler Unterraum.
+	Dann gilt mit der Abschätzung \eqref{eq:proof_dvor_rog_trace_prop}:
+	\begin{align*}
+		m = \tr(P)
+		=\tr(u^{-1} u P)
+		\leq 2n \|u P \|
+		\ \Leftrightarrow \
+		\| u P \| \geq \frac{m}{2n}.
+	\end{align*}
+	Nun haben wir die Werkzeuge um geeignete $ x_1,...,x_n $ in $ E $ zu konstruieren.
+	Wegen \\ $ \| u \| = 1 $ existiert ein $ y_1 \in \ell^2_{2n} $ und $ \| u y_1 \| = 1 $.
+	Sei $ P_1 $ die orthogonale Projektion von $ \ell^2_{2n} $ auf das orthogonale Komplement $ \spn\{y_1\}^\perp $.
+	Damit gilt $ \|u P_1 \| \geq \frac{2n-1}{2n} $ und es existiert ein $ y_2 \in  \spn\{y_1\}^\perp $ mit $ \| y_1 \| = 1 $ und $ \| u y_2 \| = \| u P_1 y_2 \| \geq \frac{2n -1}{2n} $.
+	Nun sei $ P_2 $ die orthogonale Projektion von $ \ell^2_{2n} $ auf $ \spn \{y_1,y_2\}^\perp $, womit $ \| u P_2 \| \geq \frac{2n-2}{2n} $ folgt.
+	Somit existiert ein \\ 
+	$ y_3 \in \spn \{y_1,y_2\}^\perp $ mit $ \| y_3 \| = 1 $ 
+	und $ \| u y_3 \| =  \| u P_2 y_3 \| \geq \frac{2n-2}{2n} $.
+	Dieses Argument führen wir analog  fort und erhalten die orthonormalen Vektoren $ y_1,...,y_n$ in $  \ell^2_{2n} $.
+	Wir setzen $ x_i := u y_i $ für $ 1 \leq i \leq n $.
+	Nach den Vorüberlegungen gilt:
+	\begin{align*}
+		\| x_i \| = \| u y_i \| \geq  \frac{2n -i +1}{2n} \geq \frac{1}{2}, \ 1 \leq i \leq n.
+	\end{align*}
+	Insgesamt liefert unsere Konstruktion
+	\begin{align*}
+		\left\|
+		\sum \limits_{i=1}^n\lambda_i x_i
+		\right\|
+		= 
+		\left\|
+		u 
+		\left(
+		\sum \limits_{i=1}^n \lambda_i y_i
+		\right)
+		\right\| 
+		\leq 
+		\| u \| 
+		\left\|
+		\sum \limits_{i=1}^n
+		\lambda_i y_i
+		\right\|
+		= 
+		\left(\sum \limits_{i=1}^n |\lambda_i |^2 \right)^\frac{1}{2}
+	\end{align*}
+	für ein beliebiges $ \lambda \in \R^n $.
+\end{proof}
+
+
+
+\begin{genericthm}{Satz von Dvoretzky-Rogers(1950)}\label{th:dvoretzky_rogers}
+	Sei $ X $ ein unendlichdimensionaler Banachraum und $ (\lambda_n) \in \ell^2 $.
+	Dann existiert eine unbedingt summierbare Folge $ (x_n)  $ in $ X $, welche $  \| x_n \| = | \lambda_n | $ erfüllt.
+\end{genericthm}
+Die Wahl $ \lambda_n = \frac{1}{n} $ liefert unmittelbar, dass im Allgemeinen aus unbedingter Konvergenz keine absolute Konvergenz folgt.
+
+\begin{proof}
+	Sei $ (\lambda_n) \in \ell^2 $ beliebig, aber fest. Dann existiert eine Indexfolge $ (n_j) $, sodass
+	\begin{align*}
+		\sum 
+		\limits_{i = n_j}^\infty | \lambda_i |^2 \leq \frac{1}{2^{2j}}
+	\end{align*}
+	gilt.
+	Für $ 1 \leq n < n_1 $ wählen wir beliebige $ x_n \in X$ mit $ \|x_n\| = |\lambda_{n} |$.
+	Wir setzen $ k_j := n_{j+1} - n_j $ für $ j \in \N $ und mit $ \dim X = \infty $ lässt sich ein beliebiger $ 2 k_j $-dimensionaler Unterraum $ E_j $ konstruieren.
+	Mit dem Lemma \ref{th:estimate_2n_dim_subspace} existieren $ \{y_i \}_{i = n_j}^{n_{j+1} - 1} \subset B_{E_j} \subset B_X $ mit $ \| y_i \|_X \geq \frac{1}{2} $, sodass
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = n_j}^N \mu_i y_i
+		\right\|
+		\leq 
+		\left(
+		\sum \limits_{i = n_j}^N
+		|\mu_i|^2
+		\right)^\frac{1}{2}
+	\end{align*}
+	für $ n_j \leq N < n_{j+1} $ und $ \mu_{i} \in \R $ mit $ n_j \leq i  <n_{j+1} $ gilt.
+	Die Abschätzung für $ N < n_{j+1} - 1 $ folgt durch Nullsetzen der nachfolgenden Koeffizienten.
+	Insgesamt erhalten wir eine Folge $ (y_n) $ in $ B_X $ mit $ \| y_n \| \geq \frac{1}{2} $, sodass
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = n_j}^N \mu_i y_i
+		\right\|
+		\leq 
+		\left(
+		\sum \limits_{i = n_j}^N
+		|\mu_i|^2
+		\right)^\frac{1}{2}
+	\end{align*}
+	für eine beliebige Zahlenfolge $ (\mu_n) $ und $ n_j \leq N < n_{j+1} $ gilt.
+	Sei $ (\alpha_n) $ mit $ \alpha_n = \pm 1 $ beliebig und 
+	\begin{align*}
+		x_n := \frac{\lambda_n y_n}{\|y_n\|}
+	\end{align*}
+	für $ n \geq n_1 $. Dann gilt $ \| x_n \| = | \lambda_n | $ für alle $ n \in \N $ und es folgt 
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = n_j}^N \alpha_i x_i
+		\right\|
+		=
+		\left\|
+		\sum \limits_{i = n_j}^N  \frac{\alpha_i \lambda_i y_i}{\|y_i\|}
+		\right\|
+		\leq
+		\left(
+		\sum \limits_{i = n_j}^N
+		\left|\frac{\lambda_i }{\|y_i \|}\right|^2
+		\right)^\frac{1}{2}
+		\leq  
+		2\left(
+		\sum \limits_{i = n_j}^N
+		\left|\lambda_i \right|^2
+		\right)^\frac{1}{2}
+		\leq \frac{1}{2^{j-1}}
+	\end{align*}
+	für $ n_j \leq N < n_{j+1} $.
+	Damit ist $ (\alpha_n x_n) $ ein Cauchyfolge und $ (x_n) $ ist perfekt summierbar.
+\end{proof}
+
+\section{Der Satz von Orlicz}\label{sc:lemma_of_orlicz}
+%\subsection{Der Satz von Orlicz}
+Nach dem Satz von Dvoretzky-Rogers \ref{th:dvoretzky_rogers} ist uns bekannt, dass in unendlichdimensionalen Räumen immer eine unbedingt summierbare Folge existiert, welche nicht absolut summierbar ist.
+%Eine Idee um die Äquivalenz von unbedingter und absoluter Konvergenz zu retten, ist die Norm der Folgenglieder geeignet zu potenzieren.
+%Dies führt zu dem Begriff der $ p $-absoluten Konvergenz. 
+In diesem Abschnitt erarbeiten wir Bedingungen, um aus unbedingter Konvergenz die $ p $-absolute Konvergenz zu schließen.
+Diese Bedingungen verwenden wir, um zu zeigen, welche Form der $ p $-absoluten Konvergenz aus der unbedingten Konvergenz in den $ \L^p $-Räumen folgt.
+
+\begin{df}
+	Ein normierter Raum $ X $ heißt \textit{Orliczraum} mit Exponent $ p $,
+	falls aus der unbedingten Summierbarkeit von $ (x_n) $ die 
+	$ p $-absolute Summierbarkeit folgt.
+	Wir sagen auch $ X $ ist ein Orliczraum der Ordnung $ p $.
+\end{df}
+
+
+\begin{df}
+	Sei $ X $ ein normierter Raum. $ X $ hat den $ M $-\textit{Kotyp} $ p $ mit der Konstante $ \gamma > 0 $, falls
+	\begin{align}\label{eq:m_kotyp_ineq_1}
+		\max \limits_{\alpha_i = \pm 1}
+		\left\|
+		\sum \alpha_i x_i
+		\right\|
+		\geq
+		\gamma
+		\left(\sum \| x_i\|^p\right)^\frac{1}{p}
+	\end{align}
+	für alle $ \{x_i\}_{i=1}^n \subset X $ gilt.
+	Wir sagen auch, dass $ X $ vom \textit{$ M $-Kotyp $ p $} ist.
+\end{df}
+
+\begin{sz}\label{th:orlicz_equi_kotyp}
+	Die folgenden Aussagen sind äquivalent:
+	\begin{enumerate}
+		\item 
+		$ X $ ist ein Orliczraum mit Exponent $ p $.
+		\item 
+		Der Raum $ X $ hat den $ M $-Kotyp $ p $.
+	\end{enumerate}
+\end{sz}
+
+\begin{proof}
+	\begin{description}
+		\item[\textit{ \itshape\textrm{(i)}} $ \Rightarrow $ \textbf{\textit{\textrm{(ii)}}}:]
+		Wir nehmen an, dass $ X $ nicht vom $ M $-Kotyp $ p $ ist.
+		Für alle $ \gamma > 0 $ existiert dann eine endliche Menge $ \{x_i\} \subset X $, sodass
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum \alpha_i x_i
+			\right\|
+			<
+			\gamma
+			\left(\sum \| x_i\|^p\right)^\frac{1}{p}
+		\end{align*}
+		gilt. Diese Tatsache verwenden wir, um eine Folge endlicher Teilmengen\\
+		$ \{ x_i\}_{i = n_k + 1}^{n_{k+1}} \subset X $ mit
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum \limits_{i = n_k + 1}^{n_{k+1}} \alpha_i x_i
+			\right\| 
+			\leq \frac{1}{2^k} \
+			\textrm{und} \
+			\sum \limits_{i = n_k +1}^{n_{k+1}} \| x_i \|^p \geq 1 
+		\end{align*}
+		zu konstruieren. 
+		Dies liefert nach dem Satz \ref{th:equi_uncond_2} eine unbedingt summierbare Folge. 
+		Mit der zweiten Eigenschaft erhalten wir einen Widerspruch dazu, dass $ X $ ein Orliczraum ist.
+		Damit war unsere Annahme falsch.
+		Um den Beweis vollständig abzuschließen geben wir die Konstruktion der endlichen Teilmengen an.
+		Sei $ k \in \N $ beliebig.
+		Für $ \gamma > 2^{-k} $ existiert eine endliche Teilmenge $ \{x_i\}_{i=1}^n $, sodass
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum \limits_{i = 1}^n \alpha_i x_i
+			\right\|
+			<
+			\frac{1}{2^k}
+			\underbrace{\left(\sum \limits_{i = 1}^n \| x_i\|^p\right)^\frac{1}{p}}_{=: C}
+			\ \Leftrightarrow \
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum \limits_{i = 1}^n \alpha_i \underbrace{\frac{x_i}{C}}_{=: \tilde{x}_i}
+			\right\|
+			<
+			\frac{1}{2^k}
+		\end{align*}
+		gilt. 
+		Desweiteren erhalten wir mit
+		\begin{align*}
+		\left(\sum \limits_{i = 1}^n \| \tilde{x}_i \|^p\right)^\frac{1}{p} = 1
+		\end{align*}
+		die zweite gewünschte Eigenschaft.
+		
+		\item[\textit{ \itshape\textrm{(ii)}} $ \Rightarrow $ \textbf{\textit{\textrm{(i)}}}:]
+		Für die Rückrichtung nehmen wir an, dass $ X $ kein Orliczraum der Ordnung $ p $ ist.
+		Damit existiert eine unbedingt summierbare Folge $ (x_n) $, für welche $ (\| x_n \|^p) $ nicht summierbar ist. 
+		Nach dem Satz von Gelfand \ref{th:gelfand} ist die Menge 
+		\begin{align*}
+			\left\{\sum \limits_{i = 1}^\infty \alpha_i x_i\ | \ \alpha_i = \pm 1\right\}
+		\end{align*}
+		kompakt. Somit auch beschränkt und abgeschlossen.
+		Also sind die Summen $ \sum_{i = m+1}^n \alpha_i x_i $ gleichmäßig beschränkt, womit
+		\begin{align*}
+			\max 
+			\left\{
+			\left\|
+			\sum \limits_{i = m +1 }^n \alpha_i x_i
+			\right\| 
+			\ : \
+			\alpha_i = \pm 1 , m,n\in  \N
+			\right\} 
+			\leq C < \infty
+		\end{align*}
+		gilt. Da $ (\| x_n \|^p) $ nicht summierbar ist, erhalten wir die Indexfolgen $ (n_k) $ und $ (m_k) $ mit
+		\begin{align*}
+			\sum \limits_{i = m_k + 1}^{n_k} \| x_i \|^p \to \infty
+		\end{align*}
+		und $ 1 < m_1 < n_1 < m_2< n_2<...$.
+		Damit ist die Ungleichung \eqref{eq:m_kotyp_ineq_1} nicht erfüllt und $ X $ ist nicht vom $ M $-Kotyp $ p $.
+		%Dies ist ein Widerspruch und wir sind fertig.
+		
+	\end{description}
+\end{proof}
+
+%Damit sind die Begriffe des Orliczraums und des $ M $-Kotyps identisch. 
+Diese Äquivalenz verwenden wir in dem Beweis des nächsten Satzes.
+
+
+\begin{genericthm}{Satz von Orlicz(1930)}
+	Sei $ (x_n) $ unbedingt summierbar in $ \L^p(\Omega,\mu) $.
+	Dann gilt:
+	\begin{enumerate}
+		\item Für $ 1 \leq p \leq 2 $ ist $  (\| x_n \|^2) $ summierbar.
+		\item Für $ 2 \leq p < \infty $ ist $  (\| x_n \|^p) $ summierbar.
+	\end{enumerate}
+\end{genericthm}
+
+\begin{proof}
+
+	\begin{enumerate}
+		\item Seien $ 1 \leq p \leq 2 $ und  $ \{f_i\}_{i = 1}^n \subset \L^p(\Omega,\mu)$ eine endliche Teilmenge.
+		Wir werden nachweisen, dass $ \L^p $ vom $ M $-Kotyp $ 2 $ ist.
+		Mithilfe der Chintschin-Ungleichung \ref{th:khinchin_ineq_1} erhalten wir:
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum 
+			\limits_{i = 1}^n \alpha_i f_i
+			\right\|^p
+			&=
+			\max \limits_{\alpha_i = \pm 1}
+			\int \limits_\Omega
+			\left|
+			\sum 
+			\limits_{i = 1}^n \alpha_i f_i(t)
+			\right|^p
+			\dx{\mu}
+			\geq 
+			\frac{1}{2^n}
+			\sum \limits_{\alpha_i = \pm 1 }
+			\int \limits_\Omega
+			\left|
+			\sum 
+			\limits_{i = 1}^n \alpha_i f_i(t)
+			\right|^p
+			\dx{\mu}\\
+			&=
+			\mathbb{E}
+			\left(
+			\int \limits_\Omega
+			\left|
+			\sum 
+			\limits_{i = 1}^n r_i f_i(t)
+			\right|^p
+			\dx{\mu}
+			\right)
+			\geq 
+			(a_p)^p
+			\int \limits_\Omega
+			\left(
+			\sum 
+			\limits_{i = 1}^n |f_i(t)|^2
+			\right)^\frac{p}{2}
+			\dx{\mu}.
+		\end{align*}
+		Hierbei sind die $ r_i $ die bekannten Rademachervariablen.
+		Der Summand in dem letzten Integral kann als Norm einer vektorwertigen Funktion aufgefasst werden. Wir setzen
+		\begin{align*}
+			g(t) := \begin{pmatrix}
+				|f_1(t)|^p ,& ...,& |f_n(t)|^p
+			\end{pmatrix}
+		\end{align*}
+		und erhalten in dem endlichdimensionalen Raum $ \ell^{\nicefrac{2}{p}}_{(n)} $:
+		\begin{align*}
+			\left(
+			\sum 
+			\limits_{i = 1}^n |f_i(t)|^2
+			\right)^\frac{p}{2}
+			=
+			\left(
+			\sum 
+			\limits_{i = 1}^n \left(|f_i(t)|^p\right)^\frac{2}{p}
+			\right)^\frac{p}{2}
+			=
+			\| g(t) \|_{\ell^{\nicefrac{2}{p}}_{(n)}}.
+		\end{align*}
+		 Mithilfe der Dreiecksungleichung folgt dann:
+		\begin{align*}
+			\int \limits_\Omega
+			\left(
+			\sum 
+			\limits_{i = 1}^n |f_i(t)|^2
+			\right)^\frac{p}{2}
+			\dx{\mu}
+			&=
+			\int \limits_\Omega
+			\| g(t) \|_{\ell^{\nicefrac{2}{p}}_{(n)}}
+			\dx{\mu}
+			\geq 
+			\left\|
+			\int \limits_\Omega
+			g(t) 
+			\dx{\mu}
+			\right\|_{\ell^{\nicefrac{2}{p}}_{(n)}}
+			=
+			\left(
+			\sum \limits_{i = 1}^n
+			\left(
+			\int \limits_\Omega
+			|f_i(t)|^p 
+			\dx{\mu}
+			\right)^\frac{2}{p}
+			\right)^\frac{p}{2}\\
+			&=
+			\left(
+			\sum_{i  = 1 }^n
+			\| f_i \|_{\L^p}^2
+			\right)^\frac{p}{2}.
+		\end{align*}
+		Durch unsere Überlegungen erhalten wir
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum 
+			\limits_{i = 1}^n \alpha_i f_i
+			\right\|
+			\geq 
+			a_p 
+			\left(
+			\sum_{i  = 1 }^n
+			\| f_i \|_{\L^p}^2
+			\right)^\frac{1}{2}.
+		\end{align*}
+		Damit ist $ \L^p $ für $ 1 \leq p \leq 2 $ ein Orliczraum mit Exponent $ 2 $.
+		
+		\item 
+		Seien $ 2 \leq p < \infty $ und $ \{f_i\}_{i = 1}^n \subset \L^p(\Omega,\mu)$ eine endliche Teilmenge.
+		Analog zu dem ersten Teil des Beweises erhalten wir mit der Chintschin-Ungleichung \ref{th:khinchin_ineq_1}:
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1 }
+			\left\|
+			\sum \limits_{i = 1}^n \alpha_i f_i
+			\right\|^p
+			\geq 
+			\int \limits_\Omega
+			\left(
+			\sum \limits_{i = 1}^n
+			|f_i(t)|^2
+			\right)^\frac{p}{2}
+			\dx{\mu}.
+		\end{align*}
+		Da die $ \ell^{p}_{(n)} $-Norm bezüglich $ p $ monoton fallend ist, folgt:	
+		%Mit der fallenden Monotonie der $ \ell^{p}_{(n)} $-Norm bezüglich $ p $ folgt
+		\begin{align*}	
+			\int \limits_\Omega
+			\left(
+			\sum \limits_{i = 1}^n
+			|f_i(t)|^2
+			\right)^\frac{p}{2}
+			\dx{\mu}
+			\geq 
+			\sum \limits_{i = 1}^n
+			\int \limits_\Omega
+			|f_i(t)|^p
+			\dx{\mu}
+			= 
+			\sum \limits_{i = 1}^n \|f_i \|_{\L^p}^p.
+		\end{align*}
+		Zusammengesetzt ergibt sich mit
+		\begin{align*}
+			\max \limits_{\alpha_i = \pm 1 }
+			\left\|
+			\sum \limits_{i = 1}^n \alpha_i f_i
+			\right\|
+			\geq 
+			\left(
+			\sum \limits_{i = 1}^n \|f_i \|_{\L^p}^p
+			\right)^\frac{1}{p}
+		\end{align*}
+		die gewünschte Aussage.
+	\end{enumerate}
+\end{proof}
+
+\section{Absolut summierbare Operatoren}\label{sc:abs_summing}
+%\subsection{Absolut summierbare Operatoren}
+In diesem Abschnitt beschäftigen wir uns mit Operatoren, bei welchen aus unbedingter Summierbarkeit im Definitionsraum eine Form von absoluter Summierbarkeit im Bildraum folgt.
+Wir beginnen mit der in \cite{Kadets1997} gegebenen Definition von absoluter Summierbarkeit eines Operators.
+\begin{df}
+	Seien $ X $ und $ Y $ Banachräume.
+	Ein Operator $ T : X \to Y $ heißt \textit{absolut summierbar}, wenn eine Konstante $ K > 0$ existiert, sodass
+	\begin{align}\label{eq:abs_sum_cond}
+		\sum \| T x_i \|_Y \leq K \max \limits_{\alpha_i = \pm 1} \left\| \sum \alpha_i x_i \right\|_X
+	\end{align}
+	für jede endliche Teilmenge $ \{ x_i\} \subset X $ gilt.
+\end{df}
+
+Der Beweis des nachfolgenden Lemmas liefert uns eine andere Formulierung für die Ungleichung \eqref{eq:abs_sum_cond}.
+Dies ist die übliche Definition(\cite{Albaic2006}, \cite{Diestel1995}) eines absolut summierbaren Operators.
+Die Abschätzung mit dem Maximum über die Vorzeichen hat den Vorteil, dass wir unmittelbar die Äquivalenz von unbedingter und perfekter Summierbarkeit anwenden können. 
+
+\begin{lem}\label{th:1_sum_equality}
+	Sei $ \{x_i\}_{i=1}^n  $ eine endliche Teilmenge eines normierten Raumes $ X $.
+	Dann gilt:
+	\begin{align*}
+		\sup \limits_{x^\prime \in B_{X^\prime}} 
+		\sum \limits_{i = 1}^n
+		|x^\prime(x_i)|
+		=
+		\max \limits_{\alpha_i = \pm 1}
+		\left\|
+		\sum \limits_{i=1}^n \alpha_i x_i
+		\right\|_X.
+	\end{align*}
+\end{lem}
+
+\begin{proof}
+	Sei $  \{x_i\}_{i =1}^n \subset X$ beliebig.
+	Dann gilt
+	\begin{align*}
+		\sup \limits_{x^\prime \in B_{X^\prime}} 
+		\sum \limits_{i = 1}^n
+		|x^\prime(x_i)|
+		=
+		\sup \limits_{x^\prime \in B_{X^\prime}} 
+		\sum \limits_{i = 1}^n
+		| \alpha_i x^\prime(x_i)|
+		\geq 
+		\sup \limits_{x^\prime \in B_{X^\prime}} 
+		\left|
+		x^\prime \left(
+		\sum \limits_{i = 1}^n
+		\alpha_i x_i
+		\right)
+		\right|
+		=
+		\left\| 
+		\sum \limits_{i = 1}^n
+		\alpha_i x_i
+		\right\|_X
+	\end{align*}
+	für alle $ \alpha_i = \pm 1 $. Insbesondere gilt dann
+	\begin{align*}
+		\max \limits_{\alpha_i = \pm 1}
+		\left\|
+		\sum \limits_{i=1}^n \alpha_i x_i
+		\right\|_X
+		\leq 
+		\sup \limits_{x^\prime \in B_{X^\prime}} 
+		\sum \limits_{i = 1}^n
+		|x^\prime(x_i)|.
+	\end{align*} 
+	Wenn nun eine Kombination der $ \tilde{\alpha}_i $ existiert, für welche die Gleichheit gilt, sind wir fertig.
+	Hierfür verwenden wir, dass zu jedem $ x^\prime \in  B_{X^\prime} $ eine Kombination $ \alpha = \pm 1 $ existiert, sodass 
+	\begin{align*}
+		\sum \limits_{ i = 1}^n | x^\prime(x_i) |
+		=
+		\sum \limits_{ i = 1}^n \alpha _i x^\prime(x_i). 
+	\end{align*}
+	gilt. Damit existieren $ \tilde{\alpha}_i = \pm 1 $, wofür
+	\begin{align*}
+		\sup \limits_{x^\prime \in B_{X^\prime}} 
+		\sum \limits_{i = 1}^n
+		|x^\prime(x_i)|
+		=
+		\left\|
+		\sum \limits_{i=1}^n \tilde{\alpha}_i x_i
+		\right\|_X
+	\end{align*}
+	folgt.
+\end{proof}
+\newpage
+\begin{genericdf}{Bemerkung}
+	Wir nennen den kleinsten möglichen Wert der Konstanten $ K $  die \textit{absolut summierende Norm des Operators $ T $} und bezeichnen diese mit $ \pi_1(T) $.
+	Falls $ T $ nicht absolut summierbar ist, setzen wir $ \pi_1(T) = \infty $.
+	Die absolut summierende Norm von $ T $ lässt sich durch
+	\begin{align}\label{eq:abs_sum_norm}
+		\pi_1(T)
+		=
+		\sup \limits_{\{x_i\}_{i=1}^n \subset X, n \in \N}
+		\sum \limits_{i = 1}^n \| T x_i \|_Y \cdot \frac{1}{\max \limits_{\alpha_i = \pm 1} \left\| \sum \limits_{i=1}^n \alpha_i x_i \right\|_X}
+	\end{align}
+	beschreiben.
+\end{genericdf}
+
+Mit dem nächsten Satz erhalten wir die gewünschte Eigenschaft, dass unbedingte Summierbarkeit auf absolute Summierbarkeit abgebildet wird.
+
+
+\begin{sz}\label{th:abs_sum_equiv}
+	Ein linearer Operator $ T : X \to Y $ ist genau dann \textit{absolut summierbar}, falls dieser eine unbedingt summierbare Folge $ (x_n) $ in $ X $ auf eine absolut summierbare Folge $ (Tx_n) $ in $ Y $ abbildet.
+\end{sz}
+
+\begin{proof}
+	\begin{description}
+		\item[\glqq$ \Rightarrow $\grqq:]
+		Sei $ \varepsilon > 0  $ beliebig.
+		Dann gilt 
+		\begin{align*}
+			\sum \limits_{i = m}^n \|Tx_i\|_Y
+			\leq K \max \limits_{\alpha_i = \pm 1} 
+			\left\|
+			\sum \limits_{i =  m}^n \alpha_i x_i
+			\right\|_X \leq \varepsilon
+		\end{align*} 
+		für geeignete $ n >m \geq N_\varepsilon $.
+		
+		\item[\glqq$ \Leftarrow $\grqq:]
+		Sei $ T : X \to Y $ ein linearer Operator mit
+		\begin{align*}
+			\textrm{$ (x_n) $ unbedingt summierbar} 
+			\ \Rightarrow \
+			\textrm{$ (Tx_n) $ absolut summierbar}. 
+		\end{align*}
+		Damit ist $ T(X) $ ein Orliczraum mit Exponent $ 1 $. Also exisitiert ein $ \gamma > 0 $, sodass für jede endliche Teilmenge $ \{x_i\} \subset X $
+		\begin{align*}
+			\sum \|T x_i \|_Y
+			\leq 
+			\frac{1}{\gamma} 
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum \alpha_i T x_i
+			\right\|_Y
+			= 
+			\frac{1}{\gamma} 
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			T
+			\left(
+			\sum \alpha_i  x_i
+			\right)
+			\right\|_Y
+			\leq 
+			\frac{C}{\gamma}
+			\max \limits_{\alpha_i = \pm 1}
+			\left\|
+			\sum \alpha_i  x_i
+			\right\|_X
+		\end{align*}
+		gilt.
+		Damit ist $ T $ absolut summierbar.
+	\end{description}
+\end{proof}
+
+Wir können das Konzept des absolut summierbaren Operators erweitern.
+Jedoch werden wir diese Erweiterung nicht nach \cite{Kadets1997} definieren, sondern die üblichere Definition aus \cite{Diestel1995} übernehmen.
+\newpage
+\begin{df}
+	Ein Operator $ T : X \to Y $ heißt \textit{$ p $-absolut summierbar}, wenn eine Konstante $ K_p > 0 $ existiert, sodass
+	\begin{align}\label{eq:abs_sum_cond_p}
+		\left(\sum \| T x_i \|_Y^p\right)^\frac{1}{p} 
+		\leq K_p 
+		\sup \limits_{ x^\prime \in B_{X^\prime}} 
+		\left(
+		\sum 
+		|x^\prime(x_i)|^p
+		\right)^\frac{1}{p}
+	\end{align}
+	für jede endliche Teilmenge $ \{ x_i\} \subset X $ gilt.
+\end{df}
+
+Aufgrund der Monotonie der $ \ell_{(n)}^p $-Norm bezüglich $ p $ und der Normäquivalenz in endlichdimensionalen Räumen folgt mit dem Lemma \ref{th:1_sum_equality} für endliche Teilmengen $ \{x_i\} \subset X $:
+\begin{align*}
+	\left(\sum \| T x_i \|_Y^p \right)^\frac{1}{p}
+	&\leq
+	K_p 
+	\sup \limits_{ x^\prime \in B_{X^\prime}} 
+	\left(
+	\sum 
+	|x^\prime(x_i)|^p
+	\right)^\frac{1}{p}
+	\leq
+	K_p 
+	\sup \limits_{ x^\prime \in B_{X^\prime}} 
+	\sum 
+	|x^\prime(x_i)|\\
+	&=
+	K_p \max \limits_{\alpha_i = \pm 1} \left\| \sum \alpha_i x_i \right\|_X
+	\leq
+	K_p C
+		\sup \limits_{ x^\prime \in B_{X^\prime}} 
+	\left(
+	\sum 
+	|x^\prime(x_i)|^p
+	\right)^\frac{1}{p}.
+\end{align*}
+
+Wie für $ p = 1 $ erhalten wir auch bei $ p $-absolut summierbaren Operatoren die gewünschte Eigenschaft.
+Mit der obigen Ungleichung verläuft der Beweis des nachfolgenden Satzes analog zu dem von Satz \ref{th:abs_sum_equiv}.
+Insbesondere können wir die $ p $-absolut summierbaren Operatoren auch durch
+\begin{align*}
+	\left(\sum \| T x_i \|_{Y}^p\right)^\frac{1}{p} 
+	\leq K_p 
+	\max \limits_{\alpha_i = \pm 1}
+	\left\|
+	\sum \alpha_i  x_i
+	\right\|_{Y}
+\end{align*}
+für endliche Teilmengen $ \{x_i\} \subset X $ definieren.
+Der nachfolgende Satz folgt dann analog zu $ p=1 $.
+\begin{sz}
+	Ein linearer Operator $ T : X \to Y $ ist genau dann $ p $-absolut summierbar, falls dieser eine unbedingt summierbare Folge $ (x_n) $ in $ X $ auf eine $ p $-absolut summierbare Folge $ (Tx_n) $ in $ Y $ abbildet.
+\end{sz}
+Ebenso definieren wir die \textit{$ p $-absolut summierende} Norm durch
+\begin{align*}
+\pi_p(T)
+=
+\sup \limits_{\{x_i\}_{i=1}^n \subset X, n \in \N}
+\left(\sum \| T x_i \|_{Y}^p\right)^\frac{1}{p}  \cdot \frac{1}{\sup \limits_{ x^\prime \in B_{X^\prime}} 
+	\left(
+	\sum 
+	|x^\prime(x_i)|^p
+	\right)^\frac{1}{p}}.
+\end{align*}
+Mit $ \Pi_p(X,Y) $ bezeichnen wir die Menge der $ p $-absolut summierenden Operatoren.
+$ \Pi_p(X,Y) $ ist ein Unterraum von $ \mathcal{L}(X,Y) $ mit der Norm $ \pi_p $ und
+\begin{align*}
+	\| T \| \leq \pi_p(T)
+\end{align*}
+für alle $ T \in \Pi_p(X,Y) $. Genauere Informationen hierzu finden sich in \cite[Chapter 2 -4]{Diestel1995}.
+
+
+
+\begin{sz}
+	Die kanonische Einbettung von $ \L^\infty([0,1]) $ nach $ \L^p([0,1]) $ mit $ 1 \leq p < \infty $ ist ein $ p $-absolut summierbarer Operator.
+\end{sz}
+
+\begin{proof}
+%	Es ist 
+%	\begin{align*}
+%		\left(
+%		\sum \| f_i \|_{\L^p}^p
+%		\right)^\frac{1}{p}
+%		\leq 
+%		K_p
+%		\max\limits_{\alpha_i = \pm 1}
+%		\left\|
+%		\sum \alpha_i f_i
+%		\right\|_{\L^\infty}
+%	\end{align*}
+%	für eine endliche Teilmenge $ \{f_i\} \subset \L^\infty([0,1]) $ zu zeigen.
+	Sei $ \{f_i\} \subset \L^\infty([0,1]) $ eine beliebige endliche Teilmenge.
+	Dann gilt:
+	\begin{align*}
+		\max\limits_{\alpha_i = \pm 1}
+		\left\|
+		\sum \alpha_i f_i
+		\right\|_{\L^\infty}
+		&=
+		\max\limits_{\alpha_i = \pm 1}
+		\sup \limits_{t \in [0,1]}
+		\left|
+		\sum \alpha_i f_i(t)
+		\right|
+		=
+		\sup \limits_{t \in [0,1]}
+		\max\limits_{\alpha_i = \pm 1}
+		\left|
+		\sum \alpha_i f_i(t)
+		\right|
+		=
+		\sup \limits_{t \in [0,1]}
+		\sum | f_i(t) |\\
+		&\geq 
+		\sup \limits_{t \in [0,1]}
+		\left(
+		\sum |f_i(t)|^p 
+		\right)^\frac{1}{p}
+		\geq 
+		\left(
+		\int \limits_0^1
+		\sum |f_i(t)|^p \dx{t}
+		\right)^\frac{1}{p}\\
+		&=
+		\left(
+		\sum \|f_i\|^p_{\L^p} 
+		\right)^\frac{1}{p}.
+	\end{align*}
+\end{proof}
+
+Unser nächstes Ziel ist es, den Satz von Grothendieck zu beweisen.
+Dieser besagt, dass jeder beschränkte Operator von $ \ell^1 $ nach $ \ell^2 $ absolut summierbar ist.
+Die absolut summierende Norm dieser Operatoren ist überraschenderweise identisch. Wir beginnen mit der Defintion einer Orthonormalfolge in $ \L^2([0,1]) $.
+
+\begin{df}
+	Die Folge der \textit{Rademacherfunktionen} ist durch
+	\begin{align*}
+		\rho_n : [0,1] \to \R, \  t \mapsto \sign \left(\sin (2^n \pi t)\right)
+	\end{align*}
+	gegeben. 
+\end{df}
+
+Wir können $ \rho_1 = \chi_{[0,\nicefrac{1}{2}]} - \chi_{[\nicefrac{1}{2},1]}  $ ohne Probleme periodisch auf die reelle Achse fortsetzen. Dies eröffnet uns die Möglichkeit induktiv
+\begin{align*}
+	\rho_{n+1}(t) = \rho_1(2^n t)
+\end{align*}
+für alle $ n \in \N $ zu zeigen. 
+Außerdem ist es sinnvoll $ \rho_0 = 1 $ zu setzen. 
+
+\begin{figure} [H]
+	\centering
+	\subfigure{
+		\begin{tikzpicture}[scale =3.5]
+			\draw[->] (-0.1,0) -- (1.1,0);
+			\draw[->] (0,-0.6) -- (0,0.6) ;
+			\node at (1,0.3) {$ \rho_1 $};
+			%\draw (1,-.05) -- (1,.05) node[below=4pt] {$\scriptstyle 1$};
+%			\draw (-.05,0.5) -- (.05,0.5) node[left=3pt] {$\scriptstyle 1$};
+%			\draw (-.05,-0.5) -- (.05,-0.5) node[left=3pt] {$\scriptstyle -1$};
+			\draw(0,0.5) -- (0.5,0.5);
+			\draw(0.5,-0.5) -- (1,-0.5);
+		\end{tikzpicture} 
+		
+	} 
+	\subfigure{
+		\begin{tikzpicture}[scale =3.5]
+			\draw[->] (-0.1,0) -- (1.1,0);
+			\draw[->] (0,-0.6) -- (0,0.6) ;
+			\node at (1,0.3) {$ \rho_2 $};
+			%\draw (1,-.05) -- (1,.05) node[below=4pt] {$\scriptstyle 1$};
+%			\draw (-.05,0.5) -- (.05,0.5) node[left=3pt] {$\scriptstyle 1$};
+%			\draw (-.05,-0.5) -- (.05,-0.5) node[left=3pt] {$\scriptstyle -1$};
+			\draw(0,0.5) -- (0.25,0.5);
+			\draw(0.25,-0.5) -- (0.5,-0.5);
+			\draw(0.5,0.5) -- (0.75,0.5);
+			\draw(0.75,-0.5) -- (1,-0.5);
+		\end{tikzpicture}
+    
+
+}
+	\subfigure{
+	\begin{tikzpicture}[scale =3.5]
+		\draw[->] (-0.1,0) -- (1.1,0);
+		\draw[->] (0,-0.6) -- (0,0.6) ;
+		%\draw (1,-.05) -- (1,.05) node[below=4pt] {$\scriptstyle 1$};
+%		\draw (-.05,0.5) -- (.05,0.5) node[left=4pt] {$\scriptstyle 1$};
+%		\draw (-.05,-0.5) -- (.05,-0.5) node[left=4pt] {$\scriptstyle -1$};
+		
+		\node at (1,0.3) {$ \rho_3 $};
+		\draw(0,0.5) -- (0.125,0.5);
+		\draw(0.125,-0.5) -- (0.25,-0.5);
+		\draw(0.25,0.5) -- (0.375,0.5);
+		\draw(0.375,-0.5) -- (0.5,-0.5);
+		\draw(0.5,0.5) -- (0.625,0.5);
+		\draw(0.625,-0.5) -- (0.75,-0.5);
+		\draw(0.75,0.5) -- (0.875,0.5);
+		\draw(0.875,-0.5) -- (1,-0.5);
+	\end{tikzpicture}
+	
+	
+}  
+\end{figure} 
+Die Abbildung zeigt die ersten drei Rademacherfunktionen.
+Deren Struktur ergibt die Orthogonalitätseigenschaft
+\begin{align*}
+	\int \limits_0^1 \rho_{n_1}^{p_1}(t) \cdots \rho_{n_k}^{p_k}(t)
+	\dx{t}
+	=
+	\begin{cases}
+		1, \ \text{falls alle } p_j \text{ für } 1 \leq j \leq k \text{ gerade}\\
+		0, \ \text{sonst}
+	\end{cases}
+\end{align*}
+für $ n_1,...,n_k \in \N$ paarweise verschieden und $ p_1,...,p_k \in \N_0  $.
+ Hieraus folgt insbesondere die Orthonormalfolgeneigenschaft in  $ \L^2([0,1])$ und es giltt
+\begin{align*}
+	\int \limits_0^1 \left|
+	\sum_{ i= 1}^\infty a_i \rho_i(t)
+	\right|^2
+	\dx{t}
+	=
+	\sum_{ i = 1}^\infty
+	|a_i |^2
+\end{align*}
+für beliebige $ (a_n) \in \ell^2 $. Für die Folge der Radermacherfunktionen erhalten wir eine weitere Chintschin-Ungleichung.
+
+\begin{genericthm}{Chintschin-Ungleichung II}\label{th:khinchin_inequality_3}
+	Für alle $ 0 \leq p \leq \infty $ existieren Konstanten $ A_p, B_p > 0 $, sodass für alle $ (a_n) \in \ell^2 $
+	\begin{align*}
+		A_p \|(a_n) \|_{\ell^2} \leq 
+		\left\|
+		\sum_{i=1}^\infty a_i \rho_i(t)
+		\right\|_{\L^p([0,1])}
+		\leq
+		B_p \|(a_n) \|_{\ell^2}
+	\end{align*}
+	gilt.
+\end{genericthm}
+
+\begin{proof}
+	Wir zeigen die Aussage zunächst für natürliche $ p \in \N $ und
+	eine beliebige endliche Folge $ a_1,...,a_m \in \R $.
+	Die Aussage selbst ergibt sich dann durch das Sandwichkriterium und die übrigen Fälle führen wir auf den natürlichen Fall zurück.
+	Mit der Reihenentwicklung der Exponentialfunktion folgt die Ungleichung
+	\begin{align*}
+		|x|^p 
+		< 
+		p!\left(1 + \frac{|x|^p}{p!}\right)
+		<
+		p! e^{|x|}
+	\end{align*}
+	für $ p \in \N $ und $ x \in\R $.
+	Nun definieren wir $ f(t) := \sum_{i=1}^m a_i \rho_i(t) $ und erhalten
+	\begin{align*}
+		\int \limits_0^1
+		|f(t) |^p
+		\dx{t}
+		\leq 
+		p!
+		\int \limits_0^1
+		e^{|f(t)|}
+		\dx{t}
+		\leq 
+		p!
+		\int \limits_0^1
+		e^{f(t)} + e^{-f(t)}
+		\dx{t}.
+	\end{align*}
+	Mit der Orthonormalität der Rademacherfunktionen folgt
+	\begin{align*}
+		\| f \|_{\L^2} = \left(\sum \limits_{i=1}^m a_i^2\right)^\frac{1}{2}.
+	\end{align*}
+	\newpage
+	Wir nehmen wegen der Orthonormalität o.B.d.A. $ \|f \|_{\L^2} = 1$ an.
+	Dann gilt:
+	\begin{align*}
+		\int \limits_{0}^1 e^{f(t)} \dx{t} 
+		=
+		\int \limits_{0}^1 
+		\prod \limits_{i=1}^m e^{a_i \rho_i(t)} \dx{t} 
+		=
+		\prod \limits_{i=1}^m
+		\int \limits_{0}^1 
+		 e^{a_i \rho_i(t)} \dx{t}
+		=
+		\prod \limits_{i=1}^m
+		\cosh(a_i)
+		\leq 
+		\prod \limits_{i=1}^m
+		e^{\frac{a_i^2}{2}}
+		=
+		e^{\sum \frac{a_i^2}{2}}
+		=
+		e^\frac{1}{2}.
+	\end{align*}
+	Dass Vertauschen des Produkts und des Integrals erhalten wir mithilfe der Potenzreihe der Exponentialfunktion.
+	Die Abschätzungen $ \cosh(a) \leq e^{\nicefrac{a^2}{2}} $ folgt aus dem Vergleich der Potenzreihen.
+	Aufgrund der Symmetrie gilt
+	\begin{align*}
+		\int \limits_0^1
+		|f(t) |^p
+		\dx{t}
+		\leq 
+		p!
+		\int \limits_0^1
+		e^{f(t)} + e^{-f(t)}
+		\dx{t}
+		\leq 
+		2 p! e^\frac{1}{2}
+	\end{align*}
+	für $ p \in \N $.
+	Damit haben wir die Ungleichung für natürliche $ p $ gezeigt.
+	
+	Sei $ 2 \leq p < \infty $ mit $ k := \lceil p \rceil $ und sei $ x_1,...,x_m \in \R $ eine beliebige endliche Folge .
+	Dann erhalten wir aufgrund der Homogenität und der Monotonie der $ \L^p $-Norm:
+	\begin{align*}
+		\left(\sum \limits_{ i = 1}^m a_i^2\right)^\frac{1}{2}
+		=
+		\|f\|_{\L^2} \leq \|f\|_{\L^p} \leq 
+		\left\|
+		\sum \limits_{ i = 1}^m
+		a \rho_i
+		\right\|_{\L^k}
+		\leq
+		\left(2\cdot k! \cdot e^{\frac{1}{2}}\right)^\frac{1}{k}
+		\left(\sum \limits_{ i = 1}^m a_i^2\right)^\frac{1}{2}.
+	\end{align*}
+	Also gilt diese Form der Chintschin-Ungleichung auch in diesem Fall.
+	
+	Nun wenden wir uns mit $ 0 < p < 2 $ dem Abschluss des Beweises zu.
+	Wir definieren 
+	\begin{align*}
+		\theta := \frac{1}{2- \frac{p}{2}} = \frac{2}{4- p}.
+	\end{align*}
+	Dann gilt $ 0 < \theta <1 $ und $ p \theta + 4(1- \theta) = 2 $. Damit liefert die Hölderungleichung:
+	\begin{align*}
+		\|f\|_{\L^2}^2
+		&=
+		\int
+		\limits_0^1
+		|f(t)|^2
+		\dx{t}
+		=
+		\int
+		\limits_0^1
+		|f(t)|^{p\theta} 
+		|f(t)|^{4(1-\theta)}
+		\dx{t}
+		\leq
+		\left(
+		\int
+		\limits_0^1
+		|f(t)|^p
+		\dx{t}
+		\right)^\theta
+			\left(
+		\int
+		\limits_0^1
+		|f(t)|^4
+		\dx{t}
+		\right)^{(1-\theta)}\\
+		&=
+		\|f\|_{\L^p}^{p\theta}
+		\|f\|_{\L^4}^{4(1-\theta)}
+		\leq
+		\|f\|_{\L^p}^{p\theta}	B_4^{4(1-\theta)} \|f\|_{\L^2}^{4(1-\theta)}.
+	\end{align*}
+	Dies ist äquivalent zu
+	\begin{align*}
+	B_4^{\frac{-4(1-\theta)}{p\theta}}	\|f\|_{\L^2}^{\frac{2 - 4(1- \theta) }{p\theta }}
+	=
+	B_4^{\frac{2p - 4}{p}} \|f\|_{\L^2}
+	\leq \| f \|_{\L^p}
+	\end{align*}
+	und mit der Monotonie der $ \L^p $-Norm folgt $ \|f\|_{\L^p} \leq \|f \|_{\L^2} $.
+\end{proof}
+Alternativ lässt sich die Chintschin-Ungleichung induktiv beweisen.
+Man führt die Induktion über $ p = 2^n $ durch und verwendet zwischen $ 2^n $ und $ 2^{n+1} $ die Monotonie der $ \L^p([0,1])$-Norm. 
+In \cite{Diestel1995} ist der Induktionsanfang für $ p = 4 $ geführt. Für $ p = 2  $ wäre dieser nach Konstruktion trival.
+Die Wahl von $ p = 4 $ hat den Seiteneffekt, dass $ A_4  = 1$ und  $B_4 \leq \sqrt[4]{3} $ bekannt sind. Dies kommt uns in dem Beweis der nachfolgenden Ungleichung zugute.
+
+
+
+\begin{genericthm}{Die Grothendieck-Ungleichung}\label{th:grothendieck_inequality}
+	Es existiert eine Konstante $ \kappa_G  >0$, sodass für alle Hilberträume $ H $, $ n \in \N $, alle $ n \times n  $-Matrizen $ A =  (a_{i j}) $ und alle Vektoren $ x_1,...,x_n,y_1,...,y_n \in B_H $ die Ungleichung
+	\begin{align}\label{eq:grothendieck_ineq_general}
+		\left|
+			\sum \limits_{i,j} a_{ij}  \langle x_i,y_j \rangle 
+		\right|
+		\leq
+		\kappa_G
+		\max 
+		\limits_{\|s\|_{\infty} \leq 1 , \|t\|_{\infty} \leq 1 }
+		\left|
+		\langle 
+		s, A t
+		\rangle
+		\right|
+		=
+		\kappa_G
+		\max 
+		\limits_{|s_i| \leq 1 , |t_j| \leq  1}
+		\left|
+		\sum \limits_{i,j} 
+		a_{ij} s_i t_j
+		\right|
+	\end{align}
+	gilt.
+	
+\end{genericthm}
+Die Konstante $ \kappa_G $ nennen wir auch \textit{Grothendieck-Konstante}.
+Das Maximum der rechten Seite können wir als Operatornorm der dualen Abbildung von $ A =(a_{ij}) : \ell_{(n)}^\infty \to \ell_{(n)}^1 $ sehen.
+Wenn wir uns auf reelle Vektorräume beschränken, erhalten wir mit dem Maxiumusprinzip von Bauer \cite{Bauer1960}
+\begin{align*}
+	\max 
+	\limits_{\|s\|_{\infty} \leq 1 , \|t\|_{\infty} \leq 1 }
+	\left|
+	\langle 
+	s, A t
+	\rangle
+	\right|
+	=
+\max 
+\limits_{\|s\|_{\infty} = 1 , \|t\|_{\infty}=  1 }
+	\left|
+	\langle 
+	s, A t
+	\rangle
+	\right|
+	=
+	\max 
+	\limits_{\alpha_i, \alpha^\prime_j = \pm 1 }
+	\left|
+	\sum \limits_{i,j} 
+	a_{i,j} \alpha_i \alpha^\prime_j
+	\right|.
+\end{align*}
+Dieses Maximumsprinzip besagt, dass das Maximum eines stetigen Funktionals bezüglich der Maximumsnorm an den Eckpunkten des Einheitskreises angenommen wird.
+Für den reellen Fall folgt für die Grothendieckungleichung:
+\begin{align}\label{eq:grothendieck_ineq_real}
+	\left|
+	\sum \limits_{i,j} a_{ij}  \langle x_i,y_j \rangle 
+	\right|
+	\leq
+	\kappa_G
+	\max 
+	\limits_{\alpha_i, \alpha^\prime_j = \pm 1 }
+	\left|
+	\sum \limits_{i,j} 
+	a_{i,j} \alpha_i \alpha^\prime_j
+	\right|.
+\end{align} 
+
+\begin{proof}
+Es genügt die Aussage für reelle Matrizen und Hilberträume zu zeigen.
+Im komplexen Fall folgt die Ungleichung durch die Zerlegung in Real-und Imaginärteil. Zu Beginn setzen wir
+\begin{align*}
+	\| A \|_\infty
+	&=
+	\sup
+	\limits_{|s_i| \leq 1 , |t_j| \leq  1}
+	\left|
+	\sum \limits_{i,j = 1}^n a_{ij} s_i t_j
+	\right|
+	=
+	\sup
+	\limits_{|s_i| \leq 1 , |t_j| \leq  1}
+	\left|
+	\sum \limits_{ij} a_{ij} s_i t_j
+	\right|
+\end{align*}
+und
+\begin{align*}
+	 \interleave A\interleave   
+	&=
+	\sup \limits_{ H}
+	\sup \limits_{x_i,y_j \in  B_H}
+	\left|
+	\sum \limits_{i,j = 1}^n a_{ij} 
+	\langle x_i, y_j \rangle
+	\right|
+	=
+	\sup \limits_{ H}
+	\sup \limits_{x_i,y_j \in  B_H}
+	\left|
+	\sum \limits_{ij} a_{ij} 
+	\langle x_i, y_j \rangle
+	\right|.
+\end{align*}
+Hierbei kennzeichnet $ \sup_H $ das Supremum über alle Hilberträume.
+Insbesondere wird das nachgeschaltete Supremum für separable Hilberträume angenommen, da dieses über endliche viele Elemente gebildet wird. Sei $ H $ ein beliebiger seperabler Hilbertraum und $ (e_n) $ eine Orthonormalbasis.
+Dann besitzt jedes $ x  \in H$ die Darstellung
+\begin{align*}
+	x = \sum \limits_{i = 1}^\infty
+	\langle x, e_i \rangle
+	e_i
+\end{align*}
+und wir setzen $ \xi_n  = \langle x, e_n \rangle $. Mit den Rademacherfunktionen definieren wir
+\begin{align*}
+	X : [0,1 ] \to \R, \ t \mapsto 
+	\sum \limits_{ i = 1}^\infty \xi_i \rho_i(t).
+\end{align*}
+Dann gilt $ X \in \L^2([0,1]) $, $ \| x \|_H = \|X\|_{\L^2} $ und
+\begin{align*}
+	\langle x ,y \rangle_H
+	=
+	\int \limits_0^1 X(t) Y(t) \dx{t}
+\end{align*}
+für $ x,y \in H $. Dies folgt unmittelbar aus der Orthonormalität der Rademacherfunktionen.
+Wir nehmen übergangsweise an, dass die aus $ x \in B_H $ entstehenden $ X  $ durch $ M $ beschränkt sind.
+Das heißt $ |X(t)| \leq M $ für alle $ t \in [0,1] $. Dann würde die Ungleichung unmittelbar durch 
+\begin{align*}
+	\left|
+	\sum \limits_{ij} 
+	a_{ij} \langle x_i,y_j \rangle
+	\right|
+	=
+	\left|
+	\int \limits_{0}^{1}
+	\sum \limits_{ij} 
+	a_{ij} X_i(t) Y_i(t)
+	\dx{t}
+	\right|
+	\leq 
+	M^2
+	\cdot
+	\int \limits_{0}^1
+	\left|
+	\sum \limits_{ i j } a_{ij}
+	\frac{X_i(t)}{M} \frac{Y_j(t)}{M}
+	\right|
+	\dx{t}
+	\leq 
+	M^2 \cdot \| A \|_\infty
+\end{align*}
+folgen. Insbesondere gilt dann $ \|A\|_H \leq M^2 \|A\|_\infty $.
+Leider ist dies nicht im Allgemeinen erfüllt, jedoch werden wir $ X $ geschickt aufteilen.
+Zu $ x \in H $ und $ M > 0  $ definieren wir mit 
+\begin{align*}
+	X^B(t)
+	:=
+	\begin{cases}
+		X(t), &\ \textrm{falls } |X(t)| \leq M\\
+		M \cdot \sign X(t), &\ \textrm{sonst}
+	\end{cases}
+\end{align*}
+den beschränkten Teil und durch
+\begin{align*}
+	X^U(t):= X(t) - X^B(t)
+\end{align*}
+den unbeschränkten Teil. Damit gilt $ X = X^B + X^U $ und wir benötigen noch eine Abschätzung für den unbeschränkten Teil. 
+Für ein $ t \in [0,1] $ mit $ X^U(t) \neq 0 $ gilt $ |X(t)| > M$ und $ |X^U(t)| = |X(t)| - M  $. Hierauf wenden wir die elementare Ungleichung
+\begin{align*}
+	s \leq m + \frac{s^2}{4m}, \ m,s > 0
+\end{align*}
+an und erhalten mit der Chintschin-Ungleichung \ref{th:khinchin_inequality_3} die Abschätzung:
+\begin{align*}
+	\| X_U \|_{\L^2}^2
+	&=
+	\int \limits_0^1
+	| X_U(t)|^2
+	\dx{t}
+	\leq
+	\frac{1}{16M^2} 
+	\int \limits_0^1
+	| X(t)|^4
+	\dx{t}
+	= 
+	\frac{1}{16M^2} 
+	\| X \|_{\L^4}^4
+	\leq 
+	\frac{1}{16M^2} B_4^4 \| x \|_H^2
+	\leq 
+	\frac{1}{16M^2} B_4^4\\
+	&\leq 
+	\frac{3}{16M^2}.
+\end{align*}
+Hierbei geht ein, dass $ B_4 \leq \sqrt[4]{3} $ gilt.
+Nun liegen alle Werkzeuge vor um den Beweis abzuschließen.
+Sei $ x_1,...x_n,y_1...,y_n \in B_H $ beliebig.
+Dann gilt:
+\begin{align*}
+	&\left|
+	\sum \limits_{ i j } a_{ij} \langle x_i,y_j \rangle
+	\right|
+	=
+	\left|
+	\int \limits_0^1
+	\sum \limits_{ i j } a_{ij} X_i(t) Y_j(t)
+	\dx{t}
+	\right|\\
+	=
+	&\left|
+	\int \limits_0^1
+	\sum \limits_{ i j } a_{ij} (X^B_i(t) + X^U_i(t) ) \cdot Y^B_i(t) + X_i(t) Y^U_i(t) )
+	\dx{t}
+	\right|\\
+	\leq
+	&\left|
+	\int \limits_0^1
+	\sum \limits_{ i j } a_{ij} X^B_i(t)  \cdot Y^B_i(t) 
+	\dx{t}
+	\right|
+	+
+	\left|
+	\int \limits_0^1
+	\sum \limits_{ i j } a_{ij} X^U_i(t)  \cdot Y^B_i(t) 
+	\dx{t}
+	\right|
+	+\left|
+	\int \limits_0^1
+	\sum \limits_{ i j } a_{ij} X_i(t)  \cdot Y^U_i(t) 
+	\dx{t}
+	\right|\\
+	\leq
+	&2 M^2 \|A \|_\infty+ 
+	\left|
+	\int \limits_0^1
+	\sum \limits_{ i j }  a_{ij}  \|X_i^U \|_{\L^2}\frac{X^U_i(t)}{\|X_i^U \|_{\L^2}}  \cdot Y^B_i(t) 
+	\dx{t}
+	\right|
+	+
+	\left|
+	\int \limits_0^1
+	\sum \limits_{ i j } a_{ij}
+	\|Y_i^U \|_{\L^2}
+	 X_i(t)  \cdot \frac{Y^U_i(t) }{\|Y_i^U\|_{\L^2}}
+	\dx{t}
+	\right|\\
+	&M^2 \| A \|_\infty+ 
+	\frac{\sqrt{3}}{4M}
+	\left|
+	\sum\limits_{ i j }
+	a_{ij} \left\langle\frac{X^U_i(t)}{\|X_i^U \|_{\L^2}}, Y^B_i(t)\right\rangle_{\L^2}
+	\right|+
+	\frac{\sqrt{3}}{4M}
+	\left|
+	\sum\limits_{ i j }
+	a_{ij} \left\langle X_i(t) \frac{Y^U_i(t)}{\|Y_i^U \|_{\L^2}}, \right\rangle_{\L^2}
+	\right|\\
+	\leq 
+	&M^2 \| A \|_\infty+ 
+	\frac{\sqrt{3}}{4M} 2 \interleave A\interleave   
+	=
+	M^2 \| A \|_\infty +  \frac{\sqrt{3}}{2M}  \interleave A\interleave   .
+\end{align*} 
+Hierbei ist zu beachten, dass nach Konstruktion $ \| X_i \|_{\L^2},\|Y_i\|_{\L^2} \leq 1 $ gilt.
+Damit folgt
+\begin{align*}
+ \interleave A\interleave    \leq	M^2 \| A \|_\infty +  \frac{\sqrt{3}}{2M}   \interleave A\interleave   .
+\ \Leftrightarrow \  \interleave A\interleave    \leq \frac{3M^3}{2M - \sqrt{3}} \| A \|_\infty
+\end{align*}
+für alle $ M > \nicefrac{\sqrt{3}}{2} $. Das optimale $ M $ aus diesem Vorgehen lässt sich durch Kurvendiskussion bestimmen.
+\end{proof}
+
+Der exakte Wert der Grothendieck-Konstanten $ \kappa_G $ ist unbekannt.
+Jedoch kann diese durch
+\begin{align*}
+	\frac{\pi}{2} \leq \kappa_G \leq \frac{\pi}{2 \ln (\sqrt{2} + 1)}
+\end{align*}
+abgeschätzt werden. Genauere Informationen hierzu finden sich in \cite{Pietsch1980}.
+Der nächste Satz zeigt, dass jede unbedingt summierbare Folge in $ \ell^1 $ absolut summierbar in $ \ell^2 $ ist.
+
+
+\newpage
+\begin{genericthm}{Der Satz von Grothendieck}
+	Jeder beschränkte lineare Operator $ T : \ell^1 \to \ell^2 $ ist absolut summierbar mit
+	\begin{align*}
+		\pi_1(T) \leq \kappa_G \| T \|.
+	\end{align*}
+	%wobei $ K  > 0$ nicht von $ T $ abhängt.
+\end{genericthm}
+\begin{proof}
+	Wir nehmen o.B.d.A. an, dass $ \|T\| \leq 1 $ gilt und 
+	reellwertige Folgen vorliegen.
+	Sei $ (x_n) $ unbedingt summierbar in $ X = \ell^1 $.
+	Damit ist der Operator
+	\begin{align*}
+		 \psi : X^\prime = \ell^\infty \to \ell^1, \ x^\prime \mapsto (\langle x^\prime , x^{(n)} \rangle_{X^\prime} )_n 
+	\end{align*}
+	nach der Charakterisierung der unbedingten Konvergenz \ref{th:equi_uncond_2} kompakt. Wegen der 
+	Äquivalenz zu der perfekten Summierbarkeit folgt
+	für beliebige Vorzeichen $ \alpha_i = \pm 1 $
+	\begin{align*}
+		\left\|
+		\sum 
+		\limits_{ i= 1}^\infty
+		\alpha_i x_i
+		\right\|
+		&=
+		\sup \limits_{ x^\prime  \in B_{\ell^\infty } }
+		\left|
+		\left\langle
+		x^\prime, 
+		\sum 
+		\limits_{ i= 1}^\infty
+		\alpha_i x_i
+		\right\rangle 
+		\right|
+		=
+		\sup \limits_{ x^\prime  \in B_{\ell^\infty } }
+		\left|
+		\sum 
+		\limits_{ i= 1}^\infty
+		\alpha_i
+		\left\langle 
+		x^\prime, 
+		 x_i
+		\right\rangle 
+		\right|
+		\leq
+		\sup \limits_{ x^\prime  \in B_{\ell^\infty } }
+		\sum 
+		\limits_{ i= 1}^\infty
+		\left|
+		\left\langle 
+		x^\prime, 
+		x_i
+		\right\rangle 
+		\right|\\
+		&= 
+		\| \psi \|_{\ell^\infty \to \ell^1}
+	\end{align*}
+	für alle $ \alpha_i = \pm 1 $.
+	Unser Ziel ist nun, $ \sum \|T x_i \|_{\ell^2} < \infty $ mithilfe der Grothendieck-Ungleichung \ref{th:grothendieck_inequality} zu zeigen.
+	Seien hierfür $ m \in \N $ und $ \delta > 0 $ beliebig.
+	Wir wählen $ n \geq m $ und $ y_1,...,y_m \in \ell_{(n)}^1 \subset \ell^1$ mit
+	\begin{align*}
+		\| x_i- y_i \| \leq \frac{\delta}{2^i}
+	\end{align*}
+	für $ 1 \leq i \leq m $. Sollte $ n  $ echt größer als $ m $ sein, setzen wir $ y_{m+1} = ... = y_n = 0 $.
+	Die $ n \times n  $-Matrix $ A = (a_{ij}) $ ergibt sich aus
+	den Linearkombinationen
+	\begin{align*}
+		y_i 
+		=
+		\sum \limits_{ j= 1}^n a_{ij} e_j
+	\end{align*} 
+	der Standartbasis des $ \ell_{(n)}^1 $.
+	Bevor wir den Beweis abschließen können, benötigen wir noch zwei Identitäten.
+	Es gilt
+	\begin{align*}
+		\sum \limits_{ i = 1}^n \| T y_i \|_{\ell^2}
+		=
+		\sum \limits_{ i = 1}^n 
+		\left\| 
+		\sum \limits_{ j= 1}^n
+		a_{ij} T e_j
+		 \right\|_{\ell^2}
+		=
+		\sum \limits_{ i = 1}^n 
+		\sup\limits_{\tilde{z}_i \in B_{\ell_{(n)}^2}}
+		\left|
+		a_{ij}
+		\sum \limits_{ i = 1}^n 
+		\langle \tilde{z}_i , T e_j  \rangle
+		\right|
+		=
+		\sum \limits_{ i, j = 1 }
+		a_{ij}
+		\langle z_i , T e_j  \rangle
+	\end{align*}
+	für geeignet gewählte $ z_1,...,z_n  $ in dem Einheitsball von $ \ell_{(n)}^2 $. 
+	Dies können wir optimal für die linke Seite der Grothendieck-Ungleichung verwenden.\newpage
+	Für die rechte Seite werden wir
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1}^n \alpha_i y_i
+		\right\|
+		&=
+		\left\|
+		\sum \limits_{i=1}^n
+		\alpha_i
+		\sum \limits_{j=1}^n
+		a_{ij} e_j
+		\right\|_{\ell^1}
+		=
+		\left\|
+		\sum \limits_{j=1}^n
+		\left(\sum \limits_{i=1}^n
+		\alpha_i
+		a_{ij}\right) 
+		e_j
+		\right\|_{\ell^1}
+		=
+		\sum \limits_{j=1}^n
+		\left|
+		\sum \limits_{i=1}^n 
+		a_{ij} \alpha_i
+		\right|\\
+		&=
+		\max 
+		\limits_{ \alpha^\prime_j = \pm 1 }
+		\left|
+		\sum \limits_{ j= 1}^n \alpha^\prime_j
+		\sum \limits_{ i = 1}^n
+		a_{ij} \alpha_i
+		\right|
+		=
+		\max 
+		\limits_{ \alpha^\prime_j = \pm 1 }
+		\left|
+		\sum \limits_{i, j} a_{ij} \alpha_i \alpha^\prime_j
+		\right|
+	\end{align*}
+	für beliebige $ \alpha_1,...,\alpha_n = \pm 1 $ verwenden.
+	Mit den Vorüberlegungen können wir die Grotendieck-Ungleichung anwenden:
+	\begin{align*}
+		\sum \limits_{i=1}^m
+		\|T x_i \|_{\ell^2}
+		&\leq
+		\sum \limits_{i=1}^m
+		\|T x_i - T y_i \|_{\ell^2}
+		+
+		\sum \limits_{i=1}^m
+		\|T y_i \|_{\ell^2}
+		\leq 
+		\delta \left(1-\frac{1}{2^m} \right)
+		+
+		\kappa_G
+		\sum \limits_{i=1}^n
+		\|T y_i \|_{\ell^2}\\
+		&\leq 
+		\kappa_G
+		\sum \limits_{i=1}^n
+		\|T y_i \|_{\ell^2}
+		+
+		\delta 
+		=
+		\kappa_G
+		\sum \limits_{ i, j }
+		a_{ij}
+		\langle z_i , T e_j  \rangle
+		+ 
+		\delta\\	
+		&\leq 
+		\kappa_G
+		\max 
+		\limits_{\alpha_i= \pm 1, \alpha^\prime_j = \pm 1 }
+		\kappa_G
+		\left|
+		\sum \limits_{i, j} a_{ij} \alpha_i \alpha^\prime_j
+		\right|
+		+ \delta 
+		=
+		\kappa_G
+		\max 
+		\limits_{\alpha_i= \pm 1 }
+		\left\|
+		\sum \limits_{i = 1}^m \alpha_i y_i
+		\right\|
+		+ \delta\\
+		&\leq \kappa_G
+		\max 
+		\limits_{\alpha_i= \pm 1 }
+		\left\|
+		\sum \limits_{i = 1}^m \alpha_i x_i
+		\right\|
+		+(1+ \kappa_G) \delta
+		\leq
+		\kappa_G 
+		\| \psi \|_{\ell^\infty \to \ell^1}
+		+(1+ \kappa_G) \delta
+	\end{align*}
+	Wenn wir die Einschränkung $ \| T \| \leq 1 $ entfernen, erhalten wir
+	mit $ m \to \infty $ und $ \delta \to 0 $ 
+	\begin{align*}
+		\sum \| T x_i \|_{\ell^2}
+		\leq 
+		\kappa_G
+		\|T\| 
+		\sup \limits_{ \alpha_i= \pm 1}
+		\left\|
+		\sum \limits \alpha_i x_i
+		\right\|
+	\end{align*}
+	für beliebige Folgen $ (x_n)  $ in $ \ell^1 $. Insbesondere gilt diese Aussage für beliebige endliche Teilmengen von $ \ell^1 $ und es folgt $ \pi_1(T) \leq \kappa_G \|T\| $.
+\end{proof}
+
+
+
+
+
+
+
+%\subsection{Arbeitstitel : Endliche Repräsentierbarkeit}
+%\textcolor{red}{\textbf{TODO:
+%Mit dem Begriff der endlichen Repräsentierbarkeit lässt sich die Orliczeigenschaft verallgemeinern.
+%}	} 
+%
+%\subsection{Arbeitstitel : Folgerungen aus der Banachraumtheorie}\label{comment:bessaga}
+%\textcolor{red}{\textbf{TODO: Mithilfe von Theorie über Basisfolgen kann man den Satz von Bessaga-Pelczynski beweisen. \\
+%Grob besagt dieser, dass die folgenden Aussagen äquivalent sind.
+%\begin{itemize}
+%	\item $ X $ besitzt keinen zu $ c_0 $ isomorphen Unterraum.
+%	\item Schwach absolut konvergent  $\Rightarrow$  schwach konvergent
+%	\item Schwach absolut konvergent  $\Rightarrow$  unbedingt konvergent
+%	\item Schwach absolut konvergent  $\Rightarrow$  Normkonvergent
+%\end{itemize}
+%Interessant ist auch die Tatsache:
+%Falls $ X $ einen zu $ c_0 $ isomorphen Unterraum besitzt, existiert eine schwach konvergente Reihe, welche Norm-divergiert.
+%}	} 

@@ -1,0 +1,2402 @@
+%\section{Bedingte Konvergenz in Banachräumen}
+\chapter{Bedingte Konvergenz in Banachräumen}
+Dieser Abschnitt widmet sich der Untersuchung des Konvergenzbereiches von bedingt konvergente Reihen in beliebigen Banachräume.
+Die  Struktur richtet sich nach den Werken \cite{Kadets1991} und \cite{Kadets1997} von Mikhail und Vladimir Kadets.
+Wir beginnen mit dem Satz von Steinitz für endlichdimensionale Räume. 
+Anschließend beweisen wir eine hinreichende Bedingung für die Steinizeigenschaft in beliebigen Banachräumen.
+Diese verwenden wir um die von Pecherskii in \cite{Pecherski1989} bewiesene Aussage über die Steinitzeigenschaft zu zeigen. 
+Der Satz von Pecherskii wurde unabhängig auch von Chobanyan\cite{Chobanyan1989} bewiesen. 
+Unser Beweis wird sich nach dem von Chobanyan richten. Dies wird nebenbei ein Schema für den Nachweis der Steinitzeigenschaft liefern.
+Beide Sätze werden über Rundungs-und Umordnungseigenschaften bewiesen. 
+Diese Aussagen gliedern wir in dafür vorgesehene Abschnitte und sortieren sie nach endlichdimensionalen und unendlichdimensionalen Voraussetzungen.
+Im Anschluss werden wir uns der Steinitzeigenschaft aus einer anderen Richtung nähern und den Satz von Chobanyan beweisen.
+Dieser wird uns zeigen, dass zwischen unbedingter Summierbarkeit und der Steinitzeigenschaft nichts weiter als eine Nullmenge liegt.
+Mit der von Chobanyan in \cite{Chobanyan1989} bewiesenen Aussage können wir Voraussetzungen für die Steinitzeigenschaft in $ \L^p $-Räumen herleiten.
+Diese wurden bereits von M. I. Kadets in der Arbeit \cite{Kadets1954} bewiesen. 
+
+
+\newpage
+\section{Endlichdimensionale Umordnungs-und Rundungssätze}
+%\subsection{Endlichdimensionale Umordnungs-und Rundungssätze}
+In diesem Abschnitt sammeln wir Umordnungs-und Rundungsaussagen mit endlichdimensionalen Voraussetzungen.
+Die Basis dieser Aussagen bildet das nachfolgende Lemma über Polyeder.
+
+\begin{genericthm}{Eckenlemma für Polyeder}\label{thm:polyeder_lemma}
+	Sei $ K $ ein Polyeder im $ \R^n $, welches durch die Funktionale
+	\begin{align*}
+		f_{i}(x) &= a_i, \quad i = 1,...,p\\
+		g_{j}(x) &\leq b_j, \quad j = 1,..,q
+	\end{align*}
+	für $ x \in \R^n $ gegeben ist. 
+	Sei $ x_0 $ eine Ecke des Polyeders $ K $ und $ A:= \{ j \ | \ g_j(x_0) = b_j \} $.
+	Dann gilt $ | A | \geq n -p $.
+\end{genericthm}
+
+\begin{proof}
+	Sei o.B.d.A. $ x_0 = 0 \in \R^n $ eine Ecke des Polyeders. 
+	Angenommen es gilt $ |A| < n - p $.
+	Dann besitzt das System
+	\begin{align*}
+		f_j(x) &= 0, \quad i = 1,...,p\\
+		g_j(x) &= 0, \quad j \in A
+	\end{align*}
+	weniger Gleichungen als Unbekannte. Damit existiert eine Lösung $ x_1 \neq 0 $ und  ein $ \varepsilon > 0  $ mit $ \varepsilon x_1 \in K $.
+	Dies ist ein Widerspruch zur Eckeneigenschaft von $ x_0 $.
+	Damit gilt die gewünschte Aussage.
+\end{proof}
+
+\begin{genericthm}{Rundungslemma I}\label{thm:rounding_lemma}
+	Sei $ X $ ein endlichdimensionaler normierter Raum, $ \{ x_i \}_{i=1}^n \subset X $ eine endliche Teilmenge, $ \{ \lambda_i\}_{i = 1}^n $ Koeffizienten mit $ \lambda_i \in [0,1] $
+	und $ x = \sum_{i= 1}^n \lambda_i x_i $.
+	Dann existieren Koeffizienten $ \{\Theta_i\}_{i=1}^n $ mit $ \Theta_i = 0 $ oder $ \Theta_i = 1 $, sodass 
+	\begin{align}\label{eq:rounding_off_coefficients}
+		\left\| x - \sum \limits_{i=1}^n \Theta_i x_i \right\| \leq \frac{\dim  X }{2} \max_{1 \leq i \leq n} \| x_i \|
+	\end{align}
+	gilt.
+\end{genericthm}
+
+\begin{proof}
+	Sei $ m := \dim \ X $.
+	Wir führen eine Fallunterscheidung durch.
+	Der erste Fall ist $ n \leq m $. Mit 
+	\begin{align*}
+		\Theta_i = 
+		\begin{cases}
+			0 \ &, \ \text{falls } \lambda_i \leq \frac{1}{2}\\
+			1 \ &, \ \text{falls } \lambda_i > \frac{1}{2}
+		\end{cases}
+	\end{align*}
+	erhalten wir wegen
+	\begin{align*}
+		\left\| x - \sum \limits_{i=1}^n \Theta_i x_i \right\|
+		\leq
+		\sum \limits_{i=1}^n\underbrace{|\lambda_i -\Theta_i|}_{\leq \frac{1}{2}} \|x_i \| 
+		\leq \frac{n}{2} \max_{1 \leq i \leq n} \| x_i \|
+	\end{align*}
+	die Aussage. In dem Fall $ n > m $ wenden wir das Polyederlemma an.	Hierbei konstruieren wir das Polyeder $ P $ durch das System
+	\begin{align*}
+		0 &\leq t_i \leq 1 , \ i = 1,...,n\\
+		x &= 
+		\sum_{i =1}^n t_i x_i
+	\end{align*}
+	in dem Koeffizientenraum $ \R^n $. 
+	%wegen lambda
+	Nach Voraussetzung ist $ P  $ nicht leer und beschränkt. 
+	Also existiert eine Ecke $ x_0 = (\tilde{t}_i)_{i=1}^n $.
+	Nach dem Polyederlemma sind (mindestens) $ n - m $ Koordinaten entweder $ 0 $ oder $ 1 $.
+	Mit 
+	\begin{align*}
+		\Theta_i = 
+		\begin{cases}
+			1 \ &, \ \text{falls } \frac{1}{2} <\tilde{t}_i < 1\\
+			0 \ &, \ \text{falls } 0 \leq  \tilde{t}_i \leq \frac{1}{2}
+		\end{cases}
+	\end{align*}
+	erhalten wir analog zum ersten Fall
+	\begin{align*}
+		\left\| x - \sum \limits_{i=1}^n \Theta_i x_i \right\|
+		\leq
+		\sum \limits_{i=1}^n|\tilde{t}_i -\Theta_i| \|x_i \| 
+		\leq
+		\underbrace{\left(\sum \limits_{i=1}^n|\tilde{t}_i -\Theta_i| \right) }_{n-m \ \textrm{Summanden } = 0}
+		\max_{1 \leq i \leq n} \| x_i \|
+		\leq
+		\frac{\dim  X}{2} \max_{1 \leq i \leq n} \| x_i \|.
+	\end{align*}
+\end{proof}
+
+\begin{genericthm}{Umordnungslemma I}\label{thm:rearrangment_lemma}
+	Sei $ X $ ein normierter Raum mit $ \dim X = m < \infty $, $ \{ x_i \}_{i = 1}^n \subset X $ eine endliche Teilmenge und $ x := \sum_{i = 1}^n x_i$.
+	Dann existiert eine Permutation $ \pi $ von $ \{1,...,n\} $, sodass für alle $ k \leq n $ die Ungleichung
+	\begin{align}\label{eq:rearrangment_lemma_inequality}
+		\left\|
+		\sum \limits_{i = 1}^k x_{\pi(i)} - \frac{k-m}{n} x 
+		\right\|
+		\leq 
+		m \max \limits_{1 \leq i \leq n } \| x_i \|
+	\end{align}
+	gilt.
+\end{genericthm}
+
+\begin{proof}
+	Der einfache Fall ist $ n \leq m $. Wegen $ k \leq n \leq m $ folgt die Aussage mit
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1}^k x_{\pi(i)} - \frac{k-m}{n}
+		\sum \limits_{i= 1}^n x_i
+		\right\|
+		\leq
+		\sum \limits_{i = 1}^k \| x_{\pi(i)} \| 
+		+
+		\frac{m-k}{n} \sum \limits_{i= 1}^n \| x_i \|
+		\leq
+		m \max_{1 \leq i \leq n} \| x_i \|.
+	\end{align*}
+	Wir betrachten nun den Fall $ n > m $.
+	Da die Ungleichung \eqref{eq:rearrangment_lemma_inequality} homogen bezüglich den Komponenten $ x_i  $ ist, nehmen wir o.B.d.A. an, dass $ \max_{1 \leq i \leq n} \|x_i\| = 1 $ ist.
+	Wir werden nun (rückwärts) induktiv eine Mengenkette $ A_m \subset ... \subset A_{n-1} \subset A_{n} = \{1,...,n\}$ und Koeffizienten $ \lambda_k^i $ mit $ k = m,m+1,...,n $ und $ i \in A_k $ konstruieren, sodass die Bedingungen
+	\begin{equation}\label{eq:proof_rearrangement_lemma_condition_1}
+		\begin{split}
+			&|A_k| = k, \quad \forall i \in A_k: \ 0 \leq \lambda^i_k \leq 1 \\
+			&\sum \limits_{i \in A_k} \lambda_k^i = k - m\\
+			&\sum \limits_{i \in A_k} \lambda_k^i x_i = \frac{k-m}{n} x
+		\end{split}
+	\end{equation}
+	erfüllt sind.
+	Für $ k = n  $ genügt es $ A_n = \{1,...,n\} $ mit $ \lambda_n^i = \frac{n-m}{n} $ zu wählen.
+	Angenommen $ A_{k+1} $ und $ \{\lambda_{k+1}^i\}_{i \in A_{k+1}} $ wurden bereits konstruiert.
+	Wir betrachten die Menge $ K = \{\mu_i , i \in A_{k+1}\} $, deren Elemente 
+	\begin{equation}\label{eq:proof_rearrangement_lemma_condition_2}
+				\forall i \in A_{k+1}: \ 0 \leq \mu_i \leq 1, \ \
+				\sum \limits_{i \in A_{k+1} } \mu_i = k- m, \ \
+				\sum \limits_{i \in A_{k+1}} \mu_i x_i = \frac{k-m}{n} x
+	\end{equation}
+	erfüllen.
+	Unser Ziel ist es das Polyederlemma anzuwenden.
+	Mit der Wahl $ \mu_i = \frac{k-m}{k+1-m} \lambda_{k+1}^i $ sehen wir, dass $ K $ nicht leer ist und ein Polyeder im $ \R^{k+1} $ formt.
+	Die beiden Summen liefern $ m+1 $ Gleichungen und aus den Schranken für $ \mu_i $ erhalten wir $ 2(k+1) $ Ungleichungen. 
+	In der Darstellung des Polyederlemmas bedeutet dies $ q = m+1  $ und $ p = 2(k+1) $.
+	Wegen $ \mu_i \in [0,1] $ für $ i \in A_{k+1} $ ist $  K $ beschränkt.
+	Damit existieren Ecken des Polyeders.
+	Sei $ \overline{\mu} = (\overline{\mu}_i)_{i \in A_{k+1}} $ eine (beliebige) Ecke von $ K $. 
+	Dann liefert das Polyederlemma
+	\begin{align*}
+		| A | \geq (k+1) - (m+1 ) = k - m.
+	\end{align*}
+	für $ A = \{i \in A_{k+1} \ : \ \overline{\mu}_i = 0 \ \wedge \ \overline{\mu}_i = 1\} $.
+	Wir werden nun zeigen, dass mindestens ein $ i \in A $ mit $ \overline{\mu}_i = 0 $ existiert.
+	Angenommen es gilt $ \overline{\mu}_i = 1 $ für alle $ i \in A $.
+	Dann liefert die erste Summe in der Bedingung \eqref{eq:proof_rearrangement_lemma_condition_2},
+	dass $ |A | = k - m $ ist und $ \overline{\mu}_i = 1 $ für alle $ A_{k+1}\setminus A $ gilt. Wegen $ A_{k+1 } \setminus A \subset A $ erhalten wir einen Widerspruch zu der Annahme.
+	Damit existiert ein $ j \in A $ mit $ \overline{\mu}_j = 0 $ und wir können
+	\begin{align*}
+		A_k := A_{k+1} \setminus \{j\}, \quad \lambda_k^i := \overline{\mu}_i
+	\end{align*}
+	für $ i \in A_k $ definieren. Hierfür ist sind die Bedingungen in \eqref{eq:proof_rearrangement_lemma_condition_1} erfüllt, womit die Konstruktion abgeschlossen ist.
+	Aus der Konstruktion können wir eine Permutation $ \pi \in \mathrm{S}_{\{1,...,n\}} $ wie folgt definieren:
+	\begin{align*}
+		\pi(i)
+		=
+		\begin{cases}
+			\ \quad j, &\ \text{falls } A_{i-1} := A_i \setminus \{j\} \  i = m+1,...,n\\
+			\textrm{beliebig}, &\ \text{falls } i \leq m
+		\end{cases}.
+	\end{align*}
+	Zum Schluss bleibt noch zu zeigen, dass diese Permutation die Ungleichung \eqref{eq:rearrangment_lemma_inequality} erfüllt.
+	Für $ k \leq m  $ ist das Argument analog zum ersten Fall.
+	Für $ k > m  $ verwenden wir die Bedingung \eqref{eq:proof_rearrangement_lemma_condition_1}:
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1}^k x_{\pi(i)} - \frac{k-m}{n} x 
+		\right\|
+		=
+		\left\|
+		\sum \limits_{i \in A_k} x_{i} - \sum \limits_{i \in A_k} \lambda_k^ix_{i} 
+		\right\|
+		=
+		\left\|
+		\sum \limits_{i \in A_k} ( 1 - \lambda_k^i )x_{i} 
+		\right\|
+		\leq
+		\sum \limits_{i \in A_k} ( 1 - \lambda_k^i ) 
+		%= k - (k-m ) 
+		= m.
+	\end{align*}
+\end{proof}
+Mit der Dreicksungleichung nach unten und geeigneten Abschätzungen ergibt sich die Formulierung des letzten Lemmas, welche wir für den Beweis des Satzes von Steinitz \ref{th:lemma_of_steiniz} verwenden. Durch die Zusatzvoraussetzung $ x = 0 $ erhalten wir ein von Steinitz gezeigtes Lemma.
+Die dort auftretende (exakte) Konstante ist nach wie vor von Interesse.
+\begin{kor}\label{th:rearrangement_lemma_kor}
+	Unter den Voraussetzungen des Umordnungslemmas gilt
+	\begin{align}
+		\left\| \sum \limits_{i = 1}^k x_{\pi(i)} \right\|
+		\leq m \max_{1 \leq i \leq n} \|x_i\| + (m+1) \|x\|.
+	\end{align}
+\end{kor}
+
+\begin{genericthm}{Steinitz-Lemma}\label{th:steiniz_lemma}
+	Unter den Voraussetzungen des Umordnungslemmas und
+	$ x := \sum_{i = 1}^n x_i = 0$ existiert eine Permutation $ \pi $ von $ \{1,...,n\} $ und eine Konstante $ K > 0 $,
+	sodass
+	\begin{align*}
+		\max \limits_{j \leq n} \left\|
+		\sum \limits_{i = 1}^j
+		x_{\pi(i)}
+		\right\|
+		\leq 
+		K 
+		\max \limits_{i} \| x_i\|
+	\end{align*}
+	gilt.
+	Hierbei hängt die Konstante $ K $ nur von dem Raum $ X $ ab. 
+\end{genericthm}
+
+Wegen der Abhängigkeit von $ X $ schreiben wir $ K_X $ und wir bezeichnen diese Konstante als \textit{Steinitzkonstante}.
+Die vorhergehenden Aussagen liefern die Dimension des Raumes als Schranke für $ K_X $. 
+Damit gilt $ K_X \leq  \dim X $.
+Eine Idee ist die Normstruktur der endlichdimensonalen Räume zu verwenden.
+Für die Ebene mit der euklidischen Norm wurde von Banaszczyk\cite{Banaszczyk1987} durch $ \frac{\sqrt{5}}{2} $ der optimale Wert für $ K_X  $ gefunden. Außerdem existiert mit
+\begin{align*}
+	K_X \leq \dim X -1 + \frac{1}{\dim X}
+\end{align*}
+eine schärfere Schranke. Jedoch sind für $ \dim X > 2 $ keine expliziten Werte mehr bekannt.
+Für genauere Abschätzungen können wir \cite{Banaszczyk1990} zu Rate ziehen.
+
+\newpage
+\begin{lem}\label{th:sign_inequality_finite_dim}
+	Sei $ X $ ein normierter Raum mit $ \dim X = m < \infty $ und $ \{ x_i \}_{i = 1}^n \subset X $ eine endliche Teilmenge.
+	Dann existieren $ \alpha_i = \pm 1 $   , sodass
+	\begin{align}
+		\max \limits_{j \leq n}
+		\left\|
+		\sum \limits_{i=1}^j \alpha_i x_i 		
+		\right\|
+		\leq 
+		2 m \max \limits_{1 \leq i \leq n } \| x_i \|
+	\end{align}
+	gilt.
+\end{lem}
+
+\begin{proof}
+	Für $ n \leq m $ folgt die Aussage unmittelbar aus der Dreiecksungleichung mit einer beliebigen Wahl von $ \alpha $.
+	Wir widmen uns deswegen direkt dem Fall $ n > m $. 
+	Unser Ziel ist es das Polyederlemma \ref{thm:polyeder_lemma} $ n-m $ mal anzuwenden damit eine geeignete Wahl von $  \alpha \in \{\pm 1\}^n  $ zu erreichen.
+	Wir definieren das Polyeder $ K_1 \subset \R^{m+1} $ durch
+	\begin{align*}
+		\sum \limits_{i = 1}^{m+1 } t_i x_i&= 0, \quad
+		-1 \leq t_i \leq 1 , \ i = 1,..., m+1,
+	\end{align*}
+	wobei $ (t_i)_{i=1}^{m+1} $ die zugehörigen Koordinaten bezeichnet und die Summe $ m $ Gleichungen liefert.
+	Das Polyeder ist wegen $ 0 \in K_1 $  nicht leer und aufgrund der Ungleichungen beschränkt.
+	Damit ist die Existenz von Ecken gesichert. 
+	In der Notation des Polyederlemmas heißt dies
+	\begin{align*}
+		|A_1 | \geq m+1 - m = 1.
+	\end{align*}
+	Damit existiert eine Ecke $ (t^1_i)_{i=1}^{m+1} $
+	mit einer Koordinate $ t^1_{i_1} = \pm 1$ für ein $ 1 \leq i_1 \leq m+1 $.
+%	womit eine Ecke $ (t^1_i)_{i=1}^{m+1} $ mit einer Koordinate $ %t^1_{i_1} = \pm 1$, wobei $1 \leq i_1 \leq m+1 $, existiert.
+	Hiermit definieren wir das nicht-leere und beschränkte Polyeder $ K_2 \subset \R^{m+2} $ durch
+	\begin{align*}
+		t_{i_1} = t_{i_1}^1
+		\sum \limits_{i = 1}^{m+1 } t_i x_i = 0, \quad 
+		-1 \leq t_i \leq 1 , \ i &\in \{1,...,m+2\} \setminus \{i_1\}.
+	\end{align*}
+	Mit dem Polyederlemma erhalten wir eine Ecke $ (t^2_i)_{i=1}^{m+2} $
+	mit einer Koordinate $ t_{i_2}^2 = \pm 1 $ für ein $ i_2 \in \{1,...,m+2\} \setminus \{i_1\} $.
+	Außerdem gilt nach Konstruktion $ t^2_{i_1} = t^1_{i_1} $.
+	Wenn wir diese Konstruktion $ n-m $ mal durchführen, erhalten wir Indizes 
+	$ i_1,i_2,...,i_{n-m} $ und Koordinaten $ (t_i)^{m-k}_{i=1} $ für $ k = 1,...,m-n $. Diese erfüllen die Bedingungen
+	\begin{align*}
+		\sum \limits_{i = 1}^{m+k} t_i^k x_i = 0, \
+		| t_i^k | \leq 1, \
+		|t_{i_k}| = 1 , \ \text{und} \
+		t^k_{i_j} = t^j_{i_j} \ \text{für} \ k > j.
+	\end{align*}
+	Wir definieren $ \alpha \in \{\pm 1\}^n $ durch
+	\begin{align*}
+		\alpha_i = 
+		\begin{cases}
+			t^k_{i_k}, &\ \text{falls } i = i_k, k = 1, ..., n - m  \\
+			1 \ , &\ \text{sonst}
+		\end{cases}.
+	\end{align*}
+	Nun bleibt noch zu zeigen, dass die Konstruktion das Gewünschte erfüllt.
+	Für $ j \leq m $ folgt
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1 }^j \alpha_i x_i 
+		\right\|
+		\leq
+		m \cdot \max \limits_{1 \leq i \leq n } \| x_i \|
+	\end{align*} 
+	mit der Dreiecksungleichung. Für $ j > m $ setzen wir $ j = m + k $ mit $ k = 1,...,n-m $.
+	Nach der Konstruktion enthält $ \sum_{i=1}^{m+l} (\alpha_i - t_i^l) x_i $ maximal $ m $ Summanden ungleich Null und es gilt $ \sum_{i=1}^{m+l} t_i^l x_i =0 $.
+	Damit folgt mit 
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1 }^{m+l} \alpha_i x_i 
+		\right\|
+		=
+		\left\|
+		\sum \limits_{i = 1 }^{m+l} \underbrace{(\alpha_i - t_i^l)}_{| \cdot | \leq 2} x_i 
+		\right\|
+		\leq 2 m \cdot \max \limits_{1 \leq i \leq n } \| x_i \|
+	\end{align*}
+	die Aussage.
+\end{proof}
+
+\section{Der Satz von Steinitz}
+%\subsection{Der Satz von Steinitz}
+\begin{df}
+	Sei $ (x_n) $ eine Folge in einem Banachraum  $ X $. 
+	Dann ist die \textit{Menge der Partialsummen} durch
+	\begin{align*}
+		P_{(x_n)} = 
+		\left\{ 
+		\sum \limits_{k=1}^n x_{i_k} \  |  \ i_1 < ... < i_n, n \in \N
+		\right\}
+	\end{align*}
+	definiert. Die \textit{Menge der $ [0,1] $-Kombinationen} ist durch
+	\begin{align*}
+		Q_{(x_n)}
+		=
+		\left\{ 
+		\sum \limits_{i=1}^n \lambda_i x_i \ | \
+		0 \leq \lambda_i \leq 1 , n \in \N
+		\right\}
+	\end{align*}
+	gegeben. 
+\end{df}
+
+Falls keine Verwechslungsgefahr besteht, schreiben wir auch $ P $ oder $ Q $.
+Wenn wir aktiv die zugrundeliegende Menge der Folgenglieder verändern, greifen wir auf die von Kadets\cite{Kadets1997} verwendete Notation $ P(\{x_i\}_{i = 1}^\infty) $ und $ Q(\{x_i\}_{i = 1}^\infty) $
+zurück.
+
+\begin{genericthm}{Eigenschaften}  
+	\begin{enumerate}
+		\item Es gilt $ P \subset Q $.
+		\item $ Q $ ist konvex.
+	\end{enumerate}
+\end{genericthm}
+%\begin{proof}
+%	\begin{enumerate}
+%		\item 
+%		Folgt unmittelbar durch eine geeignete Wahl der Koeffizienten.
+%		\item
+%		Folgt aus der Konvexkombination der einzelnen Summanden.
+%	\end{enumerate}
+%\end{proof}
+Die erste Eigenschaft folgt durch eine geeignete Wahl der Koeffizienten und die Zweite aus der Konvexkombination der einzelnen Summanden.
+
+Das Rundungslemma \ref{thm:rounding_lemma} lässt sich auch folgendermaßen formulieren.
+Sei $ X $ endlichdimensional und $ (x_n) $ eine Folge in $ X $.
+Dann existiert zu jedem $ q \in Q $ ein $ p \in P $, sodass
+\begin{align}
+	\| q - p \| \leq \frac{\dim X}{2} \max_{1 \leq i \leq n} \|x_i \|
+\end{align}
+gilt.
+Das $ n $ erhalten wir aus der Definition von $ q $. Diese kompaktere Darstellung werden wir in dem Beweis des Satzes von Steinitz \ref{th:lemma_of_steiniz} verwenden.
+Das nachfolgende fundamentale Lemma für den Beweis des Satzes von Steinitz wurde von V. Fonf 1972 in \cite{Fonf1972} unter allgemeineren Voraussetzungen bewiesen.
+
+
+\begin{lem}\label{thm:affine_space_is_subset}
+	Sei $ X $ ein beliebiger Banachraum und $ (x_n) $ bedingt summierbar in $ X $ mit Grenzwert $ s $.
+	Falls $ s \in \overline{Q} $ gilt, erhalten wir $ s + \Gamma_0 \subset \overline{Q} $.
+	%	\begin{align*}
+	%	x \in \overline{Q} \Rightarrow x + \Gamma_0 \subset \overline{Q}.
+	%	\end{align*}
+\end{lem}
+
+Dieses Lemma bleibt auch gültig, wenn wir endlich viele Glieder der Folge $ (x_n) $ entfernen oder endlich viele Werte aus $ X $ hinzu addieren. Damit gilt
+\begin{align}\label{eq:affine_space_is_subset_special}
+	s + y \in \overline{Q}(\{x_i\}_{i = 1}^\infty \setminus A) +y
+	\ \Rightarrow \
+	s + \Gamma_0 + y \subseteq  \overline{Q}(\{x_i\}_{i = 1}^\infty \setminus A) +y
+\end{align}
+für eine endliche Teilmenge $ A \subset \{x_i\}_{i = 1}^\infty $ und $ y \in X $. Da der Umgang hiermit recht sperrig ist, werden wir diese Extras in dem Beweis weglassen.
+
+
+\begin{proof}
+	Wir beginnen mit einer Vorüberlegung.
+	Sei $ x^\prime \in X^\prime \setminus \Gamma $.
+	Dann ist $ (\langle x^\prime,x_i \rangle) $ über $ \R $ bedingt summierbar, aber es liegt keine absolute Konvergenz vor.
+	Dann gilt nach der Fallunterscheidung in dem Beweis des Riemannschen Umordnungssatzes $ \sup_{y \in P} \langle x^\prime ,y \rangle = \infty $. 
+	Wegen $ P \subset Q $ folgt $ \sup_{y \in Q} \langle x^\prime ,y \rangle = \infty $.\\
+	Nun führen wir den eigentlichen Beweis.
+	Sei $ s \in \overline{Q} $.
+	Angenommen es existiert ein $ z \in \Gamma_0 $, sodass $ s + z \notin \overline{Q} $ gilt. Nach dem Satz von Hahn-Banach in der Trennungsversion \cite{Werner2011} existiert ein $ x^\prime \in X^\prime $, sodass
+	\begin{align*}
+		\sup \limits_{y \in \overline{Q}} \langle x^\prime ,y \rangle < \langle x^\prime , s+z \rangle
+	\end{align*}
+	gilt. 
+	Wir unterscheiden nun die Fälle $ x^\prime \in \Gamma $ und $ x^\prime \in X^\prime \setminus \Gamma $.
+	Für $ x^\prime \in \Gamma $ gilt $ \langle x^\prime, s + z \rangle = \langle x^\prime, s  \rangle $. Wegen $ s \in \overline{Q} $ ist
+	$ \sup_{y \in \overline{Q}} \langle x^\prime ,y \rangle < \langle x^\prime , s \rangle $
+	ein Widerspruch. Für $ x^\prime \in X^\prime \setminus \Gamma $ gilt nach der Vorüberlegung:
+	\begin{align*}
+		\infty =\sup \limits_{y \in \overline{Q}} \langle x^\prime ,y \rangle < \langle x^\prime , s+z \rangle < \infty.
+	\end{align*}
+	Dies ist auch ein Widerspruch.
+	%$ f \in \Gamma $ und $ f(s + z) < \infty $ können wegen $  f(s + z )   < \infty $ nicht gelten. 
+	Demnach war die Annahme falsch und die Aussage gilt.
+\end{proof}
+
+\newpage
+\begin{lem}\label{th:lemma_apply_rounding_of_lemma_steinitz_finite_dimensional}
+	Sei $ X $ ein $ m $-dimensionaler Raum und $ (x_n) $ summierbar mit dem Grenzwert $ s $. 
+	Dann existiert für alle $ s^\prime  \in s + \Gamma_0 $ eine Permutation $ \pi_0 \in \mathrm{S}_\N $ und eine streng monotone Indexfolge $ (n_j) $, sodass
+	\begin{align}
+	\lim \limits_{j \to \infty}
+	\left\| s^\prime - \sum \limits_{i = 1}^{n_j} x_{\pi_0(i)} 
+	\right\| = 0
+	\end{align}
+	gilt.
+	Dies bedeutet, dass eine Teilfolge der umgeordneten Partialsummenfolge gegen $ s^\prime $ konvergiert. 
+\end{lem}
+\begin{proof}
+	Sei $ s^\prime \in s + \Gamma_0 $.
+	Wegen $ s \in \overline{Q} $ gilt nach dem Lemma \ref{thm:affine_space_is_subset}
+	$ s + \Gamma_0 \subset \overline{Q} $ und somit auch $ s^\prime \in \overline{Q} $.
+	Sei $ (\varepsilon_n) $ ein streng monoton fallende Nullfolge.
+	Dann existiert ein $ q_1 \in Q(\{x_i\}_{i =1}^\infty) $ und ein $ k_1 > 0 $, sodass
+	\begin{align*}
+		\| s^\prime - q_1 \| 
+		=
+		\left\|
+		s^\prime - \sum \limits_{i = 1}^{k_1} \lambda_i^{(1)} x_i
+		\right\|
+		< \varepsilon_1
+	\end{align*}
+	gilt. Wir wenden nun das Rundungslemma \ref{thm:rounding_lemma} auf den Aufspann von $ x_1,...,x_{k_1} $ an. Nach diesem Lemma existiert ein $ p_1 \in P(\{x_i\}_{i =1}^\infty) $ mit
+	\begin{align*}
+		\| q_1 - p_1 \| = \left\| q_1 - \sum \limits_{i = 1}^{k_1} \Theta_i^{(1)} x_i \right\| \leq m \cdot \max \limits_{i \geq 1} \|x_i \|
+	\end{align*}
+	für entsprechende $ \Theta_i^{(1)} \in \{0,1\} $.
+	Wir definieren $ S_1 := \{x_i \ : \ \Theta_i^{(1)} = 1\} \cup \{x_1\} $ und \\ $ s_1 := \sum_{x \in S_1} x $.
+%	\begin{align*} 
+%		S_1 := \{x_i \ : \ \Theta_i^{(1)} = 1\} \cup \{x_1\}, \quad 
+%		s_1 := \sum \limits_{x \in S_1} x,
+%	\end{align*}
+	Dann gilt:
+	\begin{align*}
+		\|s^\prime - s_1 \| 
+		\leq
+		\| s^\prime  -q_1 \| + \| q_1 - s_1\|
+		< 
+		\varepsilon_1 + m \max_{i \geq 1} \| x_i \| + \| x_1\|.
+	\end{align*}
+	%gilt.
+	Nun betrachten wir  $ s_1 + \overline{Q}(\{x_i\}_{i = 1}^\infty \setminus S_1) $. Mit dem Lemma \ref{thm:affine_space_is_subset} folgt dann $ s^\prime \in s_1 + \overline{Q}(\{x_i\}_{i = 1}^\infty \setminus S_1) $.
+%	Wegen $ s \in s_1 + \overline{Q}(\{x_i\}_{i = 1}^\infty \setminus S_1) $ gilt mit Lemma \ref{thm:affine_space_is_subset} $ s^\prime \in s_1 + \overline{Q}(\{x_i\}_{i = 1}^\infty \setminus S_1) $.
+	Damit gibt es auch hier ein $ q_2 \in Q(\{x_i\}_{i = 1}^\infty \setminus S_1) $ und ein $ k_2 > k_1 $, sodass
+	\begin{align*}
+	\|s^\prime - s_1 - q_2 \| 
+	= 
+	\left\| s^\prime - s_1 - \sum \limits_{i = 1, x_i \notin S_1 }^{k_2} \lambda_i^{(2)} x_i \right\| < \varepsilon_2
+	\end{align*}
+	gilt. Mit dem Rundungslemma erhalten wir ein $ p_2 \in P(\{x_i\}_{i = 1}^\infty \setminus S_1) $ mit
+	\begin{align*}
+	\| q_2 - p_2 \| 
+	=
+	\left\| q_2 - \sum \limits_{i=1,x_i \notin S_1}^{k_2} \Theta_i^{(2)} x_i \right\|
+	\leq
+	m \cdot \max \limits_{i\geq 2} \| x_i \| 
+	\end{align*}
+	für entsprechende $ \Theta_i^{(2)} \in \{0,1\} $. Wir definieren wieder
+	\begin{align*}
+	S_2 := S_1 \cup \{x_i \ : \ \Theta_i^{(2)} = 1\} \cup \{x_2\}, \quad 
+	s_2 := \sum \limits_{x \in S_2} x,
+	\end{align*}
+	womit
+	\begin{align*}
+	\|s^\prime - s_2 \| 
+	=
+	\| s^\prime - s_1 -p_2 \|
+	\leq
+	\| s^\prime - s_1 -q_2 \| + \| q_2 - p_2\|
+	< 
+	\varepsilon_2 + m \max_{i \geq 2} \| x_i \| + \| x_2\|
+	\end{align*}
+	gilt. Diese Prinzip lässt sich analog für alle $ j \in \N $ fortführen.
+	Damit gilt
+	\begin{align*}
+	\|s^\prime - s_j \| \leq \varepsilon_j + m \max_{i \geq j} \| x_i \| + \|x_j\| \rightarrow 0
+	\end{align*}
+	für $ j \to \infty $. Wir erhalten 
+	\begin{align*}
+	S_1 \subset S_2 \subset S_3 \subset ... \subset S_n \subset ..., \quad
+	\bigcup \limits_{j \in \N} S_j = \{x_i\}_{i=1}^\infty.
+	\end{align*}
+	Die Teilmengenbeziehungen sind echt aufgrund der strengen Monotonie von $ (\varepsilon_n) $. 
+	Mit $ n_j := | S_j | $ erhalten wir die streng monotone Indexfolge $ (n_j) $. Die Permutation $ \pi_0  $ ergibt sich aus der disjunkten Mengenfolge
+	\begin{align*}
+	\tilde{S}_1 := S_1, \quad 
+	\tilde{S}_j := S_j \setminus S_{j-1} , \ j \geq 2.
+	\end{align*}
+	Insgesamt erhalten wir
+	\begin{align*}
+		\left\| s^\prime - \sum \limits_{i =1}^{n_j} x_{\pi_0(i)} \right\|
+		= 
+		\left\|
+		s^\prime - \sum \limits_{i=1}^{j -1 } \sum \limits_{x \in \tilde{S}_i} x - \sum \limits_{x \in \tilde{S}_j} x
+		\right\|
+		= 
+		\left\|
+		s^\prime - s_j \right\|
+		\rightarrow 0
+	\end{align*}
+	für $ j \to \infty $.
+\end{proof}
+
+
+\begin{genericthm}{Satz von Steinitz(1913)}\label{th:lemma_of_steiniz}
+	Sei $ X $ ein $ m $-dimensionaler Raum und $ (x_n) $ summierbar mit dem Grenzwert $ s $.
+	Dann besitzt $ (x_n) $ die Steinitzeigenschaft.
+%	Dann ist $ \mathcal{K}\left(  x_k \right) $ ein affiner Unterraum, womit
+%	\begin{align*}
+%	\mathcal{K}_{\left(x_k \right)} =
+%	s + \Gamma_0
+%	\end{align*}
+%	gilt.
+\end{genericthm}
+\begin{proof}
+	Die Inklusion $ \mathcal{K}_{\left(x_n \right)} \subseteq
+	s + \Gamma_0  $ wurde bereits in \ref{th:subset_conv_area} gezeigt. 
+	Nun wenden wir uns der Beziehung $ s + \Gamma_0 \subset \mathcal{K}_{\left(  x_n \right)} $ zu.
+	Sei $ s^\prime \in s + \Gamma_0 $. 
+	Nach dem Lemma \ref{th:lemma_apply_rounding_of_lemma_steinitz_finite_dimensional} gibt es ein $ \pi_0 \in \mathrm{S}_\N $ und eine Indexfolge $ (n_j) $ mit
+	\begin{align*}
+		\lim \limits_{j \to \infty}
+		\left\| s^\prime - \sum \limits_{k = 1}^{n_j} x_{\pi_0(k)} 
+		\right\|
+		=
+		\left\| s^\prime - \sum \limits_{i = 1}^{n_j} x_{i} 
+		\right\|
+		 = 0.
+	\end{align*}
+	Um die Darstellung zu vereinfachen setzen wir $ \pi_0(k) = i $. 
+	Wegen der Summierbarkeit von $ (x_n) $ gilt mit dem Cauchykriterium \ref{th:chauchy_crit}:
+	\begin{align*}
+		\lim \limits_{j \to \infty} \left\|  \sum \limits_{i = n_j +1}^{n_{j+1}} x_{i} 
+		\right\| = 0.
+	\end{align*}
+	Wir wenden nun das Umordnungslemma in der Version \ref{th:rearrangement_lemma_kor} auf den endlichen Mengen
+	$ \{ x_i \}_{i = n_j + 1}^{n_{j+1}} $ an.
+	Damit gibt es ein $ \pi_j \in \mathrm{S}_{\{n_j + 1,..., n_{j+1}\}} $, sodass
+	\begin{align*}
+		\left\|
+		\sum \limits_{k = n_j +1}^{r}
+		x_{\pi_j(k)}
+		\right\|
+		\leq
+		m \cdot \max \limits_{n_j + 1 \leq k \leq n_{j+1} } \| x_k \|
+		+
+		(m+1 ) 
+		\left\| \sum \limits_{i = n_j +1}^r x_i \right\|
+	\end{align*}
+	für alle $ n_j < r \leq n_{j+1} $ gilt. 
+	Wir definieren die globale Permutation $ \pi \in \mathrm{S}_\N $ durch\\ $ \pi\big|_{\{ x_i \}_{i = n_j + 1}^{n_{j+1}} } = \pi_j $ für $ j \in \N $ und $ \pi(i) = i $ für $ i \leq n_1 $.
+	Dies führt insbesondere dazu, dass
+	\begin{align*}
+		\sum \limits_{k = 1}^{n_j} x_{\pi(k)}
+		=
+		\sum \limits_{i = 1}^{n_j} x_i
+	\end{align*}
+	gilt. Sei nun $ r > n_1  $ und $ j $ so gewählt, dass $ n_j + 1 \leq r \leq n_{j+1}  $ gilt.
+	Dann erhalten wir mit
+	\begin{align*}
+		\left\|
+		\sum \limits_{k=1}^r x_{\pi(k)} - s^\prime 
+		\right\|
+		&\leq
+		\underbrace{\left\|
+		\sum \limits_{k=1}^{n_j} x_{\pi(k)} - s^\prime 
+		\right\| }_{
+		= \| \sum x_i - s^\prime \|
+		}
+		+
+		\left\|
+		\sum \limits_{k = n_j +1}^{r}
+		x_{\pi_j(k)}
+		\right\|\\
+		&\leq
+		\left\|
+		\sum \limits_{i=1}^{n_j} x_{i} - s^\prime 
+		\right\|
+		+
+		m \cdot \max  \limits_{k > n_j } \| x_k \|
+		+
+		(m+1 ) 
+		\left\| \sum \limits_{i = n_j +1}^r x_i \right\|
+		\rightarrow 0
+	\end{align*}
+	für $ j \to \infty $, dass $ s^\prime \in \mathcal{K}_{\left(x_n \right)}  $ gilt.
+	Damit erfüllt $ (x_n) $ die Steinitzeigenschaft.
+\end{proof}
+
+
+
+\section{Eine hinreichende Bedingung für die Steinitzeigenschaft}
+%\subsection{Eine hinreichende Bedingung für die Steinizeigenschaft}
+In diesem Abschnitt betrachten wir für beliebige Banachräume eine hinreichende Bedingung für die Steinitzeigenschaft.
+Diese Bedingung setzt sich aus einer Umordnungs- und Rundungseigenschaft zusammen.
+Damit besteht Ähnlichkeit zu dem Beweis des Satz von Steinitz, welcher aus solchen Eigenschaften folgt.
+Für endlichdimensionale Räume folgt die hinreichende Bedingung unmittelbar mit dem Umordnungslemmas I \ref{thm:rearrangment_lemma} und dem Rundungslemma I \ref{thm:rounding_lemma}.
+Also verkürzt sich der Beweis des Satzes von Steinitz auf diese zwei Lemmata.  
+%In diesem Abschnitt betrachten wir in dem Satz \ref{th:prop_linear_conv_area} eine hinreichende Bedingung für die Steinizeigenschaft in einem beliebigen Banachraum $ X $.
+%Diese Bedingung setzt sich aus einer Umordnungs-und Rundungseigenschaft zusammen.
+%Damit besteht eine Ähnlichkeit zu dem Beweis  des Satzes von Steiniz.
+%Für endlichdimensionale Räume folgt die hinreichende Bedingung unmittelbar durch das
+%Umordnungslemmas I \ref{thm:rearrangment_lemma} und Rundungslemma I \ref{thm:rounding_lemma}.
+%Also verkürzt sich der Beweis des Steinizsatzes auf diese zwei Lemmata.
+%Wie für den Satz von Steiniz \ref{th:lemma_of_steiniz} benötigen wir hier eine 
+%In der hinreichenden Bedingung setzen wir diese voraus. 
+%Für endlichdimensionsionale Räume ergeben sich diese Aussagen unmittelbar aus dem Umordnungslemmas I \ref{thm:rearrangment_lemma} und dem Rundungslemma I \ref{thm:rounding_lemma}.
+%Damit folgt der Satz von Steiniz aus dem nachfolgenden Satz. 
+Die hinreichende Bedingung liefert uns eine Möglichkeit die Steinitzeigenschaft für Folgen in unendlichdimensionalen Räumen nachzuweisen.
+Dafür fehlen uns noch konkrete Voraussetzungen.
+Diese werden wir in den Abschnitten \ref{sc:hanani_pecherskii} und\ref{sc:lemma_of_chobanyan} herausarbeiten.
+
+\begin{genericthm}{Satz}\label{th:prop_linear_conv_area}
+	Sei  $ (x_n) $ eine Folge in einem Banachraum $ X $ mit den Eigenschaften:
+	\begin{enumerate}
+		\item\label{eq:prop_linear_conv_area_2_item}
+		Für alle $ \varepsilon > 0 $ existiert ein $ N_\varepsilon \in \N $,
+		sodass für $ \{y_i\}_{i =1}^n \subset \{x_i \}_{i = N_\varepsilon}^\infty$, $ \lambda \in [0,1]^n $
+		ein $ \Theta \in \{0,1\}^n $ mit
+		\begin{align}\label{eq:prop_linear_conv_area_2}
+			\left\| \sum \limits_{i = 1}^n \lambda_i y_{i}- 
+			\sum \limits_{i = 1}^n
+			\Theta_i y_i \right\| \leq \varepsilon
+		\end{align}
+		existiert.
+		
+		\item\label{eq:prop_linear_conv_area_1_item} 
+		Für alle $ \varepsilon > 0 $ existiert ein $ N_\varepsilon \in \N $ und ein $ \delta > 0 $, 
+		sodass für $ \{y_i\}_{i =1}^n \subset \{x_i \}_{i = N_\varepsilon}^\infty$
+		und $ \| \sum_{i=1}^n y_i \| \leq \delta_\varepsilon $ eine Permutation $ \pi \in \mathrm{S}_{\{1,...,n\}} $ mit
+		\begin{align}\label{eq:prop_linear_conv_area_1}
+			\max \limits_{j \leq n}
+			\left\| \sum \limits_{i = 1}^j y_{\pi(i)} \right\| \leq \varepsilon
+		\end{align}
+		existiert.
+		
+	\end{enumerate}
+	Dann besitzt $ (x_n) $ die Steinitzeigenschaft.
+\end{genericthm}
+
+Die erste Bedingung \ref{eq:prop_linear_conv_area_1_item} lässt sich auch anders formulieren.
+Für alle $ \varepsilon > 0  $ exisitert ein $ N_\varepsilon \in \N $, sodass für alle $ q \in Q(\{x_i\}_{i = N_\varepsilon}^{\infty}) $ ein $ p \in P(\{x_i\}_{i = N_\varepsilon}^\infty) $ mit identischen Elementen aus $ X $ existiert, sodass 
+\begin{align*}
+	\| q - p \| 
+	\leq \varepsilon
+\end{align*}
+gilt. 
+Für endlichdimensionale Räume folgen die Bedingungen \ref{eq:prop_linear_conv_area_2_item} und \ref{eq:prop_linear_conv_area_1_item}
+aus dem Rundungslemma I \ref{thm:rounding_lemma} und dem Umordnungslemmas I 
+\ref{thm:rearrangment_lemma} .
+
+%Die Bedingungen $ \ref{eq:prop_linear_conv_area_2_item} $ und \ref{eq:prop_linear_conv_area_1_item} entsprechen
+%dem Steiniz-Lemma \ref{th:steiniz_lemma} als Folgerung des Umordnungslemmas I \ref{thm:rearrangment_lemma} und dem Rundungslemma I \ref{thm:rounding_lemma}. 
+%Deren Problem ist die vorausgesetzte endliche Dimension.
+%In dem nächsten Abschnitt werden wir ähnliche Aussagen unabhängig von der Dimension des Raumes beweisen und nebenbei ein weiteres hinreichendes Kriterium erhalten.
+%Dieses Kriterium wird im Wesentlichen den Satz \ref{th:prop_linear_conv_area} implizieren.\\
+%\\
+Nun beweisen wir, dass der Satz \ref{th:prop_linear_conv_area} eine hinreichende Bedingung für die Steinitzeigenschaft ist.
+Wir werden den Beweis analog zu dem Beweis des Satzes von Steinitz \ref{th:lemma_of_steiniz} strukturieren, da die Beweisideen identisch sind und dadurch die Unterschiede erkenntlich sind.
+Wir beginnen mit einer allgemeineren Formulierung des Lemmas \ref{th:lemma_apply_rounding_of_lemma_steinitz_finite_dimensional}.
+
+\begin{lem}\label{th:using_rounding_lemma_suff_cond}
+	Sei $ (x_n) $ summierbar in einem Banachraum $ X $ mit dem Grenzwert $ s $ und der Eigenschaft \ref{eq:prop_linear_conv_area_2_item}.
+	Dann existiert für alle $ s^\prime  \in s + \Gamma_0 $ eine Permutation $ \pi_0 \in \mathcal{S}_\N$  und eine streng monotone Indexfolge $ (n_j) $, sodass
+	\begin{align*}
+		\lim \limits_{j \to \infty}
+		\left\| s^\prime - \sum \limits_{i = 1}^{n_j} x_{\pi_0(i)} 
+		\right\| = 0
+	\end{align*}
+	gilt.
+\end{lem}
+
+\begin{proof}
+	Sei $ (\varepsilon_n) $ ein streng monoton fallende reelle Nullfolge.
+	Damit exisitert nach Eigenschaft \ref{eq:prop_linear_conv_area_2_item} zu $ \varepsilon_1 $ ein $ K_1 \in \N $, wofür die Ungleichung \eqref{eq:prop_linear_conv_area_2} erfüllt ist.
+	Mit dem Lemma \ref{thm:affine_space_is_subset} erhalten wir die Folgerung:
+	\begin{align*}
+		s \in \overline{Q}(\{x_i\}_{i=K_1}^\infty)  + \sum_{i=1}^{K_1 - 1} x_i
+		\ \Rightarrow \
+		s + \Gamma_0 \subseteq \overline{Q}(\{x_i\}_{i=K_1}^\infty)  + \sum_{i=1}^{K_1 - 1} x_i
+		\ \Rightarrow \
+		s^\prime - \sum_{i=1}^{K_1 - 1} x_i \in \overline{Q}(\{x_i\}_{i=K_1}^\infty).
+	\end{align*}
+	Damit exisitiert ein $ q_1 \in \overline{Q}(\{x_i\}_{i=K_1}^\infty) $, sodass
+	\begin{align*}
+		\left\| s^\prime - \sum \limits_{i= 1}^{K_1 - 1} x_i - q_1
+		\right\|
+		=
+		\left\| s^\prime - \sum \limits_{i = 1}^{K_1 - 1} x_i - \sum \limits_{i=K_1}^{K_1 + k_1} \lambda_{i} x_i
+		\right\|
+		\leq \frac{\varepsilon_1}{2}
+	\end{align*}
+	gilt. Insbesondere liefert die Eigenschaft \ref{eq:prop_linear_conv_area_2_item} die Rundungskoeffizienten $ \Theta_i $ mit $ K_1 \leq i \leq K_1 + k_1$, sodass
+	\begin{align*}
+		\left\| 
+		\underbrace{\sum \limits_{i = K_1}^{K_1+ k_1} \lambda_i x_{i}}_{q_1 := }
+		- 
+		\underbrace{\sum \limits_{i = K_1}^{K_1+ k_1}\Theta_i x_i }_{p_1 :=}
+		\right\| 
+		\leq \frac{\varepsilon_1}{2}
+	\end{align*}
+	erfüllt ist.
+	Wir definieren
+	\begin{align*}
+		S_1 := \underbrace{\{x_i\}_{i =1}^{K_1 - 1} \cup \{x_i \ : \  \Theta_i^{(1)} = 1, K_1 \leq i \leq K_1 + k_1\}}_{A_1 :=} \cup \{x_1\}, \quad
+		s_1 := \sum \limits_{x \in S_1} x
+	\end{align*}
+	und erhalten 
+	\begin{align*}
+		\|
+		s^\prime - s_1
+		\|
+		&\leq
+		\left\|
+		s^\prime  - \sum \limits_{i= 1}^{K_1 - 1} x_i - p_1
+		\right\| + \|x_1\|
+		\leq
+			\left\|
+		s^\prime  - \sum \limits_{i= 1}^{K_1 - 1} x_i - q_1
+		\right\|
+		+
+		\|q_1 - p_1\| 
+		+ 
+		\|x_1\|\\
+		&\leq 
+		\varepsilon_1 + \|x_1\|
+	\end{align*}
+	mithilfe der Dreiecksungleichung. Durch unser Vorgehen ersparen wir uns insbesondere eine Fallunterscheidung für $ x_1 $, da die $ \varepsilon_1 $-Abschätzungen bereits für $ A_1 $ gelten.
+	Wie im Beweis zu dem Lemma \ref{th:lemma_apply_rounding_of_lemma_steinitz_finite_dimensional} werden wir mit $ \varepsilon_2 $ fortfahren.
+	Hierfür existiert ein $ K_2 \in \N $, wofür die Ungleichung \eqref{eq:prop_linear_conv_area_2} erfüllt ist.
+	Wir setzen $ M_2 := \{x_i\}_{i=1}^{K_2 - 1} \cup S_1$ und erhalten mit Lemma \ref{thm:affine_space_is_subset}:
+	\begin{align*}
+		s \in \overline{Q}(\{x_i\}_{i=K_2}^\infty \setminus S_1)  + \sum \limits_{ x  \in M_2} x
+		\ &\Rightarrow \
+		s + \Gamma_0 \subseteq \overline{Q}(\{x_i\}_{i=K_2}^\infty \setminus S_1)  + \sum \limits_{ x \in M_2} x\\
+		\ &\Rightarrow \
+		s^\prime - \sum\limits_{ x \in M_2} x \in \overline{Q}(\{x_i\}_{i=K_2}^\infty \setminus S_1).
+	\end{align*}
+	Eventuelle Probleme durch das Herausschneiden von $ S_1 $ können wir ohne weiteres durch Umindizierung lösen.
+	Damit existiert ein $ q_2 \in  \overline{Q}(\{x_i\}_{i=K_2}^\infty \setminus S_1)$, sodass
+	\begin{align*}
+		\left\| s^\prime - 
+		\sum\limits_{ x \in M_2} x - q_2
+		\right\| 
+		=
+		\left\| s^\prime - 
+		\sum\limits_{ x \in M_2} x - \sum \limits_{i = K_2}^{K_2+ k_2} \lambda_i x_{i}
+		\right\| 
+		\leq \frac{\varepsilon_2}{2}
+	\end{align*}
+	gilt. Die Eigenschaft \ref{eq:prop_linear_conv_area_2_item} liefert wieder die Rundungskoeffizienten $ \Theta_i $ mit $ K_2 \leq i \leq  K_2 + k_2 $, sodass 
+	\begin{align*}
+		\left\| 
+		\underbrace{\sum \limits_{i = K_2}^{K_2+ k_2} \lambda_i x_{i}}_{q_2 := }
+		- 
+		\underbrace{\sum \limits_{i = K_2}^{K_2+ k_2}\Theta_i x_i }_{p_2 :=}
+		\right\| 
+		\leq \frac{\varepsilon_2}{2}
+	\end{align*}
+	gilt. Wir definieren
+	\begin{align*}
+		S_2 := \{x_i\}_{i =1}^{K_2 - 1} \cup \{x_i \ : \  \Theta_i^{(1)} = 1, K_2 \leq i \leq K_2 + k_2\} \cup \{x_2\}, \quad
+		s_2 := \sum \limits_{x \in S_2} x
+	\end{align*}
+	und erhalten analog
+	\begin{align*}
+		\| s^\prime - s_2 \| \leq \varepsilon_2 + \|x_2 \|.
+	\end{align*}
+	Diese Prinzip lässt sich analog für alle $ j \in \N $ fortführen.
+	Damit gilt
+	\begin{align*}
+		\|s^\prime - s_j \| \leq \varepsilon_j +  \|x_j\| \rightarrow 0
+	\end{align*}
+	für $ j \to \infty $. Der Rest des Beweises ist identisch zu dem Beweis des Lemmas \ref{th:lemma_apply_rounding_of_lemma_steinitz_finite_dimensional}.
+%	Es gilt $ s \in \overline{Q}(\{x_i\}_{i=K_1}^\infty)  + \sum_{i=1}^{K_1 - 1} x_i$.
+%	 
+%	Mit dem Lemma \ref{thm:affine_space_is_subset} folgt
+%	$ s + \Gamma_0 \subset \overline{Q}(\{x_i\}_{i=K_1}^\infty)  + \sum_{i=1}^{K_1 - 1} x_i $ und damit auch $ s^\prime - \sum_{i=1}^{K_1 - 1} x_i \in \overline{Q}(\{x_i\}_{i=K_1}^\infty)  $
+	
+%	Zu $ \varepsilon_1 $ existiert ein $ K_1 \in \N $, sodass für alle endlichen Teilmengen $ \{y_i\}_{i = 1}^k \subset \{x_i\}_{i = K_1}^\infty $ und $ \lambda \in [0,1]^k $
+%	ein $ \Theta \in \{0,1\}^k $ mit
+%	\begin{align*}
+%		\left\| \sum \limits_{i = 1}^k \lambda_i y_{i}- 
+%		\sum \limits_{i = 1}^k
+%		\Theta_i y_i \right\| \leq \frac{\varepsilon_1}{2}
+%	\end{align*}
+%	exisitert.
+\end{proof}
+
+\begin{proof}[Beweis von Satz \ref{th:prop_linear_conv_area}]
+	Die Inklusion $ \mathcal{K}_{(x_n)} \subseteq s + \Gamma_0 $ folgt mit \ref{th:subset_conv_area}.
+	Nun widmen wir uns der Beziehung $ s + \Gamma_0 \subseteq \mathcal{K}_{(x_n)}$.
+	Sei $ s^\prime \in s + \Gamma_0 $ beliebig.
+	Aus der Eigenschaft \ref{eq:prop_linear_conv_area_2_item} erhalten wir mit dem Lemma \ref{th:using_rounding_lemma_suff_cond} die Existenz einer Permutation $ \pi_0 $ und einer streng monotonen Indexfolge $ (n_j) $, sodass 
+	\begin{align*}
+		\lim \limits_{j \to \infty}
+		\left\| s^\prime - \sum \limits_{k = 1}^{n_j} x_{\pi_0(k)} 
+		\right\|
+		=
+		\left\| s^\prime - \sum \limits_{i = 1}^{n_j} x_{i} 
+		\right\|
+		= 0
+	\end{align*}
+	gilt.
+	Um die Darstellung zu vereinfachen, setzen wir $ \pi_0(k) = i $. 
+%	 Wir setzen hierbei $ \pi_0(k) = i $ um die Darstellung zu vereinfachen.
+	Wir konstruieren eine korrigierende Permutation $ \pi \in \mathcal{S}_\N $, sodass $ (x_{\pi(n)}) $ gegen $ s^\prime $ konvergiert.
+%	Unser Ziel ist nun eine korrigierende Permutation $ \pi  $ von $ \N $ zu konstruieren um die Konvergenz gegen $ s^\prime $ zu erreichen. 
+\newpage
+	Mit dem Cauchykriterium \ref{th:chauchy_crit} gilt:
+	\begin{align*}
+		\lim \limits_{j \to \infty}
+		\left\|  \sum \limits_{i = n_j + 1}^{n_{j+1}} x_{i} 
+		\right\|
+		=
+		0.
+	\end{align*}
+	Hierauf wenden wir die Eigenschaft \ref{eq:prop_linear_conv_area_1_item} an.
+	Sei $ \varepsilon > 0 $ beliebig.
+	Nach der Eigenschaft \ref{eq:prop_linear_conv_area_1_item} existiert ein $ N_\varepsilon \in \N $ und ein $ \delta_\varepsilon > 0 $, sodass für alle endlichen Teilmengen $ \{y_i\}_{i=1}^n \subset \{x_i \}_{ i = N_\varepsilon}^\infty $ mit $ \left\|
+	\sum_{i=1}^n y_i\right\| \leq \delta_\varepsilon$
+	eine Permutation $ \pi $ von $ \{1,...,n\} $ mit
+	\begin{align*}
+		\max \limits_{r \leq n} 
+		\left\|
+		\sum \limits_{i = 1}^r y_{\pi(i)}
+		\right\|
+		\leq 
+		\varepsilon
+	\end{align*}
+	existiert. Damit erhalten wir ein $ J_\varepsilon \in \N $ mit
+	\begin{align*}
+		\left\|  \sum \limits_{i = n_j + 1}^{n_{j+1}} x_{i} 
+		\right\| \leq \delta_\varepsilon
+	\end{align*}
+	für $ j > J_\varepsilon $.
+	Für $ n_j > \max \{N_\varepsilon, n_{J_\varepsilon}\} $ existiert eine Permutation $ \pi_j $ von $ \{n_j+1,...,n_{j+1}\} $ mit
+	\begin{align*}
+		\max \limits_{n_j + 1 \leq r \leq n_{j+1}} 
+		\left\|
+		\sum \limits_{i = n_j + 1}^r y_{\pi_j(i)}
+		\right\|
+		\leq 
+		\varepsilon.
+	\end{align*} 
+	Durch eine geeignete Wahl von $ \varepsilon $ erhalten wir die Permutationen $ \pi_j $ für alle $ j \in \N $.
+	Wir definieren die globale Permutation $ \pi $ auf $ \N $ durch $ \pi\big|_{\{ x_i \}_{i = n_j + 1}^{n_{j+1}} } = \pi_j $ für $ j \in \N $ und $ \pi(i) = i $ für $ i \leq n_1 $.
+	Dies führt insbesondere dazu, dass
+	\begin{align*}
+		\sum \limits_{i = 1}^{n_j} x_{\pi(i)}
+		=
+		\sum \limits_{i = 1}^{n_j} x_i
+	\end{align*}
+	gilt.
+	Um den Beweis abzuschließen betrachten wir wieder $ \varepsilon > 0 $ mit $ r > n_j \geq \max \{N_\varepsilon, n_{J_\varepsilon}\}$. Wir wählen $ r > n_1  $ und $ j $ so, dass $ n_j + 1 \leq r \leq n_{j+1}  $ gilt.
+	Dann erhalten wir
+	\begin{align*}
+		\left\|
+		\sum \limits_{i=1}^r x_{\pi(i)} - s^\prime 
+		\right\|
+		&\leq
+		\underbrace{\left\|
+			\sum \limits_{i=1}^{n_j} x_{\pi(i)} - s^\prime 
+			\right\| }_{
+			= \| \sum x_i - s^\prime \|
+		}
+		+
+		\left\|
+		\sum \limits_{i = n_j +1}^{r}
+		x_{\pi_j(i)}
+		\right\| \leq 2 \varepsilon.
+	\end{align*}
+	Damit gilt $ s^\prime \in \mathcal{K}_{(x_n)} $ und damit auch $ \mathcal{K}_{(x_n)}  = s + \Gamma_0$.
+\end{proof}
+
+\section{Unendlichdimensionale Umordnungs-und Rundungssätze}
+%\subsection{Unendlichdimensionale Umordnungs-und Rundungssätze}
+
+\begin{genericthm}{Rundungslemma II}\label{th:lemma_for_pecherskii_2}
+	Sei $ X $ ein normierter Raum und $ \varepsilon > 0 $ beliebig.
+	Desweiteren sei $ \{x_i\}_{i =1}^N \subset X $ eine endliche Teilmenge mit der Eigenschaft:
+	Für alle $ \{y_i\}_{i = 1}^m \subset \{x_i\}_{i = 1}^N $ existieren Vorzeichen, sodass 
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1}^m \alpha_i y_i
+		\right\|
+		\leq \varepsilon
+	\end{align*}
+	gilt.
+%	, $ \varepsilon > 0 $ beliebig und $ \{x_i\}_{i =1}^N \subset X $ mit 
+%	\begin{align*}
+%		\left\|
+%		\sum \limits_{i = 1}^m \alpha_i y_i
+%		\right\|
+%		\leq \varepsilon
+%	\end{align*}
+%	für alle $ \{y_i\}_{i = 1}^m \subset \{x_i\}_{i = 1}^N $ und $ \alpha_i = \pm 1 $.
+	%	Außerdem sei folgende Eigenschaft erfüllt:
+	%	Für alle $ \{y_i\}_{i = 1}^m \subset \{x_i\}_{i = 1}^N $ existieren Vorzeichen $ \alpha_i = \pm 1 $, sodass
+	%	\begin{align*}
+	%		\left\|
+	%		\sum \limits_{i = 1}^m \alpha_i y_i
+	%		\right\|
+	%		\leq \varepsilon
+	%	\end{align*}
+	%	gilt.
+	Dann existieren für alle Koeffizienten $ \{\lambda_i\}_{i = 1}^N \subset [0,1] $
+	Rundungskoeffizienten $ \{\Theta_i\}_{i = 1}^N \subset \{0,1\} $, sodass 
+	\begin{align}
+		\left\|
+		\sum \limits_{i = 1}^N
+		\lambda_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\Theta_i x_i
+		\right\|
+		\leq \varepsilon
+	\end{align}
+	gilt.
+\end{genericthm}
+
+\begin{proof}
+	Wir beweisen die Aussage für dyadische Darstellungen zwischen $ 0 $ und $ 1 $.
+	Da diese Darstellungen dicht in dem Intervall $ [0,1] $ liegen, folgt die Aussage dann aus einem Stetigkeitsargument.
+	Da wir nur dyadische Darstellungen der Koeffizienten betrachten, lassen sich diese als endliche Summen der Form 
+	\begin{align}\label{eq:dyadic_rep}
+		\lambda_i =
+		\sum \limits_{k = 1}^n
+		\lambda_{i,k-1}
+		\cdot \frac{1}{2^{k-1}}
+		=
+		\lambda_{i,0}
+		+
+		\lambda_{i,1} \cdot \frac{1}{2}
+		+
+		...
+		+
+		\lambda_{i,n-1} \cdot \frac{1}{2^{n-1}}
+	\end{align}
+	schreiben. Hierbei sind die $ \lambda_{i,k} $ entweder $ 0 $ oder $ 1 $ und die Anzahl der Summanden nennen wir Länge der dyadischen Darstellung.
+	Wegen $ \lambda_{i} \in [0,1] $ folgt aus $ \lambda_{i,0} = 1 $ unmittelbar, dass alle weiteren $ \lambda_{i,k} $ gleich $ 0 $ sind.
+	Wir nehmen zusätzlich an, dass alle $ \lambda_{i} $ dieselbe Länge besitzen. 
+	Alternativ erreichen wir dies durch die Addition der Null.
+	Da diese dyadischen Darstellungen dicht in dem Intervall $ [0,1] $ liegen, folgt die Aussage aus einem Stetigkeitsargument.\\
+	Wir zeigen induktiv, dass für die dyadischen Darstellungen $ \lambda_{i} $ der Länge $ n $ Rundungskoeffizienten $ \Theta_i \in \{0,1\} $ existieren, sodass
+	\begin{align}\label{eq:induction_inequaltiy}
+		\left\|
+		\sum \limits_{i = 1}^N
+		\lambda_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\Theta_i x_i
+		\right\|
+		\leq \varepsilon 
+		\left( 1 - \frac{1}{2^{n-1}} \right)
+	\end{align}
+	gilt. 
+	Für $ n = 1 $ erhalten wir für die dyadischen Darstellungen entweder $ \lambda_i = 0 $ oder $ \lambda_{i} = 1 $. Mit $ \Theta_i := \lambda_{i}  $ folgt dann der Induktionsanfang.
+	Wir nehmen nun an, dass die Aussage für dyadische Darstellungen der Länge $ n $ gilt.
+	Seien $ \mu_i = \mu_{i,0}+ ... + \mu_{i,n} 2^{-n} $, $ 1 \leq i \leq N $ dyadische Darstellungen der Länge $ n +1 $.
+	Für die Indexmenge $ A := \{ i \ | \ 1 \leq  i \leq N \ \wedge \ \mu_{i,n} = 1 \} $ existieren $ \{ \alpha_i \}_{i \in A} $ mit $ \alpha_i = \pm 1 $, sodass
+	\begin{align*}
+		\left\| \sum \limits_{i \in A} \alpha_i x_i \right\| \leq \varepsilon \cdot \frac{1}{2^n}
+	\end{align*}
+	erfüllt ist. Wir definieren 
+	\begin{align*}
+		\lambda_{i} 
+		:= 
+		\begin{cases}
+			\quad \mu_i, \ &\textrm{falls } i \notin A\\
+			\mu_i + \alpha_i \cdot  2^{-n}, \ &\textrm{falls } i \in A
+		\end{cases}
+	\end{align*}
+	und erhalten damit
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1 }^N
+		\lambda_{i} x_i 
+		- \sum \limits_{i =1 }^N
+		\mu_i x_i
+		\right\| 
+		\leq 
+		\frac{1}{2^n}
+		\left\| \sum \limits_{i \in A} \alpha_i x_i \right\|
+		\leq
+		\varepsilon \cdot \frac{1}{2^n}.
+	\end{align*}
+	Die dyadischen Darstellungen $ \lambda_i $ besitzen alle die Länge $ n $.
+	Damit existieren zu diesen $ \lambda_{i} $ nach der Induktionsvoraussetzung
+	$ \Theta_i \in  \{0, 1\}  $, sodass \eqref{eq:induction_inequaltiy} gilt.
+	Insgesamt erhalten wir mit
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1}^N
+		\mu_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\theta_i x_i
+		\right\|
+		&=
+		\left\|
+		\sum \limits_{i = 1}^N
+		\lambda_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\theta_i x_i
+		+
+		\sum \limits_{i = 1}^N
+		\mu_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\lambda_i x_i
+		\right\|\\
+		&\leq
+		\left\|
+		\sum \limits_{i = 1}^N
+		\lambda_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\theta_i x_i
+		\right\|
+		+
+		\left\|
+		\sum \limits_{i = 1}^N
+		\mu_i x_i
+		-
+		\sum \limits_{i = 1}^N
+		\lambda_i x_i
+		\right\|\\
+		&\leq 
+		\varepsilon
+		\left(1 - \frac{1}{2^{n-1}}\right)
+		+ \varepsilon \cdot  \frac{1}{2^n }
+		=
+		\varepsilon \left(
+		1 - \frac{1}{2^n}
+		\right)
+	\end{align*}
+	den Induktionsschritt.
+	Damit haben wir die Aussage gezeigt.
+	
+\end{proof}
+
+
+\begin{genericthm}{Das Lemma von Chobanyan}\label{th:lemma_chobanyan}
+	Sei $ \{x_i\}_{i = 1}^n \subset X $ mit $ \sum_{i  = 1 }^n  x_i = 0$.
+	Dann existiert eine Permutation $ \sigma $, sodass für beliebige Vorzeichen $ \alpha_i = \pm 1 $
+	\begin{align}\label{eq:lem_choban_ineq}
+		\max \limits_{j \leq n}
+		\left\|
+		\sum \limits_{i = 1}^j \alpha_i x_{\sigma(i)}
+		\right\|
+		\geq 
+		\max \limits_{j \leq n}
+		\left\|
+		\sum \limits_{i = 1}^j  x_{\sigma(i)}
+		\right\|
+	\end{align}
+	erfüllt ist.
+\end{genericthm}
+
+%\newpage
+\begin{proof}
+	Sei $ \sigma $ die Permutation, für welche
+	\begin{align*}
+		\min \limits_{\nu }
+		\left\{
+		\max_{j \leq  n}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\nu(i)}
+		\right\|
+		\right\}
+	\end{align*}
+	angenommen wird. Wir fixieren für $ i = 1,...,n $  eine beliebige Vorzeichenverteilung $ \alpha_i  $ und definieren die Mengen:
+	\begin{align*}
+		A 
+		:=
+		\{
+		i \ | \ \ \alpha_i = 1
+		\}
+		, \ &A_j := A \cap \{1,...,j\} , A_j^C = \{1,...,n\} \setminus A_j\\
+		B 
+		:=
+		\{
+		i \ | \ \alpha_i = -1
+		\}
+		, \ &B_j := B \cap \{1,...,j\} , B_j^C = \{1,...,n\} \setminus B_j.
+	\end{align*}
+	Mit $ \sum_{i  = 1 }^n  x_{\sigma(i)}  = \sum_{i \in B_j} x_{\sigma(i)} +  \sum_{i \in B_j^C} x_{\sigma(i)} = 0$ und $ 2 \max\{a,b\} = a + b + | a -b| $ folgt
+	\begin{equation}\label{eq:proof_lem_choban_1}
+		\begin{split}
+			\max \limits_{j \leq n }
+			\left\|
+			\sum \limits_{i = 1}^j
+			\alpha_i x_{\sigma(i)}
+			\right\|
+			+\max \limits_{j \leq n }
+			\left\|
+			\sum \limits_{i = 1}^j
+			x_{\sigma(i)}
+			\right\|
+			&\geq
+			2 
+			\max 
+			\left\{
+			\max \limits_{j \leq n }
+			\left\|
+			\sum \limits_{i \in A_j}
+			x_{\sigma(i)}
+			\right\|,
+			\max \limits_{j \leq n }
+			\left\|
+			\sum \limits_{i \in B_j}
+			x_{\sigma(i)}
+			\right\|
+			\right\}\\
+			&=
+			2 
+			\max 
+			\left\{
+			\max \limits_{j \leq n }
+			\left\|
+			\sum \limits_{i \in A_j}
+			x_{\sigma(i)}
+			\right\|,
+			\max \limits_{j \leq n }
+			\left\|
+			\sum \limits_{i \in B_j^C}
+			x_{\sigma(i)}
+			\right\|
+			\right\}.
+		\end{split}
+	\end{equation}
+	Nun betrachten wir die Teilmengenbeziehung
+	\begin{align*}
+		A_1 \subseteq A_2 \subseteq ... \subseteq A_n \subseteq B_n^C 
+		\subseteq B_{n-1}^C \subseteq ... \subseteq B_1^C,
+	\end{align*}
+	welche genau $ n $ Gleichheiten besitzt. Dies liefert die Existenz einer Permutation $ \nu $ mit
+	\begin{align}\label{eq:proof_lem_choban_2}
+		\max_{j \leq  n}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\nu(i)}
+		\right\|
+		=
+		2 
+		\max 
+		\left\{
+		\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i \in A_j}
+		x_{\sigma(i)}
+		\right\|,
+		\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i \in B_j^C}
+		x_{\sigma(i)}
+		\right\|
+		\right\},
+	\end{align}
+	für welche aufgrund der Wahl von $ \sigma $
+	\begin{align}\label{eq:proof_lem_choban_3}
+		\max_{j \leq  n}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\nu(i)}
+		\right\|
+		\geq 
+		\max_{j \leq  n}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\sigma(i)}
+		\right\|
+	\end{align}
+	gilt. Wenn wir die Aussagen von \eqref{eq:proof_lem_choban_1}, \eqref{eq:proof_lem_choban_2} und \eqref{eq:proof_lem_choban_3} kombinieren folgt
+	\begin{align*}
+		\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i = 1}^j
+		\alpha_i x_{\sigma(i)}
+		\right\|
+		+\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\sigma(i)}
+		\right\|
+		&\geq 2 
+		\max 
+		\left\{
+		\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i \in A_j}
+		x_{\sigma(i)}
+		\right\|,
+		\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i \in B_j^C}
+		x_{\sigma(i)}
+		\right\|
+		\right\}\\
+		&=
+		2 
+		\max_{j \leq  n}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\nu(i)}
+		\right\|\\
+		&\geq 
+		2 
+		\max_{j \leq  n}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\sigma(i)}
+		\right\|,
+	\end{align*}
+	womit die gewünschte Ungleichung \eqref{eq:lem_choban_ineq} folgt.
+\end{proof}
+
+
+\begin{genericthm}{Umordnungslemma II}\label{th:lemma_for_pecherskii_3}
+	Sei $ \{x_i\}_{i = 1}^n \subset X $ mit $ \| \sum_{i=1}^n x_i \| \leq \varepsilon  $ und für alle Permutationen $ \nu  $ existieren Vorzeichen $ \alpha_i = \pm 1 $, wofür 
+	\begin{align*}
+		\max \limits_{j \leq n }
+		\left\|
+		\sum \limits_{i=1}^j \alpha_i x_{\nu(i)}
+		\right\| 
+		\leq \varepsilon
+	\end{align*}
+	gilt.
+	Dann existiert eine Permutation $ \sigma $, sodass
+	\begin{align}\label{eq:ineq_for_pecherskii_prop_A}
+		\max \limits_{j \leq n}
+		\left\|
+		\sum \limits_{i = 1}^j x_{\sigma(i)}
+		\right\|
+		\leq 3 \varepsilon
+	\end{align} 
+	gilt.
+\end{genericthm}
+
+\begin{proof}
+	Zuerst stellen wir die Voraussetzungen des Lemmas von Chobayan her.
+	Wir setzen $ x_{n+1} := - \sum_{i = 1}^n x_i $, womit 
+	$ \sum_{i = 1}^{n+1} x_i = 0 $ gilt.
+	Damit existiert nach dem letzten Lemma eine Permutation $ \pi : \{1,...,n+1\} \to \{1,...,n+1\} $, sodass
+	\begin{align*}
+		\underbrace{\max 
+			\limits_{j \leq n +1  }
+			\left\|
+			\sum \limits_{i = 1}^j x_{\pi(i)}
+			\right\|}_{\textbf{\textrm{(I)}}}
+		\leq 
+		\underbrace{\min \limits_{\alpha_i = \pm 1}
+			\max 
+			\limits_{j \leq n +1  }
+			\left\|
+			\sum \limits_{i = 1}^j \alpha_i x_{\pi(i)}
+			\right\|}_{\textbf{\textrm{(II)}}}
+	\end{align*}
+	gilt. Als nächstes entfernen wir $ x_{n+1} $ wieder. Aus diesem Schritt erhalten wir eine Permutation $ \sigma $ von $ \{1,...,n\} $, welche mit
+	\begin{align*}
+		\max \limits_{j \leq n} 
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\sigma(i)}
+		\right\| 
+		\leq 
+		\min \limits_{\alpha_i = \pm 1}
+		\max 
+		\limits_{j \leq n   }
+		\left\|
+		\sum \limits_{i = 1}^j \alpha_i x_{\sigma(i)}
+		\right\|
+		+ 
+		2 \| x_{n+1} \|
+		\leq 3 \varepsilon 
+	\end{align*} 
+	die Ungleichung \eqref{eq:ineq_for_pecherskii_prop_A} liefert.
+	Um dies zu untermauern schließen wir zunächst den Fall\\ $ \pi(n+1) = n+1 $ aus.
+	Damit existiert ein $ l \in \{ 1,...,n\} $ mit $ \pi(l) = n+1 $. Die Permutation $ \sigma  $ erhalten wir durch das Überspringen von $ l $ und entsprechende Umindizierung.
+	Die Abschätzung für \textbf{\textrm{(I)}} erhalten wir dann durch
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1}^j
+		x_{\pi(i)}
+		\right\| 
+		\geq 
+		\left\|
+		\sum \limits_{i = 1, i \neq l}^j
+		x_{\pi(i)}
+		\right\|  -\| x_{n+1} \|
+	\end{align*}
+	für $ 1 \leq j \leq n+1 $. Die Abschätzung für \textbf{\textrm{(II)}} folgt analog.
+	
+	
+	%Mit 
+	%	\begin{align*}
+	%		\sigma(i)
+	%		:=
+	%		\begin{cases}
+	%			\pi(i), &\ \textrm{falls } \pi(i) \neq n+1\\
+	%			\pi(n+1), &\ \textrm{falls } \pi(i) = n+1
+	%		\end{cases}
+	%	\end{align*}
+	%	für $ 1 \leq i \leq n $ erhalten wir eine Permutation auf $ \{ 1,...,n\} $.
+	%	 Nun wählen wir die Vorzeichen so, dass $ \max_{j \leq n }\left\|\sum_{i=1}^j \alpha_i x_{\sigma(i)}\right\| \leq \varepsilon $ erfüllt  ist.
+\end{proof}
+\newpage
+
+\section{Die Sätze von Dvoretzky-Hanani und Pecherskii}\label{sc:hanani_pecherskii}
+%\subsection{Die Sätze von Dvoretzky-Hanani und Pecherskii}
+In diesem Abschnitt beschäftigen wir uns mit den Sätzen von Dvoretzky-Hanani\cite{Dvoretzky1947} und Pecherskii\cite{Pecherski1989}.
+Gemeinsam führen beide Aussagen zu einer echten Erweiterung des Satzes von Steinitz auf unendlichdimensionale Räume.
+
+%In \cite{Pecherski1989} hat Pecherskii gezeigt, dass eine bedingt summierbare Folge unter bestimmten Vorausetzungen die Steinizeigenschaft erfüllt.
+%Durch die Aussage von Dvoretzky und Hanani wird sich diese zusätzliche im endlichdimensionalen auflösen, sodass wir von einer echten Erweiterung des Steiniz-Satzes sprechen können. 
+
+\begin{df}
+	Sei $ X $ ein Banachraum.
+	Wir nennen eine Folge $ (x_n) $ \textit{perfekt unsummierbar}, falls
+	$ (\alpha_n x_n) $ für alle $ \alpha_n = \pm 1 $ unsummierbar ist.
+\end{df}
+
+\begin{genericthm}{Satz von Dvoretzky-Hanani(1947)}\label{th:dvoretzkey_hanani}
+	Sei $ X $ ein endlichdimensionaler normierter Raum und $ (x_n) $ perfekt unsummierbar in $ X $.
+	Dann konvergiert $ (x_n) $ nicht gegen $ 0 $.
+\end{genericthm}
+\begin{proof}
+	Wir beweisen diese Aussage über Kontraposition.\\
+	Sei $ (x_n) $ eine Nullfolge.
+	Unser Ziel ist es eine $ \pm 1 $ Folge  $ (\alpha_n) $ zu konstruieren, sodass
+	$ \sum \alpha_i x_i $ konvergiert.
+	Wir setzen
+	\begin{align*}
+		d_n := \max \limits_{i > n}  \| x_i \|,
+	\end{align*}
+	womit $ d_n \to 0  $ für $ n \to \infty $ folgt.
+	Insbesondere existiert eine streng monoton wachsende Indexfolge $ (n_k) $, sodass
+	\begin{align*}
+		\sum \limits_{k = 1 }^\infty d_{n_k } < \infty
+	\end{align*}
+	gilt. 
+	Nach dem Lemma \ref{th:sign_inequality_finite_dim} existieren für $ \{ x_i \}_{i = n_k +1 }^{n_{k+1}} $ Koeffizienten $ \alpha_i = \pm 1 $ für $ n_k +1 \leq i \leq n_{k+1} $, sodass
+	\begin{align*}
+		\max \limits_{n_k + 1 \leq j \leq n_{k+1} }
+		\left\|
+		\sum 
+		\limits_{i = n_k +1 }^j
+		\varepsilon_i  x_i 
+		\right\|
+		\leq 2m d_{n_k}
+	\end{align*}
+	erfüllt ist.
+	Mit dem Majorantenkriterium erhalten wir dann
+	\begin{align*}
+		\left\|
+		\sum \limits_{i = 1 }^\infty \alpha_i x_i 
+		\right\| 
+		=
+		\left\|
+		\sum \limits_{k = 1 }^\infty \sum \limits_{i = n_k +1 }^{n_k} \alpha_i x_i 
+		\right\| 
+		\leq
+		\sum \limits_{k = 1 }^\infty \left\| \sum \limits_{i = n_k +1 }^{n_k} \alpha_i x_i \right\|
+		\leq
+		2m \sum \limits_{k = 1 }^\infty d_{n_k } < \infty.
+	\end{align*}
+	Damit ist $ (x_n) $ nicht perfekt unsummierbar.
+\end{proof}
+
+\begin{genericthm}{Satz von Pecherskii (1988)}\label{th:lemma_of_pecherskii}
+	Sei $ X $ ein Banachraum, $ (x_n) $ bedingt summierbar in $ X $ mit Grenzwert $ s $ und es existiere keine Umordnung $ \pi  $, sodass $ (x_{\pi(n)}) $ perfekt unsummierbar ist.
+	Dann erfüllt $ (x_n) $ die Steinitzeigenschaft.
+\end{genericthm}
+Die Nullfolgeneigenschaft bleibt für beliebige Permutationen erhalten.
+Damit können wir nach dem Satz von Dvoretzky-Hanani einer echten Erweiterung des Satzes von Steinitz sprechen. 
+%Für einen endlichdimensionalen normierten Raum, folgt aus dem Satz von Dvoretky-Hanani, dass wir von einer echten Erweiterung des Satzes von Steiniz sprechen können.
+Die Voraussetzung, dass keine Permutation zu einer perfekt unsummierbaren Folge umsortiert, ist im Endlichdimensionalen immer erfüllt. 
+%Falls $ X $ ein endlichdimensionaler normierter Raum ist, entspricht der Satz von Pecherskii dem Satz von Steinitz. 
+%Wir können hier also von einer echten Erweiterung sprechen.
+%Diese Tatsache folgt aus dem Satz von Dvoretzky-Hanani \ref{th:dvoretzkey_hanani}.
+%Die bedingte Summierbarkeit von $ (x_n) $ liefert die Nullfolgeneigenschaft.
+%Diese bleibt für jede Permutation erhalten.
+%Damit ist $ (x_n) $ für jede Umordnung nicht perfekt unsummierbar.
+
+Da das Rundungslemma II \ref{th:lemma_for_pecherskii_2} und das Umordnungslemma II \ref{th:lemma_for_pecherskii_3} den Satz \ref{th:prop_linear_conv_area} implizieren, genügt es deren Voraussetzungen unter den Pecherskii-Voraussetzungen zu zeigen.
+Dann folgt der Satz von Pecherskii.
+
+%Die Aussage \ref{th:prop_linear_conv_area} liefert zwei Bedingungen. Der Satz von Pecherskii ist bewiesen, wenn diese unter dessen Voraussetzungen erfüllt sind.
+%Wir werden nun zeigen, dass die Voraussetzungen der Sätze \ref{th:lemma_for_pecherskii_2} und  \ref{th:lemma_for_pecherskii_3} unter den Pecherskii-Voraussetzungen gelten.
+%Damit ist der Beweis des Satzes von Pecherskii abgeschlossen.
+
+\begin{lem}\label{th:lemma_for_pecherskii_1}
+	Sei $ (x_n) $ eine Folge, welche nicht zu einer perfekt unsummierbaren Folge umsortierbar ist.
+	Dann existiert für alle $ \varepsilon >0 $ ein $ N_\varepsilon \in \N $,
+	sodass wir für alle $ \{y_i\}_{i = 1}^n \subset \{x_i\}_{i = N_\varepsilon}^\infty $ Vorzeichen $ \alpha_i = \pm 1 $ mit
+	\begin{align}\label{eq:prop_for_steiniz}
+		\max \limits_{j \leq n}
+		\left\|
+		\sum \limits_{i = 1}^j \alpha_i y_i
+		\right\|
+		\leq \varepsilon
+	\end{align}
+	finden.
+\end{lem}
+
+\begin{proof}
+	Wir führen einen Widerspruchsbeweis und nehmen an, dass die Aussage des Lemmas nicht gilt. Dann existiert ein $ \varepsilon > 0 $, sodass für alle $ N \in \N $ eine endliche Teilmenge $ \{y_i \}_{i = 1}^n \subset \{x_i\}_{i=N}^\infty $ existiert, wofür 
+	\begin{align*}
+		\max \limits_{j \leq n } 
+		\left\|
+		\sum \limits_{i = 1}^j \alpha_i y_i
+		\right\|
+		> \varepsilon
+	\end{align*}
+	für beliebige Vorzeichen $ \alpha_i = \pm 1 $ gilt.
+	Damit finden wir eine streng monotone Indexfolge $ (N_k) $ mit $ N_1 = 1 $, sodass für eine Teilmenge  $ \{y_i^k\}_{i = 1}^{n_k} \subset \{x_i\}_{N_k}^{N_{k+1} - 1} $ die Abschätzung 
+	\begin{align}\label{eq:pecherskii_lemma_1_proof}
+		\min \limits_{\alpha_i = \pm 1}
+		\max \limits_{j \leq n_k}
+		\left\|
+		\sum \limits_{i = 1}^j \alpha_i y_i
+		\right\|
+		> \varepsilon
+	\end{align}
+	gilt.
+	Damit erhalten wir eine disjunkte vollständige Aufteilung der Folgenglieder.
+	Diese erfolgt nach dem Schema:
+	\begin{align*}
+		\{y^1_i\}_{i =1}^{n_1} , \quad \
+		&\quad 
+		\{x_i\}_{i = N_1}^{N_2 - 1} \setminus \{y^1_i\}_{i =1}^{n_1}\\
+		\underbrace{\{y^2_i\}_{i =1}^{n_2},}_{\textrm{Ordnung von \eqref{eq:pecherskii_lemma_1_proof}}}
+		&\quad 
+		\underbrace{\{x_i\}_{i = N_2}^{N_3 - 1} \setminus \{y^2_i\}_{i =1}^{n_2}}_{\textrm{beliebige Ordnung}} , \ ...
+	\end{align*}
+	Wir übernehmen die Ordnung von $\{y^k_i\}_{i =1}^{n_k}  $, sodass die Ungleichung \eqref{eq:pecherskii_lemma_1_proof} erhalten bleibt und lassen den Rest beliebig.
+	Die hieraus entstandene Permutation $ \pi  $ liefert uns eine unsummierbare Folge
+	$ (\alpha_n x_n) $ für eine beliebige Vorzeichenverteilung $ (\alpha_n) $,
+	da wir mit \eqref{eq:pecherskii_lemma_1_proof} ein Widerspruch zum Cauchy-Kriterium erhalten.
+	Damit haben wir einen Widerspruch zu der Voraussetzung, dass keine Umordnung zu einer perfekt unsummierbaren Folge existiert. Also war die Annahme falsch und das Gewünschte gilt.
+\end{proof}
+Durch unsere Vorarbeit benötigt der Beweis des Satzes von Pecherskii nur den Nachweis der Eigenschaft \eqref{eq:prop_for_steiniz} unter dessen Voraussetzungen.
+Diese impliziert dann mit \ref{th:prop_linear_conv_area} die Steinitzeigenschaft.
+Insbesondere können wir die Voraussetzungen von \ref{th:prop_linear_conv_area} zusammenfassen.
+%Damit ergibt sich der nachfolgenden Satz.
+\begin{genericthm}{Satz}\label{th:sufficent_condition_steiniz_prop}
+	Sei $ (x_n) $ eine Folge in einem Banachraum $ X $ und
+	für alle $ \varepsilon >0 $ existiert ein $ N_\varepsilon \in \N $,
+	sodass für alle $ \{y_i\}_{i = 1}^n \subset \{x_i\}_{i = N_\varepsilon}^\infty $ Vorzeichen $ \alpha_i = \pm 1 $ mit
+	\begin{align*}
+		\max \limits_{j \leq n}
+		\left\|
+		\sum \limits_{i = 1}^j \alpha_i y_i
+		\right\|
+		\leq \varepsilon
+	\end{align*}
+	existieren.
+	Dann besitzt $ (x_n) $ die Steinitzeigenschaft.
+\end{genericthm}
+%Damit lässt sich mit \eqref{eq:prop_for_steiniz} ein affiner Konvergenzbereich auch unter anderen Voraussetzungen beweisen.
+Der Beweis des Satzes von Steinitz \ref{th:lemma_of_steiniz} reduziert sich mit dem letzten Satz auf den Beweis des Lemmas \ref{th:sign_inequality_finite_dim}. 
+
+
+
+
+
+
+
+
+
+
+
+\section{Der Satz von Chobanyan}\label{sc:lemma_of_chobanyan}
+%\subsection{Der Satz von Chobanyan}
+In diesem Abschnitt verwenden wir ausgiebig den Begriff der Rademacherfolge $ (r_n) $.
+Die zugehörige Rademachersumme für eine Banachraumfolge $ (x_n) $ kennzeichnen wir durch
+\begin{align*}
+	R_k := 
+	\left\|
+	\sum \limits_{i = 1}^k r_i x_i \right\|.
+\end{align*}
+%für die Folge $ (x_n) $ in einem Banachraum $ X $.
+
+
+
+\begin{lem}
+	Sei $ (r_n) $ eine Rademacherfolge und $ (x_n) $ eine Folge in $ X $.
+	Dann gilt
+	\begin{align}\label{eq:proab_boundary}
+		\mathrm{P}
+		\left(
+		\sup \limits_{k \leq n } R_k > t
+		\right)
+		\leq 2 \cdot
+		 \mathrm{P}(R_n > t)
+	\end{align}
+	für alle $ t > 0 $.
+\end{lem}
+
+\begin{proof}
+	Sei $ \Omega $ der zugehörige Wahrscheinlichkeitsraum zu den Rademachervariablen $ r_i $.
+	Dann definieren wir $ A_i \subset \Omega  $ wie folgt:
+	\begin{align*}
+		A_1 := (R_1 > t), \ 
+		A_2 := (R_1 \leq t) \cap (R_2 > t), \
+	\dots, \
+		A_n = \bigcap \limits_{i = 1}^{n-1}(R_i \leq t) \cap (R_n > t).
+	\end{align*}
+	Die hieraus entstandene Mengenfolge ist disjunkt und wir erhalten:
+	\begin{align}\label{eq:proab_boundary_proof}
+		\mathrm{P}
+		\left( 
+		\sup \limits_{k \leq n} R_k > t
+		\right)
+		=
+		\mathrm{P}
+		\left( \bigcup \limits_{i = 1}^n A_i \right)
+		=
+		\sum \limits_{i = 1}^n P(A_i).
+	\end{align}
+	Hierbei erhalten wir die erste Identität durch das Betrachten der Gegenwahrscheinlichkeit und elementare Mengenumformungen.
+	Nun setzen wir 
+	\begin{align*}
+		R_{n,k} := 
+		\left\|
+		\sum \limits_{i = 1}^k r_i x_i
+		-
+		\sum \limits_{i = k+1}^n r_i x_i
+		\right\|.
+	\end{align*}
+	Wegen $ \sum_{i = 1}^k r_i x_i = \sum_{i = 1}^n  r_i x_i -\sum_{i = k+1}^n r_i x_i  $ 
+	folgt mit der Dreiecksungleichung\\ $ R_k \leq \frac{1}{2} ( R_n + R_{n,k}) $.
+	Dies führt durch geeignete Fallunterscheidung bezüglich $ R_n $ und $ R_{n,k} $ zu
+	\begin{align*}
+		\mathrm{P}(A_k)
+		&=
+		\mathrm{P}(A_k \cap ((R_n + R_{n,k}) > 2t))
+		\leq
+		\mathrm{P}((A_k \cap (R_n > t)) \cup (A_k \cap (R_{n,k} > t)) )\\
+		&\leq 
+		\mathrm{P}(A_k \cap (R_n > t)) + \mathrm{P}(A_k \cap (R_{n,k} > t ))\\
+		&= 
+		2 	\mathrm{P}(A_k \cap (R_n > t)).
+	\end{align*}
+	Die letzte Identität folgt, da die Wahrscheinlichkeiten der Ereignisse $ A_k \cap (R_n > t) $ und $ A_k \cap (R_{n,k} > t ) $ übereinstimmen.
+	Da die $ A_i $ disjunkt sind, folgt die Aussage mit der Gleichung \eqref{eq:proab_boundary_proof}:
+%	Mit der Tatsache,  dass die $ A_i $ disjunkt sind und der Gleichung \eqref{eq:proab_boundary_proof} folgt durch
+	\begin{align*}
+		\mathrm{P}
+		\left( 
+		\sup \limits_{k \leq n} R_k > t
+		\right)
+		\leq
+		2
+		\sum \limits_{i = 1}^n P(A_i \cap (R_n > t))
+		\leq 
+		2 
+		P(R_n > t).
+	\end{align*}
+
+
+%	\begin{align*}
+%		2 &R_k
+%		= 
+%		\left\| \sum \limits_{i = 1}^k r_i x_i + \sum \limits_{i = 1}^k r_i x_i  \right\|
+%		=
+%		\left\|  \sum \limits_{i = 1}^n  r_i x_i -\sum \limits_{i = k+1}^n r_i x_i + \sum \limits_{i = 1}^k r_i x_i \right\|
+%		\leq 
+%		R_n + R_{n,k} \\
+%		 \Leftrightarrow \ &R_k \leq \frac{1}{2} ( R_n + R_{n,k})
+%	\end{align*}
+%	folgt.
+\end{proof}
+
+\begin{lem}\label{th:expectation_estimate}
+	Sei $ (r_n) $ eine Rademacherfolge und $ (x_n) $ eine Folge in $ X $.
+	Dann gilt:
+	\begin{align*}
+		\mathbb{E}
+		\left(
+		\sup \limits_{k \leq n } R_k
+		\right)
+		\leq 2 \cdot
+		\mathbb{E}(R_n).
+	\end{align*}
+	
+\end{lem}
+
+\begin{proof}
+	Für eine positive Zufallsvariable $ \eta $ gilt
+	\begin{align*}
+		\mathbb{E}(\eta)
+		=
+		\int \limits_{0}^\infty \mathrm{P}(\eta > t) \dxS{t}
+		- 
+		\underbrace{\int \limits_{-\infty}^0 \mathrm{P}(\eta \leq  t) \dxS{t}}_{= 0}
+		=
+		\int \limits_{0}^\infty \mathrm{P}(\eta > t) \dxS{t}.
+	\end{align*}
+	Damit ergibt sich die Aussage unmittelbar durch Einsetzen der Ungleichung \eqref{eq:proab_boundary}.
+\end{proof}
+\newpage
+\begin{genericthm}{Ungleichung von Chobanyan}
+	Sei $ (r_n) $ eine Rademacherfolge, $ X $ ein normierter Raum und $ \{x_i\}_{i=1}^n \subset X $ mit $ \sum_{i = 1}^n  x_i = 0$.
+	Dann existiert eine Permutation $ \sigma $ von $ \{1,...,n\} $, sodass 
+	\begin{align*}
+		\sup 
+		\limits_{k \leq n}
+		\left\|
+		\sum \limits_{i = 1}^k
+		x_{\sigma(i)}
+		\right\|
+		\leq 
+		2 \mathbb{E}
+		\left(
+		\left\|
+		\sum \limits_{i=1}^n
+		r_i x_i
+		\right\|
+		\right)
+	\end{align*}
+	gilt.
+\end{genericthm}
+
+\begin{proof}
+	Nach dem Lemma von Chobanyan \ref{th:lemma_chobanyan} existiert eine Permutation $ \sigma $, sodass
+	\begin{align*}
+		\max\limits_{k \leq n}
+		\left\|
+		\sum \limits_{i = 1}^k x_{\sigma(i)}
+		\right\|
+		\leq 
+		\max \limits_{k \leq n}
+		\left\|
+		\sum \limits_{i=1}^k \alpha_i x_i
+		\right\|
+	\end{align*}
+	für alle $ \alpha_i =\pm 1   $ gilt. Dies führt zu:
+	\begin{align*}
+		\max\limits_{k \leq n}
+		\left\|
+		\sum \limits_{i = 1}^k x_{\sigma(i)}
+		\right\|
+		\leq
+		\frac{1}{2^n}
+		\sum \limits_{\alpha_i  =\pm  1}  
+		\max \limits_{k \leq n }
+		\left\|
+		\sum \limits_{i=1}^k \alpha_i x_{\sigma(i)}
+		\right\|
+		= 
+		\mathbb{E}
+		\left(
+		\max \limits_{k \leq n}
+		\left\|
+		\sum \limits_{i=1}^k r_i x_{\sigma(i)}
+		\right\|
+		\right).
+	\end{align*}
+	Da das Lemma von Chobanyan für jede Kombination der $ \alpha_i $ gilt, ergibt sich der Erwartungswert durch Mittelwertbildung.
+	%Hierbei ist wichtig, dass das Lemma von Chobanyan für jede Kombination der $ \alpha_i $ gilt, womit sich dann der Erwartungswert ergibt.
+	Mit dem Lemma \ref{th:expectation_estimate} erhalten wir durch
+	\begin{align*}
+		\mathbb{E}
+		\left(
+		\max \limits_{k \leq n}
+		\left\|
+		\sum \limits_{i=1}^k r_i x_{\sigma(i)}
+		\right\|
+		\right)
+		\leq 
+		2 
+		\mathbb{E}
+		\left(
+		\left\|
+		\sum \limits_{i=1}^n r_i x_{\sigma(i)}
+		\right\|
+		\right)
+		=
+		2 
+		\mathbb{E}
+		\left(
+		\left\|
+		\sum \limits_{i=1}^n r_i x_{i}
+		\right\|
+		\right)
+	\end{align*}
+	die Aussage.
+\end{proof}
+
+
+Die ursprüngliche Idee war, den nachfolgenden Satz nach Kadets\cite{Kadets1997} mit der Ungleichung von Chobanyan zu beweisen.
+Mit dieser werden dort die Voraussetzungen von Satz \ref{th:prop_linear_conv_area} gezeigt. Jedoch steckt in dieser Ausführung eine falsche Ungleichung, welche nicht korrigiert werden konnte.
+
+%Der nachfolgende Satz sollte eigentlich mit der Ungleichung von Chobanyan bewiesen werden.
+%In \cite{Kadets1997} werden damit die Voraussetzungen des Satzes \ref{th:prop_linear_conv_area} gezeigt.
+%Jedoch steckt in dieser Ausführung eine Ungleichung, wofür es ein Gegenbeispiel gibt.
+%Dieses Problem konnte nicht behoben werden.
+
+\begin{sz}
+	Sei $ (r_n) $ eine Rademacherfolge und  $ (x_n) $ eine Folge in einem Banachraum $ X $, welche die Eigenschaft
+	\begin{align*}
+		\lim \limits_{m > n \to \infty} \mathbb{E}
+		\left(
+		\left\|
+		\sum \limits_{i=n}^m
+		r_i x_i
+		\right\|
+		\right) = 0
+	\end{align*}
+	erfüllt. Dann gilt für $ (x_n) $ die Steinitzeigenschaft.
+\end{sz}
+\begin{proof}
+Wir werden die Aussage beweisen, indem wir die Voraussetzungen der hinreichenden Bedingung \ref{th:sufficent_condition_steiniz_prop} nachweisen.	
+Sei $ \varepsilon > 0  $ beliebig. Nach Voraussetzung existiert ein $ N_\varepsilon \in \N$, sodass
+\begin{align*}
+	\mathbb{E}
+	\left(
+	\left\|
+	\sum 
+	\limits_{i=n}^m r_i x_i
+	\right\|
+	\right)
+	\leq 
+	\frac{\varepsilon}{2}
+\end{align*}
+für $ m > n \geq N_\varepsilon $ gilt.
+Wir wählen $ \{y_i\}_{i=1}^k \subset \{x_i\}_{i=N_\varepsilon}^\infty$ beliebig und bezeichnen
+mit $ \tilde{r}_1,...,\tilde{r}_k $ die zugehörigen Rademachervariablen in der Reihe.
+Außerdem finden wir ein $ l > N_\varepsilon $ mit $ \{\tilde{r}_i y_i\}_{i=1}^k \subset \{r_i x_i\}_{i=N_\varepsilon}^l$.
+Mit dem Lemma \ref{th:expectation_estimate} erhalten wir dann
+\begin{align*}
+	\mathbb{E}
+	\left(
+	\max \limits_{j \leq k}
+	\left\|
+	\sum \limits_{i = 1}^j
+	\tilde{r}_i y_i
+	\right\|
+	\right)
+	\leq 
+	\mathbb{E}
+	\left(
+	\max \limits_{N_\varepsilon \leq j \leq  l}
+	\left\|
+	\sum \limits_{i = N_\varepsilon}^j
+	r_i y_i
+	\right\|
+	\right)
+	\leq 
+	2 
+	\mathbb{E}
+	\left(
+	\left\|
+	\sum \limits_{i = N_\varepsilon}^l
+	r_i y_i
+	\right\|
+	\right)
+	\leq 
+	\varepsilon.
+\end{align*}
+Sei $ \Omega $ der zu den Rademachervariablen gehörende Wahrscheinlichkeitsraum.
+Da der Erwartungswert kleiner als $ \varepsilon $ ist, existiert ein $ \omega \in \Omega^k $, sodass
+\begin{align*}
+	\max \limits_{j \leq k}
+	\left\|
+	\sum \limits_{i = 1}^j
+	\tilde{r}_i(\omega_i) y_i
+	\right\|
+	\leq \varepsilon
+\end{align*}
+gilt. Mit $ \alpha_i = \tilde{r}_i(\omega_i) $ für $  1 \leq i \leq k$ haben wir eine geeignete Vorzeichenanordnung gefunden.
+Insgesamt haben wir die Voraussetzung des Lemmas \ref{th:sufficent_condition_steiniz_prop} nachgewiesen, wodurch $ (x_n) $ die Steinitzeigenschaft besitzt.
+\end{proof}
+
+\begin{df}
+Sei $ (r_n) $ eine Rademacherfolge und $ (x_n) $ eine Folge in einem Banachraum $ X $. 
+Wir nennen $ (r_n x_n) $ fast überall summierbar, falls 
+\begin{align*}
+	\sum 
+	\limits_{i = 1}^\infty r_i(\omega_i) x_i
+\end{align*}
+bis auf eine Nullmenge existiert.
+Das bedeutet
+\begin{align*}
+	\rho
+	\left(
+	\left\{
+	(\omega_n) \in \Omega^\N \ | \ \sum \limits_{i = 1}^\infty r_i(\omega_i) x_i\ \textrm{ist divergent} \
+	\right\}
+	\right) = 0,
+\end{align*}
+wobei $ \Omega  $ der Wahrscheinlichkeitsraum der einzelnen Rademachervariablen und $ \rho $ das zu $ \Omega^\N $ gehörende Wahrscheinlichkeitsmaß ist.
+\end{df}
+
+%Der Beweis des nächsten Satzes folgt unmittelbar aus der Äquivalenz von 
+%\begin{align*}
+%	\lim \limits_{m > n \to \infty} \mathbb{E}
+%	\left(
+%	\left\|
+%	\sum \limits_{i=n}^m
+%	r_i x_i
+%	\right\|
+%	\right) = 0
+%\end{align*}
+%und fast überall Summierbarkeit von $ (r_n x_n) $.
+%Diese Aussage wird in \cite[Chapter 5, \S 5]{Vakhania:1987} bewiesen.
+\newpage
+\begin{genericthm}{Satz von Chobanyan(1985)}\label{th:lemma_of_chobanyan}
+	Sei $ (r_n) $ eine Rademacherfolge, $ (x_n) $ eine Folge in einem Banachraum $ X $
+	und $ (r_n x_n) $ fast überall summierbar.
+	Dann erfüllt $ (x_n) $ die Steinitzeigenschaft.
+\end{genericthm}
+
+Der Beweis dieser Aussage folgt unmittelbar aus der Äquivalenz von 
+\begin{align*}
+	\lim \limits_{m > n \to \infty} \mathbb{E}
+	\left(
+	\left\|
+	\sum \limits_{i=n}^m
+	r_i x_i
+	\right\|
+	\right) = 0
+\end{align*}
+und der fast überall Summierbarkeit von $ (r_n x_n) $.
+Diese Aussage wird in \cite[Chapter 5, \S 5]{Vakhania:1987}  bewiesen. Nachfolgend werden wir noch eine weitere Variante für den Beweis des Satzes von Chobanyan skizzieren.
+Hierfür nutzen wir den Satz von Pecherskii
+\begin{lem}
+	Sei $ (r_n) $ eine Rademacherfolge, $ (x_n) $ eine Folge in einem Banachraum $ X $ und $ (r_n x_n ) $ fast überall summierbar.
+	Dann ist $ (r_{\pi(n)} x_{\pi(n) } ) $ für alle $ \pi \in \mathcal{S}_\N $ fast überall summierbar.
+\end{lem}
+
+\begin{proof}
+	Wir werden wieder die in \cite{Vakhania:1987} bewiesene Äquivalenz verwenden.
+%	Sei $ \varepsilon > 0 $ beliebig.
+%	Nach Voraussetzung existiert ein $ N_\varepsilon \in \N $, sodass
+%	\begin{align*}
+%		\mathbb{E}
+%		\left(
+%		\left\|
+%		\sum 
+%		\limits_{i=n}^m r_i x_i
+%		\right\|
+%		\right)
+%		\leq 
+%		\varepsilon
+%	\end{align*}
+%	für $ m > n \geq N_\varepsilon $ gilt.
+	Wir nehmen an es existiert eine Permutation $ \pi $, sodass $ (r_{\pi(n)} x_{\pi(n)})  $ nicht fast überall summierbar ist.
+	Damit gilt:
+	\begin{align*}
+		\exists_{\kappa > 0}
+		\forall_{K \in \N}
+		\exists_{k_2 > k_1 \geq K}:
+		\mathbb{E}
+		\left(
+		\left\|
+		\sum 
+		\limits_{i=k_1}^{k_2} r_{\pi(i)} x_{\pi(i)}
+		\right\|
+		\right)
+		> 
+		\kappa.
+	\end{align*}
+	Wir setzen $ \varepsilon := \kappa $. Dann exisitiert nach Voraussetzung ein $ N_\varepsilon $,
+	sodass
+	\begin{align*}
+		\mathbb{E}
+		\left(
+		\left\|
+		\sum 
+		\limits_{i=n}^m r_i x_i
+		\right\|
+		\right)
+		\leq 
+		\varepsilon
+	\end{align*}
+	für $ m > n \geq N_\varepsilon $ gilt.
+	Für eine beliebige Permutation $ \sigma $ mit  beliebigem $ N \in \N $ existiert ein $ L \in \N $ mit
+	\begin{align*}
+		\sigma
+		\left( 
+		\{
+		n \geq L\}
+		\right)
+		\subset \{n \geq N\}.
+	\end{align*}
+	Das $ L $ ergibt sich aus
+	\begin{align*}
+		L := \max \{ l \in \N \ : \ 1 \leq \sigma(l) \leq N-1\} + 1.
+	\end{align*} 
+	Insgesamt haben wir einen Widerspruch erhalten.	Damit war die Annahme falsch und die Aussage gilt.
+%	Damit existiert ein $  \kappa > 0$, sodass für alle $ K \in \N $  $ k_2 > k_1 \geq K $ mit
+%	\begin{align*}
+%		\mathbb{E}
+%		\left(
+%		\left\|
+%		\sum 
+%		\limits_{i=k_1}^{k_2} r_{\pi(i)} x_{\pi(i)}
+%		\right\|
+%		\right)
+%		> 
+%		\kappa
+%	\end{align*}
+%	exisiteren.
+\end{proof}
+Damit gibt es insbesondere keine Umordnung von $ (x_n) $ zu einer perfekt unsummierbaren Folge. 
+Also ist die Voraussetzung des Satzes von Pecherskii \ref{th:lemma_of_pecherskii} erfüllt.
+\newpage
+
+\section{Die Steinitzeigenschaft für $ L^p $-Räume}
+%\subsection{Die Steinizeigenschaft für $ L^p $-Räume}
+In diesem Abschnitt werden wir den Konvergenzbereich von $ L^p $-Räumen untersuchen.
+Die Bedingung für die Steinitzeigenschaft wurde von M. I. Kadets in \cite{Kadets1954}
+bewiesen. 
+Im Gegensatz zu dem Satz von Pecherskii \ref{th:lemma_of_pecherskii} werden wir eine handliche Bedingungen der Form 
+\begin{align*}
+	\sum \limits_{i = 1}^\infty \| x_i \|^p < \infty
+\end{align*}
+für $ 1 < p < \infty $ erhalten.
+%Das zeigt insbesondere, dass $ p $-absolute Summierbarkeit die bedingte Summierbarkeit implizieren kann, womit keine allgemeine Äquivalenz zwischen unbedingter und $ p $- absoluter Konvergenz hergestellt werden kann.
+Wir werden diese Bedingungen mit dem Satz von Chobanyan \ref{th:lemma_of_chobanyan} nachweisen, womit sich der Beweis des Satzes von Kadets \ref{th:lemma_of_kadets} auf den Nachweis einer Eigenschaft für $ \L^p $-Räume reduziert.
+Zuerst benötigen wir jedoch geeignete Mittelwertungleichungen, welche uns die konkreten Werte von $ p $ liefern.
+
+
+\begin{df}
+	Seien $ x_1,..., x_n  \in \R$ und $ r_1,...,r_n$ Rademachervariablen.
+	Dann setzen wir 
+	\begin{align*}
+		M_p 
+		:=
+		\left(
+		\mathbb{E}
+		\left|
+		\sum \limits_{i = 1}^n r_i x_i 
+		\right|^p \
+		\right)^{\frac{1}{p}}
+	\end{align*}
+	für $ 1 \leq p < \infty $.
+\end{df}
+
+\begin{lem}
+	Der Ausdruck $ M_p  $ entspricht dem $ p $-Mittelwert über alle möglichen Kombinationen
+	\begin{align*}
+		| \alpha_1 x_1 + ... + \alpha_n x_n |
+	\end{align*}
+	mit $ \alpha_i = \pm 1$ für $  i = 1, ..., n $. Insbesondere gilt
+	\begin{align*}
+		M_p = 
+		\left(
+		\frac{1}{2^n}
+		\sum \limits_{\alpha_i = \pm 1}
+		\left(\sum \limits_{i = 1}^n \alpha_i x_i\right)^p \
+		\right)^\frac{1}{p}
+	\end{align*}
+	für $ 1 \leq p < \infty $. 
+\end{lem}
+\begin{proof}
+	Der Erwartungswert der Zufallsvariablen $  \mu:= \left|\sum_{i = 1}^n r_i x_i \right|^p $ entspricht der Summe aller möglichen Werte multipliziert mit deren Wahrscheinlichkeiten.
+	Die möglichen Werte sind durch
+	\begin{align*}
+		\left|\sum_{i = 1}^n \alpha_i x_i \right|^p
+	\end{align*}
+	für $ \alpha_i = \pm 1$ mit $ i = 1,...,n $ gegeben. 
+	\newpage
+	 $ \mu $ ist gleichverteilt und nimmt die Werte mit der Wahrscheinlichkeit $ 2^{-n} $ an.
+	Es ergibt sich:
+	\begin{align*}
+		\mathbb{E}(\mu)
+		=
+		\sum \limits_{\alpha_i = \pm 1} \frac{1}{2^n}
+		\left(\sum \limits_{i = 1}^n \alpha_i x_i\right)^p. 
+	\end{align*}
+	Also ist $ M_p $ der in der Aussage erwähnte Mittelwert.
+\end{proof}
+
+Da es sich hier um Mittelwerte handelt, gilt
+\begin{align*}
+	M_1 \leq M_p \leq M_q
+\end{align*}
+für $ 1 \leq p \leq q < \infty $.
+Für den Fall $ p = 2 $ erhält man durch Induktion über $ n $, dass gilt:
+\begin{align*}
+	M_2 = \left( \sum \limits_{i = 1}^n | x_i |^2\right)^\frac{1}{2}.
+\end{align*}
+%gilt.\\
+Nach dieser Vorbereitung widmen wir uns der Chintschin-Ungleichung.
+Die exakten Werte, der dort auftretenden Konstanten, sind bekannt und finden sich in \cite{Szarek1976} und \cite{Young1976}.
+Beispielsweise gilt $ a_1 = \nicefrac{1}{\sqrt{2}} $.
+Es ist auch möglich $ M_p  $ für beliebige normierte Räume zu definieren. Dies findet hier jedoch keine Anwendungen.
+
+
+\begin{genericthm}{Chintschin-Ungleichung I}\label{th:khinchin_ineq_1}
+	Seien $ x_1,...,x_n \in \R $ beliebig. Dann existiert ein $ 0 < A_p < 1 $ und $ 1 \leq B_p < \infty $, sodass
+	\begin{align*}
+		A_p 
+		\left(
+		\sum \limits_{i = 1}^n | x_i|^2		
+		\right)^\frac{1}{2}
+		\leq 
+		M_p
+		\leq
+		B_p 
+		\left(
+		\sum \limits_{i = 1}^n | x_i|^2		
+		\right)^\frac{1}{2}
+	\end{align*}
+	für $ 1 \leq p \leq 2 $ gilt.  
+\end{genericthm}
+\begin{proof}
+	\begin{description}
+		\item[1. Fall:   ]
+		Mit $ 1 \leq p \leq 2 $ erhalten wir durch $ M_p \leq M_2 $ die rechte Seite unmittelbar.
+		Wegen $ M_1 \leq M_p $ genügt es zu zeigen, dass ein $ a > 0 $ mit
+		\begin{align}\label{eq:khinchin_1_proof_1}
+			a 
+			\left(
+			\sum \limits_{i = 1}^n | x_i |^2 \ 
+			\right)^\frac{1}{2}
+			\leq M_1 
+			=
+			\mathbb{E}
+			\left(\left|
+			\sum \limits_{i = 1}^n  r_i x_i
+			\right|\right)
+		\end{align}
+		existiert. Hierbei ist $ a $ unabhängig von $ n $ und der Wahl der $ x_i $. 
+		Aus der Ungleichung \eqref{eq:khinchin_1_proof_1} ergibt sich:
+		\begin{align*}
+			\mathbb{E}
+			\left(\left|
+			\sum \limits_{i = 1}^n  r_i x_i
+			\right|\right)
+			\geq 
+			a 
+			\left(
+			\sum \limits_{i = 1}^n | x_i |^2 \ 
+			\right)^\frac{1}{2} > 0
+			\ \Leftrightarrow \
+			\frac{1}{\left(\sum \limits_{i = 1}^n | x_i |^2 \ \right)^\frac{1}{2}}
+			\mathbb{E}
+			\left(\left|
+			\sum \limits_{i = 1}^n  r_i x_i
+			\right|\right)
+			\geq a > 0.
+		\end{align*}
+		Durch die Linearität des Erwartungswerts und  $ t_i := \left(\sum_{i = 1}^n |x_i|^2\right)^{-\frac{1}{2}} x_i $ erhalten wir das System
+		\begin{align}\label{eq:khinchin_1_proof_2}
+			\mathbb{E}
+			\left(\left|
+			\sum \limits_{i = 1}^n  r_i t_i
+			\right|\right) 
+			\geq  a > 0, \quad
+			\sum \limits_{i = 1}^n t_i^2 = 1.
+		\end{align}
+		Wir betrachten die Ungleichung $ |t | \geq 1- \cos t $ für alle $ t \in \R $ und die Identität
+		\begin{align*}
+			\sum \limits_{\alpha_i = \pm 1} 
+			\cos \left(
+			\sum \limits_{i = 1}^n \alpha_i t_i
+			\right) 
+			=
+			2^n \prod \limits_{i = 1}^n \cos(t_i).
+		\end{align*}
+		Die Identität resultiert aus einer Induktion über $ n $ und der Anwendung eines geeigneten Additionstheorems.
+		Hiermit ausgerüstet erhalten wir:
+		\begin{align*}
+			\mathbb{E}
+			\left(\left|
+			\sum \limits_{i = 1}^n  r_i t_i
+			\right|\right) 
+			=
+			\frac{1}{2^n} \sum \limits_{\alpha_i = \pm 1}
+			\left| \sum \limits_{i = 1}^n \alpha_i t_i \right|
+			\geq 
+			\frac{1}{2^n}
+			\sum \limits_{\alpha_i = \pm 1}
+			\left(
+			1 - \cos
+			\left(
+			\sum \limits_{i = 1}^n \alpha_i t_i
+			\right)
+			\right)
+			=
+			1 - 
+			\prod \limits_{i = 1}^n \cos(t_i).
+		\end{align*}
+		Das System \eqref{eq:khinchin_1_proof_2} ist erfüllt, wenn wir ein (geeignetes) Minimum von $ 1 - 
+		\prod_{i = 1}^n \cos(t_i)$ unter der Nebenbedingung $ \sum_{i = 1}^n t_i^2 = 1 $ finden.
+		Dieses Minimum erhalten wir an der Stelle $ t_1 = ... = t_n = n^{- \frac{1}{2}} $ mit dem Wert $ 1 -( \cos n^{-\frac{1}{2}})^n $.
+		Zuletzt betrachten wir:
+		\begin{align*}
+			1 -( \cos n^{-\frac{1}{2}})^n \geq 1 - e^{-\frac{1}{2}}
+			\ \Leftrightarrow \
+			( \cos n^{-\frac{1}{2}})^n \leq e^{-\frac{1}{2}}
+			\ \Leftrightarrow \
+			\cos n^{-\frac{1}{2}} \leq e^{-\frac{1}{2n}}.
+		\end{align*}
+		Die letzte Ungleichung ist erfüllt. Dies erhalten wir aus der Reihendarstellung beider Seiten und der Ungleichung $ (2k)! \geq 2^k k! $ für alle $ k \in \N $.
+		Damit haben wir für $ 1 \leq p \leq 2 $ ein geeignetes $ A_p \geq 1 - e^{-\frac{1}{2}} $ gefunden.
+		\item[2. Fall:] 
+		Für $ 2 < p < \infty $ ergibt sich
+		die linke Seite der Ungleichung sich aus der Monotonie der $ M_p $.
+		Wir interessieren uns also nur für die rechte Seite der Ungleichung. Analog zu dem letzten Beweis dividieren wir die Ungleichung durch $ t_i := \left(\sum_{i = 1}^n |x_i|^2\right)^{-\frac{1}{2}} x_i $ und erhalten das System
+		\begin{align}\label{eq:khinchin_2_proof_1}
+			\left(
+			\mathbb{E} 
+			\left(
+			\left|
+			\sum\limits_{i = 1}^n r_i t_i
+			\right|^p \
+			\right)
+			\right)^\frac{1}{p}
+			\leq B_p , \quad \sum \limits_{i = 1}^n t_i^2 = 1.
+		\end{align}
+		Unser Ziel ist nachzuweisen, dass ein solches $1 \leq A_p < \infty   $ existiert. Hierfür betrachten wir folgende Ungleichung:
+		Es existiert ein $ C_p > 0 $ (abhängig von $ p $), sodass
+		\begin{align*}
+			|t|^p \leq C_p (\cosh t - 1)
+		\end{align*} 
+		für alle $ t \in \R $ gilt. Die Ungleichung selbst ergibt sich aus der Definition von $ \cosh  $ und den Wachstumseigenschaften der Exponential-und Potenzfunktionen.\newpage
+		Durch Induktion über $ n $ erhalten wir mit den Additionstheoremen für $ \cosh $ die Gleichung
+		\begin{align*}
+			\sum \limits_{\alpha_i = \pm 1} 
+			\cosh
+			\left(
+			\sum \limits_{i = 1}^n \alpha_it_i
+			\right)
+			=
+			2^n 
+			\prod \limits_{i = 1}^n \cosh(t_i),
+		\end{align*}
+		woraus dann insgesamt
+		\begin{align*}
+			\mathbb{E} 
+			\left(
+			\left|
+			\sum\limits_{i = 1}^n r_i t_i
+			\right|^p \
+			\right)
+			\leq 
+			C_p
+			\left( \prod \limits_{i = 1}^n \cosh(t_i) - 1\right)
+		\end{align*}
+		folgt.
+		Das System \eqref{eq:khinchin_2_proof_1} ist sinnvoll, falls ein Maximum von $ 	C_p
+		\left( \prod_{i = 1}^n \cosh(t_i) - 1\right) $ unter der Nebenbedingung $ \sum_{i = 1}^n t_i^2 = 1 $ existiert.
+		Dieses Maximum befindet sich an der Stelle $ t_1 = ... = t_n = n^{- \frac{1}{2}} $ dem Wert $ (\cosh n^{- \frac{1}{2}} )^n - 1 $. 
+		Analog zu dem Beweis der ersten Chintschin-Ungleichung erhalten wir
+		\begin{align*}
+			\left(\cosh n^{- \frac{1}{2}} \right)^n - 1 \leq e^{\frac{1}{2}} - 1
+		\end{align*}
+		durch geeignete Umformungen und anschließenden Vergleich der Potenzreihen.
+		Damit ist unsere Schranke nach oben unabhängig von $ n $ und den $ x_i $, womit ein geeignetes $ A_p  $ existiert. 
+	\end{description}
+	
+	
+	
+\end{proof}
+
+
+
+\begin{df}
+	Sei $ X $ ein normierter Raum und $ (r_n) $ eine Rademacherfolge.
+	Wir nennen $ X $ von \textit{Typ} $ p $ mit der Konstanten $ C $, falls für alle endlichen Teilmengen $ \{x_i \}_{i=1}^n \subset X $
+	\begin{align}
+		\mathbf{E}
+		\left(
+		\left\|
+		\sum  \limits_{i = 1}^n r_i x_i
+		\right\|
+		\right)
+		\leq 
+		C 
+		\left(
+		\sum  \limits_{i = 1}^n \|x_i\|^p
+		\right)^{\frac{1}{p}}
+	\end{align}
+	erfüllt ist.
+\end{df}
+
+\begin{genericthm}{Folgerung von Chobanyan}\label{th:conclusion_chobanyan}
+	Sei $ (x_n) $ eine Folge in einem Banachraum $ X $ von Typ $ p $ mit $ \sum_{i=1}^\infty \|x_i \|^p < \infty $.
+	Dann besitzt $ (x_n) $ die Steinitzeigenschaft.
+\end{genericthm}
+
+\begin{proof}
+	Da $ X $ von Typ $ p $ ist, erhalten wir
+	\begin{align*}
+		\mathbb{E}
+		\left( \left\| \sum \limits_{i=1}^\infty r_i x_i  \right\|\right)
+		\leq
+		C 
+		\left( \sum \limits_{i=1}^\infty\| x_i \|^p  \right)^\frac{1}{p} < \infty.
+	\end{align*}
+	Hierbei ist $ (r_n) $ eine Rademacherfolge. Damit ist $ (r_n x_n) $ fast sicher summierbar und die Voraussetzungen des Satzes von Chobanyan \ref{th:lemma_of_chobanyan} sind erfüllt.\qedhere
+	
+	
+\end{proof}
+
+\begin{sz}\label{th:Lp_type2}
+	Die Räume $ \L^p(\Omega,\mu) $ mit $ 2 < p < \infty $ sind von Typ $ 2 $.
+\end{sz}
+
+\begin{proof}
+Seien $ f_1,...,f_n \in \L^p(\Omega,\mu) $ beliebig und $ r_1,...,r_n $ Rademachervariablen.
+Dann erhalten wir mit der Chintschin-Ungleichung \ref{th:khinchin_ineq_1}:
+\begin{equation*}
+	\begin{split}
+		\mathbb{E}
+		\left(
+		\left\|
+		\sum \limits_{i=1}^n r_i f_i
+		\right\|
+		\right)
+		&\leq
+		\left( 
+		\mathbb{E}
+		\left(
+		\left\|
+		\sum \limits_{i = 1}^n
+		r_i f_i
+		\right\|^p \ 
+		\right)
+		\right)^\frac{1}{p}
+		=
+		\left( 
+		\mathbb{E}
+		\int \limits_{\Omega} 
+		\left| 
+		\sum \limits_{i = 1}^n
+		r_i f_i(t)
+		\right|^p
+		\dx{\mu}
+		\right)^\frac{1}{p}\\
+		&=
+		\left(
+		\int \limits_{\Omega}
+		\mathbb{E}
+		\left|
+		\sum \limits_{i = 1}^n
+		r_i f_i(t)
+		\right|^p
+		\dx{\mu}
+		\right)^\frac{1}{p}
+		\leq
+		\left(
+		\int \limits_{\Omega}
+		A_p^p
+		\left(
+		\sum \limits_{i = 1}^n
+		|f_i(t)|^2
+		\right)^\frac{p}{2}
+		\dx{\mu}
+		\right)^\frac{1}{p}\\
+		&=
+		A_p
+		\left(
+		\int \limits_{\Omega}
+		\left(
+		\sum \limits_{i = 1}^n
+		|f_i(t)|^2
+		\right)^\frac{p}{2}
+		\dx{\mu}
+		\right)^\frac{1}{p}.
+	\end{split}	
+\end{equation*}
+Im nächsten Schritt verwenden wir die Dreiecksungleichung mit $ |f_i| \in \L^{\frac{p}{2}}(\Omega,\mu) $ für $ i = 1,...,n $.
+Damit erhalten wir
+\begin{align*}
+	\left(
+	\int \limits_{\Omega}
+	\left(
+	\sum \limits_{i = 1}^n
+	|f_i(t)|^2
+	\right)^\frac{p}{2}
+	\dx{\mu}
+	\right)^\frac{1}{p}
+	=
+	\left\|
+	\sum \limits_{i = 1}^n |f_i|^2
+	\right\|_{\L^{\frac{p}{2}}}^\frac{1}{2}
+	\leq
+	\left(
+	\sum \limits_{i = 1}^n 
+	\| f_i^2 \|_{\L^\frac{p}{2}}
+	\right)^\frac{1}{2}
+	=
+	\left(
+	\sum \limits_{i = 1}^n 
+	\| f_i \|_{\L^p}^2
+	\right)^\frac{1}{2} ,
+\end{align*}
+woraus die gewünschte Ungleichung folgt. 
+\end{proof}
+\begin{sz}\label{th:Lp_typep}
+	Die Räume $ \L^p(\Omega,\mu) $ mit $ 1 \leq p \leq  2 $ sind von Typ $ p $.
+\end{sz}
+\begin{proof}
+Seien $ f_1,...,f_n \in \L^p(\Omega,\mu) $ beliebig und $ r_1,...,r_n $ Rademachervariablen.
+Analog zum vorherigen Beweis wenden wir die Chintschin-Ungleichung \ref{th:khinchin_ineq_1} an und erhalten
+\begin{align*}
+	\mathbb{E}
+	\left(
+	\left\|
+	\sum \limits_{i=1}^n r_i f_i
+	\right\|
+	\right)
+	\leq
+	\left(
+	\int \limits_{\Omega}
+	\left(
+	\sum \limits_{i = 1}^n
+	|f_i(t)|^2
+	\right)^\frac{p}{2}
+	\dx{\mu}
+	\right)^\frac{1}{p}.	
+\end{align*}
+
+Da die Norm von $ \ell^p_{n} $ bezüglich $ p $ monoton fallend ist, erhalten wir
+\begin{align*}
+	\left( \sum \limits_{i = 1}^n |x_i|^2  \right)^\frac{1}{2}
+	\leq 
+	\left( \sum \limits_{i = 1}^n |x_i|^p  \right)^\frac{1}{p}
+\end{align*}
+für $ 1 \leq p \leq 2 $ und beliebige $ x_i $. \newpage
+Hiermit folgt wegen
+\begin{align*}
+	\left(
+	\int \limits_{\Omega}
+	\left(
+	\sum \limits_{i = 1}^n
+	|f_i(t)|^2
+	\right)^\frac{p}{2}
+	\dx{\mu}
+	\right)^\frac{1}{p}
+	\leq 
+	\left(
+	\int \limits_{\Omega}
+	\sum \limits_{i = 1}^n
+	|f_i(t)|^p
+	\dx{\mu}
+	\right)^\frac{1}{p}
+	=
+	\left(
+	\sum \limits_{i = 1}^n
+	\| f_ i\|^p_{\L^p}
+	\right)^\frac{1}{p}
+\end{align*}
+die gewünschte Abschätzung.
+
+\end{proof}
+
+
+\begin{genericthm}{Satz von M. I. Kadets (1954)}\label{th:lemma_of_kadets}
+	Sei $ 1 \leq p < \infty $,  $ r := \min\{2,p\} $
+	und $ (x_n) $ eine Folge in $ L^p(\Omega,\mu) $.
+	Dann ist für die Steinitzeigenschaft die Bedingung
+	\begin{align*}
+	 \sum \limits_{i=1}^\infty \|x_i \|^r < \infty 
+	\end{align*}
+	hinreichend.
+\end{genericthm}
+
+\begin{proof}
+Der Beweis dieser Aussage ergibt sich unmittelbar aus der Folgerung von Chobanyan \ref{th:conclusion_chobanyan}
+und dem Nachweis der Typeigenschaften der $ \L^p $ -Räume \ref{th:Lp_type2} und \ref{th:Lp_typep}.
+\end{proof}
+
+
+
+

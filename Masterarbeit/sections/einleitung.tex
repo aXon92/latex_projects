@@ -1,0 +1,78 @@
+%\section{Einleitung}
+\chapter{Einleitung}
+Bereits in den Grundvorlesungen der Analysis begegnet man Aussagen zur Umordnung von Reihen. Eines der berühmtesten Beispiele hierzu ist der Riemannsche Umordnungssatz, welcher bereits im Jahr 1867 bewiesen wurde. 
+Dieser besagt, dass eine beliebige reelle Zahl durch Umordnung einer bedingt konvergenten Reihe als Grenzwert dargestellt werden kann.
+Als Konvergenzbereich $ \mathcal{K} $ bezeichnen wir die aus der Umordnung entstehenden Grenzwerte.
+Der Konvergenzbereich einer bedingt konvergenten Reihe auf der reellen Achse ist demnach $ \R $. 
+%Dies widerspricht zunächst dem intuitiven Verständnis der Addition.
+Mit der Fragestellung der Umordnung von Reihen beschäftigt man sich in den frühen Semestern nur am Rande.
+Der Fokus liegt auf der Betrachtung einer Reihe als Partialsummenfolge und auf Techniken für den Nachweis der Konvergenz. Damit bleibt der Riemannsche Umordnungssatz oft der einzige Vorstoss in diese Richtung. 
+Eine weitere wichtige Tatsache ist, dass absolut konvergente Reihen beliebig umsortiert werden können und der Grenzwert erhalten bleibt.
+Erfüllt eine Reihe diese Umordnungseigenschaft nennt man sie unbedingt konvergent.
+Für reelle Reihen sind die Begriffe der absoluten und unbedingten Konvergenz äquivalent. 
+Diese Arbeit beschäftigt sich mit der bedingten und unbedingten Konvergenz von Reihen.
+In dem Bereich der bedingten Konvergenz untersuchen wir die Struktur des Konvergenzbereichs $ \mathcal{K} $.
+Für die unbedingte Konvergenz betrachten wir mehrere kleine Themenkomplexe.
+\\
+\\
+Wir untersuchen die Erweiterungen des Riemannschen Umordungssatzes zunächst auf endlich vielen Dimensionen und darauffolgend auf beliebigen Banachräume.
+Die Struktur bauen wir auf der von M.I. und V.M. Kadets in \cite{Kadets1991} und \cite{Kadets1997} auf.
+Beide Werke beschäftigen sich mit Fragestellungen zur bedingten und unbedingten Konvergenz in Banachräumen und wurden gemeinsam von Vater und Sohn geschrieben. 
+%Im Grunde genommen ist \cite{Kadets1997} als eine Überarbeitung von \cite{Kadets1991} zu sehen.
+Unter einer Erweiterung verstehen wir, dass der Konvergenzbereich in der Form $ \mathcal{K} = s + U $ vorliegt. Hierbei ist $ U $ ein Untervektorraum des Ausgangsraumes und $ s $ eine affine Verschiebung. 
+Im Gegensatz zu der Aussage für die reelle Achse können sich die durch Umordnung erreichbaren Grenzwerte also in einem (echten) affinen Unterraum befinden.
+Mithilfe des Riemannschen Umordnungssatzes lässt sich jeder beliebige affine Unterraum in einem endlichdimensionalen Raum konstruieren. Konkret werden wir dies in \ref{sc:construction_steiniz_prop_finite}
+durchführen. Die Erweitung auf die komplexen Zahlen bzw. den zweidimensionalen Raum von Paul L\'evy wurde 1905 in \cite{Levy1905} geführt.
+Den allgemeinen endlichdimensionalen Fall hat Ernst Steinitz 1913 in \cite{Steiniz1913} gezeigt.
+Diesen Beweis hat er auf Anregung von Edmund Landau geführt, nachdem dieser ihn auf Fehler bezüglich der Reihentheorie in damals geläufigen Lehrbüchern hinwies. 
+Dies veranlasste Herr Steinitz die Arbeit von L\'evy zu überprüfen um diese Fehler zu beheben.
+Hierbei stellte er fest, dass der komplexe Fall von L\'evy bewiesen wurde. Für höhere Dimensionen war diese Arbeit jedoch unvollständig.
+Steinitz hat diese Lücken gefüllt und den Riemannschen Satz  auf jede endliche Dimension erweitert. Außerdem hat er dies auch auf eine andere Weise gezeigt, welche wir in dieser Arbeit betrachten werden.
+Aufgrund dieser Geschichte wird die Erweiterung auf beliebige Dimensionen auch Satz von L\'evy-Steinitz genannt.
+In diesem Zusammenhang ein Zitat aus der Arbeit von Steinitz\cite{Steiniz1913}:
+\begin{quote}
+	\textit{Wenn ich in Verbindung damit nun doch das Reihenproblem behandele, so geht die Anregung hierzu auf Herrn Landau zurück, der in neueren Lehrbüchern der Analysis bezüglich der komplexen Reihen geradezu falsche Angaben fand, sich auch bei der Durchsicht der L\'evyschen Arbeit von ihrer Richtigkeit nicht überzeugen konnte.
+	Dies hat mich veranlaßt, diese Arbeit nochmal aufs genauste durchzustudieren. Sie ist sehr knapp, ja sprunghaft gehalten und im Ausdruck oft unklar. Wer die Lösung nicht bereits kennt, wird stellenweise kaum erraten können, was gemeint ist. Kennt man die Lösung, so überzeugt man sich leicht, daß die Gesichtspunkte, in deren Auffindung die hauptsächlichen Schwierigkeiten der Aufgabe liegen, soweit sie sich auf die gewöhnlichen komplexen Zahlen bezieht, wirklich gefunden sind.
+	Daß die Ausführungen im einzelnen richtig sind , wenn sie auch zur vollständigen Erledigung der Aufgabe nicht ausreichen, das zu konstatieren, ist aber auch dann noch recht mühsam. So sehr es zu mißbilligen ist, wenn Publikationen in so mangelhafter Form erfolgen, daß zum Verständnis noch ausführliche Kommentare notwendig sind, daß Herr L\'evy den angegebenen Satz für Reihen mit gewöhnlichen komplexen Zahlen in der zitierten Arbeit zum großen Teil bewiesen hat. Anders steht es mit dem Satze für die allgemeinen komplexen Zahlen, da hier nur Resultate angegeben werden. Damit soll nicht gesagt sein, daß Herr L\'evy nicht auch für den allgemeinen Fall einen Beweis gefunden hat, noch weniger, daß er nicht habe finden können. Aber man kann nicht sagen, daß dieser Beweis in seiner Arbeit enthalten ist, da hierzu ergänzende Untersuchungen im $ n $-dimensionalen Raume notwendig werden, die nur im Falle $ n =2  $ noch trivial sind. }  \ \  \ \  \  \ \ \ \ \ \ \ \  \ \  \  \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ \  \ \ 
+	Ernst Steinitz(1913)
+\end{quote}
+
+Beim Übergang zu unendlichdimensionalen Räumen reicht die Voraussetzung der (bedingten) Reihenkonvergenz nicht mehr aus.
+Im Jahr 1954 fand M.I. Kadets für $ \L^p $-Räume in \cite{Kadets1954} die hinreichende Bedingung
+\begin{align*}
+	\sum \limits_{ i = 1}^\infty \| x_i \|^{\max\{2,p\}}_{\L^p} < \infty
+\end{align*}
+für einen Konvergenzbereich der Form $ s + U. $ Diese wurde 1973 
+durch
+\begin{align*}
+	\left(\sum \limits_{ i = 1}^\infty | x_i(t) |^2\right)^\frac{1}{2} \in \L^p
+\end{align*}
+Nikishin\cite{Nikishin1973} abgeschwächt.
+Weitere Verbesserungen wurden von Trojanski\cite{Trojanski1967}, Fonf\cite{Fonf1972} und Ostrovskii\cite{Ostrovskii1986} gefunden.
+Jedoch haben all diese Erweiterungen gemein, dass sich der endlichdimensionale Steinitzsatz nicht hieraus ergibt.
+Diese Tatsache wurde unabhängig voneinander von Pecherskii \cite{Pecherski1989} und Chobanyan\cite{Chobanyan1987},\cite{Chobanyan1989} beseitigt.
+Für die Aussage von Pecherskii werden wir dies konkret in dem Abschnitt \ref{sc:hanani_pecherskii} nachweisen.
+Insbesondere wird die von Chobanyan formulierte Aussage mithilfe einer von Vakhania\cite{Vakhania:1987} bewiesenen Äquivalenz aus der Formulierung von Pecherskii folgen.\\
+\\
+Der zweite Teil der Arbeit richtet sich an die unbedingte Konvergenz.
+Wir werden uns hauptsächlich nach der Struktur von Diestel\cite{Diestel1995} richten und insbesondere in der gesamten Arbeit dessen Begriff der Summierbarkeit übernehmen.
+In dem Abschnitt \ref{sc:char_uncon_sum} widmen wir uns der Charakterisierung der unbedingten Konvergenz, indem wir hierzu äquivalente Aussagen nachweisen. Hierbei spielt die von Schur\cite{Schur1920} bewiesene Äquivalenz von schwacher Konvergenz und Normkonvergenz in $ \ell^1 $ eine große Rolle.
+Auf bestimmten unendlichdimensionalen Räumen lassen sich leicht Gegenbeispiele für die Äquivalenz unbedingter und absoluter Konvergenz konstruieren.
+Von Dvoretzky und Rogers wurde in  \cite{DvoretzkyRogers1950} gezeigt, dass keine unendlichdimensionalen Räume mit dieser Eigenschaft existieren. 
+Effektiv haben diese gezeigt, dass jeder unendlichdimensionale Raum eine unbedingt konvergente Reihe enthält, wofür die Reihenglieder $ \| x_n \| = \nicefrac{1}{n} $ erfüllen. Dies zeigt, warum man die Begriffe der absoluten und unbedingten Konvergenz trennen muss. Den Beweis hierzu werden wir in dem Abschnitt \ref{sc:dv_rg} führen.
+Auf $ \L^p $-Räumen hat Orlicz\cite{Orlicz1930} im Jahr 1930 gezeigt, dass aus unbedingter Konvergenz
+\begin{align*}
+	\sum \limits_{i = 1}^\infty \|x_i\|^{\max\{2,p\}}_{\L^p} < \infty
+\end{align*}
+für $ 1 \leq p < \infty  $ folgt. Diesen Beweis werden wir in dem Abschnitt \ref{sc:lemma_of_orlicz} führen. In dem letzten Abschnitt \ref{sc:abs_summing} beschäftigen wir uns mit Operatoren, welche unbedingte Konvergenz in absolute Konvergenz überführt.
+Der Fokus wird auf einer von Grothendieck\cite{Grothendieck1956} formulierten Aussage sein. Diese besagt, dass jeder Operator von $ \ell^1  $ nach $ \ell^2 $ unbedingt konvergente Reihen auf absolut konvergente Reihen abbildet.
+
+
+
+
+
+
+
+
+
+
