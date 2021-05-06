@@ -45,7 +45,7 @@
 \indexentry{Homomorphismus!Kern|hyperpage}{21}
 \indexentry{Homomorphismus!Bild|hyperpage}{21}
 \indexentry{volles Urbild|hyperpage}{21}
-\indexentry{Homomorphismus!nat\IeC {\"u}rlich|hyperpage}{22}
+\indexentry{Homomorphismus!natürlich|hyperpage}{22}
 \indexentry{Satz!Cayley|hyperpage}{23}
 \indexentry{Permutation!Matrix|hyperpage}{23}
 \indexentry{Gruppe!alternierend|hyperpage}{24}
@@ -54,7 +54,7 @@
 \indexentry{Erzeugnis!Kommutator|hyperpage}{26}
 \indexentry{Kommutator!Gruppe|hyperpage}{26}
 \indexentry{Gruppe!abgeleitet|hyperpage}{26}
-\indexentry{Gruppe!aufl\IeC {\"o}sbar|hyperpage}{27}
+\indexentry{Gruppe!auflösbar|hyperpage}{27}
 \indexentry{Kommutator!Gruppe!i-te|hyperpage}{27}
 \indexentry{Gruppe!perfekt|hyperpage}{27}
 \indexentry{kleinsche Vierergruppe|hyperpage}{28}
@@ -62,7 +62,7 @@
 \indexentry{Kompositions!-reihe|hyperpage}{28}
 \indexentry{Kompositions!-faktoren|hyperpage}{28}
 \indexentry{Normalteiler!maximal|hyperpage}{28}
-\indexentry{Satz!Jordan-H\IeC {\"o}lder|hyperpage}{28}
+\indexentry{Satz!Jordan-Hölder|hyperpage}{28}
 \indexentry{Satz!Homomorphie|hyperpage}{30}
 \indexentry{Satz!Korrespondez|hyperpage}{30}
 \indexentry{Normalteiler!Korrespondenz|hyperpage}{30}
@@ -77,16 +77,16 @@
 \indexentry{Ring!kommutativ|hyperpage}{40}
 \indexentry{Teilring|hyperpage}{40}
 \indexentry{Einheiten|hyperpage}{41}
-\indexentry{Schiefk\IeC {\"o}rper|hyperpage}{41}
+\indexentry{Schiefkörper|hyperpage}{41}
 \indexentry{Divisionsring|hyperpage}{41}
-\indexentry{K\IeC {\"o}rper|hyperpage}{41}
+\indexentry{Körper|hyperpage}{41}
 \indexentry{Ring!Matrizen|hyperpage}{41}
-\indexentry{Schiefk\IeC {\"o}rper!Quaternionen|hyperpage}{41}
+\indexentry{Schiefkörper!Quaternionen|hyperpage}{41}
 \indexentry{Teilbarkeit|hyperpage}{41}
 \indexentry{Nullteiler|hyperpage}{41}
 \indexentry{Nullteiler!frei|hyperpage}{41}
-\indexentry{Integrit\IeC {\"a}tsring|hyperpage}{41}
-\indexentry{Gau\IeC {\ss }sche Zahlen|hyperpage}{41}
+\indexentry{Integritätsring|hyperpage}{41}
+\indexentry{Gaußsche Zahlen|hyperpage}{41}
 \indexentry{Restklassenring|hyperpage}{41}
 \indexentry{Eulersche Phi-Funktion|hyperpage}{42}
 \indexentry{Satz!kleiner Fermat|hyperpage}{42}
@@ -122,28 +122,28 @@
 \indexentry{Ideal!Summe|hyperpage}{51}
 \indexentry{Ideal!prim|hyperpage}{51}
 \indexentry{Ideal!maximal|hyperpage}{51}
-\indexentry{Irreduziblit\IeC {\"a}t|hyperpage}{54}
+\indexentry{Irreduziblität|hyperpage}{54}
 \indexentry{Primelement|hyperpage}{54}
 \indexentry{Ring!faktoriell|hyperpage}{55}
 \indexentry{Faktoriell|hyperpage}{55}
-\indexentry{Faktoriell!L\IeC {\"a}nge|hyperpage}{55}
+\indexentry{Faktoriell!Länge|hyperpage}{55}
 \indexentry{Hauptideal!Bereich|hyperpage}{56}
-\indexentry{Erweiterungsk\IeC {\"o}rper!Konstruktion|hyperpage}{58}
+\indexentry{Erweiterungskörper!Konstruktion|hyperpage}{58}
 \indexentry{Polynom!primitiv|hyperpage}{60}
 \indexentry{Reduktionskriterium|hyperpage}{60}
 \indexentry{Eisensteinkriterium|hyperpage}{60}
 \indexentry{Kroneckerverfahren|hyperpage}{61}
-\indexentry{Satz!Lemma von Gau\IeC {\ss }|hyperpage}{62}
-\indexentry{Quotientenk\IeC {\"o}rper|hyperpage}{62}
-\indexentry{Satz!Gau\IeC {\ss }|hyperpage}{63}
+\indexentry{Satz!Lemma von Gauß|hyperpage}{62}
+\indexentry{Quotientenkörper|hyperpage}{62}
+\indexentry{Satz!Gauß|hyperpage}{63}
 \indexentry{n-te Einheitswurzel|hyperpage}{66}
 \indexentry{n-te Einheitswurzel!primitiv|hyperpage}{66}
 \indexentry{n-te Kreisteilungspolynom|hyperpage}{66}
 \indexentry{algebraisch!ganz|hyperpage}{68}
 \indexentry{algebraisch|hyperpage}{68}
-\indexentry{K\IeC {\"o}rper!Erweiterung|hyperpage}{69}
-\indexentry{K\IeC {\"o}rper!Grad|hyperpage}{69}
-\indexentry{K\IeC {\"o}rper!prim|hyperpage}{69}
+\indexentry{Körper!Erweiterung|hyperpage}{69}
+\indexentry{Körper!Grad|hyperpage}{69}
+\indexentry{Körper!prim|hyperpage}{69}
 \indexentry{transzendent|hyperpage}{69}
 \indexentry{algebraisch|hyperpage}{69}
 \indexentry{Diedergruppe|hyperpage}{89}
